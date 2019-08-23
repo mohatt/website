@@ -1,0 +1,15 @@
+.avatar {
+  box-shadow: 0 6px 0 6px theme('colors.typo');
+  background-image: url('/media/avatar/avatar.png');
+}
+
+.avatar:hover {
+  background-image: url('/media/avatar/avatar-smile.png');
+  background-color: theme('colors.secondary');
+}
+
+.logo {
+  writing-mode: vertical-lr;
+  transform: rotate(-180deg);
+  letter-spacing: 0.4rem;
+}
