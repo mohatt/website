@@ -13,7 +13,8 @@ const Contacts = ({ contacts }) => (
             mono
             color='accent'
             className={`${styles.contact} block w-12 h-12 mb-6`}
-            href={getContactHref(name, contacts[name])}
+            to={getContactHref(name, contacts[name])}
+            external
             rel='noopener noreferrer'
             target='_blank'
           >

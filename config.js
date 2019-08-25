@@ -11,8 +11,8 @@ module.exports = {
     { label: 'Intro', to: 'home' },
     { label: 'Skills', to: 'skills' },
     { label: 'Portafolio', to: 'portafolio' },
-    { label: 'Clients', to: 'clients' },
-    { label: 'Contact', to: 'contact' }
+    { label: 'Clients', to: '/clients' },
+    { label: 'Contact', to: '/contact' }
   ],
   author: {
     name: 'Mohamed Elkholy',

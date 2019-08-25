@@ -17,7 +17,7 @@ const useSiteMetadata = () => {
             }
             menu {
               label
-              route
+              to
             }
             url
             title
