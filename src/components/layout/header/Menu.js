@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby-plugin-advanced-pages'
+import { Link } from '../../'
 import styles from './Menu.module.css'
 
 const Menu = ({ items }) => (
