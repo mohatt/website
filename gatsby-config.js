@@ -3,7 +3,7 @@ const site = require('./config/site')
 const postCssPlugins = require('./config/postcss')
 
 module.exports = {
-  // pathPrefix: `/mohatt/public`,
+  pathPrefix: process.env.CI ? '/website' : '/',
   siteMetadata: {
     url: site.url,
     title: site.title,
