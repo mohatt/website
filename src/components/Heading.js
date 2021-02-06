@@ -1,6 +1,16 @@
 import React from 'react'
 
-const Heading = ({ children, level = 1, size = '4xl', width = '38rem', spacing = 8, pretitle, subtitle, className }) => {
+const Heading = ({
+  children,
+  level = 2,
+  size = '4xl',
+  width = '2xl',
+  spacing = 8,
+  leading = 'none',
+  pretitle,
+  subtitle,
+  className = '',
+}) => {
   const HeadingTag = `h${level}`
   // either "$titleSize" or "$preTitleSize $titleSize $subtitleSize"
   const sizes = size.split(' ', 3)
@@ -12,14 +22,18 @@ const Heading = ({ children, level = 1, size = '4xl', width = '38rem', spacing =
   const [preTitleSize, titleSize, subtitleSize] = sizes
 
   return (
-    <header className={className} style={{ maxWidth: width }}>
-      {pretitle &&
-        <div className={`text-typo-dimmer font-mono italic rfs-${preTitleSize}`}>{pretitle}</div>}
-      <HeadingTag className={`text-typo font-mono font-medium italic rfs-${titleSize} my-${spacing}`}>
+    <header className={`rfs:max-w-${width}`}>
+      {pretitle && (
+        <div className={`text-typo-dim font-mono italic rfs:text-${preTitleSize}`}>
+          {pretitle}
+        </div>
+      )}
+      <HeadingTag className={`text-typo font-mono font-medium italic rfs:text-${titleSize} my-${spacing} leading-${leading}`}>
         {children}
       </HeadingTag>
-      {subtitle &&
-        <div className={`text-typo-dim font-sans rfs-${subtitleSize} pb-4`}>{subtitle}</div>}
+      {subtitle && (
+        <div className={`text-typo-dim font-sans rfs:text-${subtitleSize} pb-4`}>{subtitle}</div>
+      )}
     </header>
   )
 }

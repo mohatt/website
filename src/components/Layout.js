@@ -6,10 +6,7 @@ import { Header, Footer } from './layout'
 import { isActivatedRoute } from 'gatsby-plugin-advanced-pages'
 
 const Layout = ({ children, title = null, description = null }) => {
-  const {
-    title: siteTitle,
-    description: SiteDescription
-  } = useSiteMetadata()
+  const { title: siteTitle, description: SiteDescription } = useSiteMetadata()
 
   title = title ? `${title} — ${siteTitle}` : siteTitle
   description = description || SiteDescription

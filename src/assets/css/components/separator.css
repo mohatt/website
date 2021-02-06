@@ -1,24 +1,25 @@
 .sep {
-	@apply block w-full bg-primary p-0 m-0 border-0;
-	
+  @apply block w-full bg-primary p-0 m-0 border-0;
+
   &.sep-bg {
-  	@apply bg-primary;
-  	background: linear-gradient(90deg, theme('colors.primary') 0%, rgba(0,0,0,0) 85%);
+    @apply bg-primary;
+    background: linear-gradient(90deg, theme('colors.primary') 0%, rgba(0, 0, 0, 0) 85%);
   }
 
-	 &, &.sep-1 {
-		height: 1px;
-	}
+  &,
+  &.sep-1 {
+    height: 1px;
+  }
 
-	&.sep-2 {
-		height: 2px;
-	}
+  &.sep-2 {
+    height: 2px;
+  }
 
-	&.sep-3 {
-		height: 3px;
-	}
+  &.sep-3 {
+    height: 3px;
+  }
 
-	&.sep-4 {
-		height: 4px;
-	}
+  &.sep-4 {
+    height: 4px;
+  }
 }

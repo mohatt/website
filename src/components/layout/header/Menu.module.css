@@ -1,11 +1,11 @@
 .menu-item {
-  @apply block font-mono font-medium italic rfs-lg text-right text-typo-dim pb-6 pr-6;
+  @apply block font-mono font-medium italic rfs:text-lg text-right text-typo-dim pb-6 pr-6;
 }
 
 .menu-item,
 .menu-item:before,
 .menu-item:after {
-  @apply transition-all transition-250;
+  @apply transition-all duration-300;
 }
 
 .menu-item.active,

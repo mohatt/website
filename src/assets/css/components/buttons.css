@@ -1,6 +1,5 @@
 .btn {
-  @apply
-  	inline-block
+  @apply inline-block
   	relative
     font-mono
   	font-medium
@@ -11,23 +10,23 @@
   	rounded
   	shadow-lg
     text-shadow-none
-		cursor-pointer
-		select-none
+    cursor-pointer
+    select-none
     align-middle
-    whitespace-no-wrap
-    transition-all
-    ;
-
+    whitespace-nowrap
+    transition-all;
   @apply bg-accent text-typo-dim border-accent;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     @apply bg-typo-dim text-accent border-typo-dim;
   }
 
   &.btn-outline {
     @apply bg-transparent text-accent;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       @apply bg-accent text-typo-dim border-accent;
     }
   }
@@ -35,14 +34,16 @@
   &.btn-alt {
     @apply bg-typo-dim text-accent border-typo-dim;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       @apply bg-accent text-typo-dim border-accent;
     }
 
     &.btn-outline {
       @apply bg-transparent text-typo-dim;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         @apply bg-typo-dim text-accent border-typo-dim;
       }
     }
@@ -51,14 +52,16 @@
   &.btn-primary {
     @apply bg-primary text-accent border-primary;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       @apply bg-typo-dim text-accent border-typo-dim;
     }
 
     &.btn-outline {
       @apply bg-transparent text-primary;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         @apply bg-primary text-accent border-primary;
       }
     }

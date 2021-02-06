@@ -4,41 +4,40 @@ import { Layout, Hero } from '../components'
 import Typed from 'typed.js'
 
 const HomeTemplate = ({ data: { page } }) => {
-  const {
-    title,
-    pretitle,
-    subtitle,
-    actions
-  } = page.data
-
   const typedPlaceholder = React.createRef()
-
   useEffect(() => {
     const options = {
-      strings: title.strings,
+      strings: ['high quality', 'user-friendly', 'efficient', 'modern', 'beautiful'],
       typeSpeed: 50,
       backSpeed: 30,
       backDelay: 5000,
-      loop: true
+      loop: true,
     }
     const typed = new Typed(typedPlaceholder.current, options)
-
-    return function cleanup () {
+    return function cleanup() {
       typed.destroy()
     }
   })
 
-  const titleParts = title.text.split('%%')
-  const titleNode = <>{titleParts[0]}<span ref={typedPlaceholder} className='text-primary' /><br />{titleParts[1] || ''}</>
-
+  const titleNode = (
+    <>
+      I move pixels and lines of
+      <br />
+      code to craft <span ref={typedPlaceholder} className='text-primary' />
+      <br />
+      digital experiences
+    </>
+  )
+  const actions = [
+    { title: 'Skills', to: 'skills', alt: true },
+    { title: 'Get In Touch', to: 'home' },
+  ]
   return (
     <Layout title={page.title}>
-      <Hero
-        title={titleNode}
-        pretitle={pretitle}
-        children={subtitle}
-        actions={actions}
-      />
+      <Hero title={titleNode} pretitle='Hi, I’m Mohamed,' actions={actions}>
+        I'm a full-stack web developer with a broad range of skills and expertise in all web
+        development related fields.
+      </Hero>
     </Layout>
   )
 }
@@ -47,7 +46,6 @@ export const query = graphql`
   query Home($id: String!) {
     page(id: { eq: $id }) {
       title
-      data
     }
   }
 `

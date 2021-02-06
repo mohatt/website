@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <>
       <Separator size='4' spacing='0' />
-      <footer className='px-20 py-16 bg-accent text-typo rfs-lg'>
+      <footer className='px-20 py-16 bg-accent text-typo rfs:text-lg'>
         {copyright}
       </footer>
     </>
