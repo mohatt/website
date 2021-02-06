@@ -12,14 +12,13 @@ const PortafolioTemplate = ({ data: { page, projects } }) => {
     <Layout title={title}>
       <Section>
         <Heading
+          level='1'
           size='lg 4xl xl'
           pretitle="require('./projects.md');"
-          subtitle="Some projects I worked on."
+          subtitle='Some projects I worked on.'
           children={title}
         />
-        <pre style={{ whiteSpace: 'pre-wrap' }}>
-          {JSON.stringify(projects.edges, null, 2)}
-        </pre>
+        <pre style={{ whiteSpace: 'pre-wrap' }}>{JSON.stringify(projects.edges, null, 2)}</pre>
         <Pagination route='portafolio' pageInfo={projects.pageInfo} ui='simple' />
       </Section>
     </Layout>
@@ -32,17 +31,26 @@ export const query = graphql`
       title
     }
     projects: allMdx(
-      limit: $limit,
-      skip: $offset,
-      filter: $filter,
+      limit: $limit
+      skip: $offset
+      filter: $filter
       sort: { order: DESC, fields: [frontmatter___date] }
-    ){
+    ) {
       edges {
         node {
           frontmatter {
+            slug
             title
             date
             description
+            projectCategories {
+              id
+              title
+            }
+            projectSkills {
+              id
+              title
+            }
           }
         }
       }

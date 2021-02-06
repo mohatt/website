@@ -1,0 +1,376 @@
+- id: php
+  title: PHP
+  icon: php
+  categories:
+    - backend
+    - language
+- id: node
+  title: Node.js
+  icon: node-dot-js
+  categories:
+    - backend
+    - language
+- id: javascript
+  title: JavaScript (ES6+)
+  icon: javascript
+  categories:
+    - frontend
+    - language
+- id: typescript
+  title: TypeScript
+  icon: typescript
+  categories:
+    - frontend
+    - backend
+    - language
+- id: html
+  title: HTML5
+  icon: html5
+  categories:
+    - frontend
+    - language
+- id: css
+  title: CSS3
+  icon: css3
+  categories:
+    - frontend
+    - language
+- id: sass
+  title: Sass
+  icon: sass
+  categories:
+    - frontend
+    - language
+- id: symfony
+  title: Symfony
+  icon: symfony
+  categories:
+    - backend
+    - framework
+- id: laravel
+  title: Laravel
+  icon: laravel
+  categories:
+    - backend
+    - framework
+- id: express
+  title: Express.js
+  icon: express
+  categories:
+    - backend
+    - framework
+- id: genesis
+  title: Genesis
+  icon: wordpress
+  categories:
+    - backend
+    - framework
+- id: react
+  title: React
+  icon: react
+  categories:
+    - frontend
+    - js
+- id: angular
+  title: Angular
+  icon: angular
+  categories:
+    - frontend
+    - js
+- id: rxjs
+  title: RxJS
+  icon: reactivex
+  categories:
+    - frontend
+    - js
+- id: gatsby
+  title: Gatsby
+  icon: gatsby
+  categories:
+    - frontend
+    - js
+- id: jquery
+  title: jQuery
+  icon: jquery
+  categories:
+    - frontend
+    - js
+- id: tailwind
+  title: Tailwind CSS
+  icon: tailwindcss
+  categories:
+    - frontend
+    - css
+- id: bootstrap
+  title: Bootstrap
+  icon: bootstrap
+  categories:
+    - frontend
+    - css
+- id: material
+  title: Material UI
+  icon: material-ui
+  categories:
+    - frontend
+    - css
+- id: wordpress
+  title: Wordpress
+  icon: wordpress
+  categories:
+    - backend
+    - cms
+- id: magento
+  title: Magento
+  icon: magento
+  categories:
+    - backend
+    - cms
+- id: woo
+  title: WooCommerce
+  icon: woo
+  categories:
+    - backend
+    - cms
+- id: strapi
+  title: Strapi
+  icon: strapi
+  categories:
+    - backend
+    - cms
+- id: rest
+  title: REST APIs
+  icon: json
+  categories:
+    - backend
+    - api
+- id: paymentapi
+  title: Payment Gatways
+  icon: paypal
+  categories:
+    - backend
+    - api
+- id: phpunit
+  title: PHPUnit
+  icon: php
+  categories:
+    - backend
+    - test
+- id: dusk
+  title: Laravel Dusk
+  icon: laravel
+  categories:
+    - backend
+    - test
+- id: codeception
+  title: Codeception
+  icon: codeceptjs
+  categories:
+    - backend
+    - test
+- id: jest
+  title: Jest
+  icon: jest
+  categories:
+    - backend
+    - test
+- id: cypress
+  title: Cypress
+  icon: cypress
+  categories:
+    - backend
+    - test
+- id: graphql
+  title: GraphQL
+  icon: graphql
+  categories:
+    - backend
+    - database
+    - api
+- id: redis
+  title: Redis
+  icon: redis
+  categories:
+    - backend
+    - database
+- id: mysql
+  title: MySQL
+  icon: mysql
+  categories:
+    - backend
+    - database
+- id: postgresql
+  title: PostgresSQL
+  icon: postgresql
+  categories:
+    - backend
+    - database
+- id: mongodb
+  title: MongoDB
+  icon: mongodb
+  categories:
+    - backend
+    - database
+- id: elasticsearch
+  title: Elasticsearch
+  icon: elasticsearch
+  categories:
+    - backend
+    - database
+- id: github
+  title: Github
+  icon: github
+  categories:
+    - cloud
+    - git
+- id: gitlab
+  title: Gitlab
+  icon: gitlab
+  categories:
+    - cloud
+    - git
+- id: bitbucket
+  title: Bitbucket
+  icon: bitbucket
+  categories:
+    - cloud
+    - git
+- id: aws
+  title: Amazon AWS
+  icon: amazonaws
+  categories:
+    - cloud
+    - backend
+    - api
+    - deploy
+- id: heroku
+  title: Heroku
+  icon: heroku
+  categories:
+    - cloud
+    - deploy
+- id: digitalocean
+  title: DigitalOcean
+  icon: digitalocean
+  categories:
+    - cloud
+    - deploy
+- id: netlify
+  title: Netlify
+  icon: netlify
+  categories:
+    - cloud
+    - deploy
+- id: wpengine
+  title: WP Engine
+  icon: wpengine
+  categories:
+    - cloud
+    - deploy
+- id: gitlabci
+  title: GitLab CI/CD
+  icon: gitlab
+  categories:
+    - cloud
+    - ci
+- id: ghactions
+  title: Github Actions
+  icon: githubactions
+  categories:
+    - cloud
+    - ci
+- id: circleci
+  title: CircleCI
+  icon: circleci
+  categories:
+    - cloud
+    - ci
+- id: ubuntu
+  title: Ubuntu
+  icon: ubuntu
+  categories:
+    - software
+    - env
+- id: git
+  title: Git
+  icon: git
+  categories:
+    - software
+    - env
+- id: docker
+  title: Docker
+  icon: docker
+  categories:
+    - software
+    - env
+- id: shell
+  title: Fish Shell
+  icon: powershell
+  categories:
+    - software
+    - env
+- id: phpstorm
+  title: PhpStorm
+  icon: phpstorm
+  categories:
+    - software
+    - app
+- id: webstorm
+  title: WebStorm
+  icon: webstorm
+  categories:
+    - software
+    - app
+- id: chrome
+  title: Chrome DevTools
+  icon: googlechrome
+  categories:
+    - software
+    - app
+- id: postman
+  title: Postman
+  icon: postman
+  categories:
+    - software
+    - app
+- id: slack
+  title: Slack
+  icon: slack
+  categories:
+    - software
+    - comms
+- id: skype
+  title: Skype
+  icon: skype
+  categories:
+    - software
+    - comms
+- id: basecamp
+  title: Basecamp
+  icon: basecamp
+  categories:
+    - software
+    - comms
+- id: jira
+  title: Jira
+  icon: jirasoftware
+  categories:
+    - software
+    - comms
+- id: composer
+  title: Composer
+  icon: cplusplus
+  categories:
+    - software
+    - pkgman
+- id: pnpm
+  title: pnpm
+  icon: fortinet
+  categories:
+    - software
+    - pkgman
+- id: yarn
+  title: Yarn
+  icon: yarn
+  categories:
+    - software
+    - pkgman
