@@ -1,14 +1,16 @@
 const { kebabCase } = require('lodash')
-const { projectsPageSize } = require('../../config')
+const { projectsPageSize } = require('../../config/site')
 
-async function createPortafolioPages ({ graphql, page, createAdvancedPage }) {
+async function createPortafolioPages({ graphql, createAdvancedPage }) {
   const result = await graphql(`
     {
-      projects: allMdx(
-        filter: { frontmatter: { type: { eq: "project" }, draft: { ne: true } } }
-      ) {
+      projects: allMdx(filter: { frontmatter: { type: { eq: "project" }, draft: { ne: true } } }) {
         totalCount
-        group(field: frontmatter___skills___id) {
+        skills: group(field: frontmatter___projectSkills___id) {
+          fieldValue
+          totalCount
+        }
+        categories: group(field: frontmatter___projectCategories___id) {
           fieldValue
           totalCount
         }
@@ -25,48 +27,73 @@ async function createPortafolioPages ({ graphql, page, createAdvancedPage }) {
     route: 'portafolio',
     pagination: {
       count: result.data.projects.totalCount,
-      limit: projectsPageSize
+      limit: projectsPageSize,
     },
     filter: {
       frontmatter: {
         type: { eq: 'project' },
-        draft: { ne: true }
-      }
-    }
+        draft: { ne: true },
+      },
+    },
   })
 
   // Pagination for skill-filtered views
-  for (const skill of result.data.projects.group) {
+  for (const skill of result.data.projects.skills) {
+    // noinspection JSDeprecatedSymbols
     createAdvancedPage({
       route: 'portafolio.skill',
       params: {
-        skill: skill.fieldValue
+        skill: skill.fieldValue,
       },
       pagination: {
         count: skill.totalCount,
-        limit: projectsPageSize
+        limit: projectsPageSize,
       },
       filter: {
         frontmatter: {
           type: { eq: 'project' },
-          skills: {
+          projectSkills: {
             elemMatch: {
-              id: { eq: skill.fieldValue }
-            }
+              id: { eq: skill.fieldValue },
+            },
           },
-          draft: { ne: true }
-        }
-      }
+          draft: { ne: true },
+        },
+      },
+    })
+  }
+
+  // Pagination for category-filtered views
+  for (const category of result.data.projects.categories) {
+    // noinspection JSDeprecatedSymbols
+    createAdvancedPage({
+      route: 'portafolio.category',
+      params: {
+        category: category.fieldValue,
+      },
+      pagination: {
+        count: category.totalCount,
+        limit: projectsPageSize,
+      },
+      filter: {
+        frontmatter: {
+          type: { eq: 'project' },
+          projectCategories: {
+            elemMatch: {
+              id: { eq: category.fieldValue },
+            },
+          },
+          draft: { ne: true },
+        },
+      },
     })
   }
 }
 
-async function createProjectPages ({ graphql, page, createAdvancedPage }) {
+async function createProjectPages({ graphql, createAdvancedPage }) {
   const result = await graphql(`
     {
-      projects: allMdx(
-        filter: { frontmatter: { type: { eq: "project" }, draft: { ne: true } } }
-      ) {
+      projects: allMdx(filter: { frontmatter: { type: { eq: "project" }, draft: { ne: true } } }) {
         edges {
           node {
             frontmatter {
@@ -83,24 +110,26 @@ async function createProjectPages ({ graphql, page, createAdvancedPage }) {
     throw result.errors
   }
 
-  return result.data.projects.edges.map(({ node }) => {
+  result.data.projects.edges.map(({ node }) => {
     const slug = node.frontmatter.slug || kebabCase(node.frontmatter.title)
-    createAdvancedPage({
+    return createAdvancedPage({
       route: 'portafolio.project',
-      params: { project: slug }
+      params: {
+        project: slug,
+      },
     })
   })
 }
 
 module.exports = async args => {
-  switch (args.page.template) {
-    case 'portafolio':
+  switch (args.page.templateName) {
+    case 'portafolio.js':
       await createPortafolioPages(args)
       break
-    case 'project':
+    case 'project.js':
       await createProjectPages(args)
       break
     default:
-      // Unrecognized page template
+    // Unrecognized page template
   }
 }
