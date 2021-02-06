@@ -1,29 +1,32 @@
-const siteConfig = require('./config')
-const postCssPlugins = require('./postcss-config')
+const path = require('path')
+const site = require('./config/site')
+const postCssPlugins = require('./config/postcss')
 
 module.exports = {
+  // pathPrefix: `/mohatt/public`,
   siteMetadata: {
-    url: siteConfig.url,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    copyright: siteConfig.copyright,
-    menu: siteConfig.menu,
-    author: siteConfig.author
+    url: site.url,
+    title: site.title,
+    description: site.description,
+    copyright: site.copyright,
+    menu: site.menu,
+    author: site.author,
   },
   plugins: [
+    'gatsby-plugin-pnpm',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content',
-        path: `${__dirname}/content`
-      }
+        path: path.join(__dirname, 'content'),
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'media',
-        path: `${__dirname}/static/media`
-      }
+        path: path.join(__dirname, 'static', 'media'),
+      },
     },
     {
       resolve: `gatsby-plugin-mdx`,
@@ -31,18 +34,18 @@ module.exports = {
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
-            options: { maxWidth: 960 }
+            options: { maxWidth: 960 },
           },
           'gatsby-remark-prismjs',
-          'gatsby-remark-smartypants'
-        ]
-      }
+          'gatsby-remark-smartypants',
+        ],
+      },
     },
     {
       resolve: 'gatsby-plugin-advanced-pages',
       options: {
-        engine: 'mdx'
-      }
+        pages: site.pages,
+      },
     },
     'gatsby-transformer-yaml',
     'gatsby-transformer-sharp',
@@ -50,11 +53,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingIds: [siteConfig.googleAnalyticsId],
+        trackingIds: [site.googleAnalyticsId],
         pluginConfig: {
-          head: true
-        }
-      }
+          head: true,
+        },
+      },
     },
     {
       resolve: 'gatsby-plugin-sitemap',
@@ -80,24 +83,25 @@ module.exports = {
           }
         `,
         output: '/sitemap.xml',
-        serialize: ({ site, allSitePage }) => allSitePage.edges.map((edge) => ({
-          url: site.siteMetadata.siteUrl + edge.node.path,
-          changefreq: 'daily',
-          priority: 0.7
-        }))
-      }
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.edges.map(edge => ({
+            url: site.siteMetadata.siteUrl + edge.node.path,
+            changefreq: 'daily',
+            priority: 0.7,
+          })),
+      },
     },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: siteConfig.title,
-        short_name: siteConfig.title,
+        name: site.title,
+        short_name: site.title,
         start_url: '/',
         background_color: '#FFF',
         theme_color: '#F7A046',
         display: 'standalone',
-        icon: 'static/media/avatar/avatar.png'
-      }
+        icon: 'static/media/avatar/avatar.png',
+      },
     },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
@@ -106,16 +110,16 @@ module.exports = {
       options: {
         postCssPlugins: [...postCssPlugins],
         cssLoaderOptions: {
-          camelCase: false
-        }
-      }
+          camelCase: false,
+        },
+      },
     },
     {
       resolve: 'gatsby-plugin-purgecss',
       options: {
         tailwind: true,
-        purgeOnly: ['src/assets/css/main.css']
-      }
-    }
-  ]
+        purgeOnly: ['src/assets/css/main.css'],
+      },
+    },
+  ],
 }
