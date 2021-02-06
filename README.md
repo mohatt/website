@@ -4,7 +4,7 @@ This is the second version of my personal website built with [Gatsby](https://ww
 
 You can see it live at: [mohatt.github.io](http://mohatt.github.io/)
 
-## Setup
+## Setupp
 
 To build the website locally, first clone the repo
 ```sh
