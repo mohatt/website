@@ -82,10 +82,11 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-purgecss',
+      resolve: 'gatsby-plugin-postbuild',
       options: {
-        tailwind: true,
-        purgeOnly: ['src/assets/css/main.css'],
+        purgecss: {
+          tailwind: true,
+        }
       },
     },
   ],
