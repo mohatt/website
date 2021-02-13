@@ -59,6 +59,25 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl: url
+              }
+            }
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+          }
+        `,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: site.title,
