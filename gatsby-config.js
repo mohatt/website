@@ -4,6 +4,7 @@ const postCssPlugins = require('./config/postcss')
 
 module.exports = {
   siteMetadata: {
+    siteUrl: site.url,
     url: site.url,
     title: site.title,
     description: site.description,
@@ -59,25 +60,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl: url
-              }
-            }
-            allSitePage {
-              nodes {
-                path
-              }
-            }
-          }
-        `,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: site.title,
@@ -89,7 +71,6 @@ module.exports = {
         icon: 'static/media/avatar/avatar.png',
       },
     },
-    'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-postcss',
@@ -100,6 +81,10 @@ module.exports = {
         },
       },
     },
+    'gatsby-plugin-sitemap',
+    `gatsby-plugin-robots-txt`,
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-netlify',
     {
       resolve: 'gatsby-plugin-postbuild',
       options: {
