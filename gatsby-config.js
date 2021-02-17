@@ -88,9 +88,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-postbuild',
       options: {
-        purgecss: {
-          allowSymbols: true,
-        }
+        allowSymbols: true,
       },
     },
   ],
