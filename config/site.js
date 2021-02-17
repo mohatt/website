@@ -1,8 +1,8 @@
 module.exports = {
   title: 'Mohatt',
-  url: 'https://mohatt.js.org',
+  url: 'https://mo.tru.io',
   description: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
-  copyright: '© 2019 All rights reserved.',
+  copyright: '© 2021 All rights reserved.',
   projectsPageSize: 4,
   googleAnalyticsId: 'UA-73379983-2',
   menu: [
