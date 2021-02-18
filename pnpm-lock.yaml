@@ -41,7 +41,7 @@ devDependencies:
   eslint: 7.20.0
   gatsby-plugin-pnpm: 1.2.5_gatsby@2.32.3
   prettier: 2.2.1
-  simple-icons: 4.9.0
+  simple-icons: 4.11.0
   stylelint: 13.10.0
   stylelint-config-standard: 20.0.0_stylelint@13.10.0
 lockfileVersion: 5.2
@@ -15629,10 +15629,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ZalZGexYr3TA0SwySsr5HlgOOinS4Jsa8YB2GJ6lUNAazyAu4KG/VmzMTwAt2YVXzzVj8QmefmAonZIK2BSGcQ==
-  /simple-icons/4.9.0:
+  /simple-icons/4.11.0:
     dev: true
     resolution:
-      integrity: sha512-xKslVA6g0faG68F3Q7FL+YbJJmMeBgiUEadln+tXdfNPecxOaGe4F3W28iPyCGCS7R+p93Jnn2hhtmUI7ONWtg==
+      integrity: sha512-nZbwEnaop+/z5kkMLvmpKPfJTblZNSb1nuP5bv9GX0g1M+C0yDWLRI5XfIP/VE159GsTmxcinCsvSD3EZT1DBA==
   /simple-swizzle/0.2.2:
     dependencies:
       is-arrayish: 0.3.2
@@ -18433,7 +18433,7 @@ specifiers:
   react-dom: 17.0.1
   react-helmet: 6.1.0
   rfs: 9.0.3
-  simple-icons: 4.9.0
+  simple-icons: 4.11.0
   stylelint: 13.10.0
   stylelint-config-standard: 20.0.0
   tailwindcss: 2.0.2
