@@ -82,10 +82,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify',
       options: {
-        allPageHeaders: [
-          'Link: </static/avatar.png>; rel=preload; as=image',
-          'Link: </static/avatar-smile.png>; rel=preload; as=image',
-        ],
+        // We use this plugin for security and caching headers only for now
+        mergeLinkHeaders: false,
       },
     },
     {
