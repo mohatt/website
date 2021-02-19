@@ -78,7 +78,15 @@ module.exports = {
     'gatsby-plugin-sitemap',
     `gatsby-plugin-robots-txt`,
     'gatsby-plugin-catch-links',
-    'gatsby-plugin-netlify',
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        allPageHeaders: [
+          'Link: </static/avatar.png>; rel=preload; as=image',
+          'Link: </static/avatar-smile.png>; rel=preload; as=image',
+        ],
+      },
+    },
     {
       resolve: 'gatsby-plugin-postbuild',
       options: {
