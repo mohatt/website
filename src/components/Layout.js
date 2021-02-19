@@ -24,8 +24,6 @@ const Layout = ({ children, title = null, description = null }) => {
         <meta name='twitter:title' content={title} />
         <meta name='twitter:card' content='summary' />
         <meta name='twitter:description' content={description} />
-        <link as='image' rel='preload' href={require('../assets/img/avatar/avatar.png')} />
-        <link as='image' rel='preload' href={require('../assets/img/avatar/avatar-smile.png')} />
         <body className='font-sans antialiased leading-normal text-base text-typo' />
       </Helmet>
       <Header />
