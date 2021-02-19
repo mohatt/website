@@ -1,3 +1,5 @@
-.icon {
-  @apply inline-block fill-current font-normal not-italic normal-case align-middle;
+@layer components {
+  .icon {
+    @apply inline-block fill-current font-normal not-italic normal-case align-middle;
+  }
 }

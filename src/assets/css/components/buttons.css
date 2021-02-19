@@ -1,56 +1,22 @@
-.btn {
-  @apply inline-block
-  	relative
+@layer components {
+  .btn {
+    @apply inline-block
+    relative
     font-display
-  	font-medium
+    font-medium
     italic
-  	py-2
-  	px-6
+    py-2
+    px-6
     border-2
-  	rounded
-  	shadow-lg
+    rounded
+    shadow-lg
     text-shadow-none
     cursor-pointer
     select-none
     align-middle
     whitespace-nowrap
     transition-all;
-  @apply bg-accent text-typo-dim border-accent;
-
-  &:hover,
-  &:focus {
-    @apply bg-typo-dim text-accent border-typo-dim;
-  }
-
-  &.btn-outline {
-    @apply bg-transparent text-accent;
-
-    &:hover,
-    &:focus {
-      @apply bg-accent text-typo-dim border-accent;
-    }
-  }
-
-  &.btn-alt {
-    @apply bg-typo-dim text-accent border-typo-dim;
-
-    &:hover,
-    &:focus {
-      @apply bg-accent text-typo-dim border-accent;
-    }
-
-    &.btn-outline {
-      @apply bg-transparent text-typo-dim;
-
-      &:hover,
-      &:focus {
-        @apply bg-typo-dim text-accent border-typo-dim;
-      }
-    }
-  }
-
-  &.btn-primary {
-    @apply bg-primary text-accent border-primary;
+    @apply bg-accent text-typo-dim border-accent;
 
     &:hover,
     &:focus {
@@ -58,26 +24,62 @@
     }
 
     &.btn-outline {
-      @apply bg-transparent text-primary;
+      @apply bg-transparent text-accent;
 
       &:hover,
       &:focus {
-        @apply bg-primary text-accent border-primary;
+        @apply bg-accent text-typo-dim border-accent;
+      }
+    }
+
+    &.btn-alt {
+      @apply bg-typo-dim text-accent border-typo-dim;
+
+      &:hover,
+      &:focus {
+        @apply bg-accent text-typo-dim border-accent;
+      }
+
+      &.btn-outline {
+        @apply bg-transparent text-typo-dim;
+
+        &:hover,
+        &:focus {
+          @apply bg-typo-dim text-accent border-typo-dim;
+        }
+      }
+    }
+
+    &.btn-primary {
+      @apply bg-primary text-accent border-primary;
+
+      &:hover,
+      &:focus {
+        @apply bg-typo-dim text-accent border-typo-dim;
+      }
+
+      &.btn-outline {
+        @apply bg-transparent text-primary;
+
+        &:hover,
+        &:focus {
+          @apply bg-primary text-accent border-primary;
+        }
       }
     }
   }
-}
 
-.btn-group > .btn:not(:last-child) {
-  @apply mr-4;
-}
-
-.btn-group.btn-group-glue > .btn {
-  &:not(:last-child) {
-    @apply mr-0 rounded-r-none;
+  .btn-group > .btn:not(:last-child) {
+    @apply mr-4;
   }
 
-  &:not(:first-child) {
-    @apply rounded-l-none;
+  .btn-group.btn-group-glue > .btn {
+    &:not(:last-child) {
+      @apply mr-0 rounded-r-none;
+    }
+
+    &:not(:first-child) {
+      @apply rounded-l-none;
+    }
   }
 }
