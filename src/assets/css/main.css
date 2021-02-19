@@ -1,7 +1,7 @@
 /**
  * Inject google fonts
  */
-@import 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,500,500i,600,600i,700,700i|IBM+Plex+Sans:400,400i,500,500i,700,700i&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap';
 
 /**
  * This injects Tailwind's base styles, which is a combination of

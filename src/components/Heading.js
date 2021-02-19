@@ -24,15 +24,15 @@ const Heading = ({
   return (
     <header className={`rfs:max-w-${width}`}>
       {pretitle && (
-        <div className={`text-typo-dim font-mono italic rfs:text-${preTitleSize}`}>
+        <div className={`text-typo-dim font-display italic rfs:text-${preTitleSize}`}>
           {pretitle}
         </div>
       )}
-      <HeadingTag className={`text-typo font-mono font-medium italic rfs:text-${titleSize} my-${spacing} leading-${leading}`}>
+      <HeadingTag className={`text-typo font-display font-medium italic rfs:text-${titleSize} my-${spacing} leading-${leading}`}>
         {children}
       </HeadingTag>
       {subtitle && (
-        <div className={`text-typo-dim font-sans rfs:text-${subtitleSize} pb-4`}>{subtitle}</div>
+        <div className={`text-typo-dim font-body rfs:text-${subtitleSize} pb-4`}>{subtitle}</div>
       )}
     </header>
   )
