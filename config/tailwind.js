@@ -1,8 +1,11 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   theme: {
     fontFamily: {
-      mono: ['"IBM Plex Mono"', 'monospace'],
-      sans: ['"IBM Plex Sans"', 'sans-serif'],
+      display: ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
+      body: ['"IBM Plex Serif"', ...defaultTheme.fontFamily.serif],
+      mono: ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
     },
     extend: {
       colors: {

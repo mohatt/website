@@ -24,7 +24,7 @@ const Layout = ({ children, title = null, description = null }) => {
         <meta name='twitter:title' content={title} />
         <meta name='twitter:card' content='summary' />
         <meta name='twitter:description' content={description} />
-        <body className='font-sans antialiased leading-normal text-base text-typo' />
+        <body className='font-body antialiased leading-normal text-base text-typo' />
       </Helmet>
       <Header />
       <main className={`${styles.main} w-9/12 min-h-screen pt-32 bg-secondary z-30 flex flex-col justify-center`}>

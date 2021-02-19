@@ -1,5 +1,5 @@
 .menu-item {
-  @apply block font-mono font-medium italic rfs:text-lg text-right text-typo-dim pb-6 pr-6;
+  @apply block font-display font-medium italic rfs:text-lg text-right text-typo-dim pb-6 pr-6;
 }
 
 .menu-item,

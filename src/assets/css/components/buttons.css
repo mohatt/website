@@ -1,7 +1,7 @@
 .btn {
   @apply inline-block
   	relative
-    font-mono
+    font-display
   	font-medium
     italic
   	py-2

@@ -34,7 +34,7 @@ const SkillBlock = ({ icon, title, children }) => (
   <div className='w-1/2 flex px-2 mt-8'>
     <Icon name={icon} className='h-8 w-8 text-primary' />
     <div className='flex-1 pl-2'>
-      <h3 className='font-medium font-mono italic text-primary'>{title}</h3>
+      <h3 className='font-medium font-display italic text-primary'>{title}</h3>
       <div className='mt-4'>{children}</div>
     </div>
   </div>
@@ -52,7 +52,7 @@ const SkillList = ({ icon, title, categories }) => (
   <div className='w-1/3 flex px-2 mt-8'>
     <Icon name={icon} className='h-8 w-8 text-primary' />
     <div className='flex-1 pl-2'>
-      <h3 className='font-medium font-mono italic text-primary'>{title}</h3>
+      <h3 className='font-medium font-display italic text-primary'>{title}</h3>
       <ul className='mt-4 text-lg space-y-2'>
         {getProjectSkills(categories).map(({ id, title, icon, projects }) => (
           <li key={id}>
