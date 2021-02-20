@@ -24,7 +24,7 @@ dependencies:
   gatsby-source-filesystem: 2.11.0_gatsby@2.32.4
   gatsby-transformer-sharp: 2.12.0_8d7c3537d5adb9d864ca3577da1c2dfc
   gatsby-transformer-yaml: 2.11.0_gatsby@2.32.4
-  lodash: 4.17.20
+  lodash: 4.17.21
   moment: 2.29.1
   postcss: 8.2.6
   postcss-import: 14.0.0_postcss@8.2.6
@@ -11200,6 +11200,10 @@ packages:
   /lodash/4.17.20:
     resolution:
       integrity: sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+  /lodash/4.17.21:
+    dev: false
+    resolution:
+      integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
   /log-symbols/4.0.0:
     dependencies:
       chalk: 4.1.0
@@ -18536,7 +18540,7 @@ specifiers:
   gatsby-source-filesystem: 2.11.0
   gatsby-transformer-sharp: 2.12.0
   gatsby-transformer-yaml: 2.11.0
-  lodash: 4.17.20
+  lodash: 4.17.21
   moment: 2.29.1
   postcss: 8.2.6
   postcss-import: 14.0.0
