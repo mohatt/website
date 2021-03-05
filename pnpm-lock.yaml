@@ -2,7 +2,7 @@ dependencies:
   '@mdx-js/mdx': 1.6.22
   '@mdx-js/react': 1.6.22_react@17.0.1
   '@tailwindcss/typography': 0.4.0_tailwindcss@2.0.3
-  autoprefixer: 10.2.4_postcss@8.2.6
+  autoprefixer: 10.2.5_postcss@8.2.6
   classnames: 2.2.6
   gatsby: 2.32.4_react-dom@17.0.1+react@17.0.1
   gatsby-plugin-advanced-pages: 2.1.2_gatsby@2.32.4+react@17.0.1
@@ -34,8 +34,8 @@ dependencies:
   react-dom: 17.0.1_react@17.0.1
   react-helmet: 6.1.0_react@17.0.1
   rfs: 9.0.3
-  tailwindcss: 2.0.3_759587f5361760629983e9fe457a3aed
-  tailwindcss-rfs: 4.0.0_759587f5361760629983e9fe457a3aed
+  tailwindcss: 2.0.3_7e163a07c177abf0d8e90bde0c6a0974
+  tailwindcss-rfs: 4.0.0_7e163a07c177abf0d8e90bde0c6a0974
   typed.js: 2.0.11
 devDependencies:
   '@mohatt/eslint-config-gatsby-standard': 2.0.1_eslint@7.20.0
@@ -2207,7 +2207,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
-      tailwindcss: 2.0.3_759587f5361760629983e9fe457a3aed
+      tailwindcss: 2.0.3_7e163a07c177abf0d8e90bde0c6a0974
     dev: false
     peerDependencies:
       tailwindcss: 2.0.0-alpha.24 || ^2.0.0
@@ -3458,11 +3458,11 @@ packages:
       postcss: ^8.1.0
     resolution:
       integrity: sha512-vlz+iv+EnLkVaTgX8wApfYzmK3LUfK8Z9XAnmflzxMy/+oFuNK8fVGQV79SOpBv4jxk2YQJimw4hXIKZ29570A==
-  /autoprefixer/10.2.4_postcss@8.2.6:
+  /autoprefixer/10.2.5_postcss@8.2.6:
     dependencies:
       browserslist: 4.16.3
-      caniuse-lite: 1.0.30001183
-      colorette: 1.2.1
+      caniuse-lite: 1.0.30001196
+      colorette: 1.2.2
       fraction.js: 4.0.13
       normalize-range: 0.1.2
       postcss: 8.2.6
@@ -3474,7 +3474,7 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     resolution:
-      integrity: sha512-DCCdUQiMD+P/as8m3XkeTUkUKuuRqLGcwD0nll7wevhqoJfMRpJlkFd1+MQh1pvupjiQuip42lc/VFvfUTMSKw==
+      integrity: sha512-7H4AJZXvSsn62SqZyJCP+1AWwOuoYpUfK6ot9vm0e87XD6mT8lDywc9D9OTJPMULyGcvmIxzTAMeG2Cc+YX+fA==
   /autoprefixer/9.8.6:
     dependencies:
       browserslist: 4.16.3
@@ -4039,8 +4039,8 @@ packages:
       integrity: sha512-Z942RysHXmJrhqk88FmKBVq/v5tqmSkDz7p54G/MGyjMnCFFnC79XWNbg+Vta8W6Wb2qtSZTSxIGkJrRpCFEiA==
   /browserslist/4.16.3:
     dependencies:
-      caniuse-lite: 1.0.30001183
-      colorette: 1.2.1
+      caniuse-lite: 1.0.30001196
+      colorette: 1.2.2
       electron-to-chromium: 1.3.653
       escalade: 3.1.1
       node-releases: 1.1.70
@@ -4349,6 +4349,9 @@ packages:
   /caniuse-lite/1.0.30001183:
     resolution:
       integrity: sha512-7JkwTEE1hlRKETbCFd8HDZeLiQIUcl8rC6JgNjvHCNaxOeNmQ9V4LvQXRUsKIV2CC73qKxljwVhToaA3kLRqTw==
+  /caniuse-lite/1.0.30001196:
+    resolution:
+      integrity: sha512-CPvObjD3ovWrNBaXlAIGWmg2gQQuJ5YhuciUOjPRox6hIQttu8O+b51dx6VIpIY9ESd2d0Vac1RKpICdG4rGUg==
   /caw/2.0.1:
     dependencies:
       get-proxy: 2.1.0
@@ -4763,6 +4766,9 @@ packages:
   /colorette/1.2.1:
     resolution:
       integrity: sha512-puCDz0CzydiSYOrnXpz/PKd69zRrribezjtE9yd4zvytoRc8+RY/KJPvtPFKZS3E3wP6neGyMe0vOTlHO5L3Pw==
+  /colorette/1.2.2:
+    resolution:
+      integrity: sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
   /colors/1.4.0:
     dev: false
     engines:
@@ -16635,22 +16641,22 @@ packages:
       node: '>=10.0.0'
     resolution:
       integrity: sha512-rxZevLGTUzWna/qBLObOe16kB2RTnnbhciwgPbMMlazz1yZGVEgnZK762xyVdVznhqxrfCeBMmMkgOOaPwjH7g==
-  /tailwindcss-rfs/4.0.0_759587f5361760629983e9fe457a3aed:
+  /tailwindcss-rfs/4.0.0_7e163a07c177abf0d8e90bde0c6a0974:
     dependencies:
       laravel-mix: 6.0.11_postcss@8.2.6
       lodash: 4.17.20
       rfs: 9.0.3
-      tailwindcss: 2.0.2_759587f5361760629983e9fe457a3aed
+      tailwindcss: 2.0.2_7e163a07c177abf0d8e90bde0c6a0974
     dev: false
     peerDependencies:
       autoprefixer: '*'
       postcss: '*'
     resolution:
       integrity: sha512-y7+glTXuWo1p/r4YfytE5d3+CWx7xMnLMRNqj2kCFWobli0X68cJi554I1L5r5FX1cy13L8OTDP4e6TckPdClg==
-  /tailwindcss/2.0.2_759587f5361760629983e9fe457a3aed:
+  /tailwindcss/2.0.2_7e163a07c177abf0d8e90bde0c6a0974:
     dependencies:
       '@fullhuman/postcss-purgecss': 3.1.3
-      autoprefixer: 10.2.4_postcss@8.2.6
+      autoprefixer: 10.2.5_postcss@8.2.6
       bytes: 3.1.0
       chalk: 4.1.0
       color: 3.1.3
@@ -16680,10 +16686,10 @@ packages:
       postcss: ^8.0.9
     resolution:
       integrity: sha512-nO9JRE1pO7SF9RnYAl6g7uzeHdrmKAFqNjT9NtZUfxqimJZAOOLOEyIEUiMq12+xIc7mC2Ey3Vf90XjHpWKfbw==
-  /tailwindcss/2.0.3_759587f5361760629983e9fe457a3aed:
+  /tailwindcss/2.0.3_7e163a07c177abf0d8e90bde0c6a0974:
     dependencies:
       '@fullhuman/postcss-purgecss': 3.1.3
-      autoprefixer: 10.2.4_postcss@8.2.6
+      autoprefixer: 10.2.5_postcss@8.2.6
       bytes: 3.1.0
       chalk: 4.1.0
       color: 3.1.3
@@ -18511,7 +18517,7 @@ specifiers:
   '@mdx-js/react': 1.6.22
   '@mohatt/eslint-config-gatsby-standard': 2.0.1
   '@tailwindcss/typography': 0.4.0
-  autoprefixer: 10.2.4
+  autoprefixer: 10.2.5
   classnames: 2.2.6
   eslint: 7.20.0
   gatsby: 2.32.4
