@@ -44,7 +44,7 @@ devDependencies:
   prettier: 2.2.1
   simple-icons: 4.11.0
   stylelint: 13.10.0
-  stylelint-config-standard: 20.0.0_stylelint@13.10.0
+  stylelint-config-standard: 21.0.0_stylelint@13.10.0
 lockfileVersion: 5.2
 packages:
   /@ardatan/aggregate-error/0.0.6:
@@ -16457,23 +16457,23 @@ packages:
       node: '>=6.9.0'
     resolution:
       integrity: sha512-7GlLk9JwlElY4Y6a/rmbH2MhVlTyVmiJd1PfTCqFaIBEGMYNsrO/v3SeGTdhBThLg4Z+NbOk/qFMwCa+J+3p/g==
-  /stylelint-config-recommended/3.0.0_stylelint@13.10.0:
+  /stylelint-config-recommended/4.0.0_stylelint@13.10.0:
     dependencies:
       stylelint: 13.10.0
     dev: true
     peerDependencies:
-      stylelint: '>=10.1.0'
+      stylelint: ^13.12.0
     resolution:
-      integrity: sha512-F6yTRuc06xr1h5Qw/ykb2LuFynJ2IxkKfCMf+1xqPffkxh0S09Zc902XCffcsw/XMFq/OzQ1w54fLIDtmRNHnQ==
-  /stylelint-config-standard/20.0.0_stylelint@13.10.0:
+      integrity: sha512-sgna89Ng+25Hr9kmmaIxpGWt2LStVm1xf1807PdcWasiPDaOTkOHRL61sINw0twky7QMzafCGToGDnHT/kTHtQ==
+  /stylelint-config-standard/21.0.0_stylelint@13.10.0:
     dependencies:
       stylelint: 13.10.0
-      stylelint-config-recommended: 3.0.0_stylelint@13.10.0
+      stylelint-config-recommended: 4.0.0_stylelint@13.10.0
     dev: true
     peerDependencies:
-      stylelint: '>=10.1.0'
+      stylelint: ^13.12.0
     resolution:
-      integrity: sha512-IB2iFdzOTA/zS4jSVav6z+wGtin08qfj+YyExHB3LF9lnouQht//YyB0KZq9gGz5HNPkddHOzcY8HsUey6ZUlA==
+      integrity: sha512-Yf6mx5oYEbQQJxWuW7X3t1gcxqbUx52qC9SMS3saC2ruOVYEyqmr5zSW6k3wXflDjjFrPhar3kp68ugRopmlzg==
   /stylelint/13.10.0:
     dependencies:
       '@stylelint/postcss-css-in-js': 0.37.2_4fe96148bf77e6cee792ae366c9083f9
@@ -18548,7 +18548,7 @@ specifiers:
   rfs: 9.0.3
   simple-icons: 4.11.0
   stylelint: 13.10.0
-  stylelint-config-standard: 20.0.0
+  stylelint-config-standard: 21.0.0
   tailwindcss: 2.0.3
   tailwindcss-rfs: 4.0.0
   typed.js: 2.0.11
