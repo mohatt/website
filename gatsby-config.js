@@ -80,16 +80,15 @@ module.exports = {
     'gatsby-plugin-catch-links',
     `gatsby-plugin-preload-fonts`,
     {
-      resolve: 'gatsby-plugin-netlify',
-      options: {
-        // We use this plugin for security and caching headers only for now
-        mergeLinkHeaders: false,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-postbuild',
       options: {
-        allowSymbols: true,
+        purgecss: {
+          enabled: true,
+          allowSymbols: true,
+        },
+        'netlify-headers': {
+          enabled: true
+        }
       },
     },
   ],
