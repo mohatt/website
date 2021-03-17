@@ -10,7 +10,7 @@ dependencies:
   gatsby-plugin-google-gtag: 2.8.0_gatsby@2.32.4
   gatsby-plugin-manifest: 2.12.0_gatsby@2.32.4
   gatsby-plugin-mdx: 1.10.0_20907dfa5e7456b3e10ff58769a7061d
-  gatsby-plugin-postbuild: 2.0.0_gatsby@2.32.4
+  gatsby-plugin-postbuild: 2.1.0_gatsby@2.32.4
   gatsby-plugin-postcss: 3.7.0_gatsby@2.32.4+postcss@8.2.6
   gatsby-plugin-preload-fonts: 1.9.0_gatsby@2.32.4
   gatsby-plugin-react-helmet: 3.10.0_gatsby@2.32.4+react-helmet@6.1.0
@@ -2515,6 +2515,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-kUNnecmtkunAoQ3CnjmMkzNU/gtxG8guhi+Fk2U/kOpIKjIMKnXGp4IJCgQJrXSgMsWYimYG4TGjz/UzbGEBTw==
+  /@types/parse5/6.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-oPwPSj4a1wu9rsXTEGIJz91ISU725t0BmSnUhb57sI+M8XEmvUop84lzuiYdq0Y5M6xLY8DBPg0C2xEQKLyvBA==
   /@types/prop-types/15.7.3:
     dev: false
     resolution:
@@ -8055,9 +8059,11 @@ packages:
       gatsby: ~2.x.x
     resolution:
       integrity: sha512-zGJUVApj641WTPiE0L4ZEFbt0iK8pEVIP0dtG5hPTRaTrb0zeZRp8Id9COf5sciwO0zGfT1/CmF6OyhV8KZr+g==
-  /gatsby-plugin-postbuild/2.0.0_gatsby@2.32.4:
+  /gatsby-plugin-postbuild/2.1.0_gatsby@2.32.4:
     dependencies:
       '@babel/runtime': 7.12.13
+      '@types/glob': 7.1.3
+      '@types/parse5': 6.0.0
       bluebird: 3.7.2
       debug: 3.2.7
       filesize: 6.1.0
@@ -8072,7 +8078,7 @@ packages:
     peerDependencies:
       gatsby: '>=2.25.0'
     resolution:
-      integrity: sha512-x1fbvJlhxiciLJ84jz9NvcXm6VZ5aVCXxgF1avFLHgFte/cLnm0qjKPhCXfQh9cagNJdOS/eMqmSbZZGcMsKyA==
+      integrity: sha512-G6c/wgMh7B8mk0Xc0GtRsZ+xwArC7AyTXcIdMSdhHJgTZNjQeitkodbOgvhA1jcbTWcoqMEsobwsSonJQhCF0g==
   /gatsby-plugin-postcss/3.7.0_gatsby@2.32.4+postcss@8.2.6:
     dependencies:
       '@babel/runtime': 7.12.13
@@ -18475,7 +18481,7 @@ specifiers:
   gatsby-plugin-manifest: 2.12.0
   gatsby-plugin-mdx: 1.10.0
   gatsby-plugin-pnpm: 1.2.5
-  gatsby-plugin-postbuild: 2.0.0
+  gatsby-plugin-postbuild: 2.1.0
   gatsby-plugin-postcss: 3.7.0
   gatsby-plugin-preload-fonts: 1.9.0
   gatsby-plugin-react-helmet: 3.10.0
