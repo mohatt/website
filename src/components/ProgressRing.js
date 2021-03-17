@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import styles from './ProgressRing.module.css'
+import * as styles from './ProgressRing.module.css'
 
 const ProgressRing = ({ value = 0, stroke = 12, className }) => {
   const progress = value / 100

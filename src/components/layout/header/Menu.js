@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "../../";
-import styles from "./Menu.module.css";
+import * as styles from "./Menu.module.css";
 
 const Menu = ({ items }) => (
   <nav className="flex flex-col justify-center w-inherit h-inherit fixed bg-accent text-shadow z-10">
