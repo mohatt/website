@@ -1,9 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { useSiteMetadata } from '../hooks'
-import * as styles from './Layout.module.css'
-import { Header, Footer } from './layout'
 import { isActivatedRoute } from 'gatsby-plugin-advanced-pages'
+import { useSiteMetadata } from '../hooks'
+import { Header, Footer } from './layout'
+import * as styles from './Layout.module.css'
+import avatar from '../assets/img/avatar/avatar.png'
+import avatarSmile from '../assets/img/avatar/avatar-smile.png'
 
 const Layout = ({ children, title = null, description = null }) => {
   const { title: siteTitle, description: SiteDescription } = useSiteMetadata()
@@ -24,8 +26,8 @@ const Layout = ({ children, title = null, description = null }) => {
         <meta name='twitter:title' content={title} />
         <meta name='twitter:card' content='summary' />
         <meta name='twitter:description' content={description} />
-        <link rel='preload' href={require('../assets/img/avatar/avatar.png')} as='image' />
-        <link rel='preload' href={require('../assets/img/avatar/avatar-smile.png')} as='image' />
+        <link rel='preload' href={avatar} as='image' />
+        <link rel='preload' href={avatarSmile} as='image' />
         <body className='font-body antialiased leading-normal text-base text-typo' />
       </Helmet>
       <Header />
