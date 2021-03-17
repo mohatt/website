@@ -8,7 +8,7 @@
   background-color: theme('colors.secondary');
 }
 
-.logo {
+.author {
   writing-mode: vertical-lr;
   transform: rotate(-180deg);
   letter-spacing: 0.4rem;

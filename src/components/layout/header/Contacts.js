@@ -2,7 +2,7 @@ import React from 'react'
 import { getContactHref } from '../../../utils'
 import Icon from '../../Icon'
 import Button from '../../Button'
-import styles from './Contacts.module.css'
+import * as styles from './Contacts.module.css'
 
 const Contacts = ({ contacts }) => (
   <div className='absolute block w-12 bottom-0 right-0 -mr-6'>

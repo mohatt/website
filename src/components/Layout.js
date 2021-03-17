@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { useSiteMetadata } from '../hooks'
-import styles from './Layout.module.css'
+import * as styles from './Layout.module.css'
 import { Header, Footer } from './layout'
 import { isActivatedRoute } from 'gatsby-plugin-advanced-pages'
 
