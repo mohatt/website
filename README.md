@@ -1,4 +1,4 @@
-# Personal website v2 [![][travis-img]][travis-url]
+# Personal website v2 [![][ci-img]][ci-url]
 
 This is the second version of my personal website built with [Gatsby](https://www.gatsbyjs.org/)
 
@@ -11,32 +11,27 @@ To build the website locally, first clone the repo
 $ git clone git@github.com:mohatt/website.git
 ```
 
-Install Gatsby CLI
-```sh
-$ yarn global add gatsby-cli
-```
-
 Install dependencies
 ```sh
-$ yarn install
+$ pnpm install
 ```
 
 ### Development
 
 Start the development server at http://localhost:8000/
 ```sh
-$ yarn start
+$ pnpm start
 ```
 
 ### Production
 
 Generate a full static production build of the website
 ```sh
-$ yarn build
+$ pnpm build
 ```
 
-Then, run `yarn serve` to preview the site as it will appear once deployed
+Then, run `pnpm serve` to preview the site as it will appear once deployed
 
 
-[travis-url]: https://travis-ci.org/mohatt/website
-[travis-img]: https://travis-ci.org/mohatt/website.svg?branch=master
+[ci-url]: https://github.com/mohatt/website/actions/workflows/main.yml
+[ci-img]: https://github.com/mohatt/website/actions/workflows/main.yml/badge.svg
