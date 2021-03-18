@@ -12,7 +12,8 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint 'src/**/*.css'",
     "eslint:config": "eslint --print-config .eslintrc.json",
-    "eslint:check": "eslint-config-prettier .eslintrc.json"
+    "eslint:check": "eslint-config-prettier .eslintrc.json",
+    "preload-fonts": "gatsby-preload-fonts"
   },
   "repository": "https://github.com/muhatt/website",
   "author": "Mohamed Elkholy <muhatt@pm.me>",
