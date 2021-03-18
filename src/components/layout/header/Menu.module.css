@@ -1,39 +1,39 @@
-.menu-item {
+.item {
   @apply block font-display font-medium italic rfs:text-lg text-right text-typo-dim pb-6 pr-6;
 }
 
-.menu-item,
-.menu-item:before,
-.menu-item:after {
+.item,
+.item:before,
+.item:after {
   @apply transition-all duration-300;
 }
 
-.menu-item.active,
-.menu-item:hover {
+.item.active,
+.item:hover {
   @apply text-typo;
 }
 
-.menu-item:before,
-.menu-item:after {
+.item:before,
+.item:after {
   @apply inline-block opacity-0;
 }
 
-.menu-item:before {
+.item:before {
   content: '<';
   margin-right: 0.25rem;
   transform: translateX(20px);
 }
 
-.menu-item:after {
+.item:after {
   content: '/>';
   margin-left: 0.25rem;
   transform: translateX(-20px);
 }
 
-.menu-item.active:before,
-.menu-item.active:after,
-.menu-item:hover:before,
-.menu-item:hover:after {
+.item.active:before,
+.item.active:after,
+.item:hover:before,
+.item:hover:after {
   @apply opacity-100;
   transform: translateX(0px);
 }
