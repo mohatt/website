@@ -3,8 +3,8 @@
 }
 
 .item,
-.item:before,
-.item:after {
+.item::before,
+.item::after {
   @apply transition-all duration-300;
 }
 
@@ -13,27 +13,27 @@
   @apply text-typo;
 }
 
-.item:before,
-.item:after {
+.item::before,
+.item::after {
   @apply inline-block opacity-0;
 }
 
-.item:before {
+.item::before {
   content: '<';
   margin-right: 0.25rem;
   transform: translateX(20px);
 }
 
-.item:after {
+.item::after {
   content: '/>';
   margin-left: 0.25rem;
   transform: translateX(-20px);
 }
 
-.item.active:before,
-.item.active:after,
-.item:hover:before,
-.item:hover:after {
+.item.active::before,
+.item.active::after,
+.item:hover::before,
+.item:hover::after {
   @apply opacity-100;
-  transform: translateX(0px);
+  transform: translateX(0);
 }
