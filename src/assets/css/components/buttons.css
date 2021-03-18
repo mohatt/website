@@ -1,21 +1,22 @@
 @layer components {
   .btn {
-    @apply inline-block
-    relative
-    font-display
-    font-medium
-    italic
-    py-2
-    px-6
-    border-2
-    rounded
-    shadow-lg
-    text-shadow-none
-    cursor-pointer
-    select-none
-    align-middle
-    whitespace-nowrap
-    transition-all;
+    @apply
+      inline-block
+      relative
+      font-display
+      font-medium
+      italic
+      py-2
+      px-6
+      border-2
+      rounded
+      shadow-lg
+      text-shadow-none
+      cursor-pointer
+      select-none
+      align-middle
+      whitespace-nowrap
+      transition-all;
     @apply bg-accent text-typo-dim border-accent;
 
     &:hover,
