@@ -9,7 +9,7 @@ const Menu = ({ items }) => (
         <li key={to}>
           <Link
             to={to}
-            className={styles["menu-item"]}
+            className={styles.item}
             activeClassName={styles.active}
             partiallyActive={to !== "home"}
             children={label}
