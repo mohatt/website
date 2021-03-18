@@ -22,7 +22,7 @@ jobs:
           restore-keys: |
             pnpm-install-
       - run: |
-          npm -g install pnpm@5.17
+          npm -g install pnpm@5.18
           pnpm set verify-store-integrity false
       - run: pnpm install
       - run: pnpm run build
@@ -40,16 +40,16 @@ jobs:
         with:
           repository: mohatt/mohatt.github.io
           token: ${{ secrets.PAT }}
-          path: public
+          path: deploy
       - uses: actions/download-artifact@v2
         id: download
         with:
           name: build-art
-          path: public
+          path: deploy/public
       - uses: peter-evans/create-pull-request@v3
         with:
           branch: staging
-          path: public
+          path: deploy
           token: ${{ secrets.PAT }}
           commit-message: ${{ github.event.head_commit.message }} ${{ github.event.head_commit.url }}
           title: Upstream Changes
