@@ -1,8 +1,7 @@
 {
-  "name": "muhatt-site",
-  "description": "Personal website based on Gatsby",
-  "version": "1.0.0",
-  "main": "n/a",
+  "name": "@mohatt/website",
+  "description": "Codebase for my personal website",
+  "version": "2.0.0",
   "scripts": {
     "clean": "gatsby clean",
     "start": "gatsby develop -H 0.0.0.0",
@@ -13,14 +12,17 @@
     "lint:css": "stylelint 'src/**/*.css'",
     "eslint:config": "eslint --print-config .eslintrc.json",
     "eslint:check": "eslint-config-prettier .eslintrc.json",
-    "preload-fonts": "gatsby-preload-fonts"
+    "fonts:preload-cache": "gatsby-preload-fonts"
   },
-  "repository": "https://github.com/muhatt/website",
-  "author": "Mohamed Elkholy <muhatt@pm.me>",
+  "keywords": ["gatsby"],
+  "author": "Mohamed Elkholy <mohatt@pm.me>",
   "license": "MIT",
-  "keywords": [
-    "gatsby"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohatt/website.git"
+  },
+  "homepage": "https://github.com/mohatt/website",
+  "bugs": "https://github.com/mohatt/website/issues",
   "dependencies": {
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
@@ -68,6 +70,9 @@
     "simple-icons": "4.15.0",
     "stylelint": "13.12.0",
     "stylelint-config-standard": "21.0.0"
+  },
+  "engines": {
+    "node": ">=12.13.0"
   },
   "browserslist": [
     "last 2 version",
