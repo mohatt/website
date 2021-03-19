@@ -3,7 +3,14 @@
 
 This is the second version of my personal website built with [Gatsby](https://www.gatsbyjs.org/)
 
-You can see it live at: [https://mo.tru.io][website-url]
+You can see the site live at: [https://mo.tru.io][website-url]
+
+## Deployment
+The deployment workflow is fully managed by git
+- Commits to this repository are built then pushed to [the build repo](https://github.com/mohatt/mohatt.github.io) as a pull request
+- The pull request triggers a Netlify deploy preview with a unique URL
+- Any subsequent commits are built and force-pushed to the same PR to trigger a deploy preview update
+- Once the commits are approved for production, the PR is merged into the master branch to trigger a production deploy
 
 ## Setup
 
@@ -26,7 +33,7 @@ $ pnpm start
 
 ### Production
 
-Generate a full static production build of the website
+Generate a fully static production build of the website
 ```sh
 $ pnpm build
 ```
