@@ -13,7 +13,6 @@ module.exports = {
     author: site.author,
   },
   plugins: [
-    'gatsby-plugin-pnpm',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

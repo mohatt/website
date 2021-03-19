@@ -65,7 +65,6 @@
   "devDependencies": {
     "@mohatt/eslint-config-gatsby-standard": "2.0.1",
     "eslint": "7.20.0",
-    "gatsby-plugin-pnpm": "1.2.5",
     "prettier": "2.2.1",
     "simple-icons": "4.15.0",
     "stylelint": "13.12.0",
