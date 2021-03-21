@@ -6,14 +6,14 @@ import { Author, Contacts, Menu } from './layout'
 import Separator from './Separator'
 import * as styles from './Layout.module.css'
 import avatar from '../assets/img/avatar/avatar.png'
-import avatarSmile from '../assets/img/avatar/avatar-smile.png'
+import avatarAlt from '../assets/img/avatar/avatar-smile.png'
 
 export default ({ children, title = null, description = null }) => {
-  const { title: siteTitle, description: SiteDescription, menu, author, copyright } = useSiteMetadata()
+  const site = useSiteMetadata()
   const route = getActivatedRoute() || getRoute('error.404')
 
-  title = title ? `${title} — ${siteTitle}` : siteTitle
-  description = description || SiteDescription
+  title = title ? `${title} — ${site.title}` : site.title
+  description = description || site.description
 
   return (
     <div className='flex'>
@@ -24,23 +24,23 @@ export default ({ children, title = null, description = null }) => {
         <meta name='og:title' content={title} />
         <meta name='og:description' content={description} />
         <meta name='og:type' content='website' />
-        <meta name='og:site_name' content={siteTitle} />
+        <meta name='og:site_name' content={site.title} />
         <meta name='twitter:title' content={title} />
         <meta name='twitter:card' content='summary' />
         <meta name='twitter:description' content={description} />
         <link rel='preload' href={avatar} as='image' />
-        <link rel='preload' href={avatarSmile} as='image' />
+        <link rel='preload' href={avatarAlt} as='image' />
         <body className='font-body antialiased leading-normal text-base text-typo' />
       </Helmet>
       <div className='w-1/12 h-screen'>
         <header className='fixed w-inherit h-inherit bg-typo border-r-4 border-primary z-20'>
-          <Author route={route} author={author} />
-          <Contacts contacts={author.contacts} />
+          <Author route={route} author={site.author} />
+          <Contacts contacts={site.author.contacts} />
         </header>
       </div>
       <div className='w-2/12 h-screen'>
         <div className='fixed w-inherit h-inherit bg-accent z-10'>
-          <Menu items={menu} />
+          <Menu items={site.menu} />
         </div>
       </div>
       <main className={`${styles.main} w-9/12 min-h-screen pt-32 bg-secondary z-30 flex flex-col justify-center`}>
@@ -49,7 +49,7 @@ export default ({ children, title = null, description = null }) => {
           <>
             <Separator size='4' spacing='0' />
             <footer className='px-20 py-16 bg-accent text-typo rfs:text-lg'>
-              {copyright}
+              {site.copyright}
             </footer>
           </>
         )}
