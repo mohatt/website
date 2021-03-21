@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "../../";
+import Link from "../Link";
 import * as styles from "./Menu.module.css";
 
-const Menu = ({ items }) => (
-  <nav className="flex flex-col justify-center w-inherit h-inherit fixed bg-accent text-shadow z-10">
+export default ({ items }) => (
+  <nav className="w-full h-full flex flex-col justify-center text-shadow">
     <ul>
       {items.map(({ to, label }) => (
         <li key={to}>
@@ -18,6 +18,4 @@ const Menu = ({ items }) => (
       ))}
     </ul>
   </nav>
-);
-
-export default Menu;
+)

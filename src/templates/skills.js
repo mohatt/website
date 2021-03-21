@@ -1,7 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout, Section, Heading, Icon, Link } from '../components'
 import { getProjectSkills } from '../utils'
+import Layout from '../components/Layout'
+import Section from '../components/Section'
+import Heading from '../components/Heading'
+import Icon from '../components/Icon'
+import Link from '../components/Link'
 
 const skillCategories = {
   backend: [
@@ -74,7 +78,7 @@ const SkillList = ({ icon, title, categories }) => (
   </div>
 )
 
-const SkillsTemplate = ({ data: { page } }) => {
+export default function Skills({ data: { page } }) {
   return (
     <Layout title={page.title}>
       <Section>
@@ -161,5 +165,3 @@ export const query = graphql`
     }
   }
 `
-
-export default SkillsTemplate

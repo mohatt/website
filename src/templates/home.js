@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { graphql } from 'gatsby'
-import { Layout, Hero } from '../components'
 import Typed from 'typed.js'
+import Layout from '../components/Layout'
+import Hero from '../components/Hero'
 
-const HomeTemplate = ({ data: { page } }) => {
+export default function Home({ data: { page } }) {
   const typedPlaceholder = React.createRef()
   useEffect(() => {
     const options = {
@@ -49,5 +50,3 @@ export const query = graphql`
     }
   }
 `
-
-export default HomeTemplate

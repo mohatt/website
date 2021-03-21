@@ -1,8 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout, Section, Pagination, Heading } from '../components'
+import Layout from '../components/Layout'
+import Section from '../components/Section'
+import Heading from '../components/Heading'
+import Pagination from '../components/Pagination'
 
-const PortafolioTemplate = ({ data: { page, projects } }) => {
+export default function Portafolio({ data: { page, projects }, pageContext: { skill, category } }) {
   let title = page.title
   if (projects.pageInfo.currentPage > 1) {
     title += ` (Page ${projects.pageInfo.currentPage})`
@@ -60,5 +63,3 @@ export const query = graphql`
     }
   }
 `
-
-export default PortafolioTemplate

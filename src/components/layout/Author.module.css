@@ -1,10 +1,10 @@
 .avatar {
   box-shadow: 0 6px 0 6px theme('colors.typo');
-  background-image: url('../../../assets/img/avatar/avatar.png');
+  background-image: url('../../assets/img/avatar/avatar.png');
 }
 
 .avatar:hover {
-  background-image: url('../../../assets/img/avatar/avatar-smile.png');
+  background-image: url('../../assets/img/avatar/avatar-smile.png');
   background-color: theme('colors.secondary');
 }
 

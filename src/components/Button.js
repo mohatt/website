@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Link } from './'
+import Link from './Link'
 
-const Button = ({
+export default ({
   color = 'primary',
   mono = false,
   rounded = true,
@@ -25,5 +25,3 @@ const Button = ({
     />
   )
 }
-
-export default Button
