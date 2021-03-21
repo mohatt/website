@@ -1,7 +1,10 @@
 import React from 'react'
-import { Heading, Section, Button, ButtonGroup } from './'
+import Heading from './Heading'
+import Section from './Section'
+import Button from './Button'
+import ButtonGroup from './ButtonGroup'
 
-const Hero = ({ children, title, pretitle, actions }) => {
+export default ({ children, title, pretitle, actions }) => {
   return (
     <Section>
       <Heading size='4xl' pretitle={pretitle} subtitle={children} leading="relaxed">
@@ -20,5 +23,3 @@ const Hero = ({ children, title, pretitle, actions }) => {
     </Section>
   )
 }
-
-export default Hero

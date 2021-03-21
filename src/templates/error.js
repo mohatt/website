@@ -1,8 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout, Hero } from '../components'
+import Layout from '../components/Layout'
+import Hero from '../components/Hero'
 
-const ErrorTemplate = ({ data: { page } }) => {
+export default function Error({ data: { page } }) {
   return (
     <Layout title={page.title}>
       <Hero title={page.title} pretitle="require('./error.md');">
@@ -20,5 +21,3 @@ export const query = graphql`
     }
   }
 `
-
-export default ErrorTemplate

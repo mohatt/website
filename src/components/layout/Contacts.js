@@ -1,10 +1,10 @@
 import React from 'react'
-import { getContactHref } from '../../../utils'
-import Icon from '../../Icon'
-import Button from '../../Button'
+import { getContactHref } from '../../utils'
+import Icon from '../Icon'
+import Button from '../Button'
 import * as styles from './Contacts.module.css'
 
-const Contacts = ({ contacts }) => (
+export default ({ contacts }) => (
   <div className='absolute block w-12 bottom-0 right-0 -mr-6'>
     <ul>
       {Object.keys(contacts).map((name) => (
@@ -25,5 +25,3 @@ const Contacts = ({ contacts }) => (
     </ul>
   </div>
 )
-
-export default Contacts

@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-const Section = ({ children, className }) => {
+export default ({ children, className }) => {
   return (
     <section
       className={classNames(
@@ -12,5 +12,3 @@ const Section = ({ children, className }) => {
     </section>
   )
 }
-
-export default Section

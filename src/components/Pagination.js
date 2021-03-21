@@ -1,10 +1,8 @@
 import React from 'react'
 import { Pagination as PaginationPlugin } from 'gatsby-plugin-advanced-pages'
 
-const Pagination = props => (
+export default props => (
   <>
     <PaginationPlugin {...props} />
   </>
 )
-
-export default Pagination

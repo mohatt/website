@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Heading = ({
+export default ({
   children,
   level = 2,
   size = '4xl',
@@ -37,5 +37,3 @@ const Heading = ({
     </header>
   )
 }
-
-export default Heading

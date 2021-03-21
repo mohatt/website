@@ -1,9 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout, Hero } from '../components'
-import { MDXRenderer } from '../components/mdx'
+import Layout from '../components/Layout'
+import Hero from '../components/Hero'
+import MDXRenderer from '../components/MDXRenderer'
 
-const ProjectTemplate = ({ data: { page, project } }) => {
+export default function Project({ data: { page, project } }) {
   return (
     <Layout title={project.frontmatter.title}>
       <Hero title={project.frontmatter.title}>
@@ -27,5 +28,3 @@ export const query = graphql`
     }
   }
 `
-
-export default ProjectTemplate
