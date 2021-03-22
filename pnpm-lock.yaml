@@ -5,7 +5,7 @@ dependencies:
   autoprefixer: 10.2.5_postcss@8.2.8
   classnames: 2.2.6
   gatsby: 3.1.1_react-dom@17.0.1+react@17.0.1
-  gatsby-plugin-advanced-pages: 2.2.0_gatsby@3.1.1+react@17.0.1
+  gatsby-plugin-advanced-pages: 2.2.1_gatsby@3.1.1+react@17.0.1
   gatsby-plugin-catch-links: 3.1.0_gatsby@3.1.1
   gatsby-plugin-google-gtag: 3.1.0_2c1e635b93888fd0b3b2fe0439530a0f
   gatsby-plugin-manifest: 3.1.0_gatsby@3.1.1
@@ -7488,7 +7488,7 @@ packages:
       node: '>=12.13.0'
     resolution:
       integrity: sha512-hNjEuWYtU95t6ypXn82eC+7OoArH4i/PnlhHt9DS8xdpf7Ad95Bk+wAhpIlF8iv9f/uf/e5DdbQeSXj1E1TeRw==
-  /gatsby-plugin-advanced-pages/2.2.0_gatsby@3.1.1+react@17.0.1:
+  /gatsby-plugin-advanced-pages/2.2.1_gatsby@3.1.1+react@17.0.1:
     dependencies:
       '@babel/runtime': 7.13.10
       classnames: 2.2.6
@@ -7506,7 +7506,7 @@ packages:
       gatsby: '>=2.25.4'
       react: '>=16.8.6'
     resolution:
-      integrity: sha512-wuBVJXYclsbDMDhM2hxqs87rlodOC/kuJu7Th3vewIuf3Qs2mZMf2av2EQaPoBa/IQTYXeu0609ZrhdpMZK3VQ==
+      integrity: sha512-twts6sT+N6C3fzf6SvqN6rFtQKZWyDBkWkNwZ/AygpXjwrzUxJNZbVKop8g6L6c7R9sBY41K1E9FUHYREIZ98Q==
   /gatsby-plugin-catch-links/3.1.0_gatsby@3.1.1:
     dependencies:
       '@babel/runtime': 7.13.10
@@ -17546,7 +17546,7 @@ specifiers:
   classnames: 2.2.6
   eslint: 7.20.0
   gatsby: 3.1.1
-  gatsby-plugin-advanced-pages: 2.2.0
+  gatsby-plugin-advanced-pages: 2.2.1
   gatsby-plugin-catch-links: 3.1.0
   gatsby-plugin-google-gtag: 3.1.0
   gatsby-plugin-manifest: 3.1.0
