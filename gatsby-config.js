@@ -1,16 +1,10 @@
 const path = require('path')
-const site = require('./config/site')
-const postCssPlugins = require('./config/postcss')
+const { site, tailwind, postcss, postbuild } = require('./config')
 
 module.exports = {
   siteMetadata: {
-    siteUrl: site.url,
-    url: site.url,
-    title: site.title,
-    description: site.description,
-    copyright: site.copyright,
-    menu: site.menu,
-    author: site.author,
+    ...site.metadata,
+    siteUrl: site.metadata.url, // for gatsby-plugin-sitemap
   },
   plugins: [
     {
@@ -45,7 +39,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingIds: [site.googleAnalyticsId],
+        trackingIds: [site.ga],
         pluginConfig: {
           head: true,
         },
@@ -54,11 +48,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: site.title,
-        short_name: site.title,
+        name: site.metadata.title,
+        short_name: site.metadata.title,
         start_url: '/',
-        background_color: '#234e52',
-        theme_color: '#b28e59',
+        background_color: tailwind.theme.extend.colors.secondary,
+        theme_color: tailwind.theme.extend.colors.primary,
         display: 'standalone',
         icon: 'src/assets/img/avatar/avatar.png',
         legacy: false,
@@ -67,12 +61,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-postcss',
-      options: {
-        postCssPlugins: [...postCssPlugins],
-        cssLoaderOptions: {
-          camelCase: false,
-        },
-      },
+      options: postcss,
     },
     'gatsby-plugin-sitemap',
     `gatsby-plugin-robots-txt`,
@@ -80,15 +69,7 @@ module.exports = {
     `gatsby-plugin-preload-fonts`,
     {
       resolve: 'gatsby-plugin-postbuild',
-      options: {
-        purgecss: {
-          enabled: true,
-          allowSymbols: true,
-        },
-        'netlify-headers': {
-          enabled: true
-        }
-      },
+      options: postbuild,
     },
   ],
 }

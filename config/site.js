@@ -1,25 +1,29 @@
 module.exports = {
-  title: 'Mohatt',
-  url: 'https://mo.tru.io',
-  description: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
-  copyright: '© 2021 All rights reserved.',
-  projectsPageSize: 4,
-  googleAnalyticsId: 'UA-73379983-2',
-  menu: [
-    { label: 'Intro', to: 'home' },
-    { label: 'Skills', to: 'skills' },
-    { label: 'Portafolio', to: 'portafolio' },
-    { label: 'Clients', to: '/clients' },
-    { label: 'Contact', to: '/contact' },
-  ],
-  author: {
-    name: 'Mohamed Elkholy',
-    screenName: 'Mohatt',
-    contacts: {
-      email: '#',
-      twitter: '#',
-      github: '#',
+  metadata: {
+    title: 'Mohatt',
+    url: 'https://mo.tru.io',
+    description: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    copyright: '© 2021 All rights reserved.',
+    menu: [
+      { label: 'Intro', to: 'home' },
+      { label: 'Skills', to: 'skills' },
+      { label: 'Portafolio', to: 'portafolio' },
+      { label: 'Clients', to: '/clients' },
+      { label: 'Contact', to: '/contact' },
+    ],
+    author: {
+      name: 'Mohamed Elkholy',
+      screenName: 'Mohatt',
+      contacts: {
+        email: '#',
+        twitter: '#',
+        github: '#',
+      },
     },
+  },
+  ga: 'UA-73379983-2',
+  pagination: {
+    portafolio: 4
   },
   pages: [
     {
