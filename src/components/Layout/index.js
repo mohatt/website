@@ -1,16 +1,18 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { getActivatedRoute, getRoute } from 'gatsby-plugin-advanced-pages'
-import { useSiteMetadata } from '../hooks'
-import { Author, Contacts, Menu } from './layout'
-import Separator from './Separator'
-import * as styles from './Layout.module.css'
-import avatar from '../assets/img/avatar/avatar.png'
-import avatarAlt from '../assets/img/avatar/avatar-smile.png'
+import { getActivatedRoute, getMatchingRoute } from 'gatsby-plugin-advanced-pages'
+import { useSiteMetadata } from '../../hooks'
+import Author from './Author'
+import Contacts from './Contacts'
+import Menu from './Menu'
+import Separator from '../Separator'
+import * as styles from './index.module.css'
+import avatar from '../../assets/img/avatar/avatar.png'
+import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
 export default ({ children, title = null, description = null }) => {
   const site = useSiteMetadata()
-  const route = getActivatedRoute() || getRoute('error.404')
+  const route = getActivatedRoute() || getMatchingRoute('/404')
 
   title = title ? `${title} — ${site.title}` : site.title
   description = description || site.description
