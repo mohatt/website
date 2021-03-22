@@ -52,7 +52,7 @@ jobs:
           path: deploy
           token: ${{ secrets.PAT }}
           commit-message: ${{ github.event.head_commit.message }} ${{ github.event.head_commit.url }}
-          title: Upstream Changes
+          title: ${{ github.event.head_commit.message }}
           body: |
             ## Build Information
             - ### Action
