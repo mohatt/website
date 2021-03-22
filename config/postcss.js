@@ -13,9 +13,14 @@ const tailwindcss = require('tailwindcss')({
   config: require('./tailwind')
 })
 
-module.exports = [
-  require('postcss-import'),
-  tailwindcss,
-  require('rfs'),
-  presetenv,
-]
+module.exports = {
+  postCssPlugins: [
+    require('postcss-import'),
+    tailwindcss,
+    require('rfs'),
+    presetenv,
+  ],
+  cssLoaderOptions: {
+    camelCase: false,
+  },
+}

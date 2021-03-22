@@ -1,5 +1,5 @@
 const { kebabCase } = require('lodash')
-const { projectsPageSize } = require('../../config/site')
+const limit = require('../../config').site.pagination.portafolio
 
 async function createPortafolioPages({ graphql, createAdvancedPage }) {
   const result = await graphql(`
@@ -27,7 +27,7 @@ async function createPortafolioPages({ graphql, createAdvancedPage }) {
     route: 'portafolio',
     pagination: {
       count: result.data.projects.totalCount,
-      limit: projectsPageSize,
+      limit,
     },
     filter: {
       frontmatter: {
@@ -47,7 +47,7 @@ async function createPortafolioPages({ graphql, createAdvancedPage }) {
       },
       pagination: {
         count: skill.totalCount,
-        limit: projectsPageSize,
+        limit,
       },
       filter: {
         frontmatter: {
@@ -73,7 +73,7 @@ async function createPortafolioPages({ graphql, createAdvancedPage }) {
       },
       pagination: {
         count: category.totalCount,
-        limit: projectsPageSize,
+        limit,
       },
       filter: {
         frontmatter: {

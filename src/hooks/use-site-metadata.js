@@ -6,6 +6,10 @@ const useSiteMetadata = () => {
       query SiteMetaData {
         site {
           siteMetadata {
+            title
+            description
+            url
+            copyright
             author {
               name
               screenName
@@ -19,10 +23,6 @@ const useSiteMetadata = () => {
               label
               to
             }
-            url
-            title
-            description
-            copyright
           }
         }
       }
