@@ -40,7 +40,7 @@ devDependencies:
   '@mohatt/eslint-config-gatsby-standard': 2.0.1_eslint@7.20.0
   eslint: 7.20.0
   prettier: 2.2.1
-  simple-icons: 4.15.0
+  simple-icons: 4.16.0
   stylelint: 13.12.0
   stylelint-config-standard: 21.0.0_stylelint@13.12.0
 lockfileVersion: 5.2
@@ -14922,10 +14922,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ZalZGexYr3TA0SwySsr5HlgOOinS4Jsa8YB2GJ6lUNAazyAu4KG/VmzMTwAt2YVXzzVj8QmefmAonZIK2BSGcQ==
-  /simple-icons/4.15.0:
+  /simple-icons/4.16.0:
     dev: true
     resolution:
-      integrity: sha512-pFtmcsBjnf7J5kR+LFRnB3R4Xobdk5uYV9WVJ5LbBXiHDr+5Ts4kQNpf3VcTjngEnPwCuKlBrF5tXPHeGPfGWA==
+      integrity: sha512-ixEPCF9bN1A4ApCk1d7q4UNIwJNB1IvjKGSu3ojJ0g7EZgqaPXQj0J+3kQ1LJpcDIVj56mlc4YGx4IsMDYtskA==
   /simple-swizzle/0.2.2:
     dependencies:
       is-arrayish: 0.3.2
@@ -17575,7 +17575,7 @@ specifiers:
   react-dom: 17.0.1
   react-helmet: 6.1.0
   rfs: 9.0.3
-  simple-icons: 4.15.0
+  simple-icons: 4.16.0
   stylelint: 13.12.0
   stylelint-config-standard: 21.0.0
   tailwindcss: 2.0.4
