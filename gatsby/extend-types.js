@@ -1,5 +1,3 @@
-'use strict'
-
 // Extend frontmatter type definition
 module.exports = function ({ type }) {
   if (type.name === 'Mdx') {

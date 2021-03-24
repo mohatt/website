@@ -1,5 +1,4 @@
-'use strict'
-
+// Create project specific types
 module.exports = ({ actions, schema }) => {
   const { createTypes } = actions
 
