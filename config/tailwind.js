@@ -24,15 +24,7 @@ module.exports = {
       }
     },
   },
-  variants: {
-    extend: {
-      fontSize: ['rfs'],
-      width: ['rfs'],
-      maxWidth: ['rfs'],
-    },
-  },
   plugins: [
-    require('tailwindcss-rfs'),
     require('@tailwindcss/typography'),
   ],
   purge: false,

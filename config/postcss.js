@@ -17,7 +17,6 @@ module.exports = {
   postCssPlugins: [
     require('postcss-import'),
     tailwindcss,
-    require('rfs'),
     presetenv,
   ],
   cssLoaderOptions: {
