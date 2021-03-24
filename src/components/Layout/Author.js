@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from '../Link'
-import useRoute from '../../hooks/use-route'
+import useRoute from '../../hooks/current-route'
 import * as styles from './Author.module.css'
 
 export default ({ author }) => {
