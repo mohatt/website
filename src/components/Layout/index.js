@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { getActivatedRoute, getMatchingRoute } from 'gatsby-plugin-advanced-pages'
-import { useSiteMetadata } from '../../hooks'
+import useRoute from '../../hooks/use-route'
+import useMetadata from '../../hooks/use-metadata'
 import Author from './Author'
 import Contacts from './Contacts'
 import Menu from './Menu'
@@ -10,17 +10,18 @@ import * as styles from './index.module.css'
 import avatar from '../../assets/img/avatar/avatar.png'
 import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
-export default ({ children, title = null, description = null }) => {
-  const site = useSiteMetadata()
-  const route = getActivatedRoute() || getMatchingRoute('/404')
+export default ({ children, title = null, pretitle = null, description = null }) => {
+  const site = useMetadata()
+  const { path } = useRoute()
 
+  pretitle = pretitle || `require('.${path === '/' ? '/index' : path}.md');`
   title = title ? `${title} — ${site.title}` : site.title
   description = description || site.description
 
   return (
     <div className='flex'>
       <Helmet>
-        <html lang='en' />
+        <html lang='en' className='text-base xl:text-lg'/>
         <title>{title}</title>
         <meta name='description' content={description} />
         <meta name='og:title' content={title} />
@@ -32,30 +33,34 @@ export default ({ children, title = null, description = null }) => {
         <meta name='twitter:description' content={description} />
         <link rel='preload' href={avatar} as='image' />
         <link rel='preload' href={avatarAlt} as='image' />
-        <body className='font-body antialiased leading-normal text-base text-typo' />
       </Helmet>
       <div className='w-1/12 h-screen'>
-        <header className='fixed w-inherit h-inherit bg-typo border-r-4 border-primary z-20'>
-          <Author route={route} author={site.author} />
+        <header className='fixed w-inherit h-inherit border-r-4 border-primary bg-typo text-primary z-20'>
+          <Author author={site.author} />
           <Contacts contacts={site.author.contacts} />
         </header>
       </div>
       <div className='w-2/12 h-screen'>
-        <div className='fixed w-inherit h-inherit bg-accent z-10'>
+        <div className='fixed w-inherit h-inherit bg-accent text-typo-dim text-shadow z-10'>
           <Menu items={site.menu} />
         </div>
       </div>
-      <main className={`${styles.main} w-9/12 min-h-screen pt-32 bg-secondary z-30 flex flex-col justify-center`}>
-        {children}
-        {route.path !== '/' && (
-          <>
+      <div className={`w-9/12 min-h-screen pt-32 flex flex-col justify-center bg-secondary text-typo-dim text-shadow z-30 ${styles.main}`}>
+        <main>
+          <div className='px-20 font-display italic'>
+            {pretitle}
+          </div>
+          {children}
+        </main>
+        {path !== '/' && (
+          <footer>
             <Separator size='4' spacing='0' />
-            <footer className='px-20 py-16 bg-accent text-typo rfs:text-lg'>
+            <div className='px-20 py-16 bg-accent text-typo'>
               {site.copyright}
-            </footer>
-          </>
+            </div>
+          </footer>
         )}
-      </main>
+      </div>
     </div>
   )
 }

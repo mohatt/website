@@ -1,16 +1,7 @@
-.item {
-  @apply block font-display font-medium italic rfs:text-lg text-right text-typo-dim pb-6 pr-6;
-}
-
 .item,
 .item::before,
 .item::after {
   @apply transition-all duration-300;
-}
-
-.item.active,
-.item:hover {
-  @apply text-typo;
 }
 
 .item::before,

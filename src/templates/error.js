@@ -6,7 +6,7 @@ import Hero from '../components/Hero'
 export default function Error({ data: { page } }) {
   return (
     <Layout title={page.title}>
-      <Hero title={page.title} pretitle="require('./error.md');">
+      <Hero title={page.title}>
         {page.data.message}
       </Hero>
     </Layout>

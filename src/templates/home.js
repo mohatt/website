@@ -34,9 +34,9 @@ export default function Home({ data: { page } }) {
     { title: 'Get In Touch', to: 'home' },
   ]
   return (
-    <Layout title={page.title}>
-      <Hero title={titleNode} pretitle='Hi, I’m Mohamed,' actions={actions}>
-        I'm a full-stack web developer with a broad range of skills and expertise in all web
+    <Layout title={page.title} pretitle='Hi, I’m Mohamed,'>
+      <Hero title={titleNode} actions={actions}>
+        I'm a full-stack web developer with a broad range of skills and expertise in most web
         development related fields.
       </Hero>
     </Layout>

@@ -21,14 +21,7 @@ module.exports = {
       },
       height: {
         inherit: 'inherit',
-      },
-      screens: {
-        '2xl': '1440px',
-      },
-      fontSize: {
-        xl: '1.35rem',
-        '2xl': '1.65rem',
-      },
+      }
     },
   },
   variants: {
