@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { useProjectSkills } from '../hooks/use-project-skills'
+import { useProjectSkills } from '../hooks/project-skills'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Heading from '../components/Heading'
