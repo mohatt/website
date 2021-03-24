@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { getProjectSkills } from '../utils'
+import { useProjectSkills } from '../hooks/use-project-skills'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Heading from '../components/Heading'
@@ -35,17 +35,17 @@ const skillCategories = {
 }
 
 const SkillBlock = ({ icon, title, children }) => (
-  <div className='w-1/2 flex px-2 mt-8'>
+  <div className='flex text-lg leading-normal'>
     <Icon name={icon} className='h-8 w-8 text-primary' />
     <div className='flex-1 pl-2'>
-      <h3 className='font-medium font-display italic text-primary'>{title}</h3>
+      <h3 className='text-primary'>{title}</h3>
       <div className='mt-4'>{children}</div>
     </div>
   </div>
 )
 
 const SkillCategory = ({ id }) => (
-  <div className='flex flex-wrap -mx-2'>
+  <div className='grid grid-cols-3 gap-8 max-w-4xl text-lg'>
     {skillCategories[id].map(({ title, icon, category }) => (
       <SkillList key={title} icon={icon} title={title} categories={[id, category]} />
     ))}
@@ -53,12 +53,12 @@ const SkillCategory = ({ id }) => (
 )
 
 const SkillList = ({ icon, title, categories }) => (
-  <div className='w-1/3 flex px-2 mt-8'>
+  <div className='flex'>
     <Icon name={icon} className='h-8 w-8 text-primary' />
     <div className='flex-1 pl-2'>
-      <h3 className='font-medium font-display italic text-primary'>{title}</h3>
-      <ul className='mt-4 text-lg space-y-2'>
-        {getProjectSkills(categories).map(({ id, title, icon, projects }) => (
+      <h3 className='text-primary'>{title}</h3>
+      <ul className='mt-4 space-y-2'>
+        {useProjectSkills(categories).map(({ id, title, icon, projects }) => (
           <li key={id}>
             <Icon path={icon} className='h-6 w-6 mr-2 text-primary' />
             {title}
@@ -82,16 +82,12 @@ export default function Skills({ data: { page } }) {
   return (
     <Layout title={page.title}>
       <Section>
-        <Heading
-          level='1'
-          size='lg 4xl xl'
-          pretitle="require('./skills.md');"
-          children={page.title}
-          subtitle="Software development is hard. Managing projects is hard.
+        <Heading title={page.title} primary>
+          Software development is hard. Managing projects is hard.
           Working remotely is hard. Here are some things I'm good at, to
-          help ease the pain."
-        />
-        <div className='flex flex-wrap -mx-2'>
+          help ease the pain.
+        </Heading>
+        <div className='grid grid-cols-2 gap-8'>
           <SkillBlock icon='bug' title='Problem Solving'>
             I'm can take vague problems and requirements and break them down into steps and
             solutions.
@@ -110,47 +106,29 @@ export default function Skills({ data: { page } }) {
         </div>
       </Section>
       <Section>
-        <Heading
-          size='lg 3xl xl'
-          width='3xl'
-          spacing='4'
-          children='Back-end Development'
-          subtitle='This is my main area of expertise. Nearly every app I have
+        <Heading title='Back-end Development'>
+          This is my main area of expertise. Nearly every app I have
           launched in the past had the back-end done by me. My main stack usually
-          involves PHP with the CMS/Framework of choice, and alternatively Node.js.'
-        />
+          involves PHP with the CMS/Framework of choice, and alternatively Node.js.
+        </Heading>
         <SkillCategory id='backend' />
       </Section>
       <Section>
-        <Heading
-          size='lg 3xl xl'
-          width='3xl'
-          spacing='4'
-          children='Front-end Development'
-          subtitle='I create responsive websites that allow the user to have the
-          best and most appropriate experience suited to the device they are using.'
-        />
+        <Heading title='Front-end Development'>
+          I create responsive websites that allow the user to have the
+          best and most appropriate experience suited to the device they are using.
+        </Heading>
         <SkillCategory id='frontend' />
       </Section>
       <Section>
-        <Heading
-          size='lg 3xl xl'
-          width='3xl'
-          spacing='4'
-          children='Cloud Services'
-          subtitle='I use these cloud services to setup an integrated, effective and
-          efficient web development workflow that meets the project needs.'
-        />
+        <Heading title='Cloud Services'>
+          I use these cloud services to setup an integrated, effective and
+          efficient web development workflow that meets the project needs.
+        </Heading>
         <SkillCategory id='cloud' />
       </Section>
       <Section>
-        <Heading
-          size='lg 3xl xl'
-          width='3xl'
-          spacing='4'
-          children='Software'
-          subtitle='My local web development setup.'
-        />
+        <Heading title='Software'>My local web development setup.</Heading>
         <SkillCategory id='software' />
       </Section>
     </Layout>

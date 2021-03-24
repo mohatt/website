@@ -1,17 +1,19 @@
 import React from 'react'
-import Heading from './Heading'
 import Section from './Section'
 import Button from './Button'
 import ButtonGroup from './ButtonGroup'
 
-export default ({ children, title, pretitle, actions }) => {
+export default ({ children, title, actions, className }) => {
   return (
-    <Section>
-      <Heading size='4xl' pretitle={pretitle} subtitle={children} leading="relaxed">
-        {title}
-      </Heading>
-      <footer className='mt-8'>
-        <ButtonGroup spacing className='rfs:text-lg'>
+    <Section className={className}>
+      <header className='mt-8 mb-12 max-w-lg'>
+        <h2 className='italic text-3xl leading-relaxed text-typo'>
+          {title}
+        </h2>
+        <div className='mt-8 text-2xl leading-normal text-typo-dim'>{children}</div>
+      </header>
+      <footer>
+        <ButtonGroup spacing>
           {actions &&
             actions.map(action => (
               <Button to={action.to} outline={action.alt} key={action.to}>
