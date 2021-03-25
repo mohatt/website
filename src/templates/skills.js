@@ -48,7 +48,7 @@ const SkillCategory = ({ id }) => (
   <div className='grid grid-cols-3 gap-8 max-w-4xl text-lg'>
     {categories[id].map(({ title, icon, category }) => {
       const skills = useProjectSkills([id, category])
-      return skills.length && (
+      return skills.length > 0 && (
         <div key={title} className='flex'>
           <Icon name={icon} className='h-8 w-8 text-primary' />
           <div className='flex-1 pl-2'>
@@ -58,7 +58,7 @@ const SkillCategory = ({ id }) => (
                 <li key={id}>
                   <Icon path={icon} className='h-6 w-6 mr-2 text-primary' />
                   {title}
-                  {projects && (
+                  {projects > 0 && (
                     <Link
                       to='portafolio.skill'
                       params={{ skill: id }}
