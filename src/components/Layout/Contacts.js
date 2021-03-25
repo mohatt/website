@@ -1,5 +1,5 @@
 import React from 'react'
-import { getContactHref } from '../../utils'
+import { getContactHref } from '../../commons'
 import Icon from '../Icon'
 import Button from '../Button'
 import * as styles from './Contacts.module.css'

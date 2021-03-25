@@ -1,6 +1,11 @@
-const getContactHref = (name, contact) => {
-  let href
+import { getActivatedRoute, getMatchingRoute } from 'gatsby-plugin-advanced-pages'
 
+export const getCurrentRoute = () => {
+  return getActivatedRoute() || getMatchingRoute('/404')
+}
+
+export const getContactHref = (name, contact) => {
+  let href
   switch (name) {
     case 'twitter':
       href = `https://www.twitter.com/${contact}`
@@ -19,4 +24,4 @@ const getContactHref = (name, contact) => {
   return href
 }
 
-export default getContactHref
+export {}

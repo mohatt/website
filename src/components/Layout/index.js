@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import useRoute from '../../hooks/current-route'
 import useMetadata from '../../hooks/site-metadata'
+import { getCurrentRoute } from '../../commons'
 import Author from './Author'
 import Contacts from './Contacts'
 import Menu from './Menu'
@@ -12,7 +12,7 @@ import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
 export default ({ children, title = null, pretitle = null, description = null }) => {
   const site = useMetadata()
-  const { path } = useRoute()
+  const { path } = getCurrentRoute()
 
   pretitle = pretitle || `require('.${path === '/' ? '/index' : path}.md');`
   title = title ? `${title} — ${site.title}` : site.title
