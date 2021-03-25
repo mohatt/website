@@ -7,7 +7,7 @@ import Heading from '../components/Heading'
 import Icon from '../components/Icon'
 import Link from '../components/Link'
 
-const skillCategories = {
+const categories = {
   backend: [
     { title: 'Languages', icon: 'code', category: 'language' },
     { title: 'Frameworks', icon: 'stack', category: 'framework' },
@@ -46,35 +46,34 @@ const SkillBlock = ({ icon, title, children }) => (
 
 const SkillCategory = ({ id }) => (
   <div className='grid grid-cols-3 gap-8 max-w-4xl text-lg'>
-    {skillCategories[id].map(({ title, icon, category }) => (
-      <SkillList key={title} icon={icon} title={title} categories={[id, category]} />
-    ))}
-  </div>
-)
-
-const SkillList = ({ icon, title, categories }) => (
-  <div className='flex'>
-    <Icon name={icon} className='h-8 w-8 text-primary' />
-    <div className='flex-1 pl-2'>
-      <h3 className='text-primary'>{title}</h3>
-      <ul className='mt-4 space-y-2'>
-        {useProjectSkills(categories).map(({ id, title, icon, projects }) => (
-          <li key={id}>
-            <Icon path={icon} className='h-6 w-6 mr-2 text-primary' />
-            {title}
-            {projects > 0 && (
-              <Link
-                to='portafolio.skill'
-                params={{ skill: id }}
-                className='btn btn-alt rounded-full text-xs ml-2 py-0 px-2'
-                title={`View projects tagged with '${id}'`}
-                children={projects}
-              />
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+    {categories[id].map(({ title, icon, category }) => {
+      const skills = useProjectSkills([id, category])
+      return skills.length && (
+        <div key={title} className='flex'>
+          <Icon name={icon} className='h-8 w-8 text-primary' />
+          <div className='flex-1 pl-2'>
+            <h3 className='text-primary'>{title}</h3>
+            <ul className='mt-4 space-y-2'>
+              {skills.map(({ id, title, icon, projects }) => (
+                <li key={id}>
+                  <Icon path={icon} className='h-6 w-6 mr-2 text-primary' />
+                  {title}
+                  {projects && (
+                    <Link
+                      to='portafolio.skill'
+                      params={{ skill: id }}
+                      className='btn btn-alt rounded-full text-xs ml-2 py-0 px-2'
+                      title={`View projects tagged with '${id}'`}
+                      children={projects}
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )
+    })}
   </div>
 )
 
