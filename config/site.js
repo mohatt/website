@@ -21,7 +21,7 @@ module.exports = {
       },
     },
   },
-  ga: 'UA-73379983-2',
+  ga: 'G-WYVRHE98ND',
   pagination: {
     portafolio: 4
   },
