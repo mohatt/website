@@ -19,7 +19,7 @@ export default ({ children, title = null, pretitle = null, description = null })
   description = description || site.description
 
   return (
-    <div className='flex'>
+    <div className='h-screen overflow-hidden grid grid-rows-1	grid-cols-12'>
       <Helmet>
         <html lang='en' className='text-base xl:text-lg'/>
         <title>{title}</title>
@@ -34,26 +34,24 @@ export default ({ children, title = null, pretitle = null, description = null })
         <link rel='preload' href={avatar} as='image' />
         <link rel='preload' href={avatarAlt} as='image' />
       </Helmet>
-      <div className='w-1/12 h-screen'>
-        <header className='fixed w-inherit h-inherit border-r-4 border-primary bg-typo text-primary z-20'>
+      <div className='border-r-4 border-primary bg-typo text-primary z-20'>
+        <header className='h-full relative'>
           <Author author={site.author} />
           <Contacts contacts={site.author.contacts} />
         </header>
       </div>
-      <div className='w-2/12 h-screen'>
-        <div className='fixed w-inherit h-inherit bg-accent text-typo-dim text-shadow z-10'>
-          <Menu items={site.menu} />
-        </div>
+      <div className={`col-span-2 hidden lg:flex flex-col justify-center bg-accent text-typo-dim text-shadow ${styles.nav}`}>
+        <Menu items={site.menu} />
       </div>
-      <div className={`w-9/12 min-h-screen pt-32 flex flex-col justify-center bg-secondary text-typo-dim text-shadow z-30 ${styles.main}`}>
-        <main>
+      <div className='col-span-11 lg:col-span-9 overflow-y-auto flex flex-col bg-secondary text-typo-dim text-shadow'>
+        <main className='mt-32 flex-grow flex-shrink-0 flex flex-col justify-center'>
           <div className='px-20 font-display italic'>
             {pretitle}
           </div>
           {children}
         </main>
         {path !== '/' && (
-          <footer>
+          <footer className='flex-shrink-0'>
             <Separator size='4' spacing='0' />
             <div className='px-20 py-16 bg-accent text-typo'>
               {site.copyright}
