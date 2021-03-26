@@ -3,7 +3,7 @@ import Link from "../Link";
 import * as styles from "./Menu.module.css";
 
 export default ({ items }) => (
-  <nav className="w-full h-full flex flex-col justify-center">
+  <nav>
     <ul>
       {items.map(({ to, label }) => (
         <li key={to}>
