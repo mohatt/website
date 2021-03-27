@@ -1,3 +1,8 @@
 .nav {
   box-shadow: rgba(0, 0, 0, 0.5) -30px 0 20px -20px inset;
+  transition: width 0.2s ease;
+}
+
+.main {
+  transition: margin-right 0.2s ease;
 }
