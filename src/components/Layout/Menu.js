@@ -2,8 +2,8 @@ import React from "react";
 import Link from "../Link";
 import * as styles from "./Menu.module.css";
 
-export default ({ items }) => (
-  <nav>
+export default ({ items, className }) => (
+  <nav className={className}>
     <ul>
       {items.map(({ to, label }) => (
         <li key={to}>

@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
 import Typed from 'typed.js'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 
 export default function Home({ data: { page } }) {
-  const typedPlaceholder = React.createRef()
+  const _strings = useRef()
   useEffect(() => {
     const options = {
       strings: ['high quality', 'user-friendly', 'efficient', 'modern', 'beautiful'],
@@ -14,7 +14,7 @@ export default function Home({ data: { page } }) {
       backDelay: 5000,
       loop: true,
     }
-    const typed = new Typed(typedPlaceholder.current, options)
+    const typed = new Typed(_strings.current, options)
     return function cleanup() {
       typed.destroy()
     }
@@ -24,7 +24,7 @@ export default function Home({ data: { page } }) {
     <>
       I move pixels and lines of
       <br />
-      code to craft <span ref={typedPlaceholder} className='text-primary' />
+      code to craft <span ref={_strings} className='text-primary' />
       <br />
       digital experiences
     </>
