@@ -4,6 +4,7 @@ import Link from './Link'
 
 export default ({
   color = 'primary',
+  active = false,
   mono = false,
   rounded = true,
   outline = false,
@@ -18,6 +19,7 @@ export default ({
           'rounded-full': rounded,
           'p-2': mono,
           'btn-outline': outline,
+          'btn-active': active,
         },
         className
       )}
