@@ -1,11 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import useMetadata from '../hooks/site-metadata'
-import { getCurrentRoute } from '../commons'
+import useCurrentRoute from '../hooks/current-route'
 
 export default ({ children, pretitle, title, description }) => {
   const site = useMetadata()
-  const { path } = getCurrentRoute()
+  const { path } = useCurrentRoute()
   title = title ? `${title} — ${site.title}` : site.title
   description = description || site.description
   return (
