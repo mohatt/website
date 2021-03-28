@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks/project-skills'
-import Layout from '../components/Layout'
+import Page from '../components/Page'
 import Section from '../components/Section'
 import Heading from '../components/Heading'
 import Icon from '../components/Icon'
@@ -79,7 +79,7 @@ const SkillCategory = ({ id }) => (
 
 export default function Skills({ data: { page } }) {
   return (
-    <Layout title={page.title}>
+    <Page title={page.title}>
       <Section>
         <Heading title={page.title} primary>
           Software development is hard. Managing projects is hard.
@@ -130,7 +130,7 @@ export default function Skills({ data: { page } }) {
         <Heading title='Software'>My local web development setup.</Heading>
         <SkillCategory id='software' />
       </Section>
-    </Layout>
+    </Page>
   )
 }
 
@@ -138,7 +138,6 @@ export const query = graphql`
   query Skills($id: String!) {
     page(id: { eq: $id }) {
       title
-      data
     }
   }
 `

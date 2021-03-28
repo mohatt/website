@@ -10,7 +10,7 @@ import * as styles from './index.module.css'
 import avatar from '../../assets/img/avatar/avatar.png'
 import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
-export default ({ children, title = null, pretitle = null, description = null }) => {
+export default ({ children }) => {
   const site = useMetadata()
   const { path } = getCurrentRoute()
 
@@ -21,23 +21,10 @@ export default ({ children, title = null, pretitle = null, description = null })
     _main.current.classList.toggle('-mr-64')
   }
 
-  pretitle = pretitle || `require('.${path === '/' ? '/index' : path}.js');`
-  title = title ? `${title} — ${site.title}` : site.title
-  description = description || site.description
-
   return (
     <div className='h-screen flex flex-row overflow-hidden'>
       <Helmet>
         <html lang='en' className='text-base xl:text-lg'/>
-        <title>{title}</title>
-        <meta name='description' content={description} />
-        <meta name='og:title' content={title} />
-        <meta name='og:description' content={description} />
-        <meta name='og:type' content='website' />
-        <meta name='og:site_name' content={site.title} />
-        <meta name='twitter:title' content={title} />
-        <meta name='twitter:card' content='summary' />
-        <meta name='twitter:description' content={description} />
         <link rel='preload' href={avatar} as='image' />
         <link rel='preload' href={avatarAlt} as='image' />
       </Helmet>
@@ -52,9 +39,6 @@ export default ({ children, title = null, pretitle = null, description = null })
       </div>
       <div ref={_main} className={`lg:-mr-0 flex-grow overflow-y-auto flex flex-col bg-secondary text-typo-dim text-shadow ${styles.main}`}>
         <main className='mt-32 flex-grow flex-shrink-0 flex flex-col justify-center'>
-          <div className='px-20 font-display italic'>
-            {pretitle}
-          </div>
           {children}
         </main>
         {path !== '/' && (

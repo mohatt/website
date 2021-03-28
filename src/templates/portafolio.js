@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks/project-skills'
-import Layout from '../components/Layout'
+import Page from '../components/Page'
 import Section from '../components/Section'
 import Heading from '../components/Heading'
 import Pagination from '../components/Pagination'
@@ -15,7 +15,7 @@ export default function Portafolio({ data: { page, projects }, pageContext: { sk
   }
 
   return (
-    <Layout title={title}>
+    <Page title={title}>
       <Section>
         <Heading title={title} primary>
           Some projects I worked on.
@@ -24,7 +24,7 @@ export default function Portafolio({ data: { page, projects }, pageContext: { sk
         <pre style={{ whiteSpace: 'pre-wrap' }}>{JSON.stringify(projects.edges, null, 2)}</pre>
         <Pagination route='portafolio' pageInfo={projects.pageInfo} ui='simple' />
       </Section>
-    </Layout>
+    </Page>
   )
 }
 
