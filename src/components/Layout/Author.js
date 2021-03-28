@@ -1,10 +1,10 @@
 import React from 'react'
 import Link from '../Link'
-import { getCurrentRoute } from '../../commons'
+import useCurrentRoute from '../../hooks/current-route'
 import * as styles from './Author.module.css'
 
 export default ({ author }) => {
-  const { path } = getCurrentRoute()
+  const { path } = useCurrentRoute()
   const Heading = path === '/' ? 'h1' : 'h2'
   return (
     <div>

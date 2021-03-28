@@ -1,8 +1,3 @@
-import { getActivatedRoute, getMatchingRoute } from 'gatsby-plugin-advanced-pages'
-
-export const getCurrentRoute = () => {
-  return getActivatedRoute() || getMatchingRoute('/404')
-}
 
 export const getContactHref = (name, contact) => {
   let href

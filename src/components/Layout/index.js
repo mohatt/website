@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import Helmet from 'react-helmet'
 import useMetadata from '../../hooks/site-metadata'
-import { getCurrentRoute } from '../../commons'
+import useCurrentRoute from '../../hooks/current-route'
 import Author from './Author'
 import Contacts from './Contacts'
 import Menu from './Menu'
@@ -12,7 +12,7 @@ import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
 export default ({ children }) => {
   const site = useMetadata()
-  const { path } = getCurrentRoute()
+  const { path } = useCurrentRoute()
 
   const _menu = useRef()
   const _main = useRef()
