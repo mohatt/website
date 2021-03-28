@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
 import Typed from 'typed.js'
-import Layout from '../components/Layout'
+import Page from '../components/Page'
 import Hero from '../components/Hero'
 
 export default function Home({ data: { page } }) {
@@ -34,12 +34,12 @@ export default function Home({ data: { page } }) {
     { title: 'Get In Touch', to: 'home' },
   ]
   return (
-    <Layout title={page.title} pretitle='Hi, I’m Mohamed,'>
+    <Page title={page.title} pretitle='Hi, I’m Mohamed,'>
       <Hero title={titleNode} actions={actions}>
         I'm a full-stack web developer with a broad range of skills and expertise in most web
         development related fields.
       </Hero>
-    </Layout>
+    </Page>
   )
 }
 

@@ -14,7 +14,7 @@
     "eslint:check": "eslint-config-prettier .eslintrc.json",
     "fonts:preload-cache": "gatsby-preload-fonts"
   },
-  "keywords": ["gatsby"],
+  "keywords": ["website", "gatsby", "react"],
   "author": "Mohamed Elkholy <mohatt@pm.me>",
   "license": "MIT",
   "repository": {

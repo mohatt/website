@@ -1,15 +1,15 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Page from '../components/Page'
 import Hero from '../components/Hero'
 
 export default function Error({ data: { page } }) {
   return (
-    <Layout title={page.title}>
+    <Page title={page.title}>
       <Hero title={page.title}>
         {page.data.message}
       </Hero>
-    </Layout>
+    </Page>
   )
 }
 
