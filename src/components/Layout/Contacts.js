@@ -6,7 +6,7 @@ import Button from '../Button'
 import * as styles from './Contacts.module.css'
 
 export default ({ contacts }) => {
-  const { menuOpen, setMenuOpen } = useAppState()
+  const { menuOpen, setMenuOpen, rotateTheme } = useAppState()
   return (
     <div className='absolute block w-12 bottom-0 right-0 -mr-6'>
       <ul>
@@ -24,7 +24,21 @@ export default ({ contacts }) => {
           >
             <Icon name='menu' />
           </Button>
-          </li>
+        </li>
+        <li>
+          <Button
+            mono
+            color='accent'
+            className={`${styles.contact} w-12 h-12 mb-6`}
+            onClick={e => {
+              e.preventDefault()
+              rotateTheme()
+            }}
+            to='#'
+          >
+            <Icon name='theme' />
+          </Button>
+        </li>
         {Object.keys(contacts).map((name) => (
           <li key={name}>
             <Button

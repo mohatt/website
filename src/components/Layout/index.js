@@ -12,12 +12,12 @@ import avatar from '../../assets/img/avatar/avatar.png'
 import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
 export default ({ children }) => {
-  const { menuOpen } = useAppState()
   const site = useMetadata()
   const { path } = useCurrentRoute()
+  const { menuOpen, theme } = useAppState()
 
   return (
-    <div className='h-screen flex flex-row overflow-hidden'>
+    <div className={`h-screen flex flex-row overflow-hidden theme:${theme}`}>
       <Helmet>
         <html lang='en' className='text-base xl:text-lg'/>
         <link rel='preload' href={avatar} as='image' />

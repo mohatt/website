@@ -9,12 +9,12 @@ module.exports = {
     },
     extend: {
       colors: {
-        typo: '#f7f3e3',
-        'typo-dimmer': '#7c8171',
-        'typo-dim': '#9a937c',
-        accent: '#222222',
-        primary: '#b28e59',
-        secondary: '#234e52',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        accent: 'var(--accent)',
+        typo: 'var(--typo)',
+        'typo-dim': 'var(--typo-dim)',
+        'typo-dimmer': 'var(--typo-dimmer)',
       },
       width: {
         inherit: 'inherit',
