@@ -1,3 +1,3 @@
-import PageWrapper from './src/PageWrapper'
+import Wrapper from './src/Wrapper'
 
-export const wrapPageElement = PageWrapper
+export const wrapRootElement = Wrapper

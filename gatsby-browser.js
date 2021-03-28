@@ -1,4 +1,4 @@
+import Wrapper from './src/Wrapper'
 import './src/assets/css/main.css'
-import PageWrapper from './src/PageWrapper'
 
-export const wrapPageElement = PageWrapper
+export const wrapRootElement = Wrapper

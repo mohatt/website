@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
+import useAppState from '../../App'
 import { getContactHref } from '../../commons'
 import Icon from '../Icon'
 import Button from '../Button'
 import * as styles from './Contacts.module.css'
 
-export default ({ contacts, toggleMenu }) => {
-  const [menuActive, toggleMenuActive] = useState()
+export default ({ contacts }) => {
+  const { menuOpen, setMenuOpen } = useAppState()
   return (
     <div className='absolute block w-12 bottom-0 right-0 -mr-6'>
       <ul>
         <li className='visible lg:invisible'>
           <Button
             mono
-            active={menuActive}
+            active={menuOpen}
             color='accent'
             className={`${styles.contact} w-12 h-12 mb-6`}
             onClick={e => {
               e.preventDefault()
-              toggleMenu()
-              toggleMenuActive(!menuActive)
+              setMenuOpen(!menuOpen)
             }}
             to='#'
           >
