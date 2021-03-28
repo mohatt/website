@@ -1,5 +1,6 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Helmet from 'react-helmet'
+import useAppState from '../../App'
 import useMetadata from '../../hooks/site-metadata'
 import useCurrentRoute from '../../hooks/current-route'
 import Author from './Author'
@@ -11,15 +12,9 @@ import avatar from '../../assets/img/avatar/avatar.png'
 import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
 export default ({ children }) => {
+  const { menuOpen } = useAppState()
   const site = useMetadata()
   const { path } = useCurrentRoute()
-
-  const _menu = useRef()
-  const _main = useRef()
-  const toggleMenu = () => {
-    _menu.current.classList.toggle('w-64')
-    _main.current.classList.toggle('-mr-64')
-  }
 
   return (
     <div className='h-screen flex flex-row overflow-hidden'>
@@ -31,13 +26,13 @@ export default ({ children }) => {
       <div className='w-24 flex-shrink-0 border-r-4 border-primary bg-typo text-primary z-20'>
         <header className='h-full relative'>
           <Author author={site.author} />
-          <Contacts toggleMenu={toggleMenu} contacts={site.author.contacts} />
+          <Contacts contacts={site.author.contacts} />
         </header>
       </div>
-      <div ref={_menu} className={`w-0 lg:w-64 overflow-hidden flex-shrink-0 flex flex-col justify-center bg-accent text-typo-dim text-shadow ${styles.nav}`}>
+      <div className={`${menuOpen ? 'w-64' : 'w-0'} lg:w-64 overflow-hidden flex-shrink-0 flex flex-col justify-center bg-accent text-typo-dim text-shadow ${styles.nav}`}>
         <Menu className='w-64' items={site.menu} />
       </div>
-      <div ref={_main} className={`lg:-mr-0 flex-grow overflow-y-auto flex flex-col bg-secondary text-typo-dim text-shadow ${styles.main}`}>
+      <div className={`${menuOpen ? '-mr-64' : ''} lg:-mr-0 flex-grow overflow-y-auto flex flex-col bg-secondary text-typo-dim text-shadow ${styles.main}`}>
         <main className='mt-32 flex-grow flex-shrink-0 flex flex-col justify-center'>
           {children}
         </main>
