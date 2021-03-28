@@ -18,8 +18,5 @@ module.exports = {
     require('postcss-import'),
     tailwindcss,
     presetenv,
-  ],
-  cssLoaderOptions: {
-    camelCase: false,
-  },
+  ]
 }

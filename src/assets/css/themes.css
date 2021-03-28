@@ -1,0 +1,20 @@
+@layer base {
+  :root,
+  .theme\:default {
+    --primary: #b28e59;
+    --secondary: #234e52;
+    --accent: #222;
+    --typo: #f7f3e3;
+    --typo-dim: #9a937c;
+    --typo-dimmer: #7c8171;
+  }
+
+  .theme\:breeze {
+    --primary: #b25959;
+    --secondary: #233e52;
+    --accent: #222;
+    --typo: #f7f3e3;
+    --typo-dim: #7c8d9a;
+    --typo-dimmer: #717c81;
+  }
+}
