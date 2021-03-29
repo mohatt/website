@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Typed from 'typed.js'
 import { Page, Hero } from '../components'
 
-export default function Home({ data: { page } }) {
+export default function Home({ data: { page: { title } } }) {
   const _strings = useRef()
   useEffect(() => {
     const options = {
@@ -19,7 +19,7 @@ export default function Home({ data: { page } }) {
     }
   })
 
-  const titleNode = (
+  const heroTitle = (
     <>
       I move pixels and lines of
       <br />
@@ -28,13 +28,13 @@ export default function Home({ data: { page } }) {
       digital experiences
     </>
   )
-  const actions = [
+  const heroActions = [
     { title: 'Skills', to: 'skills', alt: true },
     { title: 'Get In Touch', to: 'home' },
   ]
   return (
-    <Page title={page.title} pretitle='Hi, I’m Mohamed,'>
-      <Hero title={titleNode} actions={actions}>
+    <Page title={title} pre='Hi, I’m Mohamed,'>
+      <Hero title={heroTitle} actions={heroActions}>
         I'm a full-stack web developer with a broad range of skills and expertise in most web
         development related fields.
       </Hero>

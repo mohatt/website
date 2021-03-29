@@ -1,29 +1,38 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { useSiteMetadata, useCurrentRoute } from '../hooks'
+import { useSiteMetadata } from '../hooks'
 import { Layout } from '.'
 
-export default function Page({ children, pretitle, title, description }) {
+export default function Page({ children, title, description, pre }) {
   const site = useSiteMetadata()
-  const { path } = useCurrentRoute()
-  title = title ? `${title} — ${site.title}` : site.title
-  description = description || site.description
+  const seoTitle = title ? `${title} — ${site.title}` : site.title
+  const seoDescription = description || site.description
+  if (typeof pre !== 'string') {
+    const { func, args } = {
+      func: (title || site.title).replace(/[-_\s.]+(.)?/g, (_, c) => c ? c.toUpperCase() : ''),
+      args: {},
+      ...pre
+    }
+    pre = `render(<${func} ${Object.keys(args)
+      .filter(a => args[a] !== undefined)
+      .map(a => `${a}=${JSON.stringify(args[a])} `)
+      .join('')
+    }/>);`
+  }
   return (
     <Layout>
       <Helmet>
-        <title>{title}</title>
-        <meta name='description' content={description} />
-        <meta name='og:title' content={title} />
-        <meta name='og:description' content={description} />
+        <title>{seoTitle}</title>
+        <meta name='description' content={seoDescription} />
+        <meta name='og:title' content={seoTitle} />
+        <meta name='og:description' content={seoDescription} />
         <meta name='og:type' content='website' />
         <meta name='og:site_name' content={site.title} />
-        <meta name='twitter:title' content={title} />
+        <meta name='twitter:title' content={seoTitle} />
         <meta name='twitter:card' content='summary' />
-        <meta name='twitter:description' content={description} />
+        <meta name='twitter:description' content={seoDescription} />
       </Helmet>
-      <div className='px-20 font-display italic'>
-        {pretitle || `require('.${path === '/' ? '/index' : path}.js');`}
-      </div>
+      <div className='px-20 font-display italic'>{pre}</div>
       {children}
     </Layout>
   )

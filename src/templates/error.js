@@ -2,11 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Page, Hero } from '../components'
 
-export default function Error({ data: { page } }) {
+export default function Error({ data: { page: { title, data: { code = 404, message } } } }) {
   return (
-    <Page title={page.title}>
-      <Hero title={page.title}>
-        {page.data.message}
+    <Page title={title} pre={{ func: 'Error', args: { code } }}>
+      <Hero title={title}>
+        {message}
       </Hero>
     </Page>
   )

@@ -3,16 +3,15 @@ import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks'
 import { Page, Section, Heading, Pagination } from '../components'
 
-export default function Portafolio({ data: { page, projects }, pageContext: { skill, category } }) {
+export default function Portafolio({ data: { page: { title }, projects }, pageContext: { skill, category } }) {
   const skills = useProjectSkills()
 
-  let title = page.title
   if (projects.pageInfo.currentPage > 1) {
     title += ` (Page ${projects.pageInfo.currentPage})`
   }
 
   return (
-    <Page title={title}>
+    <Page title={title} pre={{ args: { skill, category } }}>
       <Section>
         <Heading title={title} primary>
           Some projects I worked on.
