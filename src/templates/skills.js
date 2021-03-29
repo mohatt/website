@@ -74,11 +74,11 @@ const SkillCategory = ({ id }) => (
   </div>
 )
 
-export default function Skills({ data: { page } }) {
+export default function Skills({ data: { page: { title } } }) {
   return (
-    <Page title={page.title}>
+    <Page title={title}>
       <Section>
-        <Heading title={page.title} primary>
+        <Heading title={title} primary>
           Software development is hard. Managing projects is hard.
           Working remotely is hard. Here are some things I'm good at, to
           help ease the pain.

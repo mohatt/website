@@ -2,9 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Page, Hero, Markdown } from '../components'
 
-export default function Project({ data: { page, project } }) {
+export default function Project({ data: { page, project }, pageContext: { project: slug } }) {
   return (
-    <Page title={project.frontmatter.title}>
+    <Page title={project.frontmatter.title} pre={{ func: page.title, args: { slug }}}>
       <Hero title={project.frontmatter.title}>
         <Markdown>{project.body}</Markdown>
       </Hero>

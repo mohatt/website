@@ -65,6 +65,7 @@ module.exports = {
       },
       template: 'error.js',
       data: {
+        code: 404,
         message: "You just hit a route that doesn't exist."
       },
     },
