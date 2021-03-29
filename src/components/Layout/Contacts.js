@@ -14,13 +14,11 @@ export default ({ contacts }) => {
           <Button
             mono
             active={menuOpen}
-            color='accent'
             className={`${styles.contact} w-12 h-12 mb-6`}
             onClick={e => {
               e.preventDefault()
               setMenuOpen(!menuOpen)
             }}
-            to='#'
           >
             <Icon name='menu' />
           </Button>
@@ -28,13 +26,11 @@ export default ({ contacts }) => {
         <li>
           <Button
             mono
-            color='accent'
             className={`${styles.contact} w-12 h-12 mb-6`}
             onClick={e => {
               e.preventDefault()
               rotateTheme()
             }}
-            to='#'
           >
             <Icon name='theme' />
           </Button>
@@ -43,7 +39,6 @@ export default ({ contacts }) => {
           <li key={name}>
             <Button
               mono
-              color='accent'
               className={`${styles.contact} block w-12 h-12 mb-6`}
               to={getContactHref(name, contacts[name])}
               external

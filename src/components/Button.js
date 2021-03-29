@@ -2,19 +2,12 @@ import React from 'react'
 import classNames from 'classnames'
 import Link from './Link'
 
-export default ({
-  color = 'primary',
-  active = false,
-  mono = false,
-  rounded = true,
-  outline = false,
-  className,
-  ...props
-}) => {
+export default ({ color, active, mono, rounded = true, outline, className, ...props }) => {
+  const Element = props.to ? Link : 'button'
   return (
-    <Link
+    <Element
       className={classNames(
-        `btn btn-${color}`,
+        'btn', color && `btn-${color}`,
         {
           'rounded-full': rounded,
           'p-2': mono,

@@ -19,8 +19,11 @@
       transition-all;
     @apply bg-accent text-typo-dim border-accent;
 
+    &:focus {
+      @apply outline-none;
+    }
+
     &:hover,
-    &:focus,
     &.btn-active {
       @apply bg-typo-dim text-accent border-typo-dim;
     }
@@ -29,7 +32,6 @@
       @apply bg-transparent text-accent;
 
       &:hover,
-      &:focus,
       &.btn-active {
         @apply bg-accent text-typo-dim border-accent;
       }
@@ -39,7 +41,6 @@
       @apply bg-typo-dim text-accent border-typo-dim;
 
       &:hover,
-      &:focus,
       &.btn-active {
         @apply bg-accent text-typo-dim border-accent;
       }
@@ -48,7 +49,6 @@
         @apply bg-transparent text-typo-dim;
 
         &:hover,
-        &:focus,
         &.btn-active {
           @apply bg-typo-dim text-accent border-typo-dim;
         }
@@ -59,7 +59,6 @@
       @apply bg-primary text-accent border-primary;
 
       &:hover,
-      &:focus,
       &.btn-active {
         @apply bg-typo-dim text-accent border-typo-dim;
       }
@@ -68,7 +67,6 @@
         @apply bg-transparent text-primary;
 
         &:hover,
-        &:focus,
         &.btn-active {
           @apply bg-primary text-accent border-primary;
         }

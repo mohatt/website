@@ -16,7 +16,7 @@ export default ({ children, title, actions, className }) => {
         <ButtonGroup spacing>
           {actions &&
             actions.map(action => (
-              <Button to={action.to} outline={action.alt} key={action.to}>
+              <Button color='primary' to={action.to} outline={action.alt} key={action.to}>
                 {action.title}
               </Button>
             ))}
