@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { useProjectSkills } from '../hooks/project-skills'
+import { useProjectSkills } from '../hooks'
 import { Page, Section, Heading, Icon, Button } from '../components'
 
 const categories = {

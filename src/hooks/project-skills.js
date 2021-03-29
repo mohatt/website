@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
-export const useProjectSkills = categories => {
+export function useProjectSkills(categories) {
   const { skills: { nodes } } = useStaticQuery(
     graphql`
       query {
@@ -24,7 +24,7 @@ export const useProjectSkills = categories => {
   )
 }
 
-export const useProjectSkill = id => {
+export function useProjectSkill(id) {
   const skills = useProjectSkills()
   const skill = skills.find(s => s.id === id)
   if (skill === undefined) {
