@@ -1,5 +1,5 @@
 import { getActivatedRoute, getMatchingRoute } from 'gatsby-plugin-advanced-pages'
 
-export default () => {
+export default function useCurrentRoute() {
   return getActivatedRoute() || getMatchingRoute('/404')
 }

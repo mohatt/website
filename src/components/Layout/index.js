@@ -1,8 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import useAppState from '../../App'
-import useMetadata from '../../hooks/site-metadata'
-import useCurrentRoute from '../../hooks/current-route'
+import { useSiteMetadata, useCurrentRoute } from '../../hooks'
 import Author from './Author'
 import Contacts from './Contacts'
 import Menu from './Menu'
@@ -11,8 +10,8 @@ import * as styles from './index.module.css'
 import avatar from '../../assets/img/avatar/avatar.png'
 import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
-export default ({ children }) => {
-  const site = useMetadata()
+export default function Layout({ children }) {
+  const site = useSiteMetadata()
   const { path } = useCurrentRoute()
   const { menuOpen, theme } = useAppState()
 

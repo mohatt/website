@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { useProjectSkills } from '../hooks/project-skills'
+import { useProjectSkills } from '../hooks'
 import { Page, Section, Heading, Pagination } from '../components'
 
 export default function Portafolio({ data: { page, projects }, pageContext: { skill, category } }) {
