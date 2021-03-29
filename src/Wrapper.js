@@ -1,8 +1,8 @@
 import React from 'react'
-import { AppStateProvider } from './App'
+import { LayoutProvider } from './state'
 
 export default ({ element }) => (
-  <AppStateProvider>
+  <LayoutProvider>
     {element}
-  </AppStateProvider>
+  </LayoutProvider>
 )

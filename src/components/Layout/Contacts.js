@@ -1,11 +1,11 @@
 import React from 'react'
-import useAppState from '../../App'
+import { useLayout } from '../../state'
 import { getContactHref } from '../../commons'
 import { Icon, Button } from '..'
 import * as styles from './Contacts.module.css'
 
 export default function Contacts({ contacts }) {
-  const { menuOpen, setMenuOpen, rotateTheme } = useAppState()
+  const { menuOpen, setMenuOpen, rotateTheme } = useLayout()
   return (
     <div className='absolute block w-12 bottom-0 right-0 -mr-6'>
       <ul>

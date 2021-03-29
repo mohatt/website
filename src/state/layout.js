@@ -1,11 +1,10 @@
 import React from 'react'
 
 /**
- * We use this context to persist data across pages without
+ * We use this context to persist layout state across pages without
  * using wrapPageElement to wrap page components with <Layout>
  */
-const AppStateContext = React.createContext()
-AppStateContext.displayName = 'App'
+const LayoutContext = React.createContext()
 
 // Color themes
 const THEME_DEFAULT = 'default'
@@ -25,7 +24,7 @@ function getInitialTheme()  {
   return THEME_DEFAULT
 }
 
-export function AppStateProvider({ children }) {
+export function LayoutProvider({ children }) {
   const [theme, setTheme] = React.useState(getInitialTheme())
   const [menuOpen, setMenuOpen] = React.useState(false)
 
@@ -38,10 +37,12 @@ export function AppStateProvider({ children }) {
   }, [theme])
 
   return (
-    <AppStateContext.Provider value={{ theme, menuOpen, rotateTheme, setMenuOpen }}>
+    <LayoutContext.Provider value={{ theme, menuOpen, rotateTheme, setMenuOpen }}>
       {children}
-    </AppStateContext.Provider>
+    </LayoutContext.Provider>
   )
 }
 
-export default () => React.useContext(AppStateContext)
+export default function useLayout() {
+  return React.useContext(LayoutContext)
+}

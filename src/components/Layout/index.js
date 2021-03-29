@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import useAppState from '../../App'
+import { useLayout } from '../../state'
 import { useSiteMetadata, useCurrentRoute } from '../../hooks'
 import Author from './Author'
 import Contacts from './Contacts'
@@ -13,7 +13,7 @@ import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 export default function Layout({ children }) {
   const site = useSiteMetadata()
   const { path } = useCurrentRoute()
-  const { menuOpen, theme } = useAppState()
+  const { menuOpen, theme } = useLayout()
 
   return (
     <div className={`h-screen flex flex-row overflow-hidden theme:${theme}`}>
