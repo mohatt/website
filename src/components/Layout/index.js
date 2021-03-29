@@ -7,8 +7,6 @@ import Contacts from './Contacts'
 import Menu from './Menu'
 import { Separator } from '..'
 import * as styles from './index.module.css'
-import avatar from '../../assets/img/avatar/avatar.png'
-import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
 export default function Layout({ children }) {
   const site = useSiteMetadata()
@@ -18,9 +16,7 @@ export default function Layout({ children }) {
   return (
     <div className={`h-screen flex flex-row overflow-hidden theme:${theme}`}>
       <Helmet>
-        <html lang='en' className='text-base xl:text-lg'/>
-        <link rel='preload' href={avatar} as='image' />
-        <link rel='preload' href={avatarAlt} as='image' />
+        <html lang='en' className='text-base xl:text-lg' />
       </Helmet>
       <div className='w-24 flex-shrink-0 border-r-4 border-primary bg-typo text-primary z-20'>
         <header className='h-full relative'>
