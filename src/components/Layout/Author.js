@@ -1,13 +1,20 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { useCurrentRoute } from '../../hooks'
 import { Link } from '..'
 import * as styles from './Author.module.css'
+import avatar from '../../assets/img/avatar/avatar.png'
+import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
 
 export default function Author({ author }) {
   const { path } = useCurrentRoute()
   const Heading = path === '/' ? 'h1' : 'h2'
   return (
     <div>
+      <Helmet>
+        <link rel='preload' href={avatar} as='image' />
+        <link rel='preload' href={avatarAlt} as='image' />
+      </Helmet>
       <a className={`block absolute rounded-full mt-10 right-0 -mr-16 h-32 w-32 bg-cover bg-center border-4 border-primary transition-all ${styles.avatar} `}>
         <span className='absolute w-5 h-5 bg-green-500 rounded-full bottom-0 left-0 ml-4' />
       </a>
