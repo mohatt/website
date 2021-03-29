@@ -1,10 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks/project-skills'
-import Page from '../components/Page'
-import Section from '../components/Section'
-import Heading from '../components/Heading'
-import Pagination from '../components/Pagination'
+import { Page, Section, Heading, Pagination } from '../components'
 
 export default function Portafolio({ data: { page, projects }, pageContext: { skill, category } }) {
   const skills = useProjectSkills()

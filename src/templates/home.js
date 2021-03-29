@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
 import Typed from 'typed.js'
-import Page from '../components/Page'
-import Hero from '../components/Hero'
+import { Page, Hero } from '../components'
 
 export default function Home({ data: { page } }) {
   const _strings = useRef()

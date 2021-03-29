@@ -1,11 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks/project-skills'
-import Page from '../components/Page'
-import Section from '../components/Section'
-import Heading from '../components/Heading'
-import Icon from '../components/Icon'
-import Link from '../components/Link'
+import { Page, Section, Heading, Icon, Button } from '../components'
 
 const categories = {
   backend: [
@@ -59,10 +55,11 @@ const SkillCategory = ({ id }) => (
                   <Icon path={icon} className='h-6 w-6 mr-2 text-primary' />
                   {title}
                   {projects > 0 && (
-                    <Link
+                    <Button
+                      color='alt'
+                      className='text-xs ml-2 py-0 px-2'
                       to='portafolio.skill'
                       params={{ skill: id }}
-                      className='btn btn-alt rounded-full text-xs ml-2 py-0 px-2'
                       title={`View projects tagged with '${id}'`}
                       children={projects}
                     />

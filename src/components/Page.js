@@ -2,9 +2,9 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import useMetadata from '../hooks/site-metadata'
 import useCurrentRoute from '../hooks/current-route'
-import Layout from './Layout'
+import { Layout } from '.'
 
-export default ({ children, pretitle, title, description }) => {
+export default function Page({ children, pretitle, title, description }) {
   const site = useMetadata()
   const { path } = useCurrentRoute()
   title = title ? `${title} — ${site.title}` : site.title

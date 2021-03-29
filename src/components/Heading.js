@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-export default ({ title, primary, children, className }) => {
+export default function Heading({ title, primary, children, className }) {
   const Hn = primary ? 'h1' : 'h2'
   return (
     <header className={classNames('mb-12 max-w-2xl', { 'mt-4': primary }, className)}>
