@@ -1,4 +1,7 @@
 module.exports = {
+  ignore: [
+    'webpack.report.html'
+  ],
   purgecss: {
     enabled: true,
     allowSymbols: true,
