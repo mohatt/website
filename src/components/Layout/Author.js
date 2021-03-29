@@ -3,7 +3,7 @@ import Link from '../Link'
 import useCurrentRoute from '../../hooks/current-route'
 import * as styles from './Author.module.css'
 
-export default ({ author }) => {
+export default function Author({ author }) {
   const { path } = useCurrentRoute()
   const Heading = path === '/' ? 'h1' : 'h2'
   return (

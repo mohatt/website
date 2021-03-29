@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Page from '../components/Page'
-import Hero from '../components/Hero'
+import { Page, Hero } from '../components'
 
 export default function Error({ data: { page } }) {
   return (

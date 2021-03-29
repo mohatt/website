@@ -1,9 +1,7 @@
 import React from 'react'
-import Section from './Section'
-import Button from './Button'
-import ButtonGroup from './ButtonGroup'
+import { Section, Button, ButtonGroup } from '.'
 
-export default ({ children, title, actions, className }) => {
+export default function Hero({ children, title, actions, className }) {
   return (
     <Section className={className}>
       <header className='mt-8 mb-12 max-w-lg'>

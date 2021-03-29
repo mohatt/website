@@ -1,14 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Page from '../components/Page'
-import Hero from '../components/Hero'
-import MDXRenderer from '../components/MDXRenderer'
+import { Page, Hero, Markdown } from '../components'
 
 export default function Project({ data: { page, project } }) {
   return (
     <Page title={project.frontmatter.title}>
       <Hero title={project.frontmatter.title}>
-        <MDXRenderer>{project.body}</MDXRenderer>
+        <Markdown>{project.body}</Markdown>
       </Hero>
     </Page>
   )
