@@ -26,7 +26,7 @@ dependencies:
   lodash: 4.17.21
   moment: 2.29.1
   postcss: 8.2.8
-  postcss-import: 14.0.0_postcss@8.2.8
+  postcss-import: 14.0.1_postcss@8.2.8
   postcss-preset-env: 6.7.0
   prismjs: 1.23.0
   react: 17.0.2
@@ -11980,7 +11980,7 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-oPTcFFip5LZy8Y/whto91L9xdRHCWEMs3e1MdJxhgt4jy2WYXfhkng59fH5qLXSCPN8k4n94p1Czrfe5IOkKUw==
-  /postcss-import/14.0.0_postcss@8.2.8:
+  /postcss-import/14.0.1_postcss@8.2.8:
     dependencies:
       postcss: 8.2.8
       postcss-value-parser: 4.1.0
@@ -11992,7 +11992,7 @@ packages:
     peerDependencies:
       postcss: ^8.0.0
     resolution:
-      integrity: sha512-gFDDzXhqr9ELmnLHgCC3TbGfA6Dm/YMb/UN8/f7Uuq4fL7VTk2vOIj6hwINEwbokEmp123bLD7a5m+E+KIetRg==
+      integrity: sha512-Xn2+z++vWObbEPhiiKO1a78JiyhqipyrXHBb3AHpv0ks7Cdg+GxQQJ24ODNMTanldf7197gSP3axppO9yaG0lA==
   /postcss-initial/3.0.2:
     dependencies:
       lodash.template: 4.5.0
@@ -16355,7 +16355,7 @@ specifiers:
   lodash: 4.17.21
   moment: 2.29.1
   postcss: 8.2.8
-  postcss-import: 14.0.0
+  postcss-import: 14.0.1
   postcss-preset-env: 6.7.0
   prettier: 2.2.1
   prismjs: 1.23.0
