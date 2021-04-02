@@ -11,13 +11,13 @@ import * as styles from './Layout.module.css'
 export default function Layout({ children }) {
   const site = useSiteMetadata()
   const { path } = useCurrentRoute()
-  const { theme, themeConfig, menuOpen } = useLayout()
+  const { themeConfig, menuOpen } = useLayout()
 
   return (
     <div className='h-screen flex flex-row overflow-hidden'>
       <Helmet>
         <html lang='en' className='text-base xl:text-lg' />
-        <body className={`theme:${theme}${themeConfig.dark ? ' dark' : ''}`}/>
+        <body className={themeConfig.getClassName()}/>
       </Helmet>
       <div className='w-24 flex-shrink-0 border-r-4 border-primary bg-typo text-primary z-20'>
         <header className='h-full relative'>

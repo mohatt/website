@@ -10,7 +10,7 @@ const LayoutContext = React.createContext()
 function getInitialTheme()  {
   try {
     const theme = localStorage.getItem(THEME_STORAGE_KEY)
-    if (THEME_LIST[theme]) {
+    if (THEME_LIST.find(t => t.id === theme)) {
       return theme
     }
   } catch (err) {}
@@ -20,13 +20,12 @@ function getInitialTheme()  {
 export function LayoutProvider({ children }) {
   const [theme, setTheme] = React.useState(getInitialTheme())
   const [menuOpen, setMenuOpen] = React.useState(false)
-  const themeConfig = THEME_LIST[theme]
+  const themeConfig = THEME_LIST.find(t => t.id === theme)
 
   const cycleTheme = () => {
-    const keys = Object.keys(THEME_LIST)
-    const i = keys.indexOf(theme)
+    const i = THEME_LIST.indexOf(themeConfig)
     if (i !== -1) {
-      setTheme(keys[(i + 1) % keys.length])
+      setTheme(THEME_LIST[(i + 1) % THEME_LIST.length].id)
     }
   }
 

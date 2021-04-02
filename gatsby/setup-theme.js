@@ -1,5 +1,4 @@
 const React = require('react')
-const _ = require('lodash')
 const { THEME_LIST, THEME_STORAGE_KEY } = require('../config/themes')
 
 /**
@@ -18,8 +17,10 @@ module.exports = ({ setPreBodyComponents }) => {
   let t;
   try { t = localStorage.getItem("${THEME_STORAGE_KEY}"); } catch (e) {};
   if(t) {
-    let l = ${JSON.stringify(_.mapValues(THEME_LIST, ({ dark }) => ({ dark })))};
-    l[t] && document.body.setAttribute("class", "theme:"+t+(l[t].dark ? " dark" : ""));
+    let l = ${JSON.stringify(Object.fromEntries(
+        THEME_LIST.map(th => [th.id, th.getClassName()])
+      ))};
+    l[t] && document.body.setAttribute("class", l[t]);
   }
 })()
 `

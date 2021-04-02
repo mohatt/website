@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const tailwind = require('tailwindcss/defaultTheme')
-const theme = require('./themes').default
+const themes = require('./themes')
 
 module.exports = {
   theme: {
@@ -10,7 +10,7 @@ module.exports = {
       mono: ['"IBM Plex Mono"', ...tailwind.fontFamily.mono],
     },
     extend: {
-      colors: _.mapValues(theme.colors, ((c, k) => `var(--${k})`)),
+      colors: _.mapValues(themes.default.colors, ((c, k) => `var(--${k})`)),
       width: {
         inherit: 'inherit',
       },
@@ -22,6 +22,28 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
   ],
-  purge: false,
+  purge: {
+    content: [
+      './src/**/*.js',
+      // './public/**/*.html',
+      './src/assets/css/whitelist.txt',
+    ],
+    options: {
+      extractors: [
+        {
+          extensions: ['txt'],
+          extractor: content => {
+            return _.uniq(
+              content
+                .trim()
+                .split(/\s+/)
+                .concat(themes.THEME_LIST.map(t => t.getClassNames()))
+                .flat()
+            )
+          }
+        }
+      ]
+    }
+  },
   darkMode: 'class'
 }
