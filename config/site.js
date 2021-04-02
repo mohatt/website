@@ -21,6 +21,7 @@ module.exports = {
       },
     },
   },
+  theme: require('./themes').default,
   ga: 'G-WYVRHE98ND',
   pagination: {
     portafolio: 4

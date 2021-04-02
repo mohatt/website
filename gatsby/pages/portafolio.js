@@ -1,5 +1,5 @@
 const { kebabCase } = require('lodash')
-const limit = require('../../config').site.pagination.portafolio
+const limit = require('../../config/site').pagination.portafolio
 
 async function createPortafolioPages({ graphql, createAdvancedPage }) {
   const result = await graphql(`

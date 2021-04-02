@@ -1,5 +1,5 @@
 import React from 'react'
-import { LayoutProvider } from './state'
+import { LayoutProvider } from './components/Layout'
 
 export default ({ element }) => (
   <LayoutProvider>

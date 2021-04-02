@@ -1,5 +1,5 @@
 const path = require('path')
-const { site, tailwind, postcss, postbuild } = require('./config')
+const site = require('./config/site')
 
 module.exports = {
   siteMetadata: {
@@ -48,8 +48,8 @@ module.exports = {
         name: site.metadata.title,
         short_name: site.metadata.title,
         start_url: '/',
-        background_color: tailwind.theme.extend.colors.secondary,
-        theme_color: tailwind.theme.extend.colors.primary,
+        background_color: site.theme.colors.secondary,
+        theme_color: site.theme.colors.primary,
         display: 'standalone',
         icon: 'src/assets/img/avatar/avatar.png',
         legacy: false,
@@ -58,7 +58,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-postcss',
-      options: postcss,
+      options: require('./config/postcss'),
     },
     'gatsby-plugin-sitemap',
     `gatsby-plugin-robots-txt`,
@@ -66,7 +66,7 @@ module.exports = {
     `gatsby-plugin-preload-fonts`,
     {
       resolve: 'gatsby-plugin-postbuild',
-      options: postbuild,
+      options: require('./config/postbuild'),
     },
   ],
 }

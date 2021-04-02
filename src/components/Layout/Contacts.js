@@ -1,11 +1,11 @@
 import React from 'react'
-import { useLayout } from '../../state'
+import { useLayout } from './LayoutProvider'
 import { getContactHref } from '../../commons'
 import { Icon, Button } from '..'
 import * as styles from './Contacts.module.css'
 
 export default function Contacts({ contacts }) {
-  const { menuOpen, setMenuOpen, rotateTheme } = useLayout()
+  const { menuOpen, setMenuOpen, cycleTheme } = useLayout()
   return (
     <div className='absolute block w-12 bottom-0 right-0 -mr-6'>
       <ul>
@@ -28,7 +28,7 @@ export default function Contacts({ contacts }) {
             className={`${styles.contact} w-12 h-12 mb-6`}
             onClick={e => {
               e.preventDefault()
-              rotateTheme()
+              cycleTheme()
             }}
           >
             <Icon name='theme' />
