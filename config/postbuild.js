@@ -4,11 +4,7 @@ module.exports = {
   ],
   purgecss: {
     enabled: true,
-    allowSymbols: true,
-    safelist: [
-      'theme:default',
-      'theme:breeze',
-    ]
+    allowSymbols: true
   },
   'netlify-headers': {
     enabled: true

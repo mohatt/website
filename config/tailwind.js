@@ -1,21 +1,16 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const _ = require('lodash')
+const tailwind = require('tailwindcss/defaultTheme')
+const theme = require('./themes').default
 
 module.exports = {
   theme: {
     fontFamily: {
-      display: ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
-      body: ['"IBM Plex Serif"', ...defaultTheme.fontFamily.serif],
-      mono: ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
+      display: ['"IBM Plex Mono"', ...tailwind.fontFamily.mono],
+      body: ['"IBM Plex Serif"', ...tailwind.fontFamily.serif],
+      mono: ['"IBM Plex Mono"', ...tailwind.fontFamily.mono],
     },
     extend: {
-      colors: {
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
-        accent: 'var(--accent)',
-        typo: 'var(--typo)',
-        'typo-dim': 'var(--typo-dim)',
-        'typo-dimmer': 'var(--typo-dimmer)',
-      },
+      colors: _.mapValues(theme.colors, ((c, k) => `var(--${k})`)),
       width: {
         inherit: 'inherit',
       },
@@ -28,4 +23,5 @@ module.exports = {
     require('@tailwindcss/typography'),
   ],
   purge: false,
+  darkMode: 'class'
 }

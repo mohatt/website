@@ -1,4 +1,5 @@
 import React from 'react'
+import { THEME_LIST, THEME_DEFAULT, THEME_STORAGE_KEY } from '../../../config/themes'
 
 /**
  * We use this context to persist layout state across pages without
@@ -6,18 +7,10 @@ import React from 'react'
  */
 const LayoutContext = React.createContext()
 
-// Color themes
-const THEME_DEFAULT = 'default'
-const THEME_STORAGE_KEY = 'mohatt:theme'
-const THEME_NEXT = {
-  [THEME_DEFAULT]: 'breeze',
-  breeze: THEME_DEFAULT,
-}
-
 function getInitialTheme()  {
   try {
     const theme = localStorage.getItem(THEME_STORAGE_KEY)
-    if (THEME_NEXT[theme]) {
+    if (THEME_LIST[theme]) {
       return theme
     }
   } catch (err) {}
@@ -27,22 +20,29 @@ function getInitialTheme()  {
 export function LayoutProvider({ children }) {
   const [theme, setTheme] = React.useState(getInitialTheme())
   const [menuOpen, setMenuOpen] = React.useState(false)
+  const themeConfig = THEME_LIST[theme]
 
-  const rotateTheme = () => {
-    setTheme(THEME_NEXT[theme])
+  const cycleTheme = () => {
+    const keys = Object.keys(THEME_LIST)
+    const i = keys.indexOf(theme)
+    if (i !== -1) {
+      setTheme(keys[(i + 1) % keys.length])
+    }
   }
 
   React.useEffect(() => {
-    localStorage.setItem(THEME_STORAGE_KEY, theme)
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme)
+    } catch (err) {}
   }, [theme])
 
   return (
-    <LayoutContext.Provider value={{ theme, menuOpen, rotateTheme, setMenuOpen }}>
+    <LayoutContext.Provider value={{ theme, themeConfig, menuOpen, cycleTheme, setMenuOpen }}>
       {children}
     </LayoutContext.Provider>
   )
 }
 
-export default function useLayout() {
+export function useLayout() {
   return React.useContext(LayoutContext)
 }

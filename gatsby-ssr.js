@@ -1,3 +1,2 @@
-import Wrapper from './src/Wrapper'
-
-export const wrapRootElement = Wrapper
+module.exports = require('./gatsby').ssr
+module.exports.wrapRootElement = require('./src/wrapRootElement').default
