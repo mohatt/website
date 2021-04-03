@@ -4,6 +4,7 @@ module.exports = {
     url: 'https://mo.tru.io',
     description: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
     copyright: '© 2021 All rights reserved.',
+    theme: 'default',
     menu: [
       { label: 'Intro', to: 'home' },
       { label: 'Skills', to: 'skills' },
@@ -21,7 +22,6 @@ module.exports = {
       },
     },
   },
-  theme: require('./themes').default,
   ga: 'G-WYVRHE98ND',
   pagination: {
     portafolio: 4

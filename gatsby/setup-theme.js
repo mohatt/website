@@ -1,5 +1,5 @@
 const React = require('react')
-const { THEME_LIST, THEME_STORAGE_KEY } = require('../config/themes')
+const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons')
 
 /**
  * Workaround for Gatsby’s rehydration issue
@@ -18,7 +18,7 @@ module.exports = ({ setPreBodyComponents }) => {
   try { t = localStorage.getItem("${THEME_STORAGE_KEY}"); } catch (e) {};
   if(t) {
     let l = ${JSON.stringify(Object.fromEntries(
-        THEME_LIST.map(th => [th.id, th.getClassName()])
+        THEME_LIST.map(theme => [theme.id, theme.getClassName()])
       ))};
     l[t] && document.body.setAttribute("class", l[t]);
   }
