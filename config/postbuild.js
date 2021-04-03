@@ -3,7 +3,14 @@ module.exports = {
     'webpack.report.html',
   ],
   purgecss: {
-    enabled: false
+    enabled: true,
+    allowSymbols: true,
+    writeRejected: true,
+    safelist: {
+      // pseudo selectors starting with `:`
+      // eg :-moz-focusring ::-webkit-file-upload-button
+      standard: [/^:/]
+    },
   },
   'netlify-headers': {
     enabled: true
