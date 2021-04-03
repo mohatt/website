@@ -26,23 +26,11 @@ module.exports = {
     content: [
       './src/**/*.js',
       // './public/**/*.html',
+      './src/assets/css/themes.css',
       './src/assets/css/whitelist.txt',
     ],
     options: {
-      extractors: [
-        {
-          extensions: ['txt'],
-          extractor: content => {
-            return _.uniq(
-              content
-                .trim()
-                .split(/\s+/)
-                .concat(themes.THEME_LIST.map(t => t.getClassNames()))
-                .flat()
-            )
-          }
-        }
-      ]
+      extractors: []
     }
   },
   darkMode: 'class'
