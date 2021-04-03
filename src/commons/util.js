@@ -1,5 +1,4 @@
-
-export const getContactHref = (name, contact) => {
+exports.getContactHref = (name, contact) => {
   let href
   switch (name) {
     case 'twitter':
@@ -18,5 +17,3 @@ export const getContactHref = (name, contact) => {
 
   return href
 }
-
-export {}

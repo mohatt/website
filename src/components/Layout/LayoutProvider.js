@@ -1,5 +1,6 @@
 import React from 'react'
-import { THEME_LIST, THEME_DEFAULT, THEME_STORAGE_KEY } from '../../../config/themes'
+import { THEME_LIST, THEME_STORAGE_KEY } from '../../commons/themes'
+import { useSiteMetadata } from '../../hooks'
 
 /**
  * We use this context to persist layout state across pages without
@@ -7,18 +8,24 @@ import { THEME_LIST, THEME_DEFAULT, THEME_STORAGE_KEY } from '../../../config/th
  */
 const LayoutContext = React.createContext()
 
-function getInitialTheme()  {
+function getUserTheme()  {
   try {
     const theme = localStorage.getItem(THEME_STORAGE_KEY)
     if (THEME_LIST.find(t => t.id === theme)) {
       return theme
     }
   } catch (err) {}
-  return THEME_DEFAULT
+}
+
+function setUserTheme(theme)  {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme)
+  } catch (err) {}
 }
 
 export function LayoutProvider({ children }) {
-  const [theme, setTheme] = React.useState(getInitialTheme())
+  const defaultTheme = useSiteMetadata().theme
+  const [theme, setTheme] = React.useState(getUserTheme() || defaultTheme)
   const [menuOpen, setMenuOpen] = React.useState(false)
   const themeConfig = THEME_LIST.find(t => t.id === theme)
 
@@ -29,11 +36,7 @@ export function LayoutProvider({ children }) {
     }
   }
 
-  React.useEffect(() => {
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, theme)
-    } catch (err) {}
-  }, [theme])
+  React.useEffect(() => setUserTheme(theme), [theme])
 
   return (
     <LayoutContext.Provider value={{ theme, themeConfig, menuOpen, cycleTheme, setMenuOpen }}>

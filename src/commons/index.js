@@ -1,2 +1,5 @@
-export { default as ICONS } from './icons'
-export * from './util'
+module.exports = {
+  ...require('./icons'),
+  ...require('./themes'),
+  ...require('./util'),
+}

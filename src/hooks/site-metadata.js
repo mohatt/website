@@ -10,6 +10,7 @@ export default function useSiteMetadata() {
             description
             url
             copyright
+            theme
             author {
               name
               screenName
