@@ -9,23 +9,28 @@ const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons')
  * @see https://github.com/gatsbyjs/gatsby/issues/14601#issuecomment-499922794
  */
 module.exports = ({ setPreBodyComponents }) => {
-  const ThemeSetter = React.createElement('script', {
-    key: 'ThemeSetter',
-    dangerouslySetInnerHTML: {
-      __html: `
+  const themeSetup = `
 (function() {
-  let t;
-  try { t = localStorage.getItem("${THEME_STORAGE_KEY}"); } catch (e) {};
+  let t
+  try {
+    t = localStorage.getItem("${THEME_STORAGE_KEY}")
+    t = JSON.parse(t)
+  } catch (e) {}
   if(t) {
-    let l = ${JSON.stringify(Object.fromEntries(
-        THEME_LIST.map(theme => [theme.id, theme.getClassName()])
-      ))};
-    l[t] && document.body.setAttribute("class", l[t]);
+    let themes = ${JSON.stringify(
+      THEME_LIST.reduce((acc, theme) => {
+        acc[theme.id] = theme.getClassName()
+        return acc
+      }, {})
+    )}
+    if (themes[t]) {
+      document.body.setAttribute("class", themes[t])
+    }
   }
 })()
 `
-    }
-  })
 
-  setPreBodyComponents([ThemeSetter])
+  setPreBodyComponents([
+    <script key="theme-setup" dangerouslySetInnerHTML={{ __html: themeSetup }} />
+  ])
 }
