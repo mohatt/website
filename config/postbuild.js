@@ -14,5 +14,16 @@ module.exports = {
   },
   'netlify-headers': {
     enabled: true
+  },
+  minify: {
+    enabled: true,
+    script: true,
+    style: ['default', {
+      discardComments: {
+        remove: comment => {
+          return comment !== '!'
+        }
+      }
+    }]
   }
 }

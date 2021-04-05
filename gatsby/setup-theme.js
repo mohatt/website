@@ -2,7 +2,7 @@ const React = require('react')
 const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons')
 
 /**
- * Workaround for Gatsby’s rehydration issue
+ * Provides a workaround for FOUC
  * This solves the flickering issue due to the fact that the server
  *  renders first and then the client comes in and does its change
  * @see ../src/hooks/is-client.js
