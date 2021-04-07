@@ -15,9 +15,7 @@
 /**
  * Custom component classes
  */
-@import 'components/icons';
-@import 'components/buttons';
-@import 'components/separator';
+@import '../../components';
 
 /**
  *Custom utilities
