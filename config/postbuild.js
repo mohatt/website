@@ -17,7 +17,6 @@ module.exports = {
   },
   minify: {
     enabled: true,
-    script: true,
     style: ['default', {
       discardComments: {
         remove: comment => {
