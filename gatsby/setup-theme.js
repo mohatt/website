@@ -10,24 +10,20 @@ const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons')
  */
 module.exports = ({ setPreBodyComponents }) => {
   const themeSetup = `
-(function() {
-  let t
-  try {
-    t = localStorage.getItem("${THEME_STORAGE_KEY}")
-    t = JSON.parse(t)
-  } catch (e) {}
-  if(t) {
+try {
+  let theme = JSON.parse(localStorage.getItem("${THEME_STORAGE_KEY}"))
+  if(theme) {
     let themes = ${JSON.stringify(
       THEME_LIST.reduce((acc, theme) => {
         acc[theme.id] = theme.getClassName()
         return acc
       }, {})
     )}
-    if (themes[t]) {
-      document.body.setAttribute("class", themes[t])
+    if (themes[theme]) {
+      document.body.setAttribute("class", themes[theme])
     }
   }
-})()
+} catch (e) {}
 `
 
   setPreBodyComponents([
