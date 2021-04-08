@@ -3,3 +3,65 @@
 
 /** Component classes */
 @import '../index.css';
+
+@layer base {
+  #header #author #avatar {
+    box-shadow: 0 6px 0 6px theme('colors.typo');
+    background-image: url('../../images/avatar/avatar.png');
+  }
+
+  #header #author #avatar:hover {
+    background-image: url('../../images/avatar/avatar-smile.png');
+    background-color: theme('colors.secondary');
+  }
+
+  #header #author h1,
+  #header #author h2 {
+    writing-mode: vertical-lr;
+    transform: rotate(-180deg);
+    letter-spacing: 0.4rem;
+  }
+
+  #header #contacts li > * {
+    box-shadow: 0 0 0 4px theme('colors.primary'), 0 3px 0 7px theme('colors.typo');
+  }
+
+  #menu {
+    box-shadow: rgba(255, 255, 255, 0.5) -30px 0 20px -20px inset;
+  }
+
+  .dark #menu {
+    box-shadow: rgba(0, 0, 0, 0.5) -30px 0 20px -20px inset;
+  }
+
+  #menu nav a,
+  #menu nav a::before,
+  #menu nav a::after {
+    @apply transition-all duration-300;
+  }
+
+  #menu nav a::before,
+  #menu nav a::after {
+    @apply inline-block opacity-0;
+  }
+
+  #menu nav a::before {
+    content: '<';
+    margin-right: 0.25rem;
+    transform: translateX(20px);
+  }
+
+  #menu nav a::after {
+    content: '/>';
+    margin-left: 0.25rem;
+    transform: translateX(-20px);
+  }
+
+  #menu nav a.active::before,
+  #menu nav a.active::after,
+  #menu nav a:hover::before,
+  #menu nav a:hover::after {
+    @apply opacity-100;
+    transform: translateX(0);
+  }
+}

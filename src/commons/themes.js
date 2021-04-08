@@ -1,7 +1,8 @@
 // Theme interface
-const Theme = function(id, name, dark) {
+const Theme = function(id, name, colors, dark) {
   this.id = id
   this.name = name
+  this.colors = name
   this.dark = dark
 
   this.getClassName = () => this.getClassNames().join(' ')
@@ -13,6 +14,30 @@ const Theme = function(id, name, dark) {
 exports.THEME_STORAGE_KEY = 'mohatt:theme'
 // Availabe themes
 exports.THEME_LIST = [
-  new Theme('default', 'Default', true),
-  new Theme('breeze', 'Breeze', true),
+  new Theme(
+    'default',
+    'Default',
+    {
+      primary: '#b28e59',
+      secondary: '#234e52',
+      accent: '#222',
+      typo: '#f7f3e3',
+      'typo-dim': '#9a937c',
+      'typo-dimmer': '#7c8171',
+    },
+    true
+  ),
+  new Theme(
+    'breeze',
+    'Breeze',
+    {
+      primary: '#b25959',
+      secondary: '#233e52',
+      accent: '#222',
+      typo: '#f7f3e3',
+      'typo-dim': '#7c8d9a',
+      'typo-dimmer': '#717c81',
+    },
+    true
+  )
 ]

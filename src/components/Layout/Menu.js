@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from '..'
-import * as styles from './Menu.module.css'
 
 export default function Menu({ items, className }) {
   return (
@@ -10,8 +9,8 @@ export default function Menu({ items, className }) {
           <li key={to}>
             <Link
               to={to}
-              className={`block font-display font-medium italic text-right pb-6 pr-6 hover:text-typo ${styles.item}`}
-              activeClassName={`text-typo ${styles.active}`}
+              className='block font-display font-medium italic text-right pb-6 pr-6 hover:text-typo'
+              activeClassName='text-typo active'
               partiallyActive={to !== 'home'}
               children={label}
             />

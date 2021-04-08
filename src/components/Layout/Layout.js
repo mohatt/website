@@ -7,12 +7,22 @@ import Contacts from './Contacts'
 import Menu from './Menu'
 import { Separator } from '..'
 import './Layout.css'
-import * as styles from './Layout.module.css'
+
+function Theme () {
+  const { themeConfig } = useLayout()
+  return (
+    <Helmet>
+      <html lang='en' className='text-base xl:text-lg' />
+      <meta name="theme-color" content={themeConfig.colors.secondary} />
+      <body className={themeConfig.getClassName()} />
+    </Helmet>
+  )
+}
 
 export default function Layout({ children }) {
   const site = useSiteMetadata()
   const { path } = useCurrentRoute()
-  const { themeConfig, menuOpen } = useLayout()
+  const { menuOpen } = useLayout()
 
 /*
   React.useEffect(() => {
@@ -23,21 +33,17 @@ export default function Layout({ children }) {
 */
   return (
     <div className='h-screen flex flex-row overflow-hidden'>
-      <Helmet>
-        <html lang='en' className='text-base xl:text-lg' />
-        <meta name="theme-color" content="#4285f4" />
-        <body className={themeConfig.getClassName()} />
-      </Helmet>
-      <div className='w-24 flex-shrink-0 border-r-4 border-primary bg-typo text-primary z-20'>
+      <Theme />
+      <div id='header' className='w-24 flex-shrink-0 border-r-4 border-primary bg-typo text-primary z-20'>
         <header className='h-full relative'>
           <Author author={site.author} />
           <Contacts contacts={site.author.contacts} />
         </header>
       </div>
-      <div className={`${menuOpen ? 'w-64' : 'w-0'} lg:w-64 overflow-hidden flex-shrink-0 flex flex-col justify-center bg-accent text-typo-dim text-shadow ${styles.nav}`}>
+      <div id='menu' className={`${menuOpen ? 'w-64' : 'w-0'} lg:w-64 overflow-hidden flex-shrink-0 flex flex-col justify-center bg-accent text-typo-dim text-shadow transition-box`}>
         <Menu className='w-64' items={site.menu} />
       </div>
-      <div className={`${menuOpen ? '-mr-64' : ''} lg:-mr-0 flex-grow overflow-y-auto flex flex-col bg-secondary text-typo-dim text-shadow ${styles.main}`}>
+      <div id='main' className={`${menuOpen ? '-mr-64' : ''} lg:-mr-0 flex-grow overflow-y-auto flex flex-col bg-secondary text-typo-dim text-shadow transition-box`}>
         <main className='mt-32 flex-grow flex-shrink-0 flex flex-col justify-center'>
           {children}
         </main>
