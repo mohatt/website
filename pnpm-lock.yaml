@@ -20,7 +20,7 @@ specifiers:
   gatsby-plugin-preload-fonts: 2.2.0
   gatsby-plugin-react-helmet: 4.2.0
   gatsby-plugin-robots-txt: 1.5.5
-  gatsby-plugin-sharp: 3.2.0
+  gatsby-plugin-sharp: 3.2.1
   gatsby-plugin-sitemap: 3.2.0
   gatsby-remark-images: 4.2.0
   gatsby-remark-prismjs: 4.2.0
@@ -63,13 +63,13 @@ dependencies:
   gatsby-plugin-preload-fonts: 2.2.0_gatsby@3.2.1
   gatsby-plugin-react-helmet: 4.2.0_gatsby@3.2.1+react-helmet@6.1.0
   gatsby-plugin-robots-txt: 1.5.5_gatsby@3.2.1
-  gatsby-plugin-sharp: 3.2.0_gatsby@3.2.1
+  gatsby-plugin-sharp: 3.2.1_gatsby@3.2.1
   gatsby-plugin-sitemap: 3.2.0_8514b3d236412a6c90aa1e83347f26a9
-  gatsby-remark-images: 4.2.0_857920743e5dbecb22d9093737b403f3
+  gatsby-remark-images: 4.2.0_5b6bb0724d7d9629f859d27a7b9b0f1c
   gatsby-remark-prismjs: 4.2.0_gatsby@3.2.1+prismjs@1.23.0
   gatsby-remark-smartypants: 3.2.0_gatsby@3.2.1
   gatsby-source-filesystem: 3.2.0_gatsby@3.2.1
-  gatsby-transformer-sharp: 3.2.0_857920743e5dbecb22d9093737b403f3
+  gatsby-transformer-sharp: 3.2.0_5b6bb0724d7d9629f859d27a7b9b0f1c
   gatsby-transformer-yaml: 3.2.0_gatsby@3.2.1
   lodash: 4.17.21
   moment: 2.29.1
@@ -5004,8 +5004,8 @@ packages:
   /dataloader/2.0.0:
     resolution: {integrity: sha512-YzhyDAwA4TaQIhM5go+vCLmU0UikghC/t9DTQYZR2M/UvZ1MdOhPezSDZcjj9uqQJOMqjLcpWtyW2iNINdlatQ==}
 
-  /date-fns/2.19.0:
-    resolution: {integrity: sha512-X3bf2iTPgCAQp9wvjOQytnf5vO5rESYRXlPIVcgSbtT5OTScPcsf9eZU+B/YIkKAtYr5WeCii58BgATrNitlWg==}
+  /date-fns/2.20.0:
+    resolution: {integrity: sha512-nmA7y6aDH5+fknfJ0G77HQzUSfTPpq4ifq+c9blP9d+X9zs3kNjxC+t3pcbBMGTp262a6PJB3RVjLlxIgoMI+Q==}
     engines: {node: '>=0.11'}
     dev: false
 
@@ -7077,7 +7077,7 @@ packages:
       gatsby: ^3.0.0-next.0
     dependencies:
       chalk: 4.1.0
-      date-fns: 2.19.0
+      date-fns: 2.20.0
       fs-extra: 8.1.0
       gatsby: 3.2.1_react-dom@17.0.2+react@17.0.2
       gatsby-core-utils: 2.2.0
@@ -7112,8 +7112,8 @@ packages:
       generate-robotstxt: 8.0.3
     dev: false
 
-  /gatsby-plugin-sharp/3.2.0_gatsby@3.2.1:
-    resolution: {integrity: sha512-+Y4z/Q0bQL+wA1kb9wvAKlSz+o0+2V3IRxhu8kx/0pfpk48Q0apk+v4UMn7l835yocKfsePj8qvW7Ez0D47O9A==}
+  /gatsby-plugin-sharp/3.2.1_gatsby@3.2.1:
+    resolution: {integrity: sha512-ZAEiDehEz7VRgykQSVwg0ESu9c+rA2BUfi6+VCi2ppemRezXm+jGUkSTo+WUhjiPmEhQq+IIOOWe4lpslJoZRg==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       gatsby: ^3.0.0-next.0
@@ -7268,7 +7268,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /gatsby-remark-images/4.2.0_857920743e5dbecb22d9093737b403f3:
+  /gatsby-remark-images/4.2.0_5b6bb0724d7d9629f859d27a7b9b0f1c:
     resolution: {integrity: sha512-LaybtebK/8jF2qLInv/2yAvNioCJXxjhVZqIBs8xQp6sgaWSQ2CMFWARLkJC21OezIObiAGYKCMSKk8bWP6cFQ==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
@@ -7280,7 +7280,7 @@ packages:
       cheerio: 1.0.0-rc.5
       gatsby: 3.2.1_react-dom@17.0.2+react@17.0.2
       gatsby-core-utils: 2.2.0
-      gatsby-plugin-sharp: 3.2.0_gatsby@3.2.1
+      gatsby-plugin-sharp: 3.2.1_gatsby@3.2.1
       is-relative-url: 3.0.0
       lodash: 4.17.21
       mdast-util-definitions: 1.2.5
@@ -7360,7 +7360,7 @@ packages:
       uuid: 3.4.0
     dev: false
 
-  /gatsby-transformer-sharp/3.2.0_857920743e5dbecb22d9093737b403f3:
+  /gatsby-transformer-sharp/3.2.0_5b6bb0724d7d9629f859d27a7b9b0f1c:
     resolution: {integrity: sha512-2UmkLMCuYCskuyyEqHIPfNg1svgtNxCWWCCfEnAIIhntWfX7mewdhSG7eBciFJep+CYfV6bGZLcb+sKYkb0jvg==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
@@ -7372,7 +7372,7 @@ packages:
       common-tags: 1.8.0
       fs-extra: 9.1.0
       gatsby: 3.2.1_react-dom@17.0.2+react@17.0.2
-      gatsby-plugin-sharp: 3.2.0_gatsby@3.2.1
+      gatsby-plugin-sharp: 3.2.1_gatsby@3.2.1
       potrace: 2.1.8
       probe-image-size: 6.0.0
       semver: 7.3.5
@@ -7443,7 +7443,7 @@ packages:
       css-loader: 5.2.0_webpack@5.31.0
       css-minimizer-webpack-plugin: 1.3.0_webpack@5.31.0
       css.escape: 1.5.1
-      date-fns: 2.19.0
+      date-fns: 2.20.0
       debug: 3.2.7
       del: 5.1.0
       detect-port: 1.3.0

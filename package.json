@@ -1,5 +1,6 @@
 {
   "name": "@mohatt/website",
+  "private": true,
   "description": "Codebase for my personal website",
   "version": "2.0.0",
   "sideEffects": [
@@ -43,7 +44,7 @@
     "gatsby-plugin-preload-fonts": "2.2.0",
     "gatsby-plugin-react-helmet": "4.2.0",
     "gatsby-plugin-robots-txt": "1.5.5",
-    "gatsby-plugin-sharp": "3.2.0",
+    "gatsby-plugin-sharp": "3.2.1",
     "gatsby-plugin-sitemap": "3.2.0",
     "gatsby-remark-images": "4.2.0",
     "gatsby-remark-prismjs": "4.2.0",
@@ -75,7 +76,7 @@
     "webpack-bundle-analyzer": "4.4.0"
   },
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=12.17.0"
   },
   "browserslist": [
     "last 2 version",
