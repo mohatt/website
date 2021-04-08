@@ -16,6 +16,7 @@ const tailwindcss = require('@tailwindcss/jit')({
 module.exports = {
   postCssPlugins: [
     require('postcss-import'),
+    require('postcss-url'),
     tailwindcss,
     presetenv,
   ]
