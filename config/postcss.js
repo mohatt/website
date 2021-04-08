@@ -9,7 +9,7 @@ const presetenv = require('postcss-preset-env')({
   },
 })
 
-const tailwindcss = require('@tailwindcss/jit')({
+const tailwindcss = require('tailwindcss')({
   config: require('./tailwind')
 })
 
