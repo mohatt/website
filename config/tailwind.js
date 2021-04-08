@@ -23,6 +23,9 @@ module.exports = {
       },
       height: {
         inherit: 'inherit',
+      },
+      transitionProperty: {
+        box: 'height, width, margin, padding'
       }
     },
   },

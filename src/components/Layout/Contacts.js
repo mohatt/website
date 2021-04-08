@@ -2,18 +2,17 @@ import React from 'react'
 import { useLayout } from './LayoutProvider'
 import { getContactHref } from '../../commons'
 import { Icon, Button } from '..'
-import * as styles from './Contacts.module.css'
 
 export default function Contacts({ contacts }) {
   const { menuOpen, setMenuOpen, cycleTheme } = useLayout()
   return (
-    <div className='absolute block w-12 bottom-0 right-0 -mr-6'>
+    <div id='contacts' className='absolute block w-12 bottom-0 right-0 -mr-6'>
       <ul>
         <li className='visible lg:invisible'>
           <Button
             mono
             active={menuOpen}
-            className={`${styles.contact} w-12 h-12 mb-6`}
+            className='w-12 h-12 mb-6'
             onClick={e => {
               e.preventDefault()
               setMenuOpen(!menuOpen)
@@ -25,7 +24,7 @@ export default function Contacts({ contacts }) {
         <li>
           <Button
             mono
-            className={`${styles.contact} w-12 h-12 mb-6`}
+            className='w-12 h-12 mb-6'
             onClick={e => {
               e.preventDefault()
               cycleTheme()
@@ -38,7 +37,7 @@ export default function Contacts({ contacts }) {
           <li key={name}>
             <Button
               mono
-              className={`${styles.contact} block w-12 h-12 mb-6`}
+              className='block w-12 h-12 mb-6'
               to={getContactHref(name, contacts[name])}
               external
               rel='noopener noreferrer'
