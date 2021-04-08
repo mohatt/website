@@ -3,8 +3,8 @@ import Helmet from 'react-helmet'
 import { useCurrentRoute } from '../../hooks'
 import { Link } from '..'
 import * as styles from './Author.module.css'
-import avatar from '../../assets/img/avatar/avatar.png'
-import avatarAlt from '../../assets/img/avatar/avatar-smile.png'
+import avatar from '../../images/avatar/avatar.png'
+import avatarAlt from '../../images/avatar/avatar-smile.png'
 
 export default function Author({ author }) {
   const { path } = useCurrentRoute()

@@ -32,8 +32,8 @@ module.exports = {
     content: [
       './src/**/*.js',
       // './public/**/*.html',
-      './src/assets/css/themes.css',
-      './src/assets/css/whitelist.txt',
+      './src/css/themes.css',
+      './src/css/whitelist.txt',
     ],
     options: {
       extractors: [],

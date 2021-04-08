@@ -51,7 +51,7 @@ module.exports = {
         background_color: '#234e52',
         theme_color: '#b28e59',
         display: 'standalone',
-        icon: 'src/assets/img/avatar/avatar.png',
+        icon: 'src/images/avatar/avatar.png',
         legacy: false,
       },
     },
