@@ -2,6 +2,7 @@ const tailwind = require('tailwindcss/defaultTheme')
 
 module.exports = {
   darkMode: 'class',
+  mode: 'jit',
   theme: {
     fontFamily: {
       display: ['"IBM Plex Mono"', ...tailwind.fontFamily.mono],
