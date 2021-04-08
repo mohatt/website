@@ -18,11 +18,11 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/.pnpm-store
-          key: pnpm-install-v1-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-install-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            pnpm-install-v1-
+            pnpm-install-v2-
       - run: |
-          npm -g install pnpm@5.18
+          npm -g install pnpm@6
           pnpm set verify-store-integrity false
       - run: pnpm install --shamefully-hoist
       - run: pnpm run build
