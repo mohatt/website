@@ -6,18 +6,21 @@
 @import 'tailwindcss/utilities';
 
 /**
- * Our self-hosted fonts and some base styles
+ * Self-hosted fonts
  */
-@import 'fonts';
-@import 'base';
-@import 'themes';
+@import 'fonts.css';
 
 /**
- * Custom component classes
+ * Some base styles
  */
-@import '../../components';
+@import 'base.css';
 
 /**
- *Custom utilities
+ * Theme classes
  */
-@import 'utilities/text-shadow';
+@import 'themes.css';
+
+/**
+ * Custom utilities
+ */
+@import 'utilities/text-shadow.css';

@@ -6,6 +6,7 @@ import Author from './Author'
 import Contacts from './Contacts'
 import Menu from './Menu'
 import { Separator } from '..'
+import './Layout.css'
 import * as styles from './Layout.module.css'
 
 export default function Layout({ children }) {
@@ -13,11 +14,19 @@ export default function Layout({ children }) {
   const { path } = useCurrentRoute()
   const { themeConfig, menuOpen } = useLayout()
 
+/*
+  React.useEffect(() => {
+    window.___emitter.on('onDelayedLoadPageResources', ({ pathname }) => {
+      console.log('onDelayedLoadPageResources', pathname)
+    })
+  }, [])
+*/
   return (
     <div className='h-screen flex flex-row overflow-hidden'>
       <Helmet>
         <html lang='en' className='text-base xl:text-lg' />
-        <body className={themeConfig.getClassName()}/>
+        <meta name="theme-color" content="#4285f4" />
+        <body className={themeConfig.getClassName()} />
       </Helmet>
       <div className='w-24 flex-shrink-0 border-r-4 border-primary bg-typo text-primary z-20'>
         <header className='h-full relative'>
