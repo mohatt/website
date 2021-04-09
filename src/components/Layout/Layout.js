@@ -8,7 +8,7 @@ import Menu from './Menu'
 import { Separator } from '..'
 import './Layout.css'
 
-function Theme () {
+function Theme() {
   const { themeConfig } = useLayout()
   return (
     <Helmet>
