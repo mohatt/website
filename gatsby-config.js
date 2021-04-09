@@ -1,5 +1,6 @@
 const path = require('path')
 const site = require('./config/site')
+const theme = require('./src/commons').THEME_LIST.find(t => t.id === site.metadata.theme)
 
 module.exports = {
   siteMetadata: {
@@ -48,8 +49,8 @@ module.exports = {
         name: site.metadata.title,
         short_name: site.metadata.title,
         start_url: '/',
-        background_color: '#234e52',
-        theme_color: '#b28e59',
+        background_color: theme.colors.secondary,
+        theme_color: theme.colors.primary,
         display: 'standalone',
         icon: 'src/images/avatar/avatar.png',
         legacy: false,
