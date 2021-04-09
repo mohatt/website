@@ -11,7 +11,7 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     document.body.setAttribute("class", themeConfig.getClassName())
-    document.querySelector('meta[name=theme-color]').content = themeConfig.colors.secondary
+    document.querySelector('meta[name=theme-color]').content = themeConfig.colors.primary
   }, [themeConfig])
 
   const cycleTheme = () => {
