@@ -1,10 +1,11 @@
 import React from 'react'
-import { useLayout } from './LayoutProvider'
+import { useTheme, useLayout } from '../../hooks'
 import { getContactHref } from '../../commons'
 import { Icon, Button } from '..'
 
 export default function Contacts({ contacts }) {
-  const { menuOpen, setMenuOpen, cycleTheme } = useLayout()
+  const { cycleTheme } = useTheme()
+  const { menuOpen, setMenuOpen } = useLayout()
   return (
     <div id='contacts' className='absolute block w-12 bottom-0 right-0 -mr-6'>
       <ul>

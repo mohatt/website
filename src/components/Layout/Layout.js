@@ -1,23 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { useLayout } from './LayoutProvider'
-import { useSiteMetadata, useCurrentRoute } from '../../hooks'
+import { useLayout, useSiteMetadata, useCurrentRoute } from '../../hooks'
 import Author from './Author'
 import Contacts from './Contacts'
 import Menu from './Menu'
 import { Separator } from '..'
 import './Layout.css'
-
-function Theme() {
-  const { themeConfig } = useLayout()
-  return (
-    <Helmet>
-      <html lang='en' className='text-base xl:text-lg' />
-      <meta name="theme-color" content={themeConfig.colors.secondary} />
-      <body className={themeConfig.getClassName()} />
-    </Helmet>
-  )
-}
 
 export default function Layout({ children }) {
   const site = useSiteMetadata()
@@ -33,7 +21,9 @@ export default function Layout({ children }) {
 */
   return (
     <div className='h-screen flex flex-row overflow-hidden'>
-      <Theme />
+      <Helmet>
+        <html lang='en' className='text-base xl:text-lg' />
+      </Helmet>
       <div id='header' className='w-24 flex-shrink-0 border-r-4 border-primary bg-typo text-primary z-20'>
         <header className='h-full relative'>
           <Author author={site.author} />
