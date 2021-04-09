@@ -2,7 +2,7 @@
 const Theme = function(id, name, colors, dark) {
   this.id = id
   this.name = name
-  this.colors = name
+  this.colors = colors
   this.dark = dark
 
   this.getClassName = () => this.getClassNames().join(' ')
