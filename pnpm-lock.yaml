@@ -15,7 +15,7 @@ specifiers:
   gatsby-plugin-google-gtag: 3.2.0
   gatsby-plugin-manifest: 3.2.0
   gatsby-plugin-mdx: 2.2.0
-  gatsby-plugin-postbuild: 2.2.0
+  gatsby-plugin-postbuild: 2.2.1
   gatsby-plugin-postcss: 4.2.0
   gatsby-plugin-preload-fonts: 2.2.0
   gatsby-plugin-react-helmet: 4.2.0
@@ -58,7 +58,7 @@ dependencies:
   gatsby-plugin-google-gtag: 3.2.0_8514b3d236412a6c90aa1e83347f26a9
   gatsby-plugin-manifest: 3.2.0_gatsby@3.2.1
   gatsby-plugin-mdx: 2.2.0_73e8d0148a4c5c71ceb6a02bbce55c80
-  gatsby-plugin-postbuild: 2.2.0_gatsby@3.2.1+postcss@8.2.9
+  gatsby-plugin-postbuild: 2.2.1_gatsby@3.2.1+postcss@8.2.9
   gatsby-plugin-postcss: 4.2.0_gatsby@3.2.1+postcss@8.2.9
   gatsby-plugin-preload-fonts: 2.2.0_gatsby@3.2.1
   gatsby-plugin-react-helmet: 4.2.0_gatsby@3.2.1+react-helmet@6.1.0
@@ -5431,7 +5431,7 @@ packages:
     dependencies:
       domelementtype: 2.2.0
       domhandler: 4.1.0
-      entities: 2.1.0
+      entities: 2.2.0
     dev: false
 
   /dom-walk/0.1.2:
@@ -7031,8 +7031,8 @@ packages:
       - supports-color
     dev: false
 
-  /gatsby-plugin-postbuild/2.2.0_gatsby@3.2.1+postcss@8.2.9:
-    resolution: {integrity: sha512-m9WwA0Y62uZG9D5Q9/S4hX36H7wLaxiLOYuRawk/yUeQkkL2yoEeRO9LjrxISbOj+//sFHN+yAKhdsD4tbQjeg==}
+  /gatsby-plugin-postbuild/2.2.1_gatsby@3.2.1+postcss@8.2.9:
+    resolution: {integrity: sha512-jElXZ5oFcvr81qOOp3PDG6vVtrJOJ2EjT9OsVy2ObxnNdZ7YUEfVP3jrkAVhVIuB09+3UX1oB7L/GHrzmNLBQA==}
     engines: {node: '>=10.13.0'}
     peerDependencies:
       gatsby: '>=2.25.4'

@@ -2,7 +2,9 @@ module.exports = {
   node: {
     createSchemaCustomization: require('./create-types'),
     setFieldsOnGraphQLNodeType: require('./extend-types'),
-    onCreateWebpackConfig: require('./webpack-config'),
+    onCreateWebpackConfig: args => {
+      require('./webpack-bundle-analyzer')(args)
+    },
   },
   ssr: {
     onRenderBody: args => {
