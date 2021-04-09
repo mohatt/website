@@ -1,8 +1,11 @@
 import React from 'react'
-import { LayoutProvider } from './components/Layout'
+import { ThemeProvider } from './hooks/theme'
+import { LayoutProvider } from './hooks/layout'
 
 export default ({ element }) => (
-  <LayoutProvider>
-    {element}
-  </LayoutProvider>
+  <ThemeProvider>
+    <LayoutProvider>
+      {element}
+    </LayoutProvider>
+  </ThemeProvider>
 )
