@@ -73,18 +73,4 @@
       }
     }
   }
-
-  .btn-group > .btn:not(:last-child) {
-    @apply mr-4;
-  }
-
-  .btn-group.btn-group-glue > .btn {
-    &:not(:last-child) {
-      @apply mr-0 rounded-r-none;
-    }
-
-    &:not(:first-child) {
-      @apply rounded-l-none;
-    }
-  }
 }
