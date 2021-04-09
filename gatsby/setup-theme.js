@@ -14,13 +14,15 @@ try {
   let theme = JSON.parse(localStorage.getItem("${THEME_STORAGE_KEY}"))
   if(theme) {
     let themes = ${JSON.stringify(
-      THEME_LIST.reduce((acc, theme) => {
-        acc[theme.id] = theme.getClassName()
-        return acc
+      THEME_LIST.reduce((obj, theme) => {
+        obj[theme.id] = [theme.getClassName(), theme.colors.primary]
+        return obj
       }, {})
     )}
-    if (themes[theme]) {
-      document.body.setAttribute("class", themes[theme])
+    theme = themes[theme]
+    if (theme) {
+      document.body.setAttribute("class", theme[0])
+      document.querySelector("meta[name=theme-color]").content = theme[1]
     }
   }
 } catch (e) {}
