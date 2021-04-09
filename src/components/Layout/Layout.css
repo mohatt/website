@@ -5,6 +5,19 @@
 @import '../index.css';
 
 @layer base {
+  body {
+    @apply font-body font-normal antialiased text-left;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-medium;
+  }
+
   #header #author #avatar {
     box-shadow: 0 6px 0 6px theme('colors.typo');
     background-image: url('../../images/avatar/avatar.png');
