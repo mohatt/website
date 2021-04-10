@@ -1,5 +1,6 @@
 const React = require('react')
 const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons')
+const defaultTheme = require('../config/site').metadata.theme
 
 /**
  * Provides a workaround for FOUC
@@ -8,7 +9,7 @@ const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons')
  * @see ../src/hooks/is-client.js
  * @see https://github.com/gatsbyjs/gatsby/issues/14601#issuecomment-499922794
  */
-module.exports = ({ setPreBodyComponents }) => {
+module.exports = ({ setPreBodyComponents, setBodyAttributes }) => {
   const themeSetup = `
 try {
   let theme = JSON.parse(localStorage.getItem("${THEME_STORAGE_KEY}"))
@@ -27,7 +28,7 @@ try {
   }
 } catch (e) {}
 `
-
+  setBodyAttributes({ class: THEME_LIST.find(t => t.id === defaultTheme).getClassName()})
   setPreBodyComponents([
     <script key="theme-setup" dangerouslySetInnerHTML={{ __html: themeSetup }} />
   ])
