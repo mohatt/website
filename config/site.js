@@ -16,9 +16,9 @@ module.exports = {
       name: 'Mohamed Elkholy',
       screenName: 'Mohatt',
       contacts: {
-        email: '#',
+        email: 'mohatt@pm.me',
         twitter: '#',
-        github: '#',
+        github: 'mohatt',
       },
     },
   },
