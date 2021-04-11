@@ -1,11 +1,13 @@
 import React from 'react'
+import { useSiteMetadata } from '../../hooks'
 import { Link } from '..'
 
-export default function Menu({ items, className }) {
+const Menu = React.memo(props => {
+  const { menu } = useSiteMetadata()
   return (
-    <nav className={className}>
+    <nav {...props}>
       <ul>
-        {items.map(({ to, label }) => (
+        {menu.map(({ to, label }) => (
           <li key={to}>
             <Link
               to={to}
@@ -19,4 +21,6 @@ export default function Menu({ items, className }) {
       </ul>
     </nav>
   )
-}
+})
+
+export default Menu
