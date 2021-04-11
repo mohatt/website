@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 /**
  * We use this context to persist layout state across pages without
@@ -8,6 +8,12 @@ const LayoutContext = React.createContext()
 
 export function LayoutProvider({ children }) {
   const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    window.___emitter.on('___loading', state => {
+      if(state === 'done') setMenuOpen(false)
+    })
+  }, [])
 
   return (
     <LayoutContext.Provider value={{ menuOpen, setMenuOpen }}>
