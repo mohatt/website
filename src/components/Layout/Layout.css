@@ -18,12 +18,12 @@
     @apply font-display font-medium;
   }
 
-  #header #author #avatar {
+  #header #avatar {
     box-shadow: 0 6px 0 6px theme('colors.typo');
     background-image: url('../../images/avatar/avatar.png');
   }
 
-  #header #author #avatar:hover {
+  #header #avatar:hover {
     background-image: url('../../images/avatar/avatar-smile.png');
     background-color: theme('colors.secondary');
   }
@@ -35,7 +35,7 @@
     letter-spacing: 0.4rem;
   }
 
-  #header #contacts li > * {
+  #header ul li > * {
     box-shadow: 0 0 0 4px theme('colors.primary'), 0 3px 0 7px theme('colors.typo');
   }
 
@@ -47,33 +47,33 @@
     box-shadow: rgba(0, 0, 0, 0.5) -30px 0 20px -20px inset;
   }
 
-  #menu nav a,
-  #menu nav a::before,
-  #menu nav a::after {
+  #menu nav li a,
+  #menu nav li a::before,
+  #menu nav li a::after {
     @apply transition-all duration-300;
   }
 
-  #menu nav a::before,
-  #menu nav a::after {
+  #menu nav li a::before,
+  #menu nav li a::after {
     @apply inline-block opacity-0;
   }
 
-  #menu nav a::before {
+  #menu nav li a::before {
     content: '<';
     margin-right: 0.25rem;
     transform: translateX(20px);
   }
 
-  #menu nav a::after {
+  #menu nav li a::after {
     content: '/>';
     margin-left: 0.25rem;
     transform: translateX(-20px);
   }
 
-  #menu nav a.active::before,
-  #menu nav a.active::after,
-  #menu nav a:hover::before,
-  #menu nav a:hover::after {
+  #menu nav li a.active::before,
+  #menu nav li a.active::after,
+  #menu nav li a:hover::before,
+  #menu nav li a:hover::after {
     @apply opacity-100;
     transform: translateX(0);
   }

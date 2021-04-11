@@ -1,6 +1,6 @@
 module.exports = {
   metadata: {
-    title: 'Mohatt',
+    title: 'Mohamed E.',
     url: 'https://mo.tru.io',
     description: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
     copyright: '© 2021 All rights reserved.',
@@ -12,14 +12,10 @@ module.exports = {
       { label: 'Clients', to: '/clients' },
       { label: 'Contact', to: '/contact' },
     ],
-    author: {
-      name: 'Mohamed Elkholy',
-      screenName: 'Mohatt',
-      contacts: {
-        email: 'mohatt@pm.me',
-        twitter: '#',
-        github: 'mohatt',
-      },
+    contacts: {
+      email: 'mohatt@pm.me',
+      twitter: '#',
+      github: 'mohatt',
     },
   },
   ga: 'G-WYVRHE98ND',
