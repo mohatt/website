@@ -11,14 +11,9 @@ export default function useSiteMetadata() {
             url
             copyright
             theme
-            author {
-              name
-              screenName
-              contacts {
-                email
-                twitter
-                github
-              }
+            contacts {
+              type
+              to
             }
             menu {
               label
