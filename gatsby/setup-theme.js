@@ -28,7 +28,7 @@ try {
   }
 } catch (e) {}
 `
-  setBodyAttributes({ class: THEME_LIST.find(t => t.id === defaultTheme).getClassName()})
+  setBodyAttributes({ className: THEME_LIST.find(t => t.id === defaultTheme).getClassName()})
   setPreBodyComponents([
     <script key="theme-setup" dangerouslySetInnerHTML={{ __html: themeSetup }} />
   ])
