@@ -28,13 +28,6 @@
     background-color: theme('colors.secondary');
   }
 
-  #header #author h1,
-  #header #author h2 {
-    writing-mode: vertical-lr;
-    transform: rotate(-180deg);
-    letter-spacing: 0.4rem;
-  }
-
   #header ul li > * {
     box-shadow: 0 0 0 4px theme('colors.primary'), 0 3px 0 7px theme('colors.typo');
   }
