@@ -73,8 +73,7 @@ const Header = React.memo(props => {
                 className='w-12 h-12 mb-6'
                 to={getContactHref(type, to)}
                 external
-                rel='noopener noreferrer'
-                target='_blank'
+                title={type}
               >
                 <Icon name={type} />
               </Button>
