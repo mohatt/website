@@ -66,17 +66,17 @@ const Header = React.memo(props => {
       </div>
       <div className='absolute w-12 bottom-0 right-0 -mr-6'>
         <ul>
-          {Object.keys(contacts).map((name) => (
-            <li key={name}>
+          {contacts.map(({ type, to }, i) => (
+            <li key={i}>
               <Button
                 mono
                 className='w-12 h-12 mb-6'
-                to={getContactHref(name, contacts[name])}
+                to={getContactHref(type, to)}
                 external
                 rel='noopener noreferrer'
                 target='_blank'
               >
-                <Icon name={name} />
+                <Icon name={type} />
               </Button>
             </li>
           ))}

@@ -12,11 +12,11 @@ module.exports = {
       { label: 'Clients', to: '/clients' },
       { label: 'Contact', to: '/contact' },
     ],
-    contacts: {
-      email: 'mohatt@pm.me',
-      twitter: '#',
-      github: 'mohatt',
-    },
+    contacts: [
+      { type: 'email', to: 'mohatt@pm.me' },
+      { type: 'twitter', to: '#' },
+      { type: 'github', to: 'mohatt' },
+    ],
   },
   ga: 'G-WYVRHE98ND',
   pagination: {
