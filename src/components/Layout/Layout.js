@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { useLayout } from '../../hooks'
 import Menu from './Menu'
 import Header from './Header'
@@ -9,18 +8,8 @@ import './Layout.css'
 export default function Layout({ children }) {
   const { menuOpen } = useLayout()
 
-/*
-  React.useEffect(() => {
-    window.___emitter.on('onDelayedLoadPageResources', ({ pathname }) => {
-      console.log('onDelayedLoadPageResources', pathname)
-    })
-  }, [])
-*/
   return (
     <div className='h-screen flex flex-row overflow-hidden'>
-      <Helmet>
-        <html lang='en' className='text-base xl:text-lg' />
-      </Helmet>
       <div id='header' className='w-24 flex-shrink-0 border-r-4 border-primary bg-typo text-primary z-20'>
         <Header className='h-full relative' />
       </div>
