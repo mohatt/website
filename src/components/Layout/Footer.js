@@ -13,7 +13,7 @@ const Footer = React.memo(props => {
       <Separator size='4' spacing='0' />
       <div className='px-20 py-16 bg-accent text-typo'>
         {copyright}
-        <span className='float-right'>Made in <span title='Egypt'>🇪🇬</span> with <span title='Love'>❤️</span>.</span>
+        <span className='float-right'>Made in <span title='Egypt'>🇪🇬</span> with <span title='Love'>❤️</span></span>
       </div>
     </footer>
   )
