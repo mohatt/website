@@ -8,9 +8,14 @@ module.exports = {
     allowSymbols: true,
     writeRejected: true,
     safelist: {
-      // pseudo selectors starting with `:`
-      // eg :-moz-focusring ::-webkit-file-upload-button
-      standard: [/^:/]
+      standard: [
+        // pseudo selectors starting with `:`
+        // eg :-moz-focusring ::-webkit-file-upload-button
+        /^:/,
+        // keyframes selectors
+        // eg 50% {}
+        /^[0-9]+%$/
+      ]
     },
   },
   'netlify-headers': {
