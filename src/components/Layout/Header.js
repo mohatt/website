@@ -10,39 +10,35 @@ function ThemeButton() {
   const { cycleTheme } = useTheme()
   const { done }  = useLoading()
   return (
-    <li>
-      <Button
-        mono
-        className='w-12 h-12 mt-7 mb-6'
-        title='Change theme'
-        onClick={e => {
-          e.preventDefault()
-          done && cycleTheme()
-        }}
-      >
-        {done ? <Icon name='theme'/> : <Spinner className='w-full h-full' />}
-      </Button>
-    </li>
+    <Button
+      mono
+      className='w-12 h-12 mt-7 mb-6'
+      title='Change theme'
+      onClick={e => {
+        e.preventDefault()
+        done && cycleTheme()
+      }}
+    >
+      {done ? <Icon name='theme'/> : <Spinner className='w-full h-full' />}
+    </Button>
   )
 }
 
 function MenuButton() {
   const { menuOpen, setMenuOpen } = useLayout()
   return (
-    <li className='visible lg:invisible'>
-      <Button
-        mono
-        active={menuOpen}
-        className='w-12 h-12'
-        title='Toggle Menu'
-        onClick={e => {
-          e.preventDefault()
-          setMenuOpen(!menuOpen)
-        }}
-      >
-        <Icon name='menu' />
-      </Button>
-    </li>
+    <Button
+      mono
+      active={menuOpen}
+      className='w-12 h-12'
+      title='Toggle Menu'
+      onClick={e => {
+        e.preventDefault()
+        setMenuOpen(!menuOpen)
+      }}
+    >
+      <Icon name='menu' />
+    </Button>
   )
 }
 
@@ -60,8 +56,8 @@ const Header = React.memo(props => {
           <li>
             <Link id='avatar' className='block rounded-full h-32 bg-cover bg-center border-4 border-primary transition-all' to='home' title='Home' />
           </li>
-          <ThemeButton />
-          <MenuButton />
+          <li><ThemeButton /></li>
+          <li className='visible lg:invisible'><MenuButton /></li>
         </ul>
       </div>
       <div className='absolute w-12 bottom-0 right-0 -mr-6'>
