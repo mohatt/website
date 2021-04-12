@@ -8,11 +8,8 @@ export default function Page({ children, title, description, pre }) {
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
   if (typeof pre !== 'string') {
-    const { func, args } = {
-      func: (title || site.title).replace(/[-_\s.]+(.)?/g, (_, c) => c ? c.toUpperCase() : ''),
-      args: {},
-      ...pre
-    }
+    const func = pre?.func || (title || site.title).replace(/[-_\s.]+(.)?/g, (_, c) => c ? c.toUpperCase() : '')
+    const args = pre?.args || {}
     pre = `render(<${func} ${Object.keys(args)
       .filter(a => args[a] !== undefined)
       .map(a => `${a}=${JSON.stringify(args[a])} `)
