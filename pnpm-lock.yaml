@@ -22,9 +22,9 @@ specifiers:
   gatsby-plugin-robots-txt: 1.5.5
   gatsby-plugin-sharp: 3.2.1
   gatsby-plugin-sitemap: 3.2.0
-  gatsby-remark-images: 4.2.0
-  gatsby-remark-prismjs: 4.2.0
-  gatsby-remark-smartypants: 3.2.0
+  gatsby-remark-images: 5.0.0
+  gatsby-remark-prismjs: 5.0.0
+  gatsby-remark-smartypants: 4.0.0
   gatsby-source-filesystem: 3.2.0
   gatsby-transformer-sharp: 3.2.0
   gatsby-transformer-yaml: 3.2.0
@@ -65,9 +65,9 @@ dependencies:
   gatsby-plugin-robots-txt: 1.5.5_gatsby@3.2.1
   gatsby-plugin-sharp: 3.2.1_gatsby@3.2.1
   gatsby-plugin-sitemap: 3.2.0_8514b3d236412a6c90aa1e83347f26a9
-  gatsby-remark-images: 4.2.0_5b6bb0724d7d9629f859d27a7b9b0f1c
-  gatsby-remark-prismjs: 4.2.0_gatsby@3.2.1+prismjs@1.23.0
-  gatsby-remark-smartypants: 3.2.0_gatsby@3.2.1
+  gatsby-remark-images: 5.0.0_5b6bb0724d7d9629f859d27a7b9b0f1c
+  gatsby-remark-prismjs: 5.0.0_gatsby@3.2.1+prismjs@1.23.0
+  gatsby-remark-smartypants: 4.0.0_gatsby@3.2.1
   gatsby-source-filesystem: 3.2.0_gatsby@3.2.1
   gatsby-transformer-sharp: 3.2.0_5b6bb0724d7d9629f859d27a7b9b0f1c
   gatsby-transformer-yaml: 3.2.0_gatsby@3.2.1
@@ -6861,6 +6861,20 @@ packages:
       xdg-basedir: 4.0.0
     dev: false
 
+  /gatsby-core-utils/2.3.0:
+    resolution: {integrity: sha512-M7RlR6jL2dtkUu4AoKBoQaPTsbpByzWHc7HBgeYdwzuqbk4VuMe6K76pFDvFSNj0+LvVhWoRGHO7OEtpfb2bEA==}
+    engines: {node: '>=12.13.0'}
+    dependencies:
+      ci-info: 2.0.0
+      configstore: 5.0.1
+      file-type: 16.3.0
+      fs-extra: 8.1.0
+      node-object-hash: 2.3.1
+      proper-lockfile: 4.1.2
+      tmp: 0.2.1
+      xdg-basedir: 4.0.0
+    dev: false
+
   /gatsby-graphiql-explorer/1.2.0:
     resolution: {integrity: sha512-2Ot6RstekslT6kzv28ovwwsRXIRbqLP8FkfjUql2ZrkothMXIGp4s1hl6e1RQ6qB7E+8HO0Xhgg85pmJD4cfOA==}
     engines: {node: '>=12.13.0'}
@@ -7270,8 +7284,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /gatsby-remark-images/4.2.0_5b6bb0724d7d9629f859d27a7b9b0f1c:
-    resolution: {integrity: sha512-LaybtebK/8jF2qLInv/2yAvNioCJXxjhVZqIBs8xQp6sgaWSQ2CMFWARLkJC21OezIObiAGYKCMSKk8bWP6cFQ==}
+  /gatsby-remark-images/5.0.0_5b6bb0724d7d9629f859d27a7b9b0f1c:
+    resolution: {integrity: sha512-LdNGmcouSdVtmbffcRgL7eZgSl4ZcIcK36d+szjhrnjvKwqsX3G3epkKyqqcbptos8V5MhnNU0hng454+0QWfQ==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       gatsby: ^3.0.0-next.0
@@ -7281,19 +7295,19 @@ packages:
       chalk: 4.1.0
       cheerio: 1.0.0-rc.6
       gatsby: 3.2.1_react-dom@17.0.2+react@17.0.2
-      gatsby-core-utils: 2.2.0
+      gatsby-core-utils: 2.3.0
       gatsby-plugin-sharp: 3.2.1_gatsby@3.2.1
       is-relative-url: 3.0.0
       lodash: 4.17.21
-      mdast-util-definitions: 1.2.5
+      mdast-util-definitions: 4.0.0
       potrace: 2.1.8
       query-string: 6.14.1
-      unist-util-select: 1.5.0
-      unist-util-visit-parents: 2.1.2
+      unist-util-select: 3.0.4
+      unist-util-visit-parents: 3.1.1
     dev: false
 
-  /gatsby-remark-prismjs/4.2.0_gatsby@3.2.1+prismjs@1.23.0:
-    resolution: {integrity: sha512-PTE4p/f+XosSt/VdHJr9U3ruZ3yhqtUpqDuifsVbOOsS6AyvmEY/7WPUThRC+nSVfueG1geVgxrWB0AoaUPKXQ==}
+  /gatsby-remark-prismjs/5.0.0_gatsby@3.2.1+prismjs@1.23.0:
+    resolution: {integrity: sha512-uFFdTaMEXsLic1He1JZlm4FuoNK0wasFDTk4u7UiI5tpNIZnBsSo3P0KDTKBPjq53xeWVqhGKAFmdRUXW2XGGg==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       gatsby: ^3.0.0-next.0
@@ -7301,22 +7315,22 @@ packages:
     dependencies:
       '@babel/runtime': 7.13.10
       gatsby: 3.2.1_react-dom@17.0.2+react@17.0.2
-      parse-numeric-range: 0.0.2
+      parse-numeric-range: 1.2.0
       prismjs: 1.23.0
-      unist-util-visit: 1.4.1
+      unist-util-visit: 2.0.3
     dev: false
 
-  /gatsby-remark-smartypants/3.2.0_gatsby@3.2.1:
-    resolution: {integrity: sha512-caZ44+koorqFul45GYzQRhRRortbqmHhYPv8+oy7GbAkLoZvusLd4mnT7u7Te2PHfMoUuQVA8AxETOeNUcVdzQ==}
+  /gatsby-remark-smartypants/4.0.0_gatsby@3.2.1:
+    resolution: {integrity: sha512-meq5725XwK9DFPn1pszWHzbHbcjg17DIs7BlLkg//U1mWf5a5IxEqPtXzZN3wgtktLQwayJt4tu6ddQz8fjoIA==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       gatsby: ^3.0.0-next.0
     dependencies:
       '@babel/runtime': 7.13.10
       gatsby: 3.2.1_react-dom@17.0.2+react@17.0.2
-      retext: 5.0.0
-      retext-smartypants: 3.0.3
-      unist-util-visit: 1.4.1
+      retext: 7.0.1
+      retext-smartypants: 4.0.0
+      unist-util-visit: 2.0.3
     dev: false
 
   /gatsby-source-filesystem/3.2.0_gatsby@3.2.1:
@@ -9859,12 +9873,6 @@ packages:
       unist-util-visit: 2.0.3
     dev: false
 
-  /mdast-util-definitions/1.2.5:
-    resolution: {integrity: sha512-CJXEdoLfiISCDc2JB6QLb79pYfI6+GcIH+W2ox9nMc7od0Pz+bovcHsiq29xAQY6ayqe/9CsK2VzkSJdg1pFYA==}
-    dependencies:
-      unist-util-visit: 1.4.1
-    dev: false
-
   /mdast-util-definitions/4.0.0:
     resolution: {integrity: sha512-k8AJ6aNnUkB7IE+5azR9h81O5EQ/cTDXtWdMq9Kk5KcEW/8ritU5CeLg/9HhOC++nALHBlaogJ5jz0Ybk3kPMQ==}
     dependencies:
@@ -10590,6 +10598,10 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /not/0.1.0:
+    resolution: {integrity: sha1-yWkcF0bFXc++VMvYvU/wQbwrUZ0=}
+    dev: false
+
   /npm-conf/1.1.3:
     resolution: {integrity: sha512-Yic4bZHJOt9RCFbRP3GgpqhScOY4HH3V2P8yBj6CeYq118Qr+BLXqT2JvpJ00mryLESpgOxf5XlFv4ZjXxLScw==}
     engines: {node: '>=4'}
@@ -11144,8 +11156,8 @@ packages:
       unist-util-visit-children: 1.1.4
     dev: false
 
-  /parse-numeric-range/0.0.2:
-    resolution: {integrity: sha1-tPCdQTx6282Yf26SM8e0shDJOOQ=}
+  /parse-numeric-range/1.2.0:
+    resolution: {integrity: sha512-1q2tXpAOplPxcl8vrIGPWz1dJxxfmdRkCFcpxxMBerDnGuuHalOWF/xj9L8Nn5XoTUoB/6F0CeQBp2fMgkOYFg==}
     dev: false
 
   /parse-path/4.0.3:
@@ -13446,11 +13458,11 @@ packages:
       unherit: 1.1.3
     dev: false
 
-  /retext-smartypants/3.0.3:
-    resolution: {integrity: sha512-/0fIipYayOvvucn3yjxvWwyT9P6p8gbpqdqUQNs1+L7av2hxatmiA9sk+fygJSDn5OXRyhBzcezvTbEmEabfIQ==}
+  /retext-smartypants/4.0.0:
+    resolution: {integrity: sha512-Mknd05zuIycr4Z/hNDxA8ktqv7pG7wYdTZc68a2MJF+Ibg/WloR5bbyrEjijwNwHRR+xWsovkLH4OQIz/mghdw==}
     dependencies:
       nlcst-to-string: 2.0.4
-      unist-util-visit: 1.4.1
+      unist-util-visit: 2.0.3
     dev: false
 
   /retext-stringify/2.0.4:
@@ -13459,13 +13471,12 @@ packages:
       nlcst-to-string: 2.0.4
     dev: false
 
-  /retext/5.0.0:
-    resolution: {integrity: sha1-XZAYxKZ31hA8FCNi129Q6x05i/Y=}
-    engines: {node: '>=0.11.0'}
+  /retext/7.0.1:
+    resolution: {integrity: sha512-N0IaEDkvUjqyfn3/gwxVfI51IxfGzOiVXqPLWnKeCDbiQdxSg0zebzHPxXWnL7TeplAJ+RE4uqrXyYN//s9HjQ==}
     dependencies:
       retext-latin: 2.0.4
       retext-stringify: 2.0.4
-      unified: 6.2.0
+      unified: 8.4.2
     dev: false
 
   /retry/0.12.0:
@@ -15088,17 +15099,6 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /unified/6.2.0:
-    resolution: {integrity: sha512-1k+KPhlVtqmG99RaTbAv/usu85fcSRu3wY8X+vnsEhIxNP5VbVIDiXnLqyKIG+UMdyTg0ZX9EI6k2AfjJkHPtA==}
-    dependencies:
-      bail: 1.0.5
-      extend: 3.0.2
-      is-plain-obj: 1.1.0
-      trough: 1.0.5
-      vfile: 2.3.0
-      x-is-string: 0.1.0
-    dev: false
-
   /unified/7.1.0:
     resolution: {integrity: sha512-lbk82UOIGuCEsZhPj8rNAkXSDXd6p0QLzIuSsCdxrqnqU56St4eyOB+AlXsVgVeRmetPTYydIuvFfpDIed8mqw==}
     dependencies:
@@ -15257,6 +15257,16 @@ packages:
       css-selector-parser: 1.4.1
       debug: 2.6.9
       nth-check: 1.0.2
+    dev: false
+
+  /unist-util-select/3.0.4:
+    resolution: {integrity: sha512-xf1zCu4okgPqGLdhCDpRnjwBNyv3EqjiXRUbz2SdK1+qnLMB7uXXajfzuBvvbHoQ+JLyp4AEbFCGndmc6S72sw==}
+    dependencies:
+      css-selector-parser: 1.4.1
+      not: 0.1.0
+      nth-check: 2.0.0
+      unist-util-is: 4.1.0
+      zwitch: 1.0.5
     dev: false
 
   /unist-util-stringify-position/1.1.2:
@@ -15522,15 +15532,6 @@ packages:
     dependencies:
       '@types/unist': 2.0.3
       unist-util-stringify-position: 2.0.3
-
-  /vfile/2.3.0:
-    resolution: {integrity: sha512-ASt4mBUHcTpMKD/l5Q+WJXNtshlWxOogYyGYYrg4lt/vuRjC1EFQtlAofL5VmtVNIZJzWYFJjzGWZ0Gw8pzW1w==}
-    dependencies:
-      is-buffer: 1.1.6
-      replace-ext: 1.0.0
-      unist-util-stringify-position: 1.1.2
-      vfile-message: 1.1.1
-    dev: false
 
   /vfile/3.0.1:
     resolution: {integrity: sha512-y7Y3gH9BsUSdD4KzHsuMaCzRjglXN0W2EcMf0gpvu6+SbsGhMje7xDc8AEoeXy6mIwCKMI6BkjMsRjzQbhMEjQ==}
