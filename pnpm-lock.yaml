@@ -44,7 +44,7 @@ specifiers:
   stylelint-config-standard: 21.0.0
   tailwindcss: 2.1.1
   typed.js: 2.0.12
-  webpack-bundle-analyzer: 4.4.0
+  webpack-bundle-analyzer: 4.4.1
 
 dependencies:
   '@mdx-js/mdx': 1.6.22
@@ -92,7 +92,7 @@ devDependencies:
   simple-icons: 4.19.0
   stylelint: 13.12.0
   stylelint-config-standard: 21.0.0_stylelint@13.12.0
-  webpack-bundle-analyzer: 4.4.0
+  webpack-bundle-analyzer: 4.4.1
 
 packages:
 
@@ -15567,8 +15567,8 @@ packages:
     resolution: {integrity: sha512-wYxSGajtmoP4WxfejAPIr4l0fVh+jeMXZb08wNc0tMg6xsfZXj3cECqIK0G7ZAqUq0PP8WlMDtaOGVBTAWztNw==}
     dev: false
 
-  /webpack-bundle-analyzer/4.4.0:
-    resolution: {integrity: sha512-9DhNa+aXpqdHk8LkLPTBU/dMfl84Y+WE2+KnfI6rSpNRNVKa0VGLjPd2pjFubDeqnWmulFggxmWBxhfJXZnR0g==}
+  /webpack-bundle-analyzer/4.4.1:
+    resolution: {integrity: sha512-j5m7WgytCkiVBoOGavzNokBOqxe6Mma13X1asfVYtKWM3wxBiRRu1u1iG0Iol5+qp9WgyhkMmBAcvjEfJ2bdDw==}
     engines: {node: '>= 10.13.0'}
     hasBin: true
     dependencies:
