@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
-export function useProjectSkills(categories) {
+export function useProjectSkills(tags) {
   const { skills: { nodes } } = useStaticQuery(
     graphql`
       query {
@@ -9,7 +9,7 @@ export function useProjectSkills(categories) {
             id
             title
             icon
-            categories
+            tags
             projects
           }
         }
@@ -17,10 +17,10 @@ export function useProjectSkills(categories) {
     `
   )
 
-  if (!categories || categories.length === 0) return nodes
-  if (typeof categories === 'string') categories = [categories]
+  if (!tags || tags.length === 0) return nodes
+  if (typeof tags === 'string') tags = [tags]
   return nodes.filter(
-    s => s.categories.filter(c => categories.includes(c)).length === categories.length
+    s => s.tags.filter(t => tags.includes(t)).length === tags.length
   )
 }
 

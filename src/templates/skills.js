@@ -3,30 +3,30 @@ import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks'
 import { Page, Section, Heading, Icon, Button } from '../components'
 
-const categories = {
+const tags = {
   backend: [
-    { title: 'Languages', icon: 'code', category: 'language' },
-    { title: 'Frameworks', icon: 'stack', category: 'framework' },
-    { title: 'CMS', icon: 'tree', category: 'cms' },
-    { title: 'Databases', icon: 'database', category: 'database' },
-    { title: 'APIs', icon: 'cloud', category: 'api' },
-    { title: 'Testing', icon: 'checks', category: 'test' },
+    { id: 'language', title: 'Languages', icon: 'code' },
+    { id: 'framework', title: 'Frameworks', icon: 'stack' },
+    { id: 'cms', title: 'CMS', icon: 'tree' },
+    { id: 'database', title: 'Databases', icon: 'database' },
+    { id: 'api', title: 'APIs', icon: 'cloud' },
+    { id: 'test', title: 'Testing', icon: 'checks' },
   ],
   frontend: [
-    { title: 'Languages', icon: 'code', category: 'language' },
-    { title: 'JavaScript', icon: 'javascript', category: 'js' },
-    { title: 'CSS', icon: 'css', category: 'css' },
+    { id: 'language', title: 'Languages', icon: 'code' },
+    { id: 'js', title: 'JavaScript', icon: 'javascript' },
+    { id: 'css', title: 'CSS', icon: 'css' },
   ],
   cloud: [
-    { title: 'Git Hosting', icon: 'gitRepo', category: 'git' },
-    { title: 'Deployment', icon: 'cloudUp', category: 'deploy' },
-    { title: 'CI/CD', icon: 'tools', category: 'ci' },
+    { id: 'git', title: 'Git Hosting', icon: 'gitRepo' },
+    { id: 'deploy', title: 'Deployment', icon: 'cloudUp' },
+    { id: 'ci', title: 'CI/CD', icon: 'tools' },
   ],
   software: [
-    { title: 'Environment', icon: 'computer', category: 'env' },
-    { title: 'Applications', icon: 'appStore', category: 'app' },
-    { title: 'Package Managers', icon: 'cloudDown', category: 'pkgman' },
-    { title: 'Communication', icon: 'discuss', category: 'comms' },
+    { id: 'env', title: 'Environment', icon: 'computer' },
+    { id: 'app', title: 'Applications', icon: 'appStore' },
+    { id: 'pkgman', title: 'Package Managers', icon: 'cloudDown' },
+    { id: 'comms', title: 'Communication', icon: 'discuss' },
   ],
 }
 
@@ -40,10 +40,10 @@ const SkillBlock = ({ icon, title, children }) => (
   </div>
 )
 
-const SkillCategory = ({ id }) => (
+const SkillTag = ({ tag }) => (
   <div className='grid grid-cols-3 gap-8 max-w-4xl text-lg'>
-    {categories[id].map(({ title, icon, category }) => {
-      const skills = useProjectSkills([id, category])
+    {tags[tag].map(({ id, title, icon }) => {
+      const skills = useProjectSkills([tag, id])
       return skills.length > 0 && (
         <div key={title} className='flex'>
           <Icon name={icon} className='h-8 w-8 text-primary' />
@@ -107,25 +107,25 @@ export default function Skills({ data: { page: { title } } }) {
           launched in the past had the back-end done by me. My main stack usually
           involves PHP with the CMS/Framework of choice, and alternatively Node.js.
         </Heading>
-        <SkillCategory id='backend' />
+        <SkillTag tag='backend' />
       </Section>
       <Section>
         <Heading title='Front-end Development'>
           I create responsive websites that allow the user to have the
           best and most appropriate experience suited to the device they are using.
         </Heading>
-        <SkillCategory id='frontend' />
+        <SkillTag tag='frontend' />
       </Section>
       <Section>
         <Heading title='Cloud Services'>
           I use these cloud services to setup an integrated, effective and
           efficient web development workflow that meets the project needs.
         </Heading>
-        <SkillCategory id='cloud' />
+        <SkillTag tag='cloud' />
       </Section>
       <Section>
         <Heading title='Software'>My local web development setup.</Heading>
-        <SkillCategory id='software' />
+        <SkillTag tag='software' />
       </Section>
     </Page>
   )

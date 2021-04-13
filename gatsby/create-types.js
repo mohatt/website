@@ -17,7 +17,7 @@ module.exports = ({ actions, schema }) => {
             }
           },
         },
-        categories: '[String!]',
+        tags: '[String!]',
         projects: {
           type: 'Int!',
           resolve: (source, args, context) => {
