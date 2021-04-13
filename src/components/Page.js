@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { useSiteMetadata } from '../hooks'
-import { Layout } from '.'
+import { Layout, Section } from '.'
 
 export default function Page({ children, title, description, pre }) {
   const site = useSiteMetadata()
@@ -29,7 +29,7 @@ export default function Page({ children, title, description, pre }) {
         <meta name='twitter:card' content='summary' />
         <meta name='twitter:description' content={seoDescription} />
       </Helmet>
-      <div className='px-20 font-display italic'>{pre}</div>
+      <Section spacing={false} className='font-display italic'>{pre}</Section>
       {children}
     </Layout>
   )
