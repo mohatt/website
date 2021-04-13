@@ -1,243 +1,243 @@
 - id: php
   title: PHP
   icon: php
-  categories:
+  tags:
     - backend
     - language
 - id: node
   title: Node.js
   icon: node-dot-js
-  categories:
+  tags:
     - backend
     - language
 - id: javascript
   title: JavaScript (ES6+)
   icon: javascript
-  categories:
+  tags:
     - frontend
     - language
 - id: typescript
   title: TypeScript
   icon: typescript
-  categories:
+  tags:
     - frontend
     - backend
     - language
 - id: html
   title: HTML5
   icon: html5
-  categories:
+  tags:
     - frontend
     - language
 - id: css
   title: CSS3
   icon: css3
-  categories:
+  tags:
     - frontend
     - language
 - id: sass
   title: Sass
   icon: sass
-  categories:
+  tags:
     - frontend
     - language
 - id: symfony
   title: Symfony
   icon: symfony
-  categories:
+  tags:
     - backend
     - framework
 - id: laravel
   title: Laravel
   icon: laravel
-  categories:
+  tags:
     - backend
     - framework
 - id: express
   title: Express.js
   icon: express
-  categories:
+  tags:
     - backend
     - framework
 - id: genesis
   title: Genesis
   icon: wordpress
-  categories:
+  tags:
     - backend
     - framework
 - id: react
   title: React
   icon: react
-  categories:
+  tags:
     - frontend
     - js
 - id: angular
   title: Angular
   icon: angular
-  categories:
+  tags:
     - frontend
     - js
 - id: rxjs
   title: RxJS
   icon: reactivex
-  categories:
+  tags:
     - frontend
     - js
 - id: gatsby
   title: Gatsby
   icon: gatsby
-  categories:
+  tags:
     - frontend
     - js
 - id: jquery
   title: jQuery
   icon: jquery
-  categories:
+  tags:
     - frontend
     - js
 - id: tailwind
   title: Tailwind CSS
   icon: tailwindcss
-  categories:
+  tags:
     - frontend
     - css
 - id: bootstrap
   title: Bootstrap
   icon: bootstrap
-  categories:
+  tags:
     - frontend
     - css
 - id: material
   title: Material UI
   icon: material-ui
-  categories:
+  tags:
     - frontend
     - css
 - id: wordpress
   title: Wordpress
   icon: wordpress
-  categories:
+  tags:
     - backend
     - cms
 - id: magento
   title: Magento
   icon: magento
-  categories:
+  tags:
     - backend
     - cms
 - id: woo
   title: WooCommerce
   icon: woo
-  categories:
+  tags:
     - backend
     - cms
 - id: strapi
   title: Strapi
   icon: strapi
-  categories:
+  tags:
     - backend
     - cms
 - id: rest
   title: REST APIs
   icon: json
-  categories:
+  tags:
     - backend
     - api
 - id: paymentapi
   title: Payment Gatways
   icon: paypal
-  categories:
+  tags:
     - backend
     - api
 - id: phpunit
   title: PHPUnit
   icon: php
-  categories:
+  tags:
     - backend
     - test
 - id: dusk
   title: Laravel Dusk
   icon: laravel
-  categories:
+  tags:
     - backend
     - test
 - id: codeception
   title: Codeception
   icon: codeceptjs
-  categories:
+  tags:
     - backend
     - test
 - id: jest
   title: Jest
   icon: jest
-  categories:
+  tags:
     - backend
     - test
 - id: cypress
   title: Cypress
   icon: cypress
-  categories:
+  tags:
     - backend
     - test
 - id: graphql
   title: GraphQL
   icon: graphql
-  categories:
+  tags:
     - backend
     - database
     - api
 - id: redis
   title: Redis
   icon: redis
-  categories:
+  tags:
     - backend
     - database
 - id: mysql
   title: MySQL
   icon: mysql
-  categories:
+  tags:
     - backend
     - database
 - id: postgresql
   title: PostgresSQL
   icon: postgresql
-  categories:
+  tags:
     - backend
     - database
 - id: mongodb
   title: MongoDB
   icon: mongodb
-  categories:
+  tags:
     - backend
     - database
 - id: elasticsearch
   title: Elasticsearch
   icon: elasticsearch
-  categories:
+  tags:
     - backend
     - database
 - id: github
   title: Github
   icon: github
-  categories:
+  tags:
     - cloud
     - git
 - id: gitlab
   title: Gitlab
   icon: gitlab
-  categories:
+  tags:
     - cloud
     - git
 - id: bitbucket
   title: Bitbucket
   icon: bitbucket
-  categories:
+  tags:
     - cloud
     - git
 - id: aws
   title: Amazon AWS
   icon: amazonaws
-  categories:
+  tags:
     - cloud
     - backend
     - api
@@ -245,132 +245,132 @@
 - id: heroku
   title: Heroku
   icon: heroku
-  categories:
+  tags:
     - cloud
     - deploy
 - id: digitalocean
   title: DigitalOcean
   icon: digitalocean
-  categories:
+  tags:
     - cloud
     - deploy
 - id: netlify
   title: Netlify
   icon: netlify
-  categories:
+  tags:
     - cloud
     - deploy
 - id: wpengine
   title: WP Engine
   icon: wpengine
-  categories:
+  tags:
     - cloud
     - deploy
 - id: gitlabci
   title: GitLab CI/CD
   icon: gitlab
-  categories:
+  tags:
     - cloud
     - ci
 - id: ghactions
   title: Github Actions
   icon: githubactions
-  categories:
+  tags:
     - cloud
     - ci
 - id: circleci
   title: CircleCI
   icon: circleci
-  categories:
+  tags:
     - cloud
     - ci
 - id: ubuntu
   title: Ubuntu
   icon: ubuntu
-  categories:
+  tags:
     - software
     - env
 - id: git
   title: Git
   icon: git
-  categories:
+  tags:
     - software
     - env
 - id: docker
   title: Docker
   icon: docker
-  categories:
+  tags:
     - software
     - env
 - id: shell
   title: Fish Shell
   icon: powershell
-  categories:
+  tags:
     - software
     - env
 - id: phpstorm
   title: PhpStorm
   icon: phpstorm
-  categories:
+  tags:
     - software
     - app
 - id: webstorm
   title: WebStorm
   icon: webstorm
-  categories:
+  tags:
     - software
     - app
 - id: chrome
   title: Chrome DevTools
   icon: googlechrome
-  categories:
+  tags:
     - software
     - app
 - id: postman
   title: Postman
   icon: postman
-  categories:
+  tags:
     - software
     - app
 - id: slack
   title: Slack
   icon: slack
-  categories:
+  tags:
     - software
     - comms
 - id: skype
   title: Skype
   icon: skype
-  categories:
+  tags:
     - software
     - comms
 - id: basecamp
   title: Basecamp
   icon: basecamp
-  categories:
+  tags:
     - software
     - comms
 - id: jira
   title: Jira
   icon: jirasoftware
-  categories:
+  tags:
     - software
     - comms
 - id: composer
   title: Composer
   icon: cplusplus
-  categories:
+  tags:
     - software
     - pkgman
 - id: pnpm
   title: pnpm
   icon: fortinet
-  categories:
+  tags:
     - software
     - pkgman
 - id: yarn
   title: Yarn
   icon: yarn
-  categories:
+  tags:
     - software
     - pkgman
