@@ -3,9 +3,10 @@ const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons')
 const defaultTheme = require('../config/site').metadata.theme
 
 /**
- * Provides a workaround for FOUC
- * This solves the flickering issue due to the fact that the server
- *  renders first and then the client comes in and does its change
+ * Workaround for FOUC issue - solves the style flickering issue due to
+ *  the fact that the server renders first and then the client comes in
+ *  and does its change
+ *
  * @see ../src/hooks/is-client.js
  * @see https://github.com/gatsbyjs/gatsby/issues/14601#issuecomment-499922794
  */
