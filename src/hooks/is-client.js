@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react'
 
 /**
- * Workaround for Gatsby’s rehydration issue
+ * Used to perform a two-pass rendering as a workaround for React’s hydration issue
+ *
  * @see https://github.com/gatsbyjs/gatsby/issues/14601#issuecomment-499922794
+ * @see https://reactjs.org/docs/react-dom.html#hydrate
  * @see https://blog.logrocket.com/fixing-gatsbys-rehydration-issue/
+ * @see https://www.joshwcomeau.com/react/the-perils-of-rehydration/
+ *
  * @example
  * const Component = () => {
  *  const { isClient, key } = useIsClient()

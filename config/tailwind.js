@@ -1,5 +1,5 @@
 const _ = require('lodash')
-const tailwind = require('tailwindcss/defaultTheme')
+const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('../src/commons').THEME_LIST[0].colors
 
 module.exports = {
@@ -7,9 +7,9 @@ module.exports = {
   mode: 'jit',
   theme: {
     fontFamily: {
-      display: ['"IBM Plex Mono"', ...tailwind.fontFamily.mono],
-      body: ['"IBM Plex Serif"', ...tailwind.fontFamily.serif],
-      mono: ['"IBM Plex Mono"', ...tailwind.fontFamily.mono],
+      display: ['"IBM Plex Mono"', ...fontFamily.mono],
+      body: ['"IBM Plex Serif"', ...fontFamily.serif],
+      mono: ['"IBM Plex Mono"', ...fontFamily.mono],
     },
     extend: {
       colors: _.mapValues(colors, ((v, k) => `var(--${k})`)),
