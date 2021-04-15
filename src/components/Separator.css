@@ -1,9 +1,8 @@
 @layer components {
   .sep {
-    @apply block w-full bg-primary p-0 m-0 border-0;
+    @apply w-full bg-primary border-0;
 
-    &.sep-bg {
-      @apply bg-primary;
+    &.sep-gradient {
       background: linear-gradient(90deg, theme('colors.primary') 0%, rgba(0, 0, 0, 0) 85%);
     }
 

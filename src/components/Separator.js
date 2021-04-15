@@ -1,11 +1,14 @@
 import React from 'react'
 import classNames from 'classnames'
 
-export default function Separator({ silent, size = 2, spacing = 4, className }) {
+export default function Separator({ size = 2, gradient = true, spacing = true, className }) {
   return (
     <hr className={classNames(
-      `sep sep-${size} my-${spacing}`,
-      { 'sep-bg': !silent },
+      `sep sep-${size}`,
+      {
+        'sep-gradient': gradient,
+        'my-4': spacing
+      },
       className,
     )} />
   )
