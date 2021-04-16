@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-function Heading({ title, primary, children, className }) {
+export default function Heading({ title, primary, children, className }) {
   const Hn = primary ? 'h1' : 'h2'
   return (
     <header className={classNames('mb-12 max-w-2xl', { 'mt-4': primary }, className)}>
@@ -14,5 +14,3 @@ function Heading({ title, primary, children, className }) {
     </header>
   )
 }
-
-export default React.memo(Heading)

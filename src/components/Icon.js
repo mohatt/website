@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { ICONS } from '../commons'
 
-function Icon({ name, path, className }) {
+export default function Icon({ name, path, className }) {
   const icon = path ? { path: path, viewBox: '0 0 24 24' } : ICONS[name]
   return icon && (
     <svg className={classNames('icon', className)} viewBox={icon.viewBox}>
@@ -10,5 +10,3 @@ function Icon({ name, path, className }) {
     </svg>
   )
 }
-
-export default React.memo(Icon)

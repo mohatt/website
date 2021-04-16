@@ -25,5 +25,3 @@ function Layout({ children }) {
     </div>
   )
 }
-
-export default React.memo(Layout)
