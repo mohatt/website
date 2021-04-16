@@ -2,15 +2,22 @@ import React from 'react'
 import { useCurrentRoute, useSiteMetadata } from '../../hooks'
 import { Link } from '..'
 
-function Menu({ className }) {
-  const { menu, title } = useSiteMetadata()
+function Heading() {
+  const { title } = useSiteMetadata()
   const { path } = useCurrentRoute()
-  const Heading = path === '/' ? 'h1' : 'h2'
+  const Tag = path === '/' ? 'h1' : 'h2'
+  return (
+    <Tag className='text-2xl italic text-right mr-6 mb-6'>
+      <Link to='home'>{title}</Link>
+    </Tag>
+  )
+}
+
+export default function Menu({ className }) {
+  const { menu } = useSiteMetadata()
   return (
     <nav className={className}>
-      <Heading className='text-2xl italic text-right mr-6 mb-6'>
-        <Link to='home'>{title}</Link>
-      </Heading>
+      <Heading />
       <ul>
         {menu.map(({ to, label }) => (
           <li key={to}>
@@ -27,5 +34,3 @@ function Menu({ className }) {
     </nav>
   )
 }
-
-export default React.memo(Menu)
