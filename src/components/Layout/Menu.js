@@ -2,12 +2,12 @@ import React from 'react'
 import { useCurrentRoute, useSiteMetadata } from '../../hooks'
 import { Link } from '..'
 
-const Menu = React.memo(props => {
+function Menu({ className }) {
   const { menu, title } = useSiteMetadata()
   const { path } = useCurrentRoute()
   const Heading = path === '/' ? 'h1' : 'h2'
   return (
-    <nav {...props}>
+    <nav className={className}>
       <Heading className='text-2xl italic text-right mr-6 mb-6'>
         <Link to='home'>{title}</Link>
       </Heading>
@@ -26,6 +26,6 @@ const Menu = React.memo(props => {
       </ul>
     </nav>
   )
-})
+}
 
-export default Menu
+export default React.memo(Menu)

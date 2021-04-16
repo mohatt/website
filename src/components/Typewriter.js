@@ -47,12 +47,11 @@ function Typewriter({
   delay = 1500,
   backspace = null,
   cursor = '|',
-  className,
-  ...props
+  className
 }) {
   const isClient = useIsClient()
   return (
-    <span className={classNames('typewriter', className)} {...props}>
+    <span className={classNames('typewriter', className)}>
       {isClient
         ? <TypewriterText
             words={words}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Button, ButtonGroup } from '.'
 
-export default function Hero({ children, title, actions, className }) {
+function Hero({ children, title, actions, className }) {
   return (
     <Section className={className}>
       <header className='mt-8 mb-12 max-w-lg'>
@@ -23,3 +23,5 @@ export default function Hero({ children, title, actions, className }) {
     </Section>
   )
 }
+
+export default React.memo(Hero)
