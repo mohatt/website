@@ -42,7 +42,7 @@ function MenuButton() {
   )
 }
 
-function Header({ className }) {
+export default function Header({ className }) {
   const { contacts } = useSiteMetadata()
   return (
     <header className={className}>
@@ -80,5 +80,3 @@ function Header({ className }) {
     </header>
   )
 }
-
-export default React.memo(Header)
