@@ -43,7 +43,6 @@ specifiers:
   stylelint: 13.12.0
   stylelint-config-standard: 21.0.0
   tailwindcss: 2.1.1
-  typed.js: 2.0.12
   webpack-bundle-analyzer: 4.4.1
 
 dependencies:
@@ -82,7 +81,6 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
   react-helmet: 6.1.0_react@17.0.2
   tailwindcss: 2.1.1_02ae6d0a5709fa7b5d38be2fad8eebc6
-  typed.js: 2.0.12
 
 devDependencies:
   '@mohatt/eslint-config-gatsby-standard': 2.0.1_eslint@7.20.0
@@ -14986,10 +14984,6 @@ packages:
 
   /type/2.5.0:
     resolution: {integrity: sha512-180WMDQaIMm3+7hGXWf12GtdniDEy7nYcyFMKJn/eZz/6tSLXrUN9V0wKSbMjej0I1WHWbpREDEKHtqPQa9NNw==}
-    dev: false
-
-  /typed.js/2.0.12:
-    resolution: {integrity: sha512-lyACZh1cu+vpfYY3DG/bvsGLXXbdoDDpWxmqta10IQUdMXisMXOEyl+jos+YT9uBbzK4QaKYBjT3R0kTJO0Slw==}
     dev: false
 
   /typedarray-to-buffer/3.1.5:

@@ -1,29 +1,14 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
-import Typed from 'typed.js'
-import { Page, Hero } from '../components'
+import { Page, Hero, Typewriter } from '../components'
 
 export default function Home({ data: { page: { title } } }) {
-  const _strings = useRef()
-  useEffect(() => {
-    const options = {
-      strings: ['high quality', 'user-friendly', 'efficient', 'modern', 'beautiful'],
-      typeSpeed: 50,
-      backSpeed: 30,
-      backDelay: 5000,
-      loop: true,
-    }
-    const typed = new Typed(_strings.current, options)
-    return function cleanup() {
-      typed.destroy()
-    }
-  })
-
+  const words = ['high quality', 'user-friendly', 'efficient', 'modern', 'beautiful']
   const heroTitle = (
     <>
       I move pixels and lines of
       <br />
-      code to craft <span ref={_strings} className='text-primary' />
+      code to craft <Typewriter words={words} loop speed={50} backspace={30} delay={4000} className='text-primary' />
       <br />
       digital experiences
     </>
