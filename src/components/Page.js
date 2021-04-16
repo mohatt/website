@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { useSiteMetadata } from '../hooks'
 import { Layout, Section } from '.'
 
-export default function Page({ children, title, description, pre }) {
+function Page({ children, title, description, pre }) {
   const site = useSiteMetadata()
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
@@ -34,3 +34,5 @@ export default function Page({ children, title, description, pre }) {
     </Layout>
   )
 }
+
+export default React.memo(Page)

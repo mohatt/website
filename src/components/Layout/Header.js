@@ -42,10 +42,10 @@ function MenuButton() {
   )
 }
 
-const Header = React.memo(props => {
+function Header({ className }) {
   const { contacts } = useSiteMetadata()
   return (
-    <header {...props}>
+    <header className={className}>
       <Helmet>
         <html lang='en' className='text-base xl:text-lg' />
         <link rel='preload' href={avatar} as='image' />
@@ -79,6 +79,6 @@ const Header = React.memo(props => {
       </div>
     </header>
   )
-})
+}
 
-export default Header
+export default React.memo(Header)

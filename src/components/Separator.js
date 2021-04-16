@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-export default function Separator({ size = 2, gradient = true, spacing = true, className }) {
+function Separator({ size = 2, gradient = true, spacing = true, className }) {
   return (
     <hr className={classNames(
       `sep sep-${size}`,
@@ -13,3 +13,5 @@ export default function Separator({ size = 2, gradient = true, spacing = true, c
     )} />
   )
 }
+
+export default React.memo(Separator)

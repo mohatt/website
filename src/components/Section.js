@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-export default function Section({ full, spacing = true, className, ...props }) {
+function Section({ full, spacing = true, className, ...props }) {
   return (
     <section
       className={classNames(
@@ -15,3 +15,5 @@ export default function Section({ full, spacing = true, className, ...props }) {
     />
   )
 }
+
+export default React.memo(Section)

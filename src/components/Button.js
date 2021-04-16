@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { Link } from '.'
 
-export default function Button({ color, active, mono, rounded = true, outline, className, ...props }) {
+function Button({ color, active, mono, rounded = true, outline, className, ...props }) {
   const Element = props.to ? Link : 'button'
   return (
     <Element
@@ -20,3 +20,5 @@ export default function Button({ color, active, mono, rounded = true, outline, c
     />
   )
 }
+
+export default React.memo(Button)

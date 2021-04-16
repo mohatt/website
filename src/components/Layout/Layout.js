@@ -5,7 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import './Layout.css'
 
-export default function Layout({ children }) {
+function Layout({ children }) {
   const { menuOpen } = useLayout()
 
   return (
@@ -25,3 +25,5 @@ export default function Layout({ children }) {
     </div>
   )
 }
+
+export default React.memo(Layout)
