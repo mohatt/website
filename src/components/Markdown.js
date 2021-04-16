@@ -3,7 +3,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 import { Heading, Section, Button, ButtonGroup, Link, Icon } from '.'
 
-function Markdown({ components = {}, children, ...props }) {
+export default function Markdown({ components = {}, children, ...props }) {
   const shortcodes = {
     Heading,
     Section,
@@ -20,5 +20,3 @@ function Markdown({ components = {}, children, ...props }) {
     </>
   )
 }
-
-export default React.memo(Markdown)
