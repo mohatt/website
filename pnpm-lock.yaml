@@ -19,7 +19,7 @@ specifiers:
   gatsby-plugin-postcss: 4.3.0
   gatsby-plugin-preload-fonts: 2.3.0
   gatsby-plugin-react-helmet: 4.3.0
-  gatsby-plugin-robots-txt: 1.5.5
+  gatsby-plugin-robots-txt: 1.5.6
   gatsby-plugin-sharp: 3.3.0
   gatsby-plugin-sitemap: 3.3.0
   gatsby-remark-images: 5.0.0
@@ -61,7 +61,7 @@ dependencies:
   gatsby-plugin-postcss: 4.3.0_gatsby@3.3.0+postcss@8.2.10
   gatsby-plugin-preload-fonts: 2.3.0_gatsby@3.3.0
   gatsby-plugin-react-helmet: 4.3.0_gatsby@3.3.0+react-helmet@6.1.0
-  gatsby-plugin-robots-txt: 1.5.5_gatsby@3.3.0
+  gatsby-plugin-robots-txt: 1.5.6_gatsby@3.3.0
   gatsby-plugin-sharp: 3.3.0_gatsby@3.3.0
   gatsby-plugin-sitemap: 3.3.0_8cec8ce0949989f7bfe6fa73403dae60
   gatsby-remark-images: 5.0.0_72f34fab4aa67405153e4e8e8304748f
@@ -7095,10 +7095,10 @@ packages:
       react-helmet: 6.1.0_react@17.0.2
     dev: false
 
-  /gatsby-plugin-robots-txt/1.5.5_gatsby@3.3.0:
-    resolution: {integrity: sha512-wLIep04R0cnY+3t9uFVFitA/eLbI6o8xkrUPg6gVxnas/LtzMe5tUiMK5P+idC14B0ohY1y2zl2hP+Bu54/dHQ==}
+  /gatsby-plugin-robots-txt/1.5.6_gatsby@3.3.0:
+    resolution: {integrity: sha512-AxHbrw8WaYOxyu++LPIratjlNgBuu2qb5j3F+Ht+ooD/azutL+BAPbuYexz9CMPqTy1h/kiBxZsojbGLbWpvgA==}
     peerDependencies:
-      gatsby: '>2.0.0'
+      gatsby: ^3.0.0 || ^2.0.0
     dependencies:
       '@babel/runtime': 7.13.10
       gatsby: 3.3.0_react-dom@17.0.2+react@17.0.2
