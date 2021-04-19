@@ -16,9 +16,9 @@ export default class Error extends Page {
       }
     } = this.props
     this.title = title
-    this.pretext = {
-      func: 'Error',
-      args: { code }
+    this.snippet = {
+      $type: 'Error',
+      code
     }
     return (
       <Hero title={this.title}>

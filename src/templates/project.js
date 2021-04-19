@@ -14,9 +14,9 @@ export default class Project extends Page {
       }
     } = this.props
     this.title = project.frontmatter.title
-    this.pretext = {
-      func: page.title,
-      args: { slug }
+    this.snippet = {
+      $type: page.title,
+      slug
     }
     return (
       <Hero title={this.title}>

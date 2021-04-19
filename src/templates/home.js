@@ -5,7 +5,7 @@ import { Page, Hero, Typewriter } from '../components'
 export default class Home extends Page {
   view() {
     this.title = this.props.data.page.title
-    this.pretext = 'Hi, I’m Mohamed,'
+    this.snippet = 'Hi, I’m Mohamed,'
     const words = ['high quality', 'user-friendly', 'efficient', 'modern', 'beautiful']
     const hero = (
       <>

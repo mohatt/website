@@ -1,6 +1,6 @@
 /**
  * Please don't make any changes unless you are aware
- *  of how Gatsby statically processes this file
+ *  of how Gatsby statically(🤔) processes this file
  *
  * This is a dummy export to let Gatsby know that this
  * is a valid commonjs module with valid APIs

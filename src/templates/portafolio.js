@@ -17,8 +17,9 @@ export default class Portafolio extends Page {
       }
     } = this.props
     this.title = title
-    this.pretext = {
-      args: { skill, category }
+    this.snippet = {
+      skill,
+      category
     }
     if (projects.pageInfo.currentPage > 1) {
       this.title += ` (Page ${projects.pageInfo.currentPage})`
