@@ -1,4 +1,16 @@
 import React from 'react'
+import { ThemeProvider } from './hooks/theme'
+
+/**
+ * Set up app-wide provider components
+ */
+export function wrapRootElement({ element }) {
+  return (
+    <ThemeProvider>
+      {element}
+    </ThemeProvider>
+  )
+}
 
 /**
  * We use this to prevent re-mounting Layout component on evry route change.
@@ -6,7 +18,7 @@ import React from 'react'
  *   - Letting pages decide what layout to use
  *   - Better code splitting
  */
-export default ({ element }) => {
+export function wrapPageElement({ element }) {
   const PageComponent = element.type
   if(PageComponent) {
     // Search for layout in page component type
