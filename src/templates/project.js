@@ -2,14 +2,28 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Page, Hero, Markdown } from '../components'
 
-export default function Project({ data: { page, project }, pageContext: { project: slug } }) {
-  return (
-    <Page title={project.frontmatter.title} pre={{ func: page.title, args: { slug }}}>
-      <Hero title={project.frontmatter.title}>
+export default class Project extends Page {
+  view() {
+    const {
+      data: {
+        page,
+        project
+      },
+      pageContext: {
+        project: slug
+      }
+    } = this.props
+    this.title = project.frontmatter.title
+    this.pretext = {
+      func: page.title,
+      args: { slug }
+    }
+    return (
+      <Hero title={this.title}>
         <Markdown>{project.body}</Markdown>
       </Hero>
-    </Page>
-  )
+    )
+  }
 }
 
 export const query = graphql`

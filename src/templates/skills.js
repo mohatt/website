@@ -74,61 +74,64 @@ const SkillTag = ({ tag }) => (
   </div>
 )
 
-export default function Skills({ data: { page: { title } } }) {
-  return (
-    <Page title={title}>
-      <Section>
-        <Heading title={title} primary>
-          Software development is hard. Managing projects is hard.
-          Working remotely is hard. Here are some things I'm good at, to
-          help ease the pain.
-        </Heading>
-        <div className='grid grid-cols-2 gap-8'>
-          <SkillBlock icon='bug' title='Problem Solving'>
-            I'm can take vague problems and requirements and break them down into steps and
-            solutions.
-          </SkillBlock>
-          <SkillBlock icon='server' title='Systems Thinking'>
-            I'm good at thinking abstractly and putting together systems with many moving parts.
-          </SkillBlock>
-          <SkillBlock icon='discuss' title='Communicating'>
-            I can explain things clearly, communicate problems quickly and write accurately and
-            concisely.
-          </SkillBlock>
-          <SkillBlock icon='calendar' title='Organising'>
-            I can self-manage, work to deadlines, organise projects and present well-structured and
-            complete deliverables.
-          </SkillBlock>
-        </div>
-      </Section>
-      <Section>
-        <Heading title='Back-end Development'>
-          This is my main area of expertise. Nearly every app I have
-          launched in the past had the back-end done by me. My main stack usually
-          involves PHP with the CMS/Framework of choice, and alternatively Node.js.
-        </Heading>
-        <SkillTag tag='backend' />
-      </Section>
-      <Section>
-        <Heading title='Front-end Development'>
-          I create responsive websites that allow the user to have the
-          best and most appropriate experience suited to the device they are using.
-        </Heading>
-        <SkillTag tag='frontend' />
-      </Section>
-      <Section>
-        <Heading title='Cloud Services'>
-          I use these cloud services to setup an integrated, effective and
-          efficient web development workflow that meets the project needs.
-        </Heading>
-        <SkillTag tag='cloud' />
-      </Section>
-      <Section>
-        <Heading title='Software'>My local web development setup.</Heading>
-        <SkillTag tag='software' />
-      </Section>
-    </Page>
-  )
+export default class Skills extends Page {
+  view() {
+    this.title = this.props.data.page.title
+    return (
+      <>
+        <Section>
+          <Heading title={this.title} primary>
+            Software development is hard. Managing projects is hard.
+            Working remotely is hard. Here are some things I'm good at, to
+            help ease the pain.
+          </Heading>
+          <div className='grid grid-cols-2 gap-8'>
+            <SkillBlock icon='bug' title='Problem Solving'>
+              I'm can take vague problems and requirements and break them down into steps and
+              solutions.
+            </SkillBlock>
+            <SkillBlock icon='server' title='Systems Thinking'>
+              I'm good at thinking abstractly and putting together systems with many moving parts.
+            </SkillBlock>
+            <SkillBlock icon='discuss' title='Communicating'>
+              I can explain things clearly, communicate problems quickly and write accurately and
+              concisely.
+            </SkillBlock>
+            <SkillBlock icon='calendar' title='Organising'>
+              I can self-manage, work to deadlines, organise projects and present well-structured and
+              complete deliverables.
+            </SkillBlock>
+          </div>
+        </Section>
+        <Section>
+          <Heading title='Back-end Development'>
+            This is my main area of expertise. Nearly every app I have
+            launched in the past had the back-end done by me. My main stack usually
+            involves PHP with the CMS/Framework of choice, and alternatively Node.js.
+          </Heading>
+          <SkillTag tag='backend' />
+        </Section>
+        <Section>
+          <Heading title='Front-end Development'>
+            I create responsive websites that allow the user to have the
+            best and most appropriate experience suited to the device they are using.
+          </Heading>
+          <SkillTag tag='frontend' />
+        </Section>
+        <Section>
+          <Heading title='Cloud Services'>
+            I use these cloud services to setup an integrated, effective and
+            efficient web development workflow that meets the project needs.
+          </Heading>
+          <SkillTag tag='cloud' />
+        </Section>
+        <Section>
+          <Heading title='Software'>My local web development setup.</Heading>
+          <SkillTag tag='software' />
+        </Section>
+      </>
+    )
+  }
 }
 
 export const query = graphql`
