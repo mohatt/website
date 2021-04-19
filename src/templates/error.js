@@ -2,14 +2,30 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Page, Hero } from '../components'
 
-export default function Error({ data: { page: { title, data: { code = 404, message } } } }) {
-  return (
-    <Page title={title} pre={{ func: 'Error', args: { code } }}>
-      <Hero title={title}>
+export default class Error extends Page {
+  view() {
+    const {
+      data: {
+        page: {
+          title,
+          data: {
+            code = 404,
+            message
+          }
+        }
+      }
+    } = this.props
+    this.title = title
+    this.pretext = {
+      func: 'Error',
+      args: { code }
+    }
+    return (
+      <Hero title={this.title}>
         {message}
       </Hero>
-    </Page>
-  )
+    )
+  }
 }
 
 export const query = graphql`

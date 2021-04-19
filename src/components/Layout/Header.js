@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Helmet from 'react-helmet'
-import { useLayout, useLoading, useSiteMetadata, useTheme } from '../../hooks'
+import { useSiteMetadata, useTheme } from '../../hooks'
 import { getContactHref } from '../../commons'
-import { Button, Icon, Link, Spinner } from '..'
+import { Button, Icon, Link } from '..'
+import { LayoutContext } from './Layout'
 import avatar from '../../images/avatar/avatar.png'
 import avatarAlt from '../../images/avatar/avatar-smile.png'
 
 function ThemeButton() {
   const { cycleTheme } = useTheme()
-  const { done }  = useLoading()
   return (
     <Button
       mono
@@ -16,16 +16,16 @@ function ThemeButton() {
       title='Change theme'
       onClick={e => {
         e.preventDefault()
-        done && cycleTheme()
+        cycleTheme()
       }}
     >
-      {done ? <Icon name='theme'/> : <Spinner className='w-full h-full' />}
+      <Icon name='theme'/>
     </Button>
   )
 }
 
 function MenuButton() {
-  const { menuOpen, setMenuOpen } = useLayout()
+  const { menuOpen, setMenuOpen } = useContext(LayoutContext)
   return (
     <Button
       mono
@@ -42,7 +42,7 @@ function MenuButton() {
   )
 }
 
-export default function Header({ className }) {
+function Header({ className }) {
   const { contacts } = useSiteMetadata()
   return (
     <header className={className}>
@@ -80,3 +80,5 @@ export default function Header({ className }) {
     </header>
   )
 }
+
+export default React.memo(Header)
