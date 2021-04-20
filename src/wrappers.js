@@ -21,14 +21,14 @@ export function wrapRootElement({ element }) {
  *   - Letting pages decide what layout to use
  *   - Better code splitting
  */
-export function wrapPageElement({ element }) {
+export function wrapPageElement({ element, props }) {
   const PageComponent = element.type
   if(PageComponent) {
     // Search for layout in page component type
     // Fallback to the default layout defined in parent component (if implemented)
     const Layout = PageComponent.layout || Object.getPrototypeOf(PageComponent).layout
     if(Layout) {
-      return <Layout>{element}</Layout>
+      return <Layout path={props.path}>{element}</Layout>
     }
   }
 

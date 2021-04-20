@@ -1,5 +1,5 @@
 // Theme interface
-const Theme = function(id, name, colors, dark) {
+function Theme(id, name, colors, dark) {
   this.id = id
   this.name = name
   this.colors = colors
