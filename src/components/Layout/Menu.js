@@ -1,13 +1,12 @@
 import React, { useContext } from 'react'
-import { useCurrentRoute, useSiteMetadata } from '../../hooks'
+import { useSiteMetadata } from '../../hooks'
 import { Link } from '..'
 import { LayoutContext } from './Layout'
 
-export default function Menu({ className }) {
+function Menu({ isHome, className }) {
   const { menu, title } = useSiteMetadata()
-  const { path } = useCurrentRoute()
   const { setMenuOpen } = useContext(LayoutContext)
-  const Heading = path === '/' ? 'h1' : 'h2'
+  const Heading = isHome ? 'h1' : 'h2'
   return (
     <nav className={className}>
       <Heading className='text-2xl italic text-right mr-6 mb-6'>
@@ -30,3 +29,5 @@ export default function Menu({ className }) {
     </nav>
   )
 }
+
+export default React.memo(Menu)
