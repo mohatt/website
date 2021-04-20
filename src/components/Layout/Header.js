@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Helmet from 'react-helmet'
 import { useSiteMetadata, useTheme } from '../../hooks'
-import { getContactHref } from '../../commons'
+import { SOCIAL_HANDLES } from '../../commons/constants'
 import { Button, Icon, Link } from '..'
 import { LayoutContext } from './Layout'
 import avatar from '../../images/avatar/avatar.png'
@@ -62,19 +62,22 @@ function Header({ className }) {
       </div>
       <div className='absolute w-12 bottom-0 right-0 -mr-6'>
         <ul>
-          {contacts.map(({ type, to }, i) => (
-            <li key={i}>
-              <Button
-                mono
-                className='w-12 h-12 mb-6'
-                to={getContactHref(type, to)}
-                external
-                title={type}
-              >
-                <Icon name={type} />
-              </Button>
-            </li>
-          ))}
+          {contacts.map(({ type, to }, i) => {
+            const { title, href, icon } = SOCIAL_HANDLES[type]
+            return (
+              <li key={i}>
+                <Button
+                  mono
+                  className='w-12 h-12 mb-6'
+                  to={href(to)}
+                  external
+                  title={title}
+                >
+                  <Icon name={icon} />
+                </Button>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </header>
