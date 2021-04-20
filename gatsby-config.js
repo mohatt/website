@@ -1,6 +1,6 @@
 const path = require('path')
 const site = require('./config/site')
-const theme = require('./src/commons').THEME_LIST.find(t => t.id === site.metadata.theme)
+const theme = require('./src/commons/themes').THEME_LIST.find(t => t.id === site.metadata.theme)
 
 module.exports = {
   siteMetadata: {
