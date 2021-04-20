@@ -26,15 +26,13 @@ export default class Portafolio extends Page {
     }
 
     return (
-      <>
-        <Section>
-          <Heading title={this.title} primary>
-            Some projects I worked on.
-          </Heading>
-          <pre style={{ whiteSpace: 'pre-wrap' }}>{JSON.stringify(projects.edges, null, 2)}</pre>
-          <Pagination route='portafolio' pageInfo={projects.pageInfo} ui='simple' />
-        </Section>
-      </>
+      <Section>
+        <Heading title={this.title} primary>
+          Some projects I worked on.
+        </Heading>
+        <pre style={{ whiteSpace: 'pre-wrap' }}>{JSON.stringify(projects.edges, null, 2)}</pre>
+        <Pagination route='portafolio' pageInfo={projects.pageInfo} ui='simple' />
+      </Section>
     )
   }
 }
