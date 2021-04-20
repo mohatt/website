@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks'
-import { Page, Section, Heading, Icon, Button } from '../components'
+import { Page, Section, Heading, BaseIcon, Icon, Button } from '../components'
 
 const tags = {
   backend: [
@@ -52,7 +52,7 @@ const SkillTag = ({ tag }) => (
             <ul className='mt-4 space-y-2'>
               {skills.map(({ id, title, icon, projects }) => (
                 <li key={id}>
-                  <Icon path={icon} className='h-6 w-6 mr-2 text-primary' />
+                  <BaseIcon path={icon} className='h-6 w-6 mr-2 text-primary' />
                   {title}
                   {projects > 0 && (
                     <Button

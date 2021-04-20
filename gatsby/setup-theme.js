@@ -1,5 +1,5 @@
 const React = require('react')
-const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons')
+const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons/themes')
 const defaultTheme = require('../config/site').metadata.theme
 
 /**
