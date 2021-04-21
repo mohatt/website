@@ -138,8 +138,14 @@
     - backend
     - cms
 - id: rest
-  title: REST APIs
+  title: REST
   icon: json
+  tags:
+    - backend
+    - api
+- id: graphql
+  title: GraphQL
+  icon: graphql
   tags:
     - backend
     - api
@@ -179,13 +185,6 @@
   tags:
     - backend
     - test
-- id: graphql
-  title: GraphQL
-  icon: graphql
-  tags:
-    - backend
-    - database
-    - api
 - id: redis
   title: Redis
   icon: redis
