@@ -17,7 +17,7 @@ export default class Error extends Page {
     } = this.props
     this.title = title
     this.snippet = {
-      $type: 'Error',
+      $comp: 'Error',
       code
     }
     return (

@@ -15,7 +15,7 @@ export default class Project extends Page {
     } = this.props
     this.title = project.frontmatter.title
     this.snippet = {
-      $type: page.title,
+      $comp: page.title,
       slug
     }
     return (

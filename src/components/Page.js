@@ -22,17 +22,20 @@ function PageHelmet({ title, description }) {
   )
 }
 
-function PageSnippet({ $title, $text, $type, ...props }) {
-  if (!$text) {
-    $type = $type || $title.replace(/[-_\s.]+(.)?/g, (_, c) => c ? c.toUpperCase() : '')
-    $text = `render(<${$type} ${Object.keys(props)
+function PageComponentSnippet({ $code, $comp = 'undefined', ...props }) {
+  let className = 'font-display italic'
+  if (!$code) {
+    $comp = $comp.replace(/(?:^[^A-Za-z]*|[\W_]+)(.)?/g, (_, c) => c ? c.toUpperCase() : '')
+    $code = `render(<${$comp} ${Object.keys(props)
       .filter(a => props[a] !== undefined)
       .map(a => `${a}=${JSON.stringify(props[a])} `)
       .join('')
     }/>);`
+  } else {
+    className += ' text-lg'
   }
   return (
-    <Section spacing={false} className='font-display italic'>{$text}</Section>
+    <Section spacing={false} className={className}>{$code}</Section>
   )
 }
 
@@ -81,13 +84,15 @@ export default class Page extends React.Component {
     const content = this.view()
     if (typeof this.snippet === 'string') {
       this.snippet = {
-        $text: this.snippet
+        $code: this.snippet
       }
+    } else if(!this.snippet.$comp) {
+      this.snippet.$comp = this.title
     }
     return (
       <>
         <PageHelmet title={this.title} description={this.description} />
-        <PageSnippet $title={this.title} {...this.snippet} />
+        <PageComponentSnippet {...this.snippet} />
         {content}
       </>
     )
