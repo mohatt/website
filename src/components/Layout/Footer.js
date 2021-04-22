@@ -7,9 +7,7 @@ function Footer({ className }) {
   return (
     <footer className={className}>
       <Separator size='4' spacing={false} />
-      <div className='px-20 py-16 bg-accent font-display'>
-        {copyright}
-      </div>
+      <div className='px-20 py-16 bg-accent font-display'>{copyright}</div>
     </footer>
   )
 }

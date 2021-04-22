@@ -11,10 +11,10 @@ import { useState, useEffect } from 'react'
  * @example
  * const Component = () => {
  *  const isClient = useIsClient()
- * 
+ *
  *  const [token, setToken] = useLocalStorage('token', '')
  *  const isLoggedIn = token !== ''
- * 
+ *
  *  const onLogin = () => setToken(Math.random().toString(36).substring(2))
  *  const onLogout = () => setToken('')
  *
@@ -31,7 +31,7 @@ import { useState, useEffect } from 'react'
  *  )
  * }
  */
-export default function useIsClient()  {
+export default function useIsClient() {
   const [isClient, setClient] = useState(false)
 
   useEffect(() => {

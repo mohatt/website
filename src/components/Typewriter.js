@@ -47,7 +47,7 @@ function Typewriter({
   delay = 1500,
   backspace = null,
   cursor = '|',
-  className
+  className,
 }) {
   const isClient = useIsClient()
   return (

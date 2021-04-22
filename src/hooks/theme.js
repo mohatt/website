@@ -10,7 +10,7 @@ export function ThemeProvider({ children }) {
   const themeConfig = THEME_LIST.find(t => t.id === theme)
 
   useEffect(() => {
-    document.body.setAttribute("class", themeConfig.getClassName())
+    document.body.setAttribute('class', themeConfig.getClassName())
     document.querySelector('meta[name=theme-color]').content = themeConfig.colors.primary
   }, [themeConfig])
 

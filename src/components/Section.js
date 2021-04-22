@@ -7,7 +7,7 @@ export default function Section({ full, spacing = true, className, ...props }) {
       className={classNames(
         {
           'px-20': !full,
-          'pb-20': spacing
+          'pb-20': spacing,
         },
         className
       )}

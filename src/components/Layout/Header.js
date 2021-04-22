@@ -17,9 +17,8 @@ function ThemeButton() {
       onClick={e => {
         e.preventDefault()
         cycleTheme()
-      }}
-    >
-      <Icon name='theme'/>
+      }}>
+      <Icon name='theme' />
     </Button>
   )
 }
@@ -35,8 +34,7 @@ function MenuButton() {
       onClick={e => {
         e.preventDefault()
         setMenuOpen(!menuOpen)
-      }}
-    >
+      }}>
       <Icon name='menu' />
     </Button>
   )
@@ -54,10 +52,19 @@ function Header({ className }) {
       <div className='absolute w-32 top-0 right-0 mt-10 -mr-16 text-center'>
         <ul>
           <li>
-            <Link id='avatar' className='block rounded-full h-32 bg-cover bg-center border-4 border-primary transition-all' to='home' title='Home' />
+            <Link
+              id='avatar'
+              className='block rounded-full h-32 bg-cover bg-center border-4 border-primary transition-all'
+              to='home'
+              title='Home'
+            />
           </li>
-          <li><ThemeButton /></li>
-          <li className='visible lg:invisible'><MenuButton /></li>
+          <li>
+            <ThemeButton />
+          </li>
+          <li className='visible lg:invisible'>
+            <MenuButton />
+          </li>
         </ul>
       </div>
       <div className='absolute w-12 bottom-0 right-0 -mr-6'>
@@ -66,13 +73,7 @@ function Header({ className }) {
             const { title, href, icon } = SOCIAL_HANDLES[type]
             return (
               <li key={i}>
-                <Button
-                  mono
-                  className='w-12 h-12 mb-6'
-                  to={href(to)}
-                  external
-                  title={title}
-                >
+                <Button mono className='w-12 h-12 mb-6' to={href(to)} external title={title}>
                   <Icon name={icon} />
                 </Button>
               </li>

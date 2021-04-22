@@ -5,18 +5,13 @@ import { Page, Hero, Markdown } from '../components'
 export default class Project extends Page {
   view() {
     const {
-      data: {
-        page,
-        project
-      },
-      pageContext: {
-        project: slug
-      }
+      data: { page, project },
+      pageContext: { project: slug },
     } = this.props
     this.title = project.frontmatter.title
     this.snippet = {
       $comp: page.title,
-      slug
+      slug,
     }
     return (
       <Hero title={this.title}>

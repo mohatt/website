@@ -35,7 +35,9 @@ function PageComponentSnippet({ $code, $comp = 'undefined', ...props }) {
     className += ' text-lg'
   }
   return (
-    <Section spacing={false} className={className}>{$code}</Section>
+    <Section spacing={false} className={className}>
+      {$code}
+    </Section>
   )
 }
 
@@ -84,9 +86,9 @@ export default class Page extends React.Component {
     const content = this.view()
     if (typeof this.snippet === 'string') {
       this.snippet = {
-        $code: this.snippet
+        $code: this.snippet,
       }
-    } else if(!this.snippet.$comp) {
+    } else if (!this.snippet.$comp) {
       this.snippet.$comp = this.title
     }
     return (
