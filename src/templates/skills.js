@@ -98,8 +98,8 @@ export default class Skills extends Page {
               concisely.
             </SkillBlock>
             <SkillBlock icon='calendar' title='Organising'>
-              I can self-manage, work to deadlines, organise projects and present well-structured and
-              complete deliverables.
+              I can self-manage, work to deadlines, organise projects and present well-structured
+              and complete deliverables.
             </SkillBlock>
           </div>
         </Section>

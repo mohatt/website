@@ -7,7 +7,8 @@ export default function Button({ color, active, mono, rounded = true, outline, c
   return (
     <Element
       className={classNames(
-        'btn', color && `btn-${color}`,
+        'btn',
+        color && `btn-${color}`,
         {
           'rounded-full': rounded,
           'p-2': mono,

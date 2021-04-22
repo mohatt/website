@@ -6,8 +6,7 @@ function Theme(id, name, colors, dark) {
   this.dark = dark
 
   this.getClassName = () => this.getClassNames().join(' ')
-  this.getClassNames = () => ['theme-' + this.id]
-    .concat(this.dark ? ['dark'] : [])
+  this.getClassNames = () => ['theme-' + this.id].concat(this.dark ? ['dark'] : [])
 }
 
 // Key saved in localStorage
@@ -39,5 +38,5 @@ exports.THEME_LIST = [
       'typo-dimmer': '#717c81',
     },
     true
-  )
+  ),
 ]

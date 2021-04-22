@@ -8,11 +8,7 @@ import { ThemeProvider } from './hooks/theme'
  * Set up app-wide provider components
  */
 export function wrapRootElement({ element }) {
-  return (
-    <ThemeProvider>
-      {element}
-    </ThemeProvider>
-  )
+  return <ThemeProvider>{element}</ThemeProvider>
 }
 
 /**
@@ -23,11 +19,11 @@ export function wrapRootElement({ element }) {
  */
 export function wrapPageElement({ element, props }) {
   const PageComponent = element.type
-  if(PageComponent) {
+  if (PageComponent) {
     // Search for layout in page component type
     // Fallback to the default layout defined in parent component (if implemented)
     const Layout = PageComponent.layout || Object.getPrototypeOf(PageComponent).layout
-    if(Layout) {
+    if (Layout) {
       return <Layout path={props.path}>{element}</Layout>
     }
   }

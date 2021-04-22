@@ -5,13 +5,9 @@ import { BaseIcon } from '.'
 
 export default function Icon({ name, className }) {
   const def = ICONS[name]
-  if(!def) {
+  if (!def) {
     throw new Error(`Invalid icon "${name}"`)
   }
-  const props = typeof def === 'string'
-    ? { path: def }
-    : def
-  return (
-    <BaseIcon { ...props } className={classNames(props.className, className)} />
-  )
+  const props = typeof def === 'string' ? { path: def } : def
+  return <BaseIcon {...props} className={classNames(props.className, className)} />
 }

@@ -6,20 +6,15 @@ export default class Portafolio extends Page {
   view() {
     const {
       data: {
-        page: {
-          title
-        },
-        projects
+        page: { title },
+        projects,
       },
-      pageContext: {
-        skill,
-        category
-      }
+      pageContext: { skill, category },
     } = this.props
     this.title = title
     this.snippet = {
       skill,
-      category
+      category,
     }
     if (projects.pageInfo.currentPage > 1) {
       this.title += ` (Page ${projects.pageInfo.currentPage})`

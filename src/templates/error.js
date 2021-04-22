@@ -8,23 +8,16 @@ export default class Error extends Page {
       data: {
         page: {
           title,
-          data: {
-            code = 404,
-            message
-          }
-        }
-      }
+          data: { code = 404, message },
+        },
+      },
     } = this.props
     this.title = title
     this.snippet = {
       $comp: 'Error',
-      code
+      code,
     }
-    return (
-      <Hero title={this.title}>
-        {message}
-      </Hero>
-    )
+    return <Hero title={this.title}>{message}</Hero>
   }
 }
 

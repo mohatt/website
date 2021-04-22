@@ -10,7 +10,7 @@ export default function Markdown({ components = {}, children, ...props }) {
     Button,
     ButtonGroup,
     Link,
-    Icon
+    Icon,
   }
   return (
     <>

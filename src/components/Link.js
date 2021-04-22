@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as InternalLink } from 'gatsby-plugin-advanced-pages'
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from 'gatsby-plugin-google-gtag'
 
 export default function Link({ to, external, ...props }) {
   if (external) {
