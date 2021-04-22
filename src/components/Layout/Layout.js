@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useCurrentPath } from '../../hooks'
 import Menu from './Menu'
 import Header from './Header'
 import Footer from './Footer'
@@ -6,8 +7,9 @@ import './Layout.css'
 
 export const LayoutContext = React.createContext()
 
-export default function Layout({ path, children }) {
+export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { path } = useCurrentPath()
   const isHome = path === '/'
   return (
     <div className='h-screen flex flex-row overflow-hidden'>
