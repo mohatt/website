@@ -31,7 +31,7 @@ export function withoutPrefix(path) {
 export function getSocialHandle(platform, handle) {
   const props = SOCIAL_PLATFORMS[platform]
   if (!props) {
-    throw new Error(`Invalid social handle "${platform}"`)
+    throw new Error(`Invalid social platform id "${platform}"`)
   }
   return {
     ...props,
