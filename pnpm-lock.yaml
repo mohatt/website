@@ -42,13 +42,13 @@ specifiers:
   simple-icons: 4.20.0
   stylelint: 13.12.0
   stylelint-config-standard: 21.0.0
-  tailwindcss: 2.1.1
+  tailwindcss: 2.1.2
   webpack-bundle-analyzer: 4.4.1
 
 dependencies:
   '@mdx-js/mdx': 1.6.22
   '@mdx-js/react': 1.6.22_react@17.0.2
-  '@tailwindcss/typography': 0.4.0_tailwindcss@2.1.1
+  '@tailwindcss/typography': 0.4.0_tailwindcss@2.1.2
   autoprefixer: 10.2.5_postcss@8.2.10
   classnames: 2.3.1
   gatsby: 3.3.1_react-dom@17.0.2+react@17.0.2
@@ -80,7 +80,7 @@ dependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-helmet: 6.1.0_react@17.0.2
-  tailwindcss: 2.1.1_02ae6d0a5709fa7b5d38be2fad8eebc6
+  tailwindcss: 2.1.2_02ae6d0a5709fa7b5d38be2fad8eebc6
 
 devDependencies:
   '@mohatt/eslint-config-gatsby-standard': 2.0.1_eslint@7.20.0
@@ -2352,7 +2352,7 @@ packages:
       defer-to-connect: 2.0.1
     dev: false
 
-  /@tailwindcss/typography/0.4.0_tailwindcss@2.1.1:
+  /@tailwindcss/typography/0.4.0_tailwindcss@2.1.2:
     resolution: {integrity: sha512-3BfOYT5MYNEq81Ism3L2qu/HRP2Q5vWqZtZRQqQrthHuaTK9qpuPfbMT5WATjAM5J1OePKBaI5pLoX4S1JGNMQ==}
     peerDependencies:
       tailwindcss: 2.0.0-alpha.24 || ^2.0.0
@@ -2361,7 +2361,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
-      tailwindcss: 2.1.1_02ae6d0a5709fa7b5d38be2fad8eebc6
+      tailwindcss: 2.1.2_02ae6d0a5709fa7b5d38be2fad8eebc6
     dev: false
 
   /@tokenizer/token/0.1.1:
@@ -14532,8 +14532,8 @@ packages:
       slice-ansi: 4.0.0
       string-width: 4.2.2
 
-  /tailwindcss/2.1.1_02ae6d0a5709fa7b5d38be2fad8eebc6:
-    resolution: {integrity: sha512-zZ6axGqpSZOCBS7wITm/WNHkBzDt5CIZlDlx0eCVldwTxFPELCVGbgh7Xpb3/kZp3cUxOmK7bZUjqhuMrbN6xQ==}
+  /tailwindcss/2.1.2_02ae6d0a5709fa7b5d38be2fad8eebc6:
+    resolution: {integrity: sha512-T5t+wwd+/hsOyRw2HJuFuv0LTUm3MUdHm2DJ94GPVgzqwPPFa9XxX0KlwLWupUuiOUj6uiKURCzYPHFcuPch/w==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     peerDependencies:
