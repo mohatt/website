@@ -39,7 +39,7 @@ specifiers:
   react: 17.0.2
   react-dom: 17.0.2
   react-helmet: 6.1.0
-  simple-icons: 4.20.0
+  simple-icons: 4.21.0
   stylelint: 13.12.0
   stylelint-config-standard: 21.0.0
   tailwindcss: 2.1.1
@@ -87,7 +87,7 @@ devDependencies:
   '@types/tailwindcss': 2.0.2
   eslint: 7.20.0
   prettier: 2.2.1
-  simple-icons: 4.20.0
+  simple-icons: 4.21.0
   stylelint: 13.12.0
   stylelint-config-standard: 21.0.0_stylelint@13.12.0
   webpack-bundle-analyzer: 4.4.1
@@ -13741,8 +13741,8 @@ packages:
       simple-concat: 1.0.1
     dev: false
 
-  /simple-icons/4.20.0:
-    resolution: {integrity: sha512-pvl7dojNCOkLx1KlqXtqlcTT1/+EGlDKGY2jL2m5i5LObqwwx//hqwachOneaNyEpg6ipCSUlC4IN4zqxKEojw==}
+  /simple-icons/4.21.0:
+    resolution: {integrity: sha512-ndWvBMRSzetkCCptehYNbbxAJOMCZ+5YJJl5EDtqfJG6W2O6y5L9YXKfPp1GoIGL4wZ/Betb+g6bGxD7JGGRgA==}
     dev: true
 
   /simple-swizzle/0.2.2:
