@@ -40,37 +40,41 @@ const SkillBlock = ({ icon, title, children }) => (
   </div>
 )
 
-const SkillTag = ({ tag }) => (
+const SkillList = ({ tags, title, icon }) => {
+  const skills = useProjectSkills(tags)
+  return skills.length > 0 && (
+    <div className='flex'>
+      <Icon name={icon} className='h-8 w-8 text-primary' />
+      <div className='flex-1 pl-2'>
+        <h3 className='text-primary'>{title}</h3>
+        <ul className='mt-4 space-y-2'>
+          {skills.map(({ id, title, icon, projects }) => (
+            <li key={id}>
+              <BaseIcon path={icon} className='h-6 w-6 mr-2 text-primary' />
+              {title}
+              {projects > 0 && (
+                <Button
+                  color='alt'
+                  className='text-xs ml-2 py-0 px-2'
+                  to='portafolio.skill'
+                  params={{ skill: id }}
+                  title={`View projects tagged with '${id}'`}
+                  children={projects}
+                />
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+const SkillTagGrid = ({ tag }) => (
   <div className='grid grid-cols-3 gap-8 max-w-4xl text-lg'>
-    {tags[tag].map(({ id, title, icon }) => {
-      const skills = useProjectSkills([tag, id])
-      return skills.length > 0 && (
-        <div key={title} className='flex'>
-          <Icon name={icon} className='h-8 w-8 text-primary' />
-          <div className='flex-1 pl-2'>
-            <h3 className='text-primary'>{title}</h3>
-            <ul className='mt-4 space-y-2'>
-              {skills.map(({ id, title, icon, projects }) => (
-                <li key={id}>
-                  <BaseIcon path={icon} className='h-6 w-6 mr-2 text-primary' />
-                  {title}
-                  {projects > 0 && (
-                    <Button
-                      color='alt'
-                      className='text-xs ml-2 py-0 px-2'
-                      to='portafolio.skill'
-                      params={{ skill: id }}
-                      title={`View projects tagged with '${id}'`}
-                      children={projects}
-                    />
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )
-    })}
+    {tags[tag].map(({ id, title, icon }) => (
+      <SkillList key={id} tags={[tag, id]} title={title} icon={icon} />
+    ))}
   </div>
 )
 
@@ -109,25 +113,25 @@ export default class Skills extends Page {
             launched in the past had the back-end done by me. My main stack usually
             involves PHP with the CMS/Framework of choice, and alternatively Node.js.
           </Heading>
-          <SkillTag tag='backend' />
+          <SkillTagGrid tag='backend' />
         </Section>
         <Section>
           <Heading title='Front-end Development'>
             I create responsive websites that allow the user to have the
             best and most appropriate experience suited to the device they are using.
           </Heading>
-          <SkillTag tag='frontend' />
+          <SkillTagGrid tag='frontend' />
         </Section>
         <Section>
           <Heading title='Cloud Services'>
             I use these cloud services to setup an integrated, effective and
             efficient web development workflow that meets the project needs.
           </Heading>
-          <SkillTag tag='cloud' />
+          <SkillTagGrid tag='cloud' />
         </Section>
         <Section>
           <Heading title='Software'>My local web development setup.</Heading>
-          <SkillTag tag='software' />
+          <SkillTagGrid tag='software' />
         </Section>
       </>
     )
