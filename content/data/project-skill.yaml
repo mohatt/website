@@ -363,7 +363,7 @@
     - pkgman
 - id: pnpm
   title: pnpm
-  icon: fortinet
+  icon: pnpm
   tags:
     - software
     - pkgman
