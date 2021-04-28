@@ -20,7 +20,7 @@ jobs:
           path: ~/.pnpm-store
           key: pnpm-install-v4-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            pnpm-install-v3-
+            pnpm-install-v4-
       - run: |
           npm -g install pnpm@6
           pnpm set verify-store-integrity false
