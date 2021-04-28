@@ -65,9 +65,9 @@
     "tailwindcss": "2.1.2"
   },
   "devDependencies": {
-    "@mohatt/eslint-config-gatsby-standard": "2.0.1",
+    "@mohatt/eslint-config-gatsby-standard": "3.0.0",
     "@types/tailwindcss": "2.0.2",
-    "eslint": "7.20.0",
+    "eslint": "7.25.0",
     "prettier": "2.2.1",
     "simple-icons": "4.21.0",
     "stylelint": "13.13.0",

@@ -5,7 +5,7 @@ export function useCurrentPath() {
   const location = useLocation()
   return {
     path: withoutPrefix(location.pathname),
-    realpath: location.pathname
+    realpath: location.pathname,
   }
 }
 
