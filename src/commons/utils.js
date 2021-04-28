@@ -35,6 +35,6 @@ export function getSocialHandle(platform, handle) {
   }
   return {
     ...props,
-    href: props.href(handle)
+    href: props.href(handle),
   }
 }
