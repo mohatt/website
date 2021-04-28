@@ -18,13 +18,13 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/.pnpm-store
-          key: pnpm-install-v3-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-install-v4-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             pnpm-install-v3-
       - run: |
           npm -g install pnpm@6
           pnpm set verify-store-integrity false
-      - run: pnpm install --shamefully-hoist
+      - run: pnpm install
       - run: pnpm run build
       - if: github.event_name == 'push'
         uses: actions/upload-artifact@v2

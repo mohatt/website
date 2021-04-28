@@ -75,7 +75,11 @@
     "webpack-bundle-analyzer": "4.4.1"
   },
   "engines": {
-    "node": ">=12.17.0"
+    "node": ">=12.17.0",
+    "pnpm": ">=6"
+  },
+  "pnpm": {
+    "neverBuiltDependencies": ["fsevents"]
   },
   "browserslist": [
     "last 2 version",
