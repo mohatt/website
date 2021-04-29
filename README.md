@@ -45,8 +45,8 @@ Then, run `pnpm serve` to preview the site as it will appear once deployed
 [ci-img]: https://img.shields.io/github/workflow/status/mohatt/website/CI/master?logo=github
 [netlify-url]: https://app.netlify.com/sites/mohatt/deploys
 [netlify-img]: https://img.shields.io/netlify/a466eccc-c643-4f0e-bb6e-34e847cd259e?logo=netlify&logoColor=white
-[gatsby-url]: https://github.com/gatsbyjs/gatsby/blob/gatsby%403.1.2/packages/gatsby/CHANGELOG.md
-[gatsby-img]: https://img.shields.io/badge/gatsby-v3.2.1-blueviolet.svg?logo=gatsby
+[gatsby-url]: https://github.com/gatsbyjs/gatsby/blob/gatsby%403.4.0/packages/gatsby/CHANGELOG.md
+[gatsby-img]: https://img.shields.io/badge/gatsby-v3.4-blueviolet.svg?logo=gatsby
 [website-url]: https://mo.tru.io
 [website-img]: https://img.shields.io/website?logo=statuspal&url=https%3A%2F%2Fmo.tru.io
 [s-headers-url]: https://securityheaders.com/?followRedirects=on&q=mo.tru.io
