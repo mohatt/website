@@ -37,6 +37,7 @@
     "gatsby-plugin-advanced-pages": "2.2.1",
     "gatsby-plugin-catch-links": "3.4.0",
     "gatsby-plugin-google-gtag": "3.4.0",
+    "gatsby-plugin-graphql-config": "0.13.0",
     "gatsby-plugin-manifest": "3.4.0",
     "gatsby-plugin-mdx": "2.4.0",
     "gatsby-plugin-postbuild": "2.2.2",
@@ -65,7 +66,7 @@
     "tailwindcss": "2.1.2"
   },
   "devDependencies": {
-    "@mohatt/eslint-config-gatsby-standard": "3.0.0",
+    "@mohatt/eslint-config-gatsby-standard": "3.1.0",
     "@types/tailwindcss": "2.0.2",
     "eslint": "7.25.0",
     "prettier": "2.2.1",
