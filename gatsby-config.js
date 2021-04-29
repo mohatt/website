@@ -16,11 +16,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: 'gatsby-plugin-mdx',
       options: {
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: { maxWidth: 960 },
           },
           'gatsby-remark-prismjs',
@@ -62,12 +62,19 @@ module.exports = {
       options: require('./config/postcss'),
     },
     'gatsby-plugin-sitemap',
-    `gatsby-plugin-robots-txt`,
+    'gatsby-plugin-robots-txt',
     'gatsby-plugin-catch-links',
-    `gatsby-plugin-preload-fonts`,
+    'gatsby-plugin-preload-fonts',
     {
       resolve: 'gatsby-plugin-postbuild',
       options: require('./config/postbuild'),
     },
   ],
+}
+
+// Development plugins
+if (process.env.NODE_ENV === 'development') {
+  module.exports.plugins = module.exports.plugins.concat([
+    'gatsby-plugin-graphql-config'
+  ])
 }

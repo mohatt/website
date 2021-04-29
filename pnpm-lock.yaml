@@ -6,7 +6,7 @@ neverBuiltDependencies:
 specifiers:
   '@mdx-js/mdx': 1.6.22
   '@mdx-js/react': 1.6.22
-  '@mohatt/eslint-config-gatsby-standard': 3.0.0
+  '@mohatt/eslint-config-gatsby-standard': 3.1.0
   '@tailwindcss/typography': 0.4.0
   '@types/tailwindcss': 2.0.2
   autoprefixer: 10.2.5
@@ -16,6 +16,7 @@ specifiers:
   gatsby-plugin-advanced-pages: 2.2.1
   gatsby-plugin-catch-links: 3.4.0
   gatsby-plugin-google-gtag: 3.4.0
+  gatsby-plugin-graphql-config: 0.13.0
   gatsby-plugin-manifest: 3.4.0
   gatsby-plugin-mdx: 2.4.0
   gatsby-plugin-postbuild: 2.2.2
@@ -58,6 +59,7 @@ dependencies:
   gatsby-plugin-advanced-pages: 2.2.1_gatsby@3.4.0+react@17.0.2
   gatsby-plugin-catch-links: 3.4.0_gatsby@3.4.0
   gatsby-plugin-google-gtag: 3.4.0_48f949a5487791cac316034eab95c894
+  gatsby-plugin-graphql-config: 0.13.0_gatsby@3.4.0
   gatsby-plugin-manifest: 3.4.0_gatsby@3.4.0
   gatsby-plugin-mdx: 2.4.0_73e8d0148a4c5c71ceb6a02bbce55c80
   gatsby-plugin-postbuild: 2.2.2_gatsby@3.4.0+postcss@8.2.13
@@ -86,7 +88,7 @@ dependencies:
   tailwindcss: 2.1.2_941a81a5c9afb5d3c8bce0db60f786b1
 
 devDependencies:
-  '@mohatt/eslint-config-gatsby-standard': 3.0.0_38631ad5cd5d1261a24b581eff10126b
+  '@mohatt/eslint-config-gatsby-standard': 3.1.0_38631ad5cd5d1261a24b581eff10126b
   '@types/tailwindcss': 2.0.2
   eslint: 7.25.0
   prettier: 2.2.1
@@ -2349,8 +2351,8 @@ packages:
     resolution: {integrity: sha512-nEBLOa0JgtqahmPrnJZ18epLiFBzxhdKgo4uhN3TaBFRmM30pEVrS9FAEV4tg92d8PTdU+dYQx2lnpPyFMgMcg==}
     dev: false
 
-  /@mohatt/eslint-config-gatsby-standard/3.0.0_38631ad5cd5d1261a24b581eff10126b:
-    resolution: {integrity: sha512-xsJYQn3XD0rL3/tankIM4Wa3Bzc8skURC6cHUL7HkfBgJ3579anxzmumN3nSeYoMKRAC7rmNhlJvlhTSkOivwg==}
+  /@mohatt/eslint-config-gatsby-standard/3.1.0_38631ad5cd5d1261a24b581eff10126b:
+    resolution: {integrity: sha512-49SFdigWNeFlUIvVLNV7XwO5r06jIAyHZ7XtOAEd+CCpR6s3MqKajhHzq8PahGsIhcZMZ59/UV4NxzzyODomBA==}
     peerDependencies:
       eslint: ^7.25.0
       gatsby: ^3.0.0
@@ -7242,6 +7244,16 @@ packages:
       minimatch: 3.0.4
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /gatsby-plugin-graphql-config/0.13.0_gatsby@3.4.0:
+    resolution: {integrity: sha512-5eKEv4TElN6uY4/gfVGg9w/X2fjYSL8b9F8sgCGyvn+D0cqC6l/zPh8Jq7gajjzijGo3uLk2SQP+7asqPeJYvQ==}
+    engines: {node: '>=12.13.0'}
+    peerDependencies:
+      gatsby: ^3.0.0-next.0
+    dependencies:
+      fs-extra: 9.1.0
+      gatsby: 3.4.0_react-dom@17.0.2+react@17.0.2
     dev: false
 
   /gatsby-plugin-manifest/3.4.0_gatsby@3.4.0:
