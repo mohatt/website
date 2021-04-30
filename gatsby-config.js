@@ -61,6 +61,12 @@ module.exports = {
       resolve: 'gatsby-plugin-postcss',
       options: require('./config/postcss'),
     },
+    {
+      resolve: 'gatsby-plugin-vercel',
+      options: {
+        debug: true
+      },
+    },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-catch-links',
