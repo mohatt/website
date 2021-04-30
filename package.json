@@ -53,6 +53,7 @@
     "gatsby-source-filesystem": "3.4.0",
     "gatsby-transformer-sharp": "3.4.0",
     "gatsby-transformer-yaml": "3.4.0",
+    "gatsby-plugin-vercel": "1.0.3",
     "lodash": "4.17.21",
     "moment": "2.29.1",
     "postcss": "8.2.13",
