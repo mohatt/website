@@ -1,4 +1,5 @@
 const path = require('path')
+const env = require('./config/environment')
 const site = require('./config/site')
 const theme = require('./src/commons/themes').THEME_LIST.find(t => t.id === site.metadata.theme)
 
@@ -40,7 +41,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingIds: [site.ga],
+        trackingIds: [env.config.analytics],
       },
     },
     {
@@ -73,8 +74,6 @@ module.exports = {
 }
 
 // Development plugins
-if (process.env.NODE_ENV === 'development') {
-  module.exports.plugins = module.exports.plugins.concat([
-    'gatsby-plugin-graphql-config'
-  ])
+if (env.isDevelopment()) {
+  module.exports.plugins.push('gatsby-plugin-graphql-config')
 }

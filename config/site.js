@@ -1,7 +1,9 @@
+const env = require('./environment')
+
 module.exports = {
   metadata: {
     title: 'Mohamed E.',
-    url: 'https://mo.tru.io',
+    url: env.config.url,
     description: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
     copyright: '© 2021 All rights reserved.',
     theme: 'default',
@@ -18,7 +20,6 @@ module.exports = {
       { type: 'github', to: 'mohatt' },
     ],
   },
-  ga: 'G-WYVRHE98ND',
   pagination: {
     portafolio: 4
   },

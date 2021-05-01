@@ -10,7 +10,7 @@
     "clean": "gatsby clean",
     "start": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build",
-    "serve": "gatsby serve",
+    "serve": "firebase emulators:start",
     "lint": "pnpm run lint:js && pnpm run lint:css",
     "lint:js": "eslint .",
     "lint:css": "stylelint 'src/**/*.css'",
