@@ -5,7 +5,7 @@ on:
     branches: [ production ]
 
 jobs:
-  build:
+  Build:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-20.04
     steps:
@@ -28,7 +28,7 @@ jobs:
         with:
           name: build-art
           path: public
-  deploy:
+  Deploy:
     needs: build
     runs-on: ubuntu-20.04
     steps:
