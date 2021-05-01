@@ -47,7 +47,7 @@ specifiers:
   react-dom: 17.0.2
   react-helmet: 6.1.0
   simple-icons: 4.21.0
-  stylelint: 13.13.0
+  stylelint: 13.13.1
   stylelint-config-standard: 22.0.0
   tailwindcss: 2.1.2
   webpack-bundle-analyzer: 4.4.1
@@ -96,8 +96,8 @@ devDependencies:
   eslint: 7.25.0
   prettier: 2.2.1
   simple-icons: 4.21.0
-  stylelint: 13.13.0
-  stylelint-config-standard: 22.0.0_stylelint@13.13.0
+  stylelint: 13.13.1
+  stylelint-config-standard: 22.0.0_stylelint@13.13.1
   webpack-bundle-analyzer: 4.4.1
 
 packages:
@@ -14833,25 +14833,25 @@ packages:
       postcss-selector-parser: 6.0.5
     dev: false
 
-  /stylelint-config-recommended/5.0.0_stylelint@13.13.0:
+  /stylelint-config-recommended/5.0.0_stylelint@13.13.1:
     resolution: {integrity: sha512-c8aubuARSu5A3vEHLBeOSJt1udOdS+1iue7BmJDTSXoCBmfEQmmWX+59vYIj3NQdJBY6a/QRv1ozVFpaB9jaqA==}
     peerDependencies:
       stylelint: ^13.13.0
     dependencies:
-      stylelint: 13.13.0
+      stylelint: 13.13.1
     dev: true
 
-  /stylelint-config-standard/22.0.0_stylelint@13.13.0:
+  /stylelint-config-standard/22.0.0_stylelint@13.13.1:
     resolution: {integrity: sha512-uQVNi87SHjqTm8+4NIP5NMAyY/arXrBgimaaT7skvRfE9u3JKXRK9KBkbr4pVmeciuCcs64kAdjlxfq6Rur7Hw==}
     peerDependencies:
       stylelint: ^13.13.0
     dependencies:
-      stylelint: 13.13.0
-      stylelint-config-recommended: 5.0.0_stylelint@13.13.0
+      stylelint: 13.13.1
+      stylelint-config-recommended: 5.0.0_stylelint@13.13.1
     dev: true
 
-  /stylelint/13.13.0:
-    resolution: {integrity: sha512-jvkM1iuH88vAvjdKPwPm6abiMP2/D/1chbfb+4GVONddOOskHuCXc0loyrLdxO1AwwH6jdnjYskkTKHQD7cXwQ==}
+  /stylelint/13.13.1:
+    resolution: {integrity: sha512-Mv+BQr5XTUrKqAXmpqm6Ddli6Ief+AiPZkRsIrAoUKFuq/ElkUh9ZMYxXD0iQNZ5ADghZKLOWz1h7hTClB7zgQ==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dependencies:
