@@ -3,7 +3,6 @@
     "public": "public",
     "ignore": [
       "firebase.json",
-      "@(src|config|gatsby|content|static)/**",
       "**/.*",
       "**/node_modules/**"
     ],

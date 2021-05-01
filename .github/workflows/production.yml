@@ -24,15 +24,24 @@ jobs:
           version: 6
           run_install: true
       - run: pnpm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-art
+          path: public
   deploy:
     needs: build
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-art
+          path: public
+      - run: mv "./public/firebase.json" "./firebase.json"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOHATT }}'
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOHATT }}
+          projectId: mohatt
           channelId: live
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
