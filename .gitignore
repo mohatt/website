@@ -1,20 +1,18 @@
 # Logs
-logs
+logs/
 *.log
 
 # Dependencies
-node_modules
+node_modules/
 
 # Build artifacts
-public
-.cache
+/public/
+/.cache/
 
-# Test stuff
-coverage
 
 # IDE stuff
-.idea
-*.sublime*
+.idea/
+.vscode/
 
 # Generic files
 .DS_Store
