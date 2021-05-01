@@ -3,8 +3,7 @@ name: Feature
 on: pull_request
 
 jobs:
-  build:
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+  Build:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -28,7 +27,8 @@ jobs:
         with:
           name: build-art
           path: public
-  deploy:
+  Deploy:
+    if: github.event.pull_request.user.login == 'mohatt'
     needs: build
     runs-on: ubuntu-20.04
     steps:
