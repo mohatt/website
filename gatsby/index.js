@@ -5,6 +5,10 @@ module.exports = {
     onCreateWebpackConfig: args => {
       require('./webpack-bundle-analyzer')(args)
     },
+    // This is temporary
+    onPostBuild: () => {
+      require('fs').copyFileSync(`./firebase.json`, `./public/firebase.json`)
+    }
   },
   ssr: {
     onRenderBody: args => {

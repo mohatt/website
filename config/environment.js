@@ -31,6 +31,8 @@ function Environment() {
     }
   }
 
+  console.info(`Current build environment: ${this.is}`)
+
   this.config = CONFIG[this.is]
 
   this.isDevelopment = () => this.is === 'development'
