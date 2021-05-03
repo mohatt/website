@@ -1,0 +1,28 @@
+const React = require('react')
+const env = require('../config/environment')
+
+module.exports = ({ setHeadComponents }) => {
+  if (env.isDevelopment())
+    return
+
+  /**
+   * First Input Delay polyfill library
+   *
+   * @see https://firebase.google.com/docs/perf-mon/get-started-web#add-first-input-delay-polyfill
+   * @see https://github.com/GoogleChromeLabs/first-input-delay
+   */
+  const FIDPolyfill = `!function(n,e){var t,o,i,c=[],f={passive:!0,capture:!0},r=new Date,a="pointerup",u="pointercancel";function p(n,c){t||(t=c,o=n,i=new Date,w(e),s())}function s(){o>=0&&o<i-r&&(c.forEach(function(n){n(o,t)}),c=[])}function l(t){if(t.cancelable){var o=(t.timeStamp>1e12?new Date:performance.now())-t.timeStamp;"pointerdown"==t.type?function(t,o){function i(){p(t,o),r()}function c(){r()}function r(){e(a,i,f),e(u,c,f)}n(a,i,f),n(u,c,f)}(o,t):p(o,t)}}function w(n){["click","mousedown","keydown","touchstart","pointerdown"].forEach(function(e){n(e,l,f)})}w(n),self.perfMetrics=self.perfMetrics||{},self.perfMetrics.onFirstInputDelay=function(n){c.push(n),s()}}(addEventListener,removeEventListener);`
+  setHeadComponents([
+    <script key='fb-perf-fid-lib' dangerouslySetInnerHTML={{ __html: FIDPolyfill }} />
+  ])
+
+  const { measurementId } = env.config.firebase
+  if (!measurementId)
+    return
+
+  // Preload gtag
+  setHeadComponents([
+    <link key='fb-anal-preconnect-ga' rel="preconnect dns-prefetch" href="https://www.google-analytics.com" />,
+    <script key='fb-anal-gtag' async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />,
+  ])
+}

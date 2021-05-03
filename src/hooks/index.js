@@ -1,3 +1,4 @@
+export { useAnalytics, useAnalyticsEffect, usePerformance, usePerformanceEffect } from './firebase'
 export { default as useSiteMetadata } from './site-metadata'
 export { default as useLocalStorage } from './local-storage'
 export { default as useTheme } from './theme'

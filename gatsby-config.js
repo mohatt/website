@@ -39,12 +39,6 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-plugin-google-gtag',
-      options: {
-        trackingIds: [env.config.analytics],
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: site.metadata.title,

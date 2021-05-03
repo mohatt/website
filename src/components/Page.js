@@ -1,12 +1,17 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { useSiteMetadata } from '../hooks'
+import { useSiteMetadata, useAnalyticsEffect } from '../hooks'
 import { Layout, Section } from '.'
 
-function PageHelmet({ title, description }) {
+function PageHelmet({ title = '', description }) {
   const site = useSiteMetadata()
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
+
+  useAnalyticsEffect(({ log }) => {
+    log('page_view', { page_title: title }, { global: true })
+  }, [])
+
   return (
     <Helmet>
       <title>{seoTitle}</title>

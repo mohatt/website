@@ -8,12 +8,13 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - run: cp ".firebaserc" "maintenance/.firebaserc"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOHATT }}
-          entryPoint: ./maintenance
-          projectId: mohatt
+          entryPoint: maintenance
+          projectId: production
           channelId: live
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
