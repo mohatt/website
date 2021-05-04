@@ -1,0 +1,60 @@
+name: Staging
+
+on:
+  push:
+    branches: [ development ]
+  pull_request:
+    branches: [  development ]
+
+jobs:
+  Build:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-install-v4-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-install-v4-
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6
+          run_install: true
+      - name: Build
+        env:
+          BUILD_ENV: staging
+        run: |
+          pnpm run build
+          mkdir deploy
+          mv public/firebase.json deploy/
+          mv public deploy/
+          cp .firebaserc deploy/.firebaserc
+      - uses: actions/upload-artifact@v2
+        with:
+          name: deploy-art
+          path: deploy
+  Deploy:
+    if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'mohatt') }}
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: deploy-art
+      - name: Deploy to live channel
+        if: github.event_name == 'push'
+        run: echo "DEPLOY_CHANNEL=live" >> $GITHUB_ENV
+      - name: Deploy
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOHATT_STAGING }}
+          projectId: staging
+          channelId: ${{ env.DEPLOY_CHANNEL }}
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
