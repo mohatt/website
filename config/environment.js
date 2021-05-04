@@ -23,12 +23,12 @@ const config = {
     firebase: firebaseConfig.dev
   },
   staging: {
-    url: 'https://mohatt--staging-kz69njsk.web.app',
-    analytics: firebaseConfig.dev
+    url: 'https://mohatt-staging.web.app',
+    firebase: firebaseConfig.dev
   },
   production: {
     url: 'https://mohatt.web.app',
-    analytics: firebaseConfig.prod
+    firebase: firebaseConfig.prod
   },
 }
 
