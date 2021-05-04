@@ -42,9 +42,9 @@ jobs:
         run: |
           pnpm run build
           mkdir deploy
-          mv public/firebase.json /deploy/
-          mv public /deploy/
-          cp .firebaserc /deploy/.firebaserc
+          mv public/firebase.json deploy/
+          mv public deploy/
+          cp .firebaserc deploy/.firebaserc
       - name: Caching deploy directory (for debugging purposes)
         uses: actions/upload-artifact@v2
         with:

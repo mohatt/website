@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "mohatt",
-    "staging": "mohatt",
+    "default": "mohatt-staging",
+    "staging": "mohatt-staging",
     "production": "mohatt"
   }
 }
