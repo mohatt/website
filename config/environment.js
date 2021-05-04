@@ -8,8 +8,8 @@ const firebaseConfig = {
   prod: {
     apiKey: "AIzaSyCCUU0dXV_m5CIP2WgO8iOlBhQKVK0gkk4",
     projectId: "mohatt",
-    appId: "1:485833880063:web:3106eba17514f9d5b377ca",
-    measurementId: "G-LTLQD2WEPN"
+    appId: "1:485833880063:web:e8efb2c30563aecdb377ca",
+    measurementId: "G-EC5KQR5PF7"
   }
 }
 
