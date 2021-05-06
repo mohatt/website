@@ -1,3 +1,5 @@
+const env = require('./environment')
+
 module.exports = {
   enabled: true,
   ignore: [
@@ -18,8 +20,14 @@ module.exports = {
       ]
     },
   },
-  'netlify-headers': {
-    enabled: true
+  'http-headers': {
+    enabled: true,
+    provider: 'firebase',
+    headers: {
+      '[*]': !env.isProduction()
+        ? { 'X-Robots-Tag': 'noindex' }
+        : {}
+    }
   },
   minify: {
     enabled: true,
