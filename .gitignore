@@ -8,6 +8,7 @@ node_modules/
 # Build artifacts
 /public/
 /.cache/
+/.firebase/
 
 
 # IDE stuff
