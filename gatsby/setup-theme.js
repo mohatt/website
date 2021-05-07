@@ -1,6 +1,5 @@
 const React = require('react')
-const { THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons/themes')
-const defaultTheme = require('../config/site').metadata.theme
+const { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons/themes')
 
 /**
  * Workaround for FOUC issue - solves the style flickering issue due to
@@ -29,7 +28,7 @@ try {
   }
 } catch (e) {}
 `
-  setBodyAttributes({ className: THEME_LIST.find(t => t.id === defaultTheme).getClassName()})
+  setBodyAttributes({ className: THEME_DEFAULT.getClassName()})
   setPreBodyComponents([
     <script key="theme-setup" dangerouslySetInnerHTML={{ __html: themeSetup }} />
   ])

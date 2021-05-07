@@ -9,10 +9,8 @@ function Theme(id, name, colors, dark) {
   this.getClassNames = () => ['theme-' + this.id].concat(this.dark ? ['dark'] : [])
 }
 
-// Key saved in localStorage
-exports.THEME_STORAGE_KEY = 'mohatt:theme'
 // Availabe themes
-exports.THEME_LIST = [
+const themes = [
   new Theme(
     'default',
     'Default',
@@ -40,3 +38,9 @@ exports.THEME_LIST = [
     true
   ),
 ]
+
+module.exports = {
+  THEME_STORAGE_KEY: 'mohatt:theme',
+  THEME_DEFAULT: themes[0],
+  THEME_LIST: themes
+}

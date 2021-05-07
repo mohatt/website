@@ -10,7 +10,6 @@ export default function useSiteMetadata() {
             description
             url
             copyright
-            theme
             contacts {
               type
               to

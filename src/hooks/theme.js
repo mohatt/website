@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
-import { THEME_LIST, THEME_STORAGE_KEY } from '../commons/themes'
-import { useLocalStorage, useSiteMetadata } from '.'
+import { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } from '../commons/themes'
+import { useLocalStorage } from '.'
 
 const ThemeContext = React.createContext()
 
 export function ThemeProvider({ children }) {
-  const defaultTheme = useSiteMetadata().theme
-  const [theme, setTheme] = useLocalStorage(THEME_STORAGE_KEY, defaultTheme)
+  const [theme, setTheme] = useLocalStorage(THEME_STORAGE_KEY, THEME_DEFAULT.id)
   const themeConfig = THEME_LIST.find(t => t.id === theme)
 
   useEffect(() => {

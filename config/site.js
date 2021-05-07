@@ -6,7 +6,6 @@ module.exports = {
     url: env.config.url,
     description: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
     copyright: '© 2021 All rights reserved.',
-    theme: 'default',
     menu: [
       { label: 'Intro', to: 'home' },
       { label: 'Skills', to: 'skills' },

@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react'
 const FirebaseContext = React.createContext()
 
 export function FirebaseProvider({ children }) {
-  const [services, setServices] = useState({
+  const [components, setComponents] = useState({
     analytics: {},
     performance: {},
   })
@@ -17,13 +17,11 @@ export function FirebaseProvider({ children }) {
      * @see https://webpack.js.org/api/module-methods/#magic-comments
      */
     import('../commons/firebase' /* webpackMode: "eager" */)
-      .then(exports => {
-        setServices(exports.default)
-      })
+      .then(exports => setComponents(exports.default))
   }, [])
 
   return (
-    <FirebaseContext.Provider value={services}>
+    <FirebaseContext.Provider value={components}>
       {children}
     </FirebaseContext.Provider>
   )
