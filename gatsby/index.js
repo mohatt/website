@@ -11,6 +11,9 @@ module.exports = {
     onRenderBody: args => {
       require('./setup-firebase')(args)
       require('./setup-theme')(args)
+    },
+    onPreRenderHTML: args => {
+      require('./reorder-head-tags')(args)
     }
   }
 }

@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { useSiteMetadata, useTheme } from '../../hooks'
 import { getSocialHandle } from '../../commons/utils'
 import { Button, Icon, Link } from '..'
 import { LayoutContext } from './Layout'
-import avatar from '../../images/avatar/avatar.png'
 import avatarAlt from '../../images/avatar/avatar-smile.png'
 
 function ThemeButton() {
@@ -46,8 +45,7 @@ function Header({ className }) {
     <header className={className}>
       <Helmet>
         <html lang='en' className='text-base xl:text-lg' />
-        <link rel='preload' href={avatar} as='image' />
-        <link rel='preload' href={avatarAlt} as='image' />
+        <link rel='prefetch' href={avatarAlt} as='image' />
       </Helmet>
       <div className='absolute w-32 top-0 right-0 mt-10 -mr-16 text-center'>
         <ul>

@@ -1,7 +1,7 @@
 import React from 'react'
 // Import vendor libs here so it gets bundled in the 'app' chunk
 // eslint-disable-next-line no-unused-vars
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { FirebaseProvider } from './hooks/firebase'
 import { ThemeProvider } from './hooks/theme'
 
