@@ -2,8 +2,8 @@ import React from 'react'
 import { Link as InternalLink } from 'gatsby-plugin-advanced-pages'
 import { useAnalytics } from "../hooks";
 
-function OutboundLink({ ...props }) {
-  const { log } = useAnalytics()
+function OutboundLink({ linkId, ...props }) {
+  const { event } = useAnalytics()
 
   return (
     <a
@@ -19,11 +19,12 @@ function OutboundLink({ ...props }) {
         if (props.target && props.target.toLowerCase() !== '_self') {
           redirect = false
         }
-        if (log) {
-          log('click', {
-            event_category: 'outbound',
-            event_label: props.href,
-            transport_type: redirect ? 'beacon' : '',
+        if (event) {
+          event('click', {
+            link_url: props.href,
+            link_domain: (new URL(props.href))?.hostname,
+            link_id: linkId || props.id,
+            outbound: true,
             event_callback: function () {
               if (redirect) {
                 document.location = props.href
@@ -44,6 +45,9 @@ function OutboundLink({ ...props }) {
 
 export default function Link({ to, external, ...props }) {
   if (external) {
+    if (typeof external === 'string') {
+      props.linkId = external
+    }
     return <OutboundLink href={to} {...props} />
   }
 

@@ -1,14 +1,21 @@
 import React, { useContext, useState, useEffect } from 'react'
+import { useSiteMetadata } from '.'
 
 const FirebaseContext = React.createContext()
 
 export function FirebaseProvider({ children }) {
+  const { title } = useSiteMetadata()
+  const env = __ENVIRONMENT__
   const [components, setComponents] = useState({
     analytics: {},
     performance: {},
   })
 
   useEffect(() => {
+    if(env === 'development') {
+      return
+    }
+
     /**
      * Firebase analytics and performance components don't support SSR so
      *  we have to dynamically import them. We are using 'eager' mode to
@@ -17,7 +24,13 @@ export function FirebaseProvider({ children }) {
      * @see https://webpack.js.org/api/module-methods/#magic-comments
      */
     import('../commons/firebase' /* webpackMode: "eager" */)
-      .then(exports => setComponents(exports.default))
+      .then(({ default: exports }) => {
+        exports.analytics.config({
+          app_name: title,
+          app_version: env
+        })
+        setComponents(exports)
+      })
   }, [])
 
   return (
@@ -35,7 +48,7 @@ export function useAnalytics() {
 export function useAnalyticsEffect(callback, deps) {
   const analytics = useAnalytics()
   return useEffect(() => {
-    if (analytics.log) {
+    if (analytics.event) {
       callback(analytics)
     }
   },[analytics, ...deps])

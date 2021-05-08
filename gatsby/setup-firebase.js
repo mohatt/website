@@ -20,9 +20,9 @@ module.exports = ({ setHeadComponents }) => {
   if (!measurementId)
     return
 
-  // Preload gtag
+  // Gtag prefetch/preload
   setHeadComponents([
-    <link key='fb-anal-preconnect-ga' rel="preconnect dns-prefetch" href="https://www.google-analytics.com" />,
+    <link key='fb-anal-gtag-preconnect' rel='preconnect dns-prefetch' href='https://www.googletagmanager.com' />,
     <script key='fb-anal-gtag' async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />,
   ])
 }

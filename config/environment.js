@@ -1,13 +1,13 @@
-const firebaseConfig = {
-  dev: {
-    apiKey: "AIzaSyDt0r8Z9pEvLYJBSa4YtsoApnFKCZrOvCs",
+const projects = {
+  staging: {
     projectId: "mohatt-staging",
-    appId: "1:809896687731:web:1e7d87d140172f0c1bd206",
-    measurementId: "G-R27D7B0GT7"
+    apiKey: "AIzaSyDt0r8Z9pEvLYJBSa4YtsoApnFKCZrOvCs",
+    appId: "1:809896687731:web:542557b9d73453ec1bd206",
+    measurementId: "G-WYGTR7R4NX"
   },
-  prod: {
-    apiKey: "AIzaSyCCUU0dXV_m5CIP2WgO8iOlBhQKVK0gkk4",
+  production: {
     projectId: "mohatt",
+    apiKey: "AIzaSyCCUU0dXV_m5CIP2WgO8iOlBhQKVK0gkk4",
     appId: "1:485833880063:web:e8efb2c30563aecdb377ca",
     measurementId: "G-EC5KQR5PF7"
   }
@@ -20,15 +20,15 @@ const config = {
   },
   'staging-local': {
     url: 'http://0.0.0.0:5000',
-    firebase: firebaseConfig.dev
+    firebase: projects.staging
   },
   staging: {
     url: 'https://mohatt-staging.web.app',
-    firebase: firebaseConfig.dev
+    firebase: projects.staging
   },
   production: {
     url: 'https://mohatt.web.app',
-    firebase: firebaseConfig.prod
+    firebase: projects.production
   },
 }
 

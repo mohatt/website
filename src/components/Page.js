@@ -8,8 +8,9 @@ function PageHelmet({ title = '', description }) {
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
 
-  useAnalyticsEffect(({ log }) => {
-    log('page_view', { page_title: title }, { global: true })
+  useAnalyticsEffect(({ config, event }) => {
+    config({ page_title: title})
+    event('page_view')
   }, [])
 
   return (

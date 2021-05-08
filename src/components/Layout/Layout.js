@@ -1,9 +1,21 @@
-import React, { useState } from 'react'
-import { useCurrentPath } from '../../hooks'
+import React, { useRef, useState } from 'react'
+import { useAnalyticsEffect, useCurrentLocation, useCurrentPath } from '../../hooks'
 import Menu from './Menu'
 import Header from './Header'
 import Footer from './Footer'
 import './Layout.css'
+
+function useAnalyticsConfig() {
+  const location = useCurrentLocation()
+  const referrer = useRef()
+  return useAnalyticsEffect(({ config }) => {
+    config({
+      page_path: location.pathname + location.search + location.hash,
+      page_referrer: referrer.current || document.referrer
+    })
+    referrer.current = location.href
+  }, [location.href])
+}
 
 export const LayoutContext = React.createContext()
 
@@ -11,6 +23,7 @@ export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const { path } = useCurrentPath()
   const isHome = path === '/'
+  useAnalyticsConfig()
   return (
     <div className='flex flex-row'>
       <LayoutContext.Provider value={{ menuOpen, setMenuOpen }}>

@@ -71,7 +71,7 @@ function Header({ className }) {
             const { title, href, icon } = getSocialHandle(type, to)
             return (
               <li key={i}>
-                <Button mono className='w-12 h-12 mb-6' to={href} external title={title}>
+                <Button mono className='w-12 h-12 mb-6' to={href} external='app_contact' title={title}>
                   <Icon name={icon} />
                 </Button>
               </li>
