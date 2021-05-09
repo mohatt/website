@@ -23,6 +23,7 @@ module.exports = {
   'http-headers': {
     enabled: true,
     provider: 'firebase',
+    caching: false,
     headers: {
       '[*]': !env.isProduction()
         ? { 'X-Robots-Tag': 'noindex' }
