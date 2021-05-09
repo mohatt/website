@@ -26,12 +26,7 @@ module.exports = {
     headers: {
       '[*]': !env.isProduction()
         ? { 'X-Robots-Tag': 'noindex' }
-        : {},
-      '[pages]': {
-        link: [
-          '<[asset:/static/avatar-smile.png]>; rel=prefetch; as=image'
-        ]
-      }
+        : {}
     }
   },
   minify: {

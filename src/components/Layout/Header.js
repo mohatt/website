@@ -46,6 +46,7 @@ function Header({ className }) {
     <header className={className}>
       <Helmet>
         <html lang='en' className='text-base xl:text-lg' />
+        <link rel='prefetch' href={avatarAlt} as='image' />
       </Helmet>
       <div className='absolute w-32 top-0 right-0 mt-10 -mr-16 text-center'>
         <ul>
