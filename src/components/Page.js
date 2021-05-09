@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { useSiteMetadata, useAnalyticsEffect } from '../hooks'
+import { useSiteMetadata } from '../hooks'
+import { useAnalyticsEffect } from '../providers/firebase'
 import { Layout, Section } from '.'
 
 function PageHelmet({ title = '', description }) {

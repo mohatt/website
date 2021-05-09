@@ -1,5 +1,5 @@
 const React = require('react')
-const { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } = require('../src/commons/themes')
+const { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } = require('../src/providers/theme/themes')
 
 /**
  * Workaround for FOUC issue - solves the style flickering issue due to

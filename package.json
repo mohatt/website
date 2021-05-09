@@ -8,9 +8,10 @@
   ],
   "scripts": {
     "clean": "gatsby clean",
-    "start": "gatsby develop -H 0.0.0.0",
+    "start": "gatsby develop",
     "build": "gatsby build",
-    "serve": "firebase serve --project default",
+    "build:profile": "gatsby build --profile",
+    "serve": "gatsby serve",
     "lint": "pnpm run lint:js && pnpm run lint:css",
     "lint:js": "eslint .",
     "lint:css": "stylelint 'src/**/*.css'",

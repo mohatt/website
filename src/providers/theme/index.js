@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react'
-import { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } from '../commons/themes'
-import { useAnalyticsEffect, useLocalStorage } from '.'
+import React, { useEffect, useRef, useCallback } from 'react'
+import { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } from './themes'
+import { useLocalStorage } from '../../hooks'
+import { useAnalyticsEffect } from '../firebase'
 
 const ThemeContext = React.createContext()
 
@@ -26,7 +27,7 @@ export function ThemeProvider({ children }) {
     }
   }, [theme])
 
-  const cycleTheme = () => {
+  const cycleTheme = useCallback(() => {
     const i = THEME_LIST.indexOf(themeConfig)
     if (i !== -1) {
       setTheme(prev => {
@@ -34,7 +35,7 @@ export function ThemeProvider({ children }) {
         return THEME_LIST[(i + 1) % THEME_LIST.length].id
       })
     }
-  }
+  }, [theme])
 
   return (
     <ThemeContext.Provider value={{ cycleTheme }}>
@@ -43,6 +44,6 @@ export function ThemeProvider({ children }) {
   )
 }
 
-export default function useTheme() {
+export function useTheme() {
   return React.useContext(ThemeContext)
 }

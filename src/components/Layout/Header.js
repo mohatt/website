@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Helmet } from 'react-helmet'
-import { useSiteMetadata, useTheme } from '../../hooks'
+import { useSiteMetadata } from '../../hooks'
+import { useTheme } from '../../providers/theme'
 import { getSocialHandle } from '../../commons/utils'
 import { Button, Icon, Link } from '..'
 import { LayoutContext } from './Layout'

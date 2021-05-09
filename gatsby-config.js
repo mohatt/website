@@ -1,7 +1,7 @@
 const path = require('path')
 const env = require('./config/environment')
 const site = require('./config/site')
-const theme = require('./src/commons/themes').THEME_DEFAULT
+const theme = require('./src/providers/theme/themes').THEME_DEFAULT
 
 module.exports = {
   siteMetadata: {

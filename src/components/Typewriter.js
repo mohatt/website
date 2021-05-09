@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useIsClient } from '../hooks'
+import { isBrowser } from '../commons/environment'
 import classNames from 'classnames'
 
 function TypewriterText({ words, loop, typeSpeed, deleteSpeed, delay }) {
@@ -49,10 +49,9 @@ function Typewriter({
   cursor = '|',
   className,
 }) {
-  const isClient = useIsClient()
   return (
     <span className={classNames('typewriter', className)}>
-      {isClient
+      {isBrowser
         ? <TypewriterText
             words={words}
             loop={loop}
@@ -62,7 +61,7 @@ function Typewriter({
           />
         : words[0]
       }
-      {cursor && isClient && (
+      {cursor && isBrowser && (
         <span className='typewriter-cursor'>
           {cursor}
         </span>

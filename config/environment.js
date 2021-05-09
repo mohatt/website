@@ -15,11 +15,11 @@ const projects = {
 
 const config = {
   development: {
-    url: 'http://0.0.0.0:8000',
+    url: 'http://localhost:8000',
     firebase: null
   },
   'staging-local': {
-    url: 'http://0.0.0.0:5000',
+    url: 'http://localhost:9000',
     firebase: projects.staging
   },
   staging: {

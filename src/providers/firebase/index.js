@@ -1,37 +1,50 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { useSiteMetadata } from '.'
+import React, { useContext, useState, useEffect, useRef } from 'react'
+import { environment, isDevelopment } from '../../commons/environment'
+import { useCurrentLocation, useSiteMetadata } from '../../hooks'
 
 const FirebaseContext = React.createContext()
 
 export function FirebaseProvider({ children }) {
-  const { title } = useSiteMetadata()
-  const env = __ENVIRONMENT__
   const [components, setComponents] = useState({
     analytics: {},
     performance: {},
   })
 
+  const { title } = useSiteMetadata()
+  const location = useCurrentLocation()
+  const referrer = useRef()
+  const { config } = components.analytics
+
   useEffect(() => {
-    if(env === 'development') {
+    if(isDevelopment) {
       return
     }
 
     /**
      * Firebase analytics and performance components don't support SSR so
-     *  we have to dynamically import them. We are using 'eager' mode to
-     *  avoid generating an additional bundle (+1 network request).
+     *  we have to dynamically import them.
      *
      * @see https://webpack.js.org/api/module-methods/#magic-comments
      */
-    import('../commons/firebase' /* webpackMode: "eager" */)
+    import('./firebase' /* webpackChunkName: "commons---firebase" */)
       .then(({ default: exports }) => {
         exports.analytics.config({
           app_name: title,
-          app_version: env
+          app_version: environment
         })
         setComponents(exports)
       })
   }, [])
+
+  useEffect(() => {
+    if (config) {
+      config({
+        page_path: location.pathname + location.search + location.hash,
+        page_referrer: referrer.current || document.referrer
+      })
+      referrer.current = location.href
+    }
+  }, [config, location.href])
 
   return (
     <FirebaseContext.Provider value={components}>
@@ -45,11 +58,11 @@ export function useAnalytics() {
   return analytics
 }
 
-export function useAnalyticsEffect(callback, deps) {
+export function useAnalyticsEffect(effect, deps) {
   const analytics = useAnalytics()
-  return useEffect(() => {
+  useEffect(() => {
     if (analytics.event) {
-      callback(analytics)
+      effect(analytics)
     }
   },[analytics, ...deps])
 }
@@ -59,11 +72,11 @@ export function usePerformance() {
   return performance
 }
 
-export function usePerformanceEffect(callback, deps) {
+export function usePerformanceEffect(effect, deps) {
   const performance = usePerformance()
-  return useEffect(() => {
+  useEffect(() => {
     if (performance.trace) {
-      callback(performance)
+      effect(performance)
     }
   },[performance, ...deps])
 }

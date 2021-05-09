@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const { fontFamily } = require('tailwindcss/defaultTheme')
-const colors = require('../src/commons/themes').THEME_DEFAULT.colors
+const colors = require('../src/providers/theme/themes').THEME_DEFAULT.colors
 
 module.exports = {
   darkMode: 'class',

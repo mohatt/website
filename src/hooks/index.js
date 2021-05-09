@@ -1,8 +1,5 @@
-export { useAnalytics, useAnalyticsEffect, usePerformance, usePerformanceEffect } from './firebase'
 export { default as useSiteMetadata } from './site-metadata'
 export { default as useLocalStorage } from './local-storage'
-export { default as useTheme } from './theme'
-export { default as useIsClient } from './is-client'
 export { useCurrentLocation, useCurrentPath } from './current-location'
 export { default as useCurrentRoute } from './current-route'
 export { useProjectSkills, useProjectSkill } from './project-skills'

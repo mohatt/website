@@ -1,26 +1,23 @@
+import { isProduction, environmentConfig } from '../../commons/environment'
 import { initializeApp, setLogLevel } from 'firebase/app'
 import { getAnalytics, logEvent } from 'firebase/analytics'
 import { initializePerformance, trace } from 'firebase/performance'
 
-const IS_PROD = __ENVIRONMENT__ === 'production'
-const CONFIG_FIREBASE = __ENVIRONMENT_CONFIG__.firebase
-const CONFIG_TRACKING_ID = CONFIG_FIREBASE.measurementId
-
 // Initialize app
-const $ = window
-const app = initializeApp(CONFIG_FIREBASE)
-if (!IS_PROD) {
+const app = initializeApp(environmentConfig.firebase)
+if (!isProduction) {
   setLogLevel('debug')
 }
 
 // Setup gtag dataLayer and add custom config
+const $ = window
 $.dataLayer = $.dataLayer || []
 $.gtag = function () {
   $.dataLayer.push(arguments)
 }
 
 function configureGtag(config) {
-  return $.gtag('config', CONFIG_TRACKING_ID, config)
+  return $.gtag('config', environmentConfig.firebase.measurementId, config)
 }
 
 $.gtag('js', new Date())
@@ -32,7 +29,6 @@ const performance = initializePerformance(app)
 
 let analyticsUserProps = {}
 export default {
-  app,
   analytics: {
     event: function() {
       return logEvent(analytics, ...arguments)
