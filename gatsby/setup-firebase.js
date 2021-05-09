@@ -15,14 +15,4 @@ module.exports = ({ setHeadComponents }) => {
   setHeadComponents([
     <script key='fb-perf-fid-lib' dangerouslySetInnerHTML={{ __html: FIDPolyfill }} />
   ])
-
-  const { measurementId } = env.config.firebase
-  if (!measurementId)
-    return
-
-  // Gtag prefetch/preload
-  setHeadComponents([
-    <link key='fb-anal-gtag-preconnect' rel='preconnect dns-prefetch' href='https://www.googletagmanager.com' />,
-    <script key='fb-anal-gtag' async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />,
-  ])
 }
