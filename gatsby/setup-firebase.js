@@ -23,6 +23,6 @@ module.exports = ({ setHeadComponents }) => {
   // Gtag prefetch/preload
   setHeadComponents([
     <link key='fb-anal-gtag-preconnect' rel='preconnect dns-prefetch' href='https://www.googletagmanager.com' />,
-    <script key='fb-anal-gtag' async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />,
+    //<script key='fb-anal-gtag' async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />,
   ])
 }
