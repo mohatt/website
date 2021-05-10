@@ -5,7 +5,7 @@
  */
 module.exports = ({ getHeadComponents, replaceHeadComponents }) => {
   const headComponents = getHeadComponents()
-  const order = ["title", "base", "meta", "link", "noscript", "script", "style"]
+  const order = ["title", "base", "meta", "script", "style", "link"]
 
   const sortedHeadComponents = headComponents
     .slice(0)

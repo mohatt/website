@@ -7,7 +7,7 @@ const ThemeContext = React.createContext()
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useLocalStorage(THEME_STORAGE_KEY, THEME_DEFAULT.id)
-  const themeConfig = THEME_LIST.find(t => t.id === theme)
+  const themeConfig = THEME_LIST.find(t => t.id === theme) || THEME_DEFAULT
 
   const prevThemeRef = useRef()
   const prevTheme = prevThemeRef.current
@@ -29,12 +29,10 @@ export function ThemeProvider({ children }) {
 
   const cycleTheme = useCallback(() => {
     const i = THEME_LIST.indexOf(themeConfig)
-    if (i !== -1) {
-      setTheme(prev => {
-        prevThemeRef.current = prev
-        return THEME_LIST[(i + 1) % THEME_LIST.length].id
-      })
-    }
+    setTheme(prev => {
+      prevThemeRef.current = prev
+      return THEME_LIST[(i + 1) % THEME_LIST.length].id
+    })
   }, [theme])
 
   return (
