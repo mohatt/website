@@ -3,11 +3,12 @@ import { initializeApp, setLogLevel } from 'firebase/app'
 import { getAnalytics, logEvent } from 'firebase/analytics'
 import { initializePerformance, trace } from 'firebase/performance'
 
-// Initialize app
-const app = initializeApp(environmentConfig.firebase)
 if (!isProduction) {
   setLogLevel('debug')
 }
+
+// Initialize app
+const app = initializeApp(environmentConfig.firebase)
 
 // Setup gtag dataLayer and add custom config
 const $ = window
@@ -30,16 +31,16 @@ const performance = initializePerformance(app)
 let analyticsUserProps = {}
 export default {
   analytics: {
-    event: function() {
+    event () {
       return logEvent(analytics, ...arguments)
     },
-    config: function(options) {
+    config (options) {
       return configureGtag({
         ...options,
         update: true
       })
     },
-    user: function (name, value) {
+    user (name, value) {
       if (typeof name === 'string') {
         analyticsUserProps[name] = value
       } else {
@@ -55,7 +56,7 @@ export default {
     }
   },
   performance: {
-    trace: function() {
+    trace () {
       return trace(performance, ...arguments)
     }
   }
