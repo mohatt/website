@@ -26,14 +26,12 @@ export function FirebaseProvider({ children }) {
      *
      * @see https://webpack.js.org/api/module-methods/#magic-comments
      */
-    import('./firebase' /* webpackChunkName: "commons---firebase" */)
-      .then(({ default: exports }) => {
-        exports.analytics.config({
-          app_name: title,
-          app_version: environment
-        })
-        setComponents(exports)
-      })
+    const exports = require('./firebase').default
+    exports.analytics.config({
+      app_name: title,
+      app_version: environment
+    })
+    setComponents(exports)
   }, [])
 
   useEffect(() => {
