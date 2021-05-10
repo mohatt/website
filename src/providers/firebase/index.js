@@ -26,7 +26,7 @@ export function FirebaseProvider({ children }) {
      *
      * @see https://webpack.js.org/api/module-methods/#magic-comments
      */
-    import('./firebase' /* webpackChunkName: "commons---firebase" */)
+    import('./firebase' /* webpackMode: "eager" */)
       .then(({ default: exports }) => {
         exports.analytics.config({
           app_name: title,
