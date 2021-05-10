@@ -16,8 +16,9 @@ module.exports = ({ setHeadComponents, setPostBodyComponents }) => {
     <script key='fb-perf-fid-lib' dangerouslySetInnerHTML={{ __html: FIDPolyfill }} />,
     <link key='fb-anal-gtag-preconnect' rel='preconnect' href='https://www.googletagmanager.com' />,
     <link key='fb-api-preconnect' rel='preconnect' href='https://firebase.googleapis.com' />,
+    <link key='fb-inst-preconnect' rel='preconnect' href='https://firebaseinstallations.googleapis.com' />,
     <link key='fb-anal-ga-preconnect' rel='preconnect' href='https://www.google-analytics.com' />,
-    <link key='fb-logging-preconnect' rel='preconnect' href='https://firebaselogging-pa.googleapis.com' />,
+    <link key='fb-rc-preconnect' rel='preconnect' href='https://firebaseremoteconfig.googleapis.com' />,
   ])
 
   setPostBodyComponents([
