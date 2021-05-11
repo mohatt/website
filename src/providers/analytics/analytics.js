@@ -2,14 +2,12 @@ import { isBrowser, isProduction } from '../../commons/environment'
 
 export class Analytics {
   id
-  settings
   userProps = {}
 
   constructor(id, settings = {}) {
     this.id = id
-    this.settings = settings
     gtagPush('js', new Date())
-    gtagPush('config', this.id, this.settings)
+    gtagPush('config', this.id, settings)
   }
 
   config = config => {
@@ -35,6 +33,7 @@ export class Analytics {
         ...name
       }
     }
+
     gtagPush('config', this.id, {
       user_properties: this.userProps,
       update: true
@@ -42,24 +41,26 @@ export class Analytics {
   }
 }
 
+export function initializeAnalytics (analytics) {
+  const script = document.createElement('script')
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${analytics.id}`
+  script.async = true
+  document.head.appendChild(script)
+}
+
 function gtagPush () {
   if (!isBrowser) {
     return
   }
+
   if (!isProduction) {
     console.log('gtag', arguments)
   }
+
   window.dataLayer.push(arguments)
 }
 
 if (isBrowser) {
   window.dataLayer = window.dataLayer || []
   window.gtag = gtagPush
-}
-
-export function initializeAnalytics (analytics) {
-  const script = document.createElement('script')
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${analytics.id}`
-  script.async = true
-  document.head.appendChild(script)
 }
