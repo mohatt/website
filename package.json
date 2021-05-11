@@ -34,7 +34,6 @@
     "@tailwindcss/typography": "0.4.0",
     "autoprefixer": "10.2.5",
     "classnames": "2.3.1",
-    "firebase": "9.0.0-beta.1",
     "gatsby": "3.4.2",
     "gatsby-plugin-advanced-pages": "2.2.1",
     "gatsby-plugin-catch-links": "3.4.0",

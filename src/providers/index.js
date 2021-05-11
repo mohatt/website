@@ -1,13 +1,13 @@
 import React from 'react'
-import { FirebaseProvider } from './firebase'
+import { AnalyticsProvider } from './analytics'
 import { ThemeProvider } from './theme'
 
 export default function Providers({ children }) {
   return (
-    <FirebaseProvider>
+    <AnalyticsProvider>
       <ThemeProvider>
         {children}
       </ThemeProvider>
-    </FirebaseProvider>
+    </AnalyticsProvider>
   )
 }

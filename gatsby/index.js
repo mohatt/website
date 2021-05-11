@@ -9,7 +9,6 @@ module.exports = {
   },
   ssr: {
     onRenderBody: args => {
-      require('./setup-firebase')(args)
       require('./setup-theme')(args)
     },
     onPreRenderHTML: args => {

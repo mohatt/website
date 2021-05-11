@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as InternalLink } from 'gatsby-plugin-advanced-pages'
-import { useAnalytics } from '../providers/firebase'
+import { useAnalytics } from '../providers/analytics'
 
 function OutboundLink({ linkId, ...props }) {
   const { event } = useAnalytics()

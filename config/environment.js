@@ -1,34 +1,19 @@
-const projects = {
-  staging: {
-    projectId: "mohatt-staging",
-    apiKey: "AIzaSyDt0r8Z9pEvLYJBSa4YtsoApnFKCZrOvCs",
-    appId: "1:809896687731:web:542557b9d73453ec1bd206",
-    measurementId: "G-WYGTR7R4NX"
-  },
-  production: {
-    projectId: "mohatt",
-    apiKey: "AIzaSyCCUU0dXV_m5CIP2WgO8iOlBhQKVK0gkk4",
-    appId: "1:485833880063:web:e8efb2c30563aecdb377ca",
-    measurementId: "G-EC5KQR5PF7"
-  }
-}
-
 const config = {
   development: {
     url: 'http://localhost:8000',
-    firebase: null
+    analyticsId: 'XX-000000'
   },
   'staging-local': {
     url: 'http://localhost:9000',
-    firebase: projects.staging
+    analyticsId: 'G-WYGTR7R4NX',
   },
   staging: {
     url: 'https://mohatt-staging.web.app',
-    firebase: projects.staging
+    analyticsId: 'G-WYGTR7R4NX',
   },
   production: {
     url: 'https://mohatt.web.app',
-    firebase: projects.production
+    analyticsId: 'G-EC5KQR5PF7',
   },
 }
 

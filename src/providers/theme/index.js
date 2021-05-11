@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useCallback } from 'react'
 import { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } from './themes'
 import { useLocalStorage } from '../../hooks'
-import { useAnalyticsEffect } from '../firebase'
+import { useAnalytics } from '../analytics'
 
 const ThemeContext = React.createContext()
 
 export function ThemeProvider({ children }) {
+  const analytics = useAnalytics()
   const [theme, setTheme] = useLocalStorage(THEME_STORAGE_KEY, THEME_DEFAULT.id)
   const themeConfig = THEME_LIST.find(t => t.id === theme) || THEME_DEFAULT
 
@@ -15,12 +16,10 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     document.body.setAttribute('class', themeConfig.getClassName())
     document.querySelector('meta[name=theme-color]').content = themeConfig.colors.primary
-  }, [theme])
 
-  useAnalyticsEffect(({ event, user }) => {
-    user('app_theme', theme)
+    analytics.user('app_theme', theme)
     if (prevTheme) {
-      event('app_change_theme', {
+      analytics.event('app_change_theme', {
         theme: theme,
         prev_theme: prevTheme
       })

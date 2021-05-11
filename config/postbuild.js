@@ -26,7 +26,13 @@ module.exports = {
     headers: {
       '[*]': !env.isProduction()
         ? { 'X-Robots-Tag': 'noindex' }
-        : {}
+        : {},
+      '[pages]': {
+        link: [
+          '<https://www.googletagmanager.com>; rel=preconnect',
+          '<https://www.google-analytics.com>; rel=preconnect',
+        ]
+      }
     }
   },
   minify: {

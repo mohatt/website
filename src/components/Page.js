@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useSiteMetadata } from '../hooks'
-import { useAnalyticsEffect } from '../providers/firebase'
+import { useAnalyticsEffect } from '../providers/analytics'
 import { Layout, Section } from '.'
 
 function PageHelmet({ title = '', description }) {
@@ -9,9 +9,8 @@ function PageHelmet({ title = '', description }) {
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
 
-  useAnalyticsEffect(({ config, event }) => {
+  useAnalyticsEffect(({ config }) => {
     config({ page_title: title})
-    event('page_view')
   }, [])
 
   return (
