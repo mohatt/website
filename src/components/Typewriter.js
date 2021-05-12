@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { isBrowser } from '../commons/environment'
+import { useIsBrowser } from '../hooks'
 import classNames from 'classnames'
 
 function TypewriterText({ words, loop, typeSpeed, deleteSpeed, delay }) {
@@ -49,9 +49,10 @@ function Typewriter({
   cursor = '|',
   className,
 }) {
+  const IsBrowser = useIsBrowser()
   return (
     <span className={classNames('typewriter', className)}>
-      {isBrowser
+      {IsBrowser
         ? <TypewriterText
             words={words}
             loop={loop}
@@ -61,7 +62,7 @@ function Typewriter({
           />
         : words[0]
       }
-      {cursor && isBrowser && (
+      {cursor && IsBrowser && (
         <span className='typewriter-cursor'>
           {cursor}
         </span>
