@@ -19,24 +19,17 @@ function OutboundLink({ linkId, ...props }) {
         if (props.target && props.target.toLowerCase() !== '_self') {
           redirect = false
         }
-        if (event) {
-          event('click', {
-            link_url: props.href,
-            link_domain: (new URL(props.href))?.hostname,
-            link_id: linkId || props.id,
-            outbound: true,
-            event_callback: function () {
-              if (redirect) {
-                document.location = props.href
-              }
-            },
-          })
-        } else {
-          if (redirect) {
-            document.location = props.href
-          }
-        }
-
+        event('click', {
+          link_url: props.href,
+          link_domain: (new URL(props.href))?.hostname,
+          link_id: linkId || props.id,
+          outbound: true,
+          event_callback: function () {
+            if (redirect) {
+              document.location = props.href
+            }
+          },
+        })
         return false
       }}
     />
