@@ -5,11 +5,11 @@ const config = {
   },
   'staging-local': {
     url: 'http://localhost:9000',
-    analyticsId: 'G-WYGTR7R4NX',
+    analyticsId: 'G-BGXXP9P64L',
   },
   staging: {
     url: 'https://mohatt-staging.web.app',
-    analyticsId: 'G-WYGTR7R4NX',
+    analyticsId: 'G-BGXXP9P64L',
   },
   production: {
     url: 'https://mohatt.web.app',
