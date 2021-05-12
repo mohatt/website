@@ -1,7 +1,7 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef, useEffect, useCallback } from 'react'
 import { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } from './themes'
 import { useLocalStorage } from '../../hooks'
-import { useAnalyticsEffect } from '../analytics'
+import { useAnalyticsCallback } from '../analytics'
 
 const ThemeContext = React.createContext()
 
@@ -12,10 +12,12 @@ export function ThemeProvider({ children }) {
   const prevThemeRef = useRef()
   const prevTheme = prevThemeRef.current
 
-  useAnalyticsEffect(({ user, event }) => {
+  useEffect(() => {
     document.body.setAttribute('class', themeConfig.getClassName())
     document.querySelector('meta[name=theme-color]').content = themeConfig.colors.primary
+  }, [theme])
 
+  useAnalyticsCallback(({ user, event }) => {
     user('app_theme', theme)
     if (prevTheme) {
       event('app_change_theme', {

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useRef } from 'react'
-import { environment, environmentConfig } from '../../commons/environment'
+import React, { useContext, useEffect, useRef, useMemo } from 'react'
+import { environment, environmentConfig, isBrowser } from '../../commons/environment'
 import { useCurrentLocation, useSiteMetadata } from '../../hooks'
 import { Analytics, initializeAnalytics } from './analytics'
 
@@ -19,16 +19,18 @@ export function AnalyticsProvider({ children }) {
   const location = useCurrentLocation()
   const referrer = useRef()
 
-  useEffect(() => initializeAnalytics(analytics), [])
-
-  useEffect(() => {
+  useMemo(() => {
+    if (!isBrowser) {
+      return
+    }
     analytics.config({
       page_path: location.pathname + location.search + location.hash,
       page_referrer: referrer.current || document.referrer
     })
-    analytics.event('page_view')
     referrer.current = location.href
   }, [location.href])
+
+  useEffect(() => initializeAnalytics(analytics), [])
 
   return (
     <AnalyticsContext.Provider value={analytics}>
@@ -41,7 +43,7 @@ export function useAnalytics() {
   return useContext(AnalyticsContext)
 }
 
-export function useAnalyticsEffect(effect, deps) {
+export function useAnalyticsCallback(callback, deps) {
   const analytics = useAnalytics()
-  useEffect(() => effect(analytics), deps)
+  return useMemo(() => isBrowser && callback(analytics), deps)
 }

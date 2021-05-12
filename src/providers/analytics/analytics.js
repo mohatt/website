@@ -1,41 +1,37 @@
 import { isBrowser, isProduction } from '../../commons/environment'
 
-export class Analytics {
-  id
-  userProps = {}
+export function Analytics(id, settings = {}) {
+  this.id = id
+  let userProps = {}
 
-  constructor(id, settings = {}) {
-    this.id = id
-    gtagPush('js', new Date())
-    gtagPush('config', this.id, settings)
-  }
+  gtagPush('config', id, settings)
 
-  config = config => {
-    gtagPush('config', this.id, {
+  this.config = config => {
+    gtagPush('config', id, {
       ...config,
       update: true
     })
   }
 
-  event = (name, params) => {
+  this.event = (name, params) => {
     gtagPush('event', name, {
       ...params,
-      send_to: this.id
+      send_to: id
     })
   }
 
-  user = (name, value) => {
+  this.user = (name, value) => {
     if (typeof name === 'string') {
-      this.userProps[name] = value
+      userProps[name] = value
     } else {
-      this.userProps = {
-        ...this.userProps,
+      userProps = {
+        ...userProps,
         ...name
       }
     }
 
-    gtagPush('config', this.id, {
-      user_properties: this.userProps,
+    gtagPush('config', id, {
+      user_properties: userProps,
       update: true
     })
   }
@@ -63,4 +59,5 @@ function gtagPush () {
 if (isBrowser) {
   window.dataLayer = window.dataLayer || []
   window.gtag = gtagPush
+  gtagPush('js', new Date())
 }
