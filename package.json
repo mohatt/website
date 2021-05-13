@@ -85,12 +85,8 @@
     "neverBuiltDependencies": ["fsevents"]
   },
   "browserslist": [
-
-    "last 2 version",
+    "last 2 versions",
     "> 1%",
-
-    ">0.2%",
-
     "not IE 11",
     "not op_mini all",
     "not dead"
