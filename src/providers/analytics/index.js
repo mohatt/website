@@ -1,21 +1,14 @@
 import React, { useContext, useEffect, useRef, useMemo } from 'react'
-import { environment, environmentConfig, isBrowser } from '../../commons/environment'
-import { useCurrentLocation, useSiteMetadata } from '../../hooks'
+import { environmentConfig, isBrowser } from '../../commons/environment'
+import { useCurrentLocation } from '../../hooks'
 import { Analytics, initializeAnalytics } from './analytics'
 
 const AnalyticsContext = React.createContext()
+const analytics = new Analytics(environmentConfig.analyticsId, {
+  send_page_view: false
+})
 
 export function AnalyticsProvider({ children }) {
-  const { title } = useSiteMetadata()
-  const analytics = useRef(new Analytics(
-    environmentConfig.analyticsId,
-    {
-      app_name: title,
-      app_version: environment,
-      send_page_view: false,
-    }
-  )).current
-
   const location = useCurrentLocation()
   const referrer = useRef()
 
