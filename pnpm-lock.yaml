@@ -12,7 +12,7 @@ specifiers:
   '@mohatt/eslint-config-gatsby-standard': 3.2.0
   '@tailwindcss/typography': 0.4.0
   '@types/tailwindcss': 2.0.3
-  autoprefixer: 10.2.5
+  autoprefixer: 10.2.6
   classnames: 2.3.1
   eslint: 7.26.0
   gatsby: 3.5.0
@@ -54,7 +54,7 @@ dependencies:
   '@mdx-js/mdx': 1.6.22
   '@mdx-js/react': 1.6.22_react@17.0.2
   '@tailwindcss/typography': 0.4.0_tailwindcss@2.1.2
-  autoprefixer: 10.2.5_postcss@8.2.15
+  autoprefixer: 10.2.6_postcss@8.2.15
   classnames: 2.3.1
   gatsby: 3.5.0_react-dom@17.0.2+react@17.0.2
   gatsby-plugin-advanced-pages: 2.2.1_gatsby@3.5.0+react@17.0.2
@@ -84,7 +84,7 @@ dependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-helmet: 6.1.0_react@17.0.2
-  tailwindcss: 2.1.2_797cfc3ceddb49f111b184f6879a433f
+  tailwindcss: 2.1.2_92cccc8c0176377f653bc90ba63c4427
 
 devDependencies:
   '@mohatt/eslint-config-gatsby-standard': 3.2.0_aee0e23be3a5c1b7bda24d09dfc291cd
@@ -2422,7 +2422,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
-      tailwindcss: 2.1.2_797cfc3ceddb49f111b184f6879a433f
+      tailwindcss: 2.1.2_92cccc8c0176377f653bc90ba63c4427
     dev: false
 
   /@tokenizer/token/0.1.1:
@@ -3368,6 +3368,22 @@ packages:
       postcss-value-parser: 4.1.0
     dev: false
 
+  /autoprefixer/10.2.6_postcss@8.2.15:
+    resolution: {integrity: sha512-8lChSmdU6dCNMCQopIf4Pe5kipkAGj/fvTMslCsih0uHpOrXOPUEVOmYMMqmw3cekQkSD7EhIeuYl5y0BLdKqg==}
+    engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      browserslist: 4.16.6
+      caniuse-lite: 1.0.30001230
+      colorette: 1.2.2
+      fraction.js: 4.1.1
+      normalize-range: 0.1.2
+      postcss: 8.2.15
+      postcss-value-parser: 4.1.0
+    dev: false
+
   /autoprefixer/9.8.6:
     resolution: {integrity: sha512-XrvP4VVHdRBCdX1S3WXVD8+RyG9qeb1D5Sn1DeLiG2xfSpzellk5k54xbUERJ3M5DggQxes39UGOTP8CFrEGbg==}
     hasBin: true
@@ -3800,7 +3816,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001228
+      caniuse-lite: 1.0.30001230
       colorette: 1.2.2
       electron-to-chromium: 1.3.727
       escalade: 3.1.1
@@ -4006,6 +4022,9 @@ packages:
 
   /caniuse-lite/1.0.30001228:
     resolution: {integrity: sha512-QQmLOGJ3DEgokHbMSA8cj2a+geXqmnpyOFT0lhQV6P3/YOJvGDEwoedcwxEQ30gJIwIIunHIicunJ2rzK5gB2A==}
+
+  /caniuse-lite/1.0.30001230:
+    resolution: {integrity: sha512-5yBd5nWCBS+jWKTcHOzXwo5xzcj4ePE/yjtkZyUV1BTUmrBaA9MRGC+e7mxnqXSA90CmCA8L3eKLaSUkt099IQ==}
 
   /caw/2.0.1:
     resolution: {integrity: sha512-Cg8/ZSBEa8ZVY9HspcGUYaK63d/bN7rqS3CYCzEGUxuYv6UlmcjzDUz2fCFFHyTvUW5Pk0I+3hkA3iXlIj6guA==}
@@ -6657,6 +6676,10 @@ packages:
 
   /fraction.js/4.1.0:
     resolution: {integrity: sha512-o9lSKpK0TDqDwTL24Hxqi6I99s942l6TYkfl6WvGWgLOIFz/YonSGKfiSeMadoiNvTfqnfOa9mjb5SGVbBK9/w==}
+    dev: false
+
+  /fraction.js/4.1.1:
+    resolution: {integrity: sha512-MHOhvvxHTfRFpF1geTK9czMIZ6xclsEor2wkIGYYq+PxcQqT7vStJqjhe6S1TenZrMZzo+wlqOufBDVepUEgPg==}
     dev: false
 
   /fragment-cache/0.2.1:
@@ -14145,7 +14168,7 @@ packages:
       string-width: 4.2.2
       strip-ansi: 6.0.0
 
-  /tailwindcss/2.1.2_797cfc3ceddb49f111b184f6879a433f:
+  /tailwindcss/2.1.2_92cccc8c0176377f653bc90ba63c4427:
     resolution: {integrity: sha512-T5t+wwd+/hsOyRw2HJuFuv0LTUm3MUdHm2DJ94GPVgzqwPPFa9XxX0KlwLWupUuiOUj6uiKURCzYPHFcuPch/w==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -14154,7 +14177,7 @@ packages:
       postcss: ^8.0.9
     dependencies:
       '@fullhuman/postcss-purgecss': 3.1.3
-      autoprefixer: 10.2.5_postcss@8.2.15
+      autoprefixer: 10.2.6_postcss@8.2.15
       bytes: 3.1.0
       chalk: 4.1.1
       chokidar: 3.5.1
