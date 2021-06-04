@@ -37,7 +37,7 @@ function TypewriterText({ words, loop, typeSpeed, deleteSpeed, delay }) {
     return () => clearTimeout(timer)
   }, [typewriter, speed])
 
-  return <>{text}</>
+  return text
 }
 
 function Typewriter({
@@ -49,10 +49,10 @@ function Typewriter({
   cursor = '|',
   className,
 }) {
-  const IsBrowser = useIsBrowser()
+  const isBrowser = useIsBrowser()
   return (
     <span className={classNames('typewriter', className)}>
-      {IsBrowser
+      {isBrowser
         ? <TypewriterText
             words={words}
             loop={loop}
@@ -62,7 +62,7 @@ function Typewriter({
           />
         : words[0]
       }
-      {cursor && IsBrowser && (
+      {cursor && isBrowser && (
         <span className='typewriter-cursor'>
           {cursor}
         </span>

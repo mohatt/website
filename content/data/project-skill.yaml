@@ -6,7 +6,7 @@
     - language
 - id: node
   title: Node.js
-  icon: node-dot-js
+  icon: nodedotjs
   tags:
     - backend
     - language
@@ -109,7 +109,7 @@
     - css
 - id: material
   title: Material UI
-  icon: material-ui
+  icon: materialui
   tags:
     - frontend
     - css
