@@ -11,7 +11,7 @@ specifiers:
   '@mdx-js/react': 1.6.22
   '@mohatt/eslint-config-gatsby-standard': 3.2.0
   '@tailwindcss/typography': 0.4.1
-  '@types/tailwindcss': 2.0.4
+  '@types/tailwindcss': 2.0.5
   autoprefixer: 10.2.6
   classnames: 2.3.1
   eslint: 7.27.0
@@ -88,7 +88,7 @@ dependencies:
 
 devDependencies:
   '@mohatt/eslint-config-gatsby-standard': 3.2.0_a04c9109f37363ed1d567fd6276bfa0e
-  '@types/tailwindcss': 2.0.4
+  '@types/tailwindcss': 2.0.5
   eslint: 7.27.0
   prettier: 2.3.0
   simple-icons: 5.0.0
@@ -2669,8 +2669,8 @@ packages:
     resolution: {integrity: sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==}
     dev: false
 
-  /@types/tailwindcss/2.0.4:
-    resolution: {integrity: sha512-jxFcN+/pgZsgzAeJMTj4BMbBf57K1HgY0BWJ1KwPEQozfceQGstTl3nfwOqvX42jc349vjmzWSUlAxKxzC/t/w==}
+  /@types/tailwindcss/2.0.5:
+    resolution: {integrity: sha512-njEtRtBGkY1pGalpV2hoT6nOgb+GNir7AaNIjCJlpnEYKAChIOn9QoN1sLE3A/67fD5R5jf3bdGW+3m5qCGCkQ==}
     dev: true
 
   /@types/tmp/0.0.33:
