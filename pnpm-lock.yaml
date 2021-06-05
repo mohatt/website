@@ -39,7 +39,7 @@ specifiers:
   postcss-import: 14.0.2
   postcss-preset-env: 6.7.0
   postcss-url: 10.1.3
-  prettier: 2.3.0
+  prettier: 2.3.1
   prismjs: 1.23.0
   react: 17.0.2
   react-dom: 17.0.2
@@ -87,10 +87,10 @@ dependencies:
   tailwindcss: 2.1.4_6daa0ece57b4377652e73c9c66c3b94c
 
 devDependencies:
-  '@mohatt/eslint-config-gatsby-standard': 3.2.0_a04c9109f37363ed1d567fd6276bfa0e
+  '@mohatt/eslint-config-gatsby-standard': 3.2.0_dfcb8e235cc9367a97fa0c770429877f
   '@types/tailwindcss': 2.0.4
   eslint: 7.27.0
-  prettier: 2.3.0
+  prettier: 2.3.1
   simple-icons: 5.0.0
   stylelint: 13.13.1
   stylelint-config-standard: 22.0.0_stylelint@13.13.1
@@ -2216,7 +2216,7 @@ packages:
     resolution: {integrity: sha512-nEBLOa0JgtqahmPrnJZ18epLiFBzxhdKgo4uhN3TaBFRmM30pEVrS9FAEV4tg92d8PTdU+dYQx2lnpPyFMgMcg==}
     dev: false
 
-  /@mohatt/eslint-config-gatsby-standard/3.2.0_a04c9109f37363ed1d567fd6276bfa0e:
+  /@mohatt/eslint-config-gatsby-standard/3.2.0_dfcb8e235cc9367a97fa0c770429877f:
     resolution: {integrity: sha512-GHlsyEjFyBLuoKJQyMmMJGq2M9cpLerbbQiQ6691cS/SduvTtbXggnql3oV4cRn3+pg5cs9y29PGDxLHnEraBg==}
     peerDependencies:
       eslint: ^7.25.0
@@ -2240,7 +2240,7 @@ packages:
       eslint-plugin-react-hooks: 4.2.0_eslint@7.27.0
       eslint-plugin-standard: 4.1.0_eslint@7.27.0
       gatsby: 3.6.2_react-dom@17.0.2+react@17.0.2
-      prettier: 2.3.0
+      prettier: 2.3.1
     transitivePeerDependencies:
       - '@types/node'
       - bufferutil
@@ -12047,6 +12047,13 @@ packages:
     resolution: {integrity: sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: false
+
+  /prettier/2.3.1:
+    resolution: {integrity: sha512-p+vNbgpLjif/+D+DwAZAbndtRrR0md0MwfmOVN9N+2RgyACMT+7tfaRnT+WDPkqnuVwleyuBIG2XBxKDme3hPA==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
 
   /pretty-bytes/5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
