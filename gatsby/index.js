@@ -1,11 +1,9 @@
+const types = require('./types')
 module.exports = {
   node: {
-    createSchemaCustomization: require('./create-types'),
-    setFieldsOnGraphQLNodeType: require('./extend-types'),
-    onCreateWebpackConfig: args => {
-      require('./webpack-definitions')(args)
-      require('./webpack-bundle-analyzer')(args)
-    }
+    createSchemaCustomization: types.createTypes,
+    onCreateNode: types.createChildNodes,
+    onCreateWebpackConfig: require('./webpack')
   },
   ssr: {
     onRenderBody: args => {

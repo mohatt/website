@@ -1,16 +1,15 @@
-const { kebabCase } = require('lodash')
 const limit = require('../../config/site').pagination.portafolio
 
 async function createPortafolioPages({ graphql, createAdvancedPage }) {
   const result = await graphql(`
     {
-      projects: allMdx(filter: { frontmatter: { type: { eq: "project" }, draft: { ne: true } } }) {
+      allProject(filter: { draft: { ne: true } }) {
         totalCount
-        skills: group(field: frontmatter___projectSkills___id) {
+        skills: group(field: skills___id) {
           fieldValue
           totalCount
         }
-        categories: group(field: frontmatter___projectCategories___id) {
+        categories: group(field: categories___id) {
           fieldValue
           totalCount
         }
@@ -22,24 +21,22 @@ async function createPortafolioPages({ graphql, createAdvancedPage }) {
     throw result.errors
   }
 
+  const projects = result.data.allProject
+
   // Default pagination
   createAdvancedPage({
     route: 'portafolio',
     pagination: {
-      count: result.data.projects.totalCount,
+      count: projects.totalCount,
       limit,
     },
     filter: {
-      frontmatter: {
-        type: { eq: 'project' },
-        draft: { ne: true },
-      },
+      draft: { ne: true },
     },
   })
 
   // Pagination for skill-filtered views
-  for (const skill of result.data.projects.skills) {
-    // noinspection JSDeprecatedSymbols
+  for (const skill of projects.skills) {
     createAdvancedPage({
       route: 'portafolio.skill',
       params: {
@@ -50,22 +47,18 @@ async function createPortafolioPages({ graphql, createAdvancedPage }) {
         limit,
       },
       filter: {
-        frontmatter: {
-          type: { eq: 'project' },
-          projectSkills: {
-            elemMatch: {
-              id: { eq: skill.fieldValue },
-            },
+        skills: {
+          elemMatch: {
+            id: { eq: skill.fieldValue },
           },
-          draft: { ne: true },
         },
+        draft: { ne: true },
       },
     })
   }
 
   // Pagination for category-filtered views
-  for (const category of result.data.projects.categories) {
-    // noinspection JSDeprecatedSymbols
+  for (const category of projects.categories) {
     createAdvancedPage({
       route: 'portafolio.category',
       params: {
@@ -76,15 +69,12 @@ async function createPortafolioPages({ graphql, createAdvancedPage }) {
         limit,
       },
       filter: {
-        frontmatter: {
-          type: { eq: 'project' },
-          projectCategories: {
-            elemMatch: {
-              id: { eq: category.fieldValue },
-            },
+        categories: {
+          elemMatch: {
+            id: { eq: category.fieldValue },
           },
-          draft: { ne: true },
         },
+        draft: { ne: true },
       },
     })
   }
@@ -93,13 +83,11 @@ async function createPortafolioPages({ graphql, createAdvancedPage }) {
 async function createProjectPages({ graphql, createAdvancedPage }) {
   const result = await graphql(`
     {
-      projects: allMdx(filter: { frontmatter: { type: { eq: "project" }, draft: { ne: true } } }) {
+      allProject(filter: { draft: { ne: true } }) {
         edges {
           node {
-            frontmatter {
-              title
-              slug
-            }
+            title
+            slug
           }
         }
       }
@@ -110,12 +98,11 @@ async function createProjectPages({ graphql, createAdvancedPage }) {
     throw result.errors
   }
 
-  result.data.projects.edges.map(({ node }) => {
-    const slug = node.frontmatter.slug || kebabCase(node.frontmatter.title)
+  result.data.allProject.edges.map(({ node }) => {
     return createAdvancedPage({
       route: 'portafolio.project',
       params: {
-        project: slug,
+        project: node.slug,
       },
     })
   })

@@ -8,7 +8,7 @@ export default class Project extends Page {
       data: { page, project },
       pageContext: { project: slug },
     } = this.props
-    this.title = project.frontmatter.title
+    this.title = project.title
     this.snippet = {
       $comp: page.title,
       slug,
@@ -26,11 +26,9 @@ export const query = graphql`
     page(id: { eq: $id }) {
       title
     }
-    project: mdx(frontmatter: { type: { eq: "project" }, slug: { eq: $project } }) {
-      frontmatter {
-        title
-        date
-      }
+    project(slug: { eq: $project }) {
+      title
+      date
       body
     }
   }

@@ -7,7 +7,7 @@ export default class Portafolio extends Page {
     const {
       data: {
         page: { title },
-        projects,
+        allProject: projects,
       },
       pageContext: { skill, category },
     } = this.props
@@ -33,31 +33,29 @@ export default class Portafolio extends Page {
 }
 
 export const query = graphql`
-  query Portafolio($id: String!, $limit: Int!, $offset: Int!, $filter: MdxFilterInput!) {
+  query Portafolio($id: String!, $limit: Int!, $offset: Int!, $filter: ProjectFilterInput!) {
     page(id: { eq: $id }) {
       title
     }
-    projects: allMdx(
+    allProject(
       limit: $limit
       skip: $offset
       filter: $filter
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { order: DESC, fields: [date] }
     ) {
       edges {
         node {
-          frontmatter {
-            slug
+          slug
+          title
+          date
+          excerpt
+          categories {
+            id
             title
-            date
-            description
-            projectCategories {
-              id
-              title
-            }
-            projectSkills {
-              id
-              title
-            }
+          }
+          skills {
+            id
+            title
           }
         }
       }
