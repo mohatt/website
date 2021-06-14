@@ -3,9 +3,26 @@ import { useSiteMetadata } from '../../hooks'
 import { Link } from '..'
 import { LayoutContext } from './Layout'
 
+function MenuItem({ label, to, params, onClick }) {
+  return (
+    <li>
+      <Link
+        to={to}
+        params={params}
+        onClick={onClick}
+        className='block font-display font-medium italic text-right mb-6 mr-6 hover:text-typo'
+        activeClassName='text-typo active'
+        partiallyActive={to !== 'home'}
+        children={label}
+      />
+    </li>
+  )
+}
+
 function Menu({ isHome, className }) {
   const { menu, title } = useSiteMetadata()
   const { setMenuOpen } = useContext(LayoutContext)
+  const closeMenu = () => setMenuOpen(false)
   const Heading = isHome ? 'h1' : 'h2'
   return (
     <nav className={className}>
@@ -13,18 +30,7 @@ function Menu({ isHome, className }) {
         <Link to='home'>{title}</Link>
       </Heading>
       <ul>
-        {menu.map(({ to, label }) => (
-          <li key={to}>
-            <Link
-              to={to}
-              onClick={() => setMenuOpen(false)}
-              className='block font-display font-medium italic text-right mb-6 mr-6 hover:text-typo'
-              activeClassName='text-typo active'
-              partiallyActive={to !== 'home'}
-              children={label}
-            />
-          </li>
-        ))}
+        {menu.map((itemProps, i) => <MenuItem key={i} onClick={closeMenu} {...itemProps} />)}
       </ul>
     </nav>
   )
