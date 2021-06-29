@@ -1,7 +1,11 @@
 import { useStaticQuery, graphql } from 'gatsby'
+import { ProjectSkill } from '../models'
 
-export function useProjectSkills(tags) {
-  const { skills: { nodes } } = useStaticQuery(
+let cache = null
+let computedCache = null
+
+function useProjectSkillsData() {
+  const data = useStaticQuery(
     graphql`
       query {
         skills: allProjectSkillYaml {
@@ -17,9 +21,20 @@ export function useProjectSkills(tags) {
     `
   )
 
-  if (!tags || tags.length === 0) return nodes
+  if (data === cache) {
+    return computedCache
+  }
+
+  cache = data
+  computedCache = data.skills.nodes.map(s => new ProjectSkill(s))
+  return computedCache
+}
+
+export function useProjectSkills(tags) {
+  const skills = useProjectSkillsData()
+  if (!tags || tags.length === 0) return skills
   if (typeof tags === 'string') tags = [tags]
-  return nodes.filter(
+  return skills.filter(
     s => s.tags.filter(t => tags.includes(t)).length === tags.length
   )
 }

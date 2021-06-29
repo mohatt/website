@@ -1,6 +1,8 @@
+const path = require('path')
 const env = require('./environment')
 
 module.exports = {
+  contentPath: path.join(__dirname, '../content'),
   metadata: {
     title: 'Mohamed E.',
     url: env.config.url,
@@ -9,7 +11,7 @@ module.exports = {
     menu: [
       { label: 'Intro', to: 'home' },
       { label: 'Skills', to: 'skills' },
-      { label: 'Portafolio', to: 'portafolio' },
+      { label: 'Projects', to: 'projects' },
       { label: 'Clients', to: '/clients' },
       { label: 'Contact', to: '/contact' },
     ],
@@ -20,7 +22,8 @@ module.exports = {
     ],
   },
   pagination: {
-    portafolio: 4
+    projectsIndex: 6,
+    projectsList: 12,
   },
   pages: [
     {
@@ -28,39 +31,53 @@ module.exports = {
       routes: {
         home: '/'
       },
-      template: 'home.js'
+      template: 'Index.js'
     },
     {
       title: 'Skills',
       routes: {
         skills: '/skills'
       },
-      template: 'skills.js'
+      template: 'Skills.js'
     },
     {
-      title: 'Portafolio',
+      title: 'Projects',
       routes: {
-        portafolio: '/portafolio',
-        'portafolio.skill': '/portafolio/skill/:skill',
-        'portafolio.category': '/portafolio/category/:category',
+        projects: '/projects',
       },
-      helper: 'portafolio.js',
-      template: 'portafolio.js',
+      helper: 'projects.js',
+      template: 'ProjectsIndex.js',
     },
     {
-      title: 'Project',
+      title: 'Projects By Category',
       routes: {
-        'portafolio.project': '/portafolio/:project'
+        'projects.category': '/projects/category/:category',
       },
-      helper: 'portafolio.js',
-      template: 'project.js',
+      helper: 'projects.js',
+      template: 'ProjectsByCategory.js',
+    },
+    {
+      title: 'Projects By Skill',
+      routes: {
+        'projects.skill': '/projects/skill/:skill',
+      },
+      helper: 'projects.js',
+      template: 'ProjectsBySkill.js',
+    },
+    {
+      title: 'Project Details',
+      routes: {
+        'projects.project': '/projects/:project'
+      },
+      helper: 'projects.js',
+      template: 'Project.js',
     },
     {
       title: '404: Not found',
       routes: {
         'error.404': '/404'
       },
-      template: 'error.js',
+      template: 'Error.js',
       data: {
         code: 404,
         message: "You just hit a route that doesn't exist."

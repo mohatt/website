@@ -1,21 +1,28 @@
-const { createParentResolverPassthroughResolver } = require('./resolvers')
+const { createParentFieldResolverProxy } = require('./resolvers')
 
 exports.definitions = [
   {
     name: 'Project',
     fields: {
+      slug: 'String!',
       title: 'String!',
-      date: {
+      excerpt: 'String!',
+      draft: 'Boolean',
+      started: {
         type: `Date!`,
         extensions: {
           dateformat: {},
+        },
+      },
+      cover: {
+        type: `File!`,
+        extensions: {
+          fileByRelativePath: {},
         }
       },
-      excerpt: 'String!',
-      slug: 'String',
-      draft: 'Boolean',
-      image: {
-        type: `File`,
+      hasCover: 'Boolean!',
+      screens: {
+        type: `[File]`,
         extensions: {
           fileByRelativePath: {},
         }
@@ -34,8 +41,10 @@ exports.definitions = [
       },
       body: {
         type: 'String',
-        resolve: createParentResolverPassthroughResolver({ field: 'body' }),
+        resolve: createParentFieldResolverProxy({ field: 'body' }),
       },
+      homepage: 'String',
+      github: 'String',
     },
     interfaces: ['Node'],
   },
@@ -45,9 +54,9 @@ exports.definitions = [
       title: 'String!',
       icon: {
         type: 'String',
-        resolve: source => {
+        resolve (source) {
           try {
-            return require('simple-icons/icons/' + source.icon).path
+            return require(`simple-icons/icons/${source.icon}.js`).path
           } catch (e) {
             return source.icon
           }
@@ -56,10 +65,12 @@ exports.definitions = [
       tags: '[String!]',
       projects: {
         type: 'Int!',
-        resolve: (source, args, context) => context.nodeModel
-          .getAllNodes({ type: 'Project' })
-          .filter(p => p.skills.find(s => s === source.id))
-          .length,
+        resolve (source, args, context) {
+          return context.nodeModel
+            .getAllNodes({ type: 'Project' })
+            .filter(p => p.skills.find(s => s === source.id))
+            .length
+        },
       },
     },
     interfaces: ['Node'],
@@ -68,12 +79,15 @@ exports.definitions = [
     name: 'ProjectCategoryYaml',
     fields: {
       title: 'String!',
+      desc: 'String!',
       projects: {
         type: 'Int!',
-        resolve: (source, args, context) => context.nodeModel
-          .getAllNodes({ type: 'Project' })
-          .filter(p => p.categories.find(c => c === source.id))
-          .length,
+        resolve (source, args, context) {
+          return context.nodeModel
+            .getAllNodes({ type: 'Project' })
+            .filter(p => p.categories.find(s => s === source.id))
+            .length
+        },
       },
     },
     interfaces: ['Node'],

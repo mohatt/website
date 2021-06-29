@@ -1,4 +1,3 @@
-const path = require('path')
 const env = require('./config/environment')
 const site = require('./config/site')
 const theme = require('./src/providers/theme/themes').THEME_DEFAULT
@@ -13,7 +12,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content',
-        path: path.join(__dirname, 'content'),
+        path: site.contentPath,
       },
     },
     {
@@ -37,7 +36,17 @@ module.exports = {
     },
     'gatsby-transformer-yaml',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          transformOptions: {
+            cropFocus: 'center'
+          },
+          quality: 90
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

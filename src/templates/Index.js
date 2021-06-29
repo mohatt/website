@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Page, Hero, Typewriter } from '../components'
 
-export default class Home extends Page {
+export default class Index extends Page {
   view() {
     this.title = this.props.data.page.title
     this.snippet = 'Hi, I’m Mohamed,'
@@ -30,7 +30,7 @@ export default class Home extends Page {
 }
 
 export const query = graphql`
-  query Home($id: String!) {
+  query Index($id: String!) {
     page(id: { eq: $id }) {
       title
     }

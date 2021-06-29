@@ -1,13 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks'
-import { Page, Section, Heading, BaseIcon, Icon, Button } from '../components'
+import { Page, Section, Heading, Icon, Link } from '../components'
 
 const tags = {
   backend: [
     { id: 'language', title: 'Languages', icon: 'code' },
     { id: 'framework', title: 'Frameworks', icon: 'stack' },
-    { id: 'cms', title: 'CMS', icon: 'tree' },
+    { id: 'cms', title: 'CMSs', icon: 'tree' },
     { id: 'database', title: 'Databases', icon: 'database' },
     { id: 'api', title: 'APIs', icon: 'cloud' },
     { id: 'test', title: 'Testing', icon: 'checks' },
@@ -16,8 +16,10 @@ const tags = {
     { id: 'language', title: 'Languages', icon: 'code' },
     { id: 'js', title: 'JavaScript', icon: 'javascript' },
     { id: 'css', title: 'CSS', icon: 'css' },
+    { id: 'api', title: 'APIs', icon: 'cloud' },
+    { id: 'ssg', title: 'SSGs', icon: 'stack' },
   ],
-  cloud: [
+  devops: [
     { id: 'git', title: 'Git Hosting', icon: 'gitRepo' },
     { id: 'deploy', title: 'Deployment', icon: 'cloudUp' },
     { id: 'ci', title: 'CI/CD', icon: 'tools' },
@@ -30,38 +32,36 @@ const tags = {
   ],
 }
 
-const SkillBlock = ({ icon, title, children }) => (
-  <div className='flex text-lg leading-normal'>
-    <Icon name={icon} className='h-8 w-8 text-primary' />
-    <div className='flex-1 pl-2'>
-      <h3 className='text-primary'>{title}</h3>
-      <div className='mt-4'>{children}</div>
+function SkillBlock({ icon, title, children }) {
+  return (
+    <div className='flex text-lg leading-normal'>
+      <Icon name={icon} className='h-8 text-primary' />
+      <div className='flex-1'>
+        <h3 className='ml-2 leading-8 text-primary'>{title}</h3>
+        <div className='mt-4 -ml-3'>{children}</div>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
-const SkillList = ({ tags, title, icon }) => {
+function SkillList({ tags, title, icon }) {
   const skills = useProjectSkills(tags)
   return skills.length > 0 && (
     <div className='flex'>
-      <Icon name={icon} className='h-8 w-8 text-primary' />
-      <div className='flex-1 pl-2'>
-        <h3 className='text-primary'>{title}</h3>
-        <ul className='mt-4 space-y-2'>
-          {skills.map(({ id, title, icon, projects }) => (
+      <Icon name={icon} className='h-8 text-primary' />
+      <div className='flex-1'>
+        <h3 className='ml-2 leading-8 text-primary'>{title}</h3>
+        <ul className='mt-3 -ml-3 space-y-2 font-medium'>
+          {skills.map(({ id, title, projects, props, Icon }) => (
             <li key={id}>
-              <BaseIcon path={icon} className='h-6 w-6 mr-2 text-primary' />
-              {title}
-              {projects > 0 && (
-                <Button
-                  color='alt'
-                  className='text-xs ml-2 py-0 px-2'
-                  to='portafolio.skill'
-                  params={{ skill: id }}
-                  title={`View projects tagged with '${id}'`}
-                  children={projects}
-                />
-              )}
+              {projects > 0
+                ? (
+                  <Link className='text-primary hover:underline' {...props}>
+                    <Icon className='h-6 mr-2' />{title} <sup>{projects}</sup>
+                  </Link>
+                )
+                : <><Icon className='h-6 mr-2' />{title}</>
+              }
             </li>
           ))}
         </ul>
@@ -70,13 +70,15 @@ const SkillList = ({ tags, title, icon }) => {
   )
 }
 
-const SkillTagGrid = ({ tag }) => (
-  <div className='grid grid-cols-3 gap-8 max-w-4xl text-lg'>
-    {tags[tag].map(({ id, title, icon }) => (
-      <SkillList key={id} tags={[tag, id]} title={title} icon={icon} />
-    ))}
-  </div>
-)
+function SkillTagGrid({ tag }) {
+  return (
+    <div className='grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 xl:max-w-4xl text-lg'>
+      {tags[tag].map(({ id, title, icon }) => (
+        <SkillList key={id} tags={[tag, id]} title={title} icon={icon} />
+      ))}
+    </div>
+  )
+}
 
 export default class Skills extends Page {
   view() {
@@ -89,9 +91,9 @@ export default class Skills extends Page {
             Working remotely is hard. Here are some things I'm good at, to
             help ease the pain.
           </Heading>
-          <div className='grid grid-cols-2 gap-8'>
+          <div className='grid lg:grid-cols-2 gap-8'>
             <SkillBlock icon='bug' title='Problem Solving'>
-              I'm can take vague problems and requirements and break them down into steps and
+              I can take vague problems and requirements and break them down into steps and
               solutions.
             </SkillBlock>
             <SkillBlock icon='server' title='Systems Thinking'>
@@ -123,11 +125,11 @@ export default class Skills extends Page {
           <SkillTagGrid tag='frontend' />
         </Section>
         <Section>
-          <Heading title='Cloud Services'>
-            I use these cloud services to setup an integrated, effective and
+          <Heading title='DevOps'>
+            I use these tools and cloud services to setup an integrated, effective and
             efficient web development workflow that meets the project needs.
           </Heading>
-          <SkillTagGrid tag='cloud' />
+          <SkillTagGrid tag='devops' />
         </Section>
         <Section>
           <Heading title='Software'>My local web development setup.</Heading>
