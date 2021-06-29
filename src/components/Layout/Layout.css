@@ -7,6 +7,7 @@
 @layer base {
   body {
     @apply font-body font-normal antialiased text-left;
+    text-underline-position: under;
   }
 
   h1,
