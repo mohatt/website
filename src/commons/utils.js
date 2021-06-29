@@ -1,11 +1,16 @@
 import { withPrefix } from 'gatsby'
 
 const GATSBY_PREFIX = withPrefix('/')
-const SOCIAL_PLATFORMS = {
+const PLATFORMS = {
   email: {
     title: 'Email',
     icon: 'email',
     href: handle => `mailto:${handle}`,
+  },
+  homepage: {
+    title: 'Homepage',
+    icon: 'globe',
+    href: handle => handle,
   },
   github: {
     title: 'Github',
@@ -28,12 +33,13 @@ export function withoutPrefix(path) {
     : path
 }
 
-export function getSocialHandle(platform, handle) {
-  const props = SOCIAL_PLATFORMS[platform]
+export function getPlatformHandle(platform, handle) {
+  const props = PLATFORMS[platform]
   if (!props) {
     throw new Error(`Invalid social platform id "${platform}"`)
   }
   return {
+    type: platform,
     ...props,
     href: props.href(handle),
   }

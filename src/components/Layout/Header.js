@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Helmet } from 'react-helmet'
 import { useSiteMetadata } from '../../hooks'
 import { useTheme } from '../../providers/theme'
-import { getSocialHandle } from '../../commons/utils'
+import { getPlatformHandle } from '../../commons/utils'
 import { Button, Icon, Link } from '..'
 import { LayoutContext } from './Layout'
 import avatarAlt from '../../images/avatar/avatar-smile.png'
@@ -69,7 +69,7 @@ function Header({ className }) {
       <div className='absolute w-12 bottom-0 right-0 -mr-6'>
         <ul>
           {contacts.map(({ type, to }, i) => {
-            const { title, href, icon } = getSocialHandle(type, to)
+            const { title, href, icon } = getPlatformHandle(type, to)
             return (
               <li key={i}>
                 <Button mono className='w-12 h-12 mb-6' to={href} external='app_contact' title={title}>
