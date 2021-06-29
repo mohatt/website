@@ -3,6 +3,7 @@
     @apply
       inline-block
       relative
+      text-base
       font-display
       font-medium
       italic
@@ -23,16 +24,33 @@
       @apply outline-none;
     }
 
-    &:hover,
-    &.btn-active {
+    &.btn-tiny,
+    &.btn-small {
+      @apply not-italic shadow-md;
+    }
+
+    &.btn-small {
+      @apply text-sm py-2 px-4;
+    }
+
+    &.btn-tiny {
+      @apply text-xs py-0 px-2;
+    }
+
+    &.btn-disabled {
+      @apply cursor-auto;
+    }
+
+    &:hover:not(.btn-disabled),
+    &.btn-active:not(.btn-disabled) {
       @apply bg-typo-dim text-accent border-typo-dim;
     }
 
     &.btn-outline {
       @apply bg-transparent text-accent;
 
-      &:hover,
-      &.btn-active {
+      &:hover:not(.btn-disabled),
+      &.btn-active:not(.btn-disabled) {
         @apply bg-accent text-typo-dim border-accent;
       }
     }
@@ -40,16 +58,16 @@
     &.btn-alt {
       @apply bg-typo-dim text-accent border-typo-dim;
 
-      &:hover,
-      &.btn-active {
+      &:hover:not(.btn-disabled),
+      &.btn-active:not(.btn-disabled) {
         @apply bg-accent text-typo-dim border-accent;
       }
 
       &.btn-outline {
         @apply bg-transparent text-typo-dim;
 
-        &:hover,
-        &.btn-active {
+        &:hover:not(.btn-disabled),
+        &.btn-active:not(.btn-disabled) {
           @apply bg-typo-dim text-accent border-typo-dim;
         }
       }
@@ -58,16 +76,16 @@
     &.btn-primary {
       @apply bg-primary text-accent border-primary;
 
-      &:hover,
-      &.btn-active {
+      &:hover:not(.btn-disabled),
+      &.btn-active:not(.btn-disabled) {
         @apply bg-typo-dim text-accent border-typo-dim;
       }
 
       &.btn-outline {
         @apply bg-transparent text-primary;
 
-        &:hover,
-        &.btn-active {
+        &:hover:not(.btn-disabled),
+        &.btn-active:not(.btn-disabled) {
           @apply bg-primary text-accent border-primary;
         }
       }
