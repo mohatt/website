@@ -47,12 +47,12 @@ function Header({ className }) {
         <html lang='en' className='text-xs sm:text-base 2xl:text-lg' />
         <link rel='prefetch' href={avatarAlt} as='image' />
       </Helmet>
-      <div className='absolute w-20 lg:w-32 top-0 right-0 mt-10 -mr-10 lg:-mr-16 text-center'>
+      <div className='absolute w-16 lg:w-32 top-0 right-0 mt-10 -mr-8 lg:-mr-16 text-center'>
         <ul>
           <li>
             <Link
               id='avatar'
-              className='block rounded-full h-20 lg:h-32 bg-cover bg-center border-2 lg:border-4 border-primary transition-all'
+              className='block rounded-full h-16 lg:h-32 bg-cover bg-center border-2 lg:border-4 border-primary transition-all'
               to='home'
               title='Home'
             />

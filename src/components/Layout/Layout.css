@@ -20,7 +20,6 @@
   }
 
   #header #avatar {
-    box-shadow: 0 0.3rem 0 0.2rem theme('colors.typo');
     background-image: url('../../images/avatar/avatar.png');
   }
 

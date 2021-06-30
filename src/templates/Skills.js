@@ -10,7 +10,7 @@ const tags = {
     { id: 'cms', title: 'CMSs', icon: 'tree' },
     { id: 'database', title: 'Databases', icon: 'database' },
     { id: 'api', title: 'APIs', icon: 'cloud' },
-    { id: 'test', title: 'Testing', icon: 'checks' },
+    { id: 'test', title: 'Testing', icon: 'test' },
   ],
   frontend: [
     { id: 'language', title: 'Languages', icon: 'code' },
