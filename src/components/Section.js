@@ -6,8 +6,8 @@ export default function Section({ full, spacing = true, className, ...props }) {
     <section
       className={classNames(
         {
-          'px-20': !full,
-          'pb-20': spacing,
+          'px-10 lg:px-14 2xl:px-16': !full,
+          'pb-10 md:pb-14 lg:pb-20': spacing,
         },
         className
       )}

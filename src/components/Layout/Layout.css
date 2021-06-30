@@ -20,7 +20,7 @@
   }
 
   #header #avatar {
-    box-shadow: 0 6px 0 6px theme('colors.typo');
+    box-shadow: 0 0.3rem 0 0.2rem theme('colors.typo');
     background-image: url('../../images/avatar/avatar.png');
   }
 
@@ -30,7 +30,8 @@
   }
 
   #header ul li > * {
-    box-shadow: 0 0 0 4px theme('colors.primary'), 0 3px 0 7px theme('colors.typo');
+    @apply lg:border-4 border-primary;
+    box-shadow: 0 0.2rem 0 0.09rem theme('colors.typo');
   }
 
   #menu {

@@ -30,12 +30,12 @@ function ProjectCard ({ project: data, limitSkills = 4, limitCategories = 2, exc
               {project.handles.map(({ title, href, icon }, i) => (
                 <Button
                   key={i}
-                  mono
                   to={href}
                   external='project_card_link'
-                  className='text-sm border-2 border-primary ml-3'
                   title={title}
-                  children={<Icon name={icon} className='w-5' />}
+                  size='mono'
+                  className='border-primary ml-3'
+                  children={<Icon name={icon} className='h-5' />}
                 />
               ))}
             </div>

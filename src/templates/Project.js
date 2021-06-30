@@ -46,7 +46,7 @@ export default class Project extends Page {
             </ProjectMetadata>
           )}
           {project.skills.length > 0 && (
-            <ProjectMetadata title='Skills' className=''>
+            <ProjectMetadata title='Skills'>
               {project.skills.map(({ id, props }) => (
                 <Button key={id} color='alt' size='tiny' className='mr-1' {...props} />
               ))}
@@ -82,16 +82,14 @@ export const query = graphql`
       cover {
         childImageSharp {
           gatsbyImageData(
-            aspectRatio: 1.8
-            width: 750
+            height: 500
           )
         }
       }
       screens {
         childImageSharp {
           gatsbyImageData(
-            aspectRatio: 1.8
-            width: 750
+            height: 500
           )
         }
       }

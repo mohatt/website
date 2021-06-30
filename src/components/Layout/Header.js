@@ -11,14 +11,14 @@ function ThemeButton() {
   const { cycleTheme } = useTheme()
   return (
     <Button
-      mono
-      className='w-12 h-12 mt-7 mb-6'
+      size='mono'
+      className='my-4 lg:my-6'
       title='Change theme'
       onClick={e => {
         e.preventDefault()
         cycleTheme()
       }}>
-      <Icon name='theme' />
+      <Icon name='theme' className='w-6' />
     </Button>
   )
 }
@@ -27,15 +27,14 @@ function MenuButton() {
   const { menuOpen, setMenuOpen } = useContext(LayoutContext)
   return (
     <Button
-      mono
+      size='mono'
       active={menuOpen}
-      className='w-12 h-12'
       title='Toggle Menu'
       onClick={e => {
         e.preventDefault()
         setMenuOpen(!menuOpen)
       }}>
-      <Icon name='menu' />
+      <Icon name='menu' className='w-6' />
     </Button>
   )
 }
@@ -45,15 +44,15 @@ function Header({ className }) {
   return (
     <header className={className}>
       <Helmet>
-        <html lang='en' className='text-base xl:text-lg' />
+        <html lang='en' className='text-xs sm:text-base 2xl:text-lg' />
         <link rel='prefetch' href={avatarAlt} as='image' />
       </Helmet>
-      <div className='absolute w-32 top-0 right-0 mt-10 -mr-16 text-center'>
+      <div className='absolute w-20 lg:w-32 top-0 right-0 mt-10 -mr-10 lg:-mr-16 text-center'>
         <ul>
           <li>
             <Link
               id='avatar'
-              className='block rounded-full h-32 bg-cover bg-center border-4 border-primary transition-all'
+              className='block rounded-full h-20 lg:h-32 bg-cover bg-center border-2 lg:border-4 border-primary transition-all'
               to='home'
               title='Home'
             />
@@ -72,8 +71,8 @@ function Header({ className }) {
             const { title, href, icon } = getPlatformHandle(type, to)
             return (
               <li key={i}>
-                <Button mono className='w-12 h-12 mb-6' to={href} external='app_contact' title={title}>
-                  <Icon name={icon} />
+                <Button size='mono' className='mb-4' to={href} external='app_contact' title={title}>
+                  <Icon name={icon} className='w-6' />
                 </Button>
               </li>
             )

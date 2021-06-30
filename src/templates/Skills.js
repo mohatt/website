@@ -72,7 +72,7 @@ function SkillList({ tags, title, icon }) {
 
 function SkillTagGrid({ tag }) {
   return (
-    <div className='grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 xl:max-w-4xl text-lg'>
+    <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 xl:max-w-4xl text-lg'>
       {tags[tag].map(({ id, title, icon }) => (
         <SkillList key={id} tags={[tag, id]} title={title} icon={icon} />
       ))}
@@ -91,7 +91,7 @@ export default class Skills extends Page {
             Working remotely is hard. Here are some things I'm good at, to
             help ease the pain.
           </Heading>
-          <div className='grid lg:grid-cols-2 gap-8'>
+          <div className='grid md:grid-cols-2 gap-8'>
             <SkillBlock icon='bug' title='Problem Solving'>
               I can take vague problems and requirements and break them down into steps and
               solutions.

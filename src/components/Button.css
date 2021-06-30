@@ -25,7 +25,8 @@
     }
 
     &.btn-tiny,
-    &.btn-small {
+    &.btn-small,
+    &.btn-mono {
       @apply not-italic shadow-md;
     }
 
@@ -35,6 +36,15 @@
 
     &.btn-tiny {
       @apply text-xs py-0 px-2;
+      border-width: 1px;
+    }
+
+    &.btn-mono {
+      @apply leading-none p-2;
+
+      & .icon {
+        @apply block;
+      }
     }
 
     &.btn-disabled {

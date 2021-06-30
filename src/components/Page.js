@@ -33,11 +33,11 @@ function PageComponentSnippet({ $code, $comp = 'undefined', ...props }) {
   let className = 'font-display italic'
   if (!$code) {
     $comp = $comp.replace(/(?:^[^A-Za-z]*|[\W_]+)(.)?/g, (_, c) => c ? c.toUpperCase() : '')
-    $code = `render(<${$comp} ${Object.keys(props)
+    $code = `<${$comp} ${Object.keys(props)
       .filter(a => props[a] !== undefined)
       .map(a => `${a}=${JSON.stringify(props[a])} `)
       .join('')
-    }/>);`
+    }/>`
   } else {
     className += ' text-lg'
   }
