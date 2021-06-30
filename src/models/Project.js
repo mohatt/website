@@ -5,10 +5,10 @@ import ProjectSkill from './ProjectSkill'
 export default function Project(data) {
   const cover = data.cover.childImageSharp.gatsbyImageData
   const screens = []
+  if (data.hasCover) {
+    screens.push(cover)
+  }
   if (data.screens) {
-    if (data.hasCover) {
-      screens.push(cover)
-    }
     data.screens.forEach(s => s && screens.push(s.childImageSharp.gatsbyImageData))
   }
 

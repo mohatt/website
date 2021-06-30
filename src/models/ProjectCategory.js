@@ -1,19 +1,14 @@
-export default function ProjectCategory({ id, title, desc, projects }) {
-  const props = {
-    to: 'projects.category',
-    params: { category: id },
-    children: title,
-    title: `View ${projects !== undefined
-      ? projects + ' project' + (projects > 1 ? 's' : '')
-      : 'all projects'
-    } published under "${id}" category`
-  }
-
+export default function ProjectCategory(data) {
   return {
-    id,
-    title,
-    desc,
-    projects,
-    props
+    ...data,
+    props: {
+      to: 'projects.category',
+      params: { category: data.id },
+      children: data.title,
+      title: `View ${data.projects !== undefined
+        ? data.projects + ' project' + (data.projects !== 1 ? 's' : '')
+        : 'all projects'
+      } published under "${data.id}" category`
+    }
   }
 }
