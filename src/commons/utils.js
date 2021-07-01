@@ -22,6 +22,11 @@ const PLATFORMS = {
     icon: 'twitter',
     href: handle => `https://www.twitter.com/${handle}`,
   },
+  linkedin: {
+    title: 'Linkedin',
+    icon: 'linkedin',
+    href: handle => `https://www.linkedin.com/in/${handle}`,
+  },
 }
 
 export function withoutPrefix(path) {
