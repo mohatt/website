@@ -41,6 +41,25 @@
     box-shadow: rgba(0, 0, 0, 0.5) -30px 0 20px -20px inset;
   }
 
+  #menu nav a::before {
+    content: '<';
+    margin-right: 0.25rem;
+    transform: translateX(20px);
+  }
+
+  #menu nav a::after {
+    content: '/>';
+    margin-left: 0.25rem;
+    transform: translateX(-20px);
+  }
+
+  #menu nav h1 a::before,
+  #menu nav h2 a::before,
+  #menu nav h1 a::after,
+  #menu nav h2 a::after {
+    @apply text-primary;
+  }
+
   #menu nav li a,
   #menu nav li a::before,
   #menu nav li a::after {
@@ -50,18 +69,6 @@
   #menu nav li a::before,
   #menu nav li a::after {
     @apply inline-block opacity-0;
-  }
-
-  #menu nav li a::before {
-    content: '<';
-    margin-right: 0.25rem;
-    transform: translateX(20px);
-  }
-
-  #menu nav li a::after {
-    content: '/>';
-    margin-left: 0.25rem;
-    transform: translateX(-20px);
   }
 
   #menu nav li a.active::before,

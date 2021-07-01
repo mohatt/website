@@ -18,6 +18,10 @@ export default class Project extends Page {
     const { data, pageContext } = this.props
     const project = new ProjectModel(data.project)
     this.title = project.title
+    this.description = project.excerpt
+    if (project.hasCover) {
+      this.image = project.cover.images.fallback.src
+    }
     this.snippet = {
       $comp: 'Project',
       id: pageContext.project,
@@ -26,7 +30,7 @@ export default class Project extends Page {
     return (
       <Section>
         <Heading title={this.title} primary>
-          {project.excerpt}
+          {this.description}
         </Heading>
         {project.screens.length > 0 && (
           <div className='flex overflow-x-auto mb-12'>

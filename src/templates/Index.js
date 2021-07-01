@@ -5,6 +5,7 @@ import { Page, Hero, Typewriter } from '../components'
 export default class Index extends Page {
   view() {
     this.title = this.props.data.page.title
+    this.description = `I'm a full-stack web developer with a broad range of skills and expertise in most web development related fields.`
     this.snippet = 'Hi, I’m Mohamed,'
     const words = ['high quality', 'user-friendly', 'efficient', 'modern', 'beautiful']
     const hero = (
@@ -22,8 +23,7 @@ export default class Index extends Page {
     ]
     return (
       <Hero title={hero} actions={actions}>
-        I'm a full-stack web developer with a broad range of skills and expertise in most web
-        development related fields.
+        {this.description}
       </Hero>
     )
   }

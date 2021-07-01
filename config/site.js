@@ -4,9 +4,10 @@ const env = require('./environment')
 module.exports = {
   contentPath: path.join(__dirname, '../content'),
   metadata: {
-    title: 'Mohamed E.',
+    title: 'Mohamed Elkholy',
+    titleShort: 'Mohatt',
     url: env.config.url,
-    description: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    description: 'Full-stack web developer with a broad range of skills and expertise in most web development related fields.',
     copyright: '© 2021 All rights reserved.',
     menu: [
       { label: 'Intro', to: 'home' },

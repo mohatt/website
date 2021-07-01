@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Helmet } from 'react-helmet'
-import { useSiteMetadata } from '../../hooks'
+import { useCurrentPath, useSiteMetadata } from '../../hooks'
 import { useTheme } from '../../providers/theme'
 import { getPlatformHandle } from '../../commons/utils'
 import { Button, Icon, Link } from '..'
@@ -29,7 +29,7 @@ function MenuButton() {
     <Button
       size='mono'
       active={menuOpen}
-      title='Toggle Menu'
+      title='Toggle side menu'
       onClick={e => {
         e.preventDefault()
         setMenuOpen(!menuOpen)
@@ -40,13 +40,21 @@ function MenuButton() {
 }
 
 function Header({ className }) {
-  const { contacts } = useSiteMetadata()
+  const site = useSiteMetadata()
+  const { realpath } = useCurrentPath()
   return (
     <header className={className}>
-      <Helmet>
-        <html lang='en' className='text-xs sm:text-base 2xl:text-lg' />
-        <link rel='prefetch' href={avatarAlt} as='image' />
-      </Helmet>
+      <Helmet
+        htmlAttributes={{ lang: 'en', class: 'text-xs sm:text-base 2xl:text-lg' }}
+        meta={[
+          { name: 'og:type', content: 'website' },
+          { name: 'og:url', content: site.url + realpath },
+          { name: 'twitter:card', content: 'summary_large_image' },
+        ]}
+        link={[
+          { rel: 'prefetch', as: 'image', href: avatarAlt },
+        ]}
+      />
       <div className='absolute w-16 lg:w-32 top-0 right-0 mt-10 -mr-8 lg:-mr-16 text-center'>
         <ul>
           <li>
@@ -54,7 +62,7 @@ function Header({ className }) {
               id='avatar'
               className='block rounded-full h-16 lg:h-32 bg-cover bg-center border-2 lg:border-4 border-primary transition-all'
               to='home'
-              title='Home'
+              title='Homepage'
             />
           </li>
           <li>
@@ -67,11 +75,11 @@ function Header({ className }) {
       </div>
       <div className='absolute w-12 bottom-0 right-0 -mr-6'>
         <ul>
-          {contacts.map(({ type, to }, i) => {
+          {site.contacts.map(({ type, to }) => {
             const { title, href, icon } = getPlatformHandle(type, to)
             return (
-              <li key={i}>
-                <Button size='mono' className='mb-4' to={href} external='app_contact' title={title}>
+              <li key={type}>
+                <Button size='mono' className='mb-4' to={href} external='header_contact' title={title}>
                   <Icon name={icon} className='w-6' />
                 </Button>
               </li>

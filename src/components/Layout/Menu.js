@@ -20,17 +20,17 @@ function MenuItem({ label, to, params, onClick }) {
 }
 
 function Menu({ isHome, className }) {
-  const { menu, title } = useSiteMetadata()
+  const { menu, titleShort } = useSiteMetadata()
   const { setMenuOpen } = useContext(LayoutContext)
   const closeMenu = () => setMenuOpen(false)
   const Heading = isHome ? 'h1' : 'h2'
   return (
     <nav className={className}>
       <Heading className='text-2xl italic text-right mr-6 mb-6'>
-        <Link to='home'>{title}</Link>
+        <Link to='home'>{titleShort}</Link>
       </Heading>
       <ul>
-        {menu.map((itemProps, i) => <MenuItem key={i} onClick={closeMenu} {...itemProps} />)}
+        {menu.map(props => <MenuItem key={props.to} onClick={closeMenu} {...props} />)}
       </ul>
     </nav>
   )

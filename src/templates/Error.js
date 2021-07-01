@@ -13,6 +13,7 @@ export default class Error extends Page {
       },
     } = this.props
     this.title = title
+    this.noIndex = true
     this.snippet = {
       $comp: 'Error',
       code,
