@@ -36,7 +36,7 @@ export const query = graphql`
       limit: $limit
       skip: $offset
       filter: { skills: { elemMatch: { id: { eq: $skill } } }, draft: { ne: true } }
-      sort: { order: ASC, fields: [title] }
+      sort: { fields: [priority, title] }
     ) {
       ...ProjectsListFragment
     }

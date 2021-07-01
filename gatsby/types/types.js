@@ -45,6 +45,7 @@ exports.definitions = [
       },
       homepage: 'String',
       github: 'String',
+      priority: 'Int',
     },
     interfaces: ['Node'],
   },

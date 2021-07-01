@@ -66,7 +66,7 @@ export const query = graphql`
       title
     }
 
-    projects: allProject(sort: { order: ASC, fields: [title] }, filter: { draft: { ne: true } }) {
+    projects: allProject(sort: { fields: [priority, title] }, filter: { draft: { ne: true } }) {
       group(field: categories___id, limit: $limit) {
         id: fieldValue
         projects: nodes {
