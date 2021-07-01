@@ -18,7 +18,7 @@ module.exports = {
     ],
     contacts: [
       { type: 'email', to: 'mohatt@pm.me' },
-      { type: 'twitter', to: '#' },
+      { type: 'linkedin', to: 'mdkholy' },
       { type: 'github', to: 'mohatt' },
     ],
   },
