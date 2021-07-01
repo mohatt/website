@@ -1,22 +1,26 @@
 import React from 'react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
-import { BaseIcon, Button, Icon, Link, Separator } from '.'
+import { BaseIcon, Button, Heading, Icon, Link, Separator, Typography } from '.'
 
-export default function Markdown({ components = {}, children, ...props }) {
-  const shortcodes = {
-    BaseIcon,
-    Button,
-    Icon,
-    Link,
-    Separator,
-  }
+const shortcodes = {
+  a({ href, ...props }) {
+    return <Link to={href} external='mdx_link' {...props} />
+  },
+  BaseIcon,
+  Button,
+  Heading,
+  Icon,
+  Link,
+  Separator,
+}
 
+export default function Markdown({ children, ...props }) {
   return (
-    <>
-      <MDXProvider components={{ ...shortcodes, ...components}}>
+    <MDXProvider components={shortcodes}>
+      <Typography>
         <MDXRenderer {...props}>{children}</MDXRenderer>
-      </MDXProvider>
-    </>
+      </Typography>
+    </MDXProvider>
   )
 }

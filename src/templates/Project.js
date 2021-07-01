@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import classNames from 'classnames'
 import { Project as ProjectModel } from '../models'
-import { Page, Markdown, Typography, Heading, Section, Button, Icon, Link } from '../components'
+import { Page, Markdown, Heading, Section, Button, Icon, Link } from '../components'
 
 function ProjectMetadata({ title, children, className }) {
   return (
@@ -67,9 +67,9 @@ export default class Project extends Page {
             </ProjectMetadata>
           )}
         </div>
-        <Typography className='xl:max-w-3xl'>
+        <div className='xl:max-w-3xl'>
           <Markdown>{project.body}</Markdown>
-        </Typography>
+        </div>
       </Section>
     )
   }
