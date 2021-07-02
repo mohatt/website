@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { Helmet } from 'react-helmet'
 import { useCurrentPath, useSiteMetadata } from '../../hooks'
 import { useTheme } from '../../providers/theme'
-import { getPlatformHandle } from '../../commons/utils'
 import { Button, Icon, Link } from '..'
 import { LayoutContext } from './Layout'
 import avatarAlt from '../../images/avatar/avatar-smile.png'
@@ -75,10 +74,9 @@ function Header({ className }) {
       </div>
       <div className='absolute w-12 bottom-0 right-0 -mr-6'>
         <ul>
-          {site.contacts.map(({ type, to }) => {
-            const { title, href, icon } = getPlatformHandle(type, to)
+          {site.contacts.map(({ title, href, icon }, i) => {
             return (
-              <li key={type}>
+              <li key={i}>
                 <Button size='mono' className='mb-4' to={href} external='header_contact' title={title}>
                   <Icon name={icon} className='w-6' />
                 </Button>

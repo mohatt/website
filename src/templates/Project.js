@@ -56,7 +56,7 @@ export default class Project extends Page {
               ))}
             </ProjectMetadata>
           )}
-          {project.handles.length > 0 && (
+          {project.handles && (
             <ProjectMetadata title='Links'>
               {project.handles.map(({ title, href, icon }, i) => (
                 <Link key={i} to={href} external='project_link' className='inline-flex leading-5 mr-4 text-primary hover:underline'>
@@ -97,6 +97,11 @@ export const query = graphql`
           )
         }
       }
+      handles {
+        title
+        href
+        icon
+      }
       skills {
         id
         title
@@ -107,8 +112,6 @@ export const query = graphql`
         title
         projects
       }
-      homepage
-      github
     }
   }
 `

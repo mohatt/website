@@ -102,7 +102,10 @@ exports.createTypes = ({ actions, schema }) => {
 }
 
 exports.extendTypes = function ({ type }) {
-  // noop
+  if (type.name in types.extendTypes) {
+    return types.extendTypes[type.name]
+  }
+
   return {}
 }
 

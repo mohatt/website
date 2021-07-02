@@ -1,3 +1,5 @@
+const createPlatformHandle = require('./create-platform-handle')
+
 exports.createParentFieldResolver = function ({ field, defaultValue = null }) {
   return function (source, args, context, info) {
     return context.nodeModel
@@ -13,5 +15,20 @@ exports.createParentFieldResolverProxy = function ({ field, defaultValue = null 
     const resolver = schemaType.getFields()[fieldName].resolve
     const result = await resolver(parentNode, args, context, { fieldName })
     return result || defaultValue
+  }
+}
+
+exports.createPlatformHandleResolver = function () {
+  return function (source, args, context, info) {
+    const fieldValue = source[info.fieldName]
+    if (!fieldValue) {
+      return null
+    }
+
+    if (Array.isArray(fieldValue)) {
+      return fieldValue.map(createPlatformHandle)
+    }
+
+    return createPlatformHandle(fieldValue)
   }
 }

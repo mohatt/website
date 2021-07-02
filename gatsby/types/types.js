@@ -1,4 +1,7 @@
-const { createParentFieldResolverProxy } = require('./resolvers')
+const {
+  createParentFieldResolverProxy,
+  createPlatformHandleResolver
+} = require('./resolvers')
 
 exports.definitions = [
   {
@@ -39,12 +42,14 @@ exports.definitions = [
           link: {},
         },
       },
+      handles: {
+        type: '[PlatformHandle]',
+        resolve: createPlatformHandleResolver()
+      },
       body: {
         type: 'String',
         resolve: createParentFieldResolverProxy({ field: 'body' }),
       },
-      homepage: 'String',
-      github: 'String',
       priority: 'Int',
     },
     interfaces: ['Node'],
@@ -92,8 +97,26 @@ exports.definitions = [
       },
     },
     interfaces: ['Node'],
+  },
+  `
+  type PlatformHandle {
+    id: String!
+    type: String!
+    title: String!
+    icon: String!
+    href: String!
   }
+  `
 ];
+
+exports.extendTypes = {
+  'Site': {
+    'siteMetadata.contacts': {
+      type: '[PlatformHandle]',
+      resolve: createPlatformHandleResolver()
+    }
+  }
+}
 
 exports.namespaceTypeMap = {
   project: {

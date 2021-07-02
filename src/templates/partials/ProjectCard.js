@@ -9,7 +9,7 @@ function ProjectCard ({ project: data, limitSkills = 4, limitCategories = 2, exc
   const linkProps = {
     to: 'projects.project',
     params: { project: project.slug },
-    title: `View '${project.title}' project page`,
+    title: `View "${project.title}" project page`,
   }
   const categories = excludeCategories
     ? project.categories.filter(c => !excludeCategories.includes(c.id))
@@ -25,18 +25,20 @@ function ProjectCard ({ project: data, limitSkills = 4, limitCategories = 2, exc
           <Link className='block' {...linkProps}>
             <img className='w-full border-2 border-primary rounded-md shadow-lg' src={project.cover.images.fallback.src} alt={project.title} />
           </Link>
-          {project.handles.length > 0 && (
+          {project.handles && (
             <div className='absolute -bottom-4 right-4'>
-              {project.handles.map(({ title, href, icon }, i) => (
-                <Button
-                  key={i}
-                  to={href}
-                  external='project_card_link'
-                  title={title}
-                  size='mono'
-                  className='border-primary ml-3'
-                  children={<Icon name={icon} className='h-5' />}
-                />
+              {project.handles
+                .slice(0, 2)
+                .map(({ title, href, icon }, i) => (
+                  <Button
+                    key={i}
+                    to={href}
+                    external='project_card_link'
+                    title={title}
+                    size='mono'
+                    className='border-primary ml-3'
+                    children={<Icon name={icon} className='h-5' />}
+                  />
               ))}
             </div>
           )}
@@ -97,8 +99,11 @@ export const ProjectCardFragment = graphql`
         )
       }
     }
-    github
-    homepage
+    handles {
+      title
+      href
+      icon
+    }
     categories {
       id
       title

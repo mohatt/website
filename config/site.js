@@ -17,10 +17,10 @@ module.exports = {
       { label: 'Contact', to: '/contact' },
     ],
     contacts: [
-      { type: 'email', to: 'mohatt@pm.me' },
-      { type: 'linkedin', to: 'mdkholy' },
-      { type: 'github', to: 'mohatt' },
-    ],
+      'email:mohatt@pm.me',
+      'linkedin:mdkholy',
+      'github:mohatt',
+    ]
   },
   pagination: {
     projectsIndex: 6,
