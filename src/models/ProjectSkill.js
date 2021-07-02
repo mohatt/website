@@ -5,9 +5,9 @@ export default function ProjectSkill(data) {
   return { ...data,
     props: {
       to: 'projects.skill',
-        params: { skill: data.id },
+      params: { skill: data.id },
       children: data.title,
-        title: `View ${data.projects !== undefined
+      title: `View ${data.projects !== undefined
         ? data.projects + ' project' + (data.projects !== 1 ? 's' : '')
         : 'all projects'
       } tagged with "${data.id}" skill`

@@ -20,14 +20,15 @@ const tags = {
     { id: 'ssg', title: 'SSGs', icon: 'stack' },
   ],
   devops: [
-    { id: 'git', title: 'Git Hosting', icon: 'gitRepo' },
+    { id: 'tool', title: 'Tools', icon: 'terminal' },
     { id: 'deploy', title: 'Deployment', icon: 'cloudUp' },
     { id: 'ci', title: 'CI/CD', icon: 'tools' },
+    { id: 'pkgman', title: 'Package Managers', icon: 'cloudDown' },
+    { id: 'git', title: 'Git Hosting', icon: 'gitRepo' },
   ],
   software: [
     { id: 'env', title: 'Environment', icon: 'computer' },
     { id: 'app', title: 'Applications', icon: 'appStore' },
-    { id: 'pkgman', title: 'Package Managers', icon: 'cloudDown' },
     { id: 'comms', title: 'Communication', icon: 'discuss' },
   ],
 }
@@ -51,9 +52,9 @@ function SkillList({ tags, title, icon }) {
       <Icon name={icon} className='h-8 text-primary' />
       <div className='flex-1'>
         <h3 className='ml-2 leading-8 text-primary'>{title}</h3>
-        <ul className='mt-3 -ml-3 space-y-2 font-medium'>
+        <ul className='mt-3 -ml-3 space-y-3 font-medium'>
           {skills.map(({ id, title, projects, props, Icon }) => (
-            <li key={id}>
+            <li key={id} className='flex leading-6'>
               {projects > 0
                 ? (
                   <Link className='text-primary hover:underline' {...props}>
@@ -127,7 +128,7 @@ export default class Skills extends Page {
         <Section>
           <Heading title='DevOps'>
             I use these tools and cloud services to setup an integrated, effective and
-            efficient web development workflow that meets the project needs.
+            efficient workflows that meet the project needs.
           </Heading>
           <SkillTagGrid tag='devops' />
         </Section>
