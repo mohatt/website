@@ -77,8 +77,8 @@ function Header({ className }) {
         <ul>
           <PlatformHandle.Map data={site.contacts}>
             {({ title, href, Icon }) => (
-              <li>
-                <Button size='mono' className='mb-4' to={href} external='header_contact' title={title}>
+              <li className='mb-4'>
+                <Button size='mono' to={href} external='header_contact' title={title}>
                   <Icon className='w-6' />
                 </Button>
               </li>

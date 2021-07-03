@@ -13,6 +13,10 @@ module.exports = {
     },
     extend: {
       colors: _.mapValues(themes.THEME_DEFAULT.colors, ((v, k) => `var(--${k})`)),
+      screens: {
+        '3xl': '1680px',
+        '4xl': '1920px',
+      },
       width: {
         inherit: 'inherit',
       },
