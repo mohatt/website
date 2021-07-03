@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Page, Section, Heading } from '../components'
-import { ProjectsList } from './partials'
+import { ProjectCardGrid } from './partials'
 
 export default class ProjectsBySkill extends Page {
   view() {
@@ -24,7 +24,7 @@ export default class ProjectsBySkill extends Page {
         <Heading title={this.title} primary>
           All projects tagged with "{skill}" skill.
         </Heading>
-        <ProjectsList route='projects.skill' params={{ skill }} projects={projects} />
+        <ProjectCardGrid data={projects} paginated='projects.skill' params={{ skill }} />
       </Section>
     )
   }
@@ -38,7 +38,7 @@ export const query = graphql`
       filter: { skills: { elemMatch: { id: { eq: $skill } } }, draft: { ne: true } }
       sort: { fields: [priority, title] }
     ) {
-      ...ProjectsListFragment
+      ...ProjectCardGridPaginatedFragment
     }
 
     skillObj: projectSkillYaml(id: { eq: $skill }) {

@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks'
 import { Page, Section, Heading, Icon, Link } from '../components'
+import { ProjectSkill } from './partials'
 
 const tags = {
   backend: [
@@ -53,18 +54,20 @@ function SkillList({ tags, title, icon }) {
       <div className='flex-1'>
         <h3 className='ml-2 leading-8 text-primary'>{title}</h3>
         <ul className='mt-3 -ml-3 space-y-3 font-medium'>
-          {skills.map(({ id, title, projects, props, Icon }) => (
-            <li key={id} className='flex leading-6'>
-              {projects > 0
-                ? (
-                  <Link className='text-primary hover:underline' {...props}>
-                    <Icon className='h-6 mr-2' />{title} <sup>{projects}</sup>
-                  </Link>
-                )
-                : <><Icon className='h-6 mr-2' />{title}</>
-              }
-            </li>
-          ))}
+          <ProjectSkill.Map data={skills}>
+            {({ title, projects, props, Icon }) => (
+              <li className='flex leading-6'>
+                {projects > 0
+                  ? (
+                    <Link className='text-primary hover:underline' {...props}>
+                      <Icon className='h-6 mr-2' />{title} <sup>{projects}</sup>
+                    </Link>
+                  )
+                  : <><Icon className='h-6 mr-2' />{title}</>
+                }
+              </li>
+            )}
+          </ProjectSkill.Map>
         </ul>
       </div>
     </div>

@@ -11,11 +11,7 @@ export default function useSiteMetadata() {
             description
             url
             copyright
-            contacts {
-              title
-              href
-              icon
-            }
+            contacts
             menu {
               label
               to

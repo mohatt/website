@@ -1,8 +1,4 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { ProjectSkill } from '../models'
-
-let cache = null
-let computedCache = null
 
 function useProjectSkillsData() {
   const data = useStaticQuery(
@@ -21,13 +17,7 @@ function useProjectSkillsData() {
     `
   )
 
-  if (data === cache) {
-    return computedCache
-  }
-
-  cache = data
-  computedCache = data.skills.nodes.map(s => new ProjectSkill(s))
-  return computedCache
+  return data.skills.nodes
 }
 
 export function useProjectSkills(tags) {

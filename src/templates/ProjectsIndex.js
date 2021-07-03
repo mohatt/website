@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectCategory } from '../hooks'
 import { Page, Section, Heading, Button, ButtonGroup } from '../components'
-import { ProjectCard } from './partials'
+import { ProjectCardGrid, ProjectCategory } from './partials'
 
 function CategoryProjects({ id, projects, totalCount }) {
   const category = useProjectCategory(id)
@@ -11,21 +11,16 @@ function CategoryProjects({ id, projects, totalCount }) {
       <Heading title={category.title}>
         {category.desc}
       </Heading>
-      <ProjectCard.Grid>
-        {projects.map(project => (
-          <ProjectCard key={project.slug} project={project} excludeCategories={[id]} />
-        ))}
-      </ProjectCard.Grid>
+      <ProjectCardGrid data={projects} params={{ category: id }} />
       {totalCount > projects.length && (
         <ButtonGroup className='mt-12'>
           <Button disabled outline color='primary'>
             {projects.length} out of {totalCount}
           </Button>
-          <Button color='primary' {...category.props}>
-            View all
-          </Button>
+          <ProjectCategory category={category}>
+            {({ props }) => <Button color='primary' {...props}>View all</Button>}
+          </ProjectCategory>
         </ButtonGroup>
-
       )}
     </Section>
   )

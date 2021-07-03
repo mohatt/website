@@ -1,72 +1,67 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import classNames from 'classnames'
-import { Project } from '../../models'
-import { Button, Icon, Link } from '../../components'
+import { PlatformHandle } from '../../commons/platforms'
+import { Button, Link } from '../../components'
+import { ProjectSkill, ProjectCategory } from '.'
 
-function ProjectCard ({ project: data, limitSkills = 4, limitCategories = 2, excludeSkills, excludeCategories }) {
-  const project = new Project(data)
-  const linkProps = {
+function ProjectCard ({ project, limitSkills = 4, limitCategories = 2, filterSkills, filterCategories }) {
+  const cover = project.cover.childImageSharp.gatsbyImageData
+  const props = {
     to: 'projects.project',
     params: { project: project.slug },
-    title: `View "${project.title}" project page`,
+    title: 'View project page',
   }
-  const categories = excludeCategories
-    ? project.categories.filter(c => !excludeCategories.includes(c.id))
+  const categories = filterCategories
+    ? project.categories.filter(c => !filterCategories.includes(c.id))
     : project.categories
-  const skills = excludeSkills
-    ? project.skills.filter(s => !excludeSkills.includes(s.id))
+  const skills = filterSkills
+    ? project.skills.filter(s => !filterSkills.includes(s.id))
     : project.skills
 
   return (
     <div>
       <div>
-        <div className='relative' style={{ maxWidth: project.cover.width }}>
-          <Link className='block' {...linkProps}>
-            <img className='w-full border-2 border-primary rounded-md shadow-lg' src={project.cover.images.fallback.src} alt={project.title} />
+        <div className='relative' style={{ maxWidth: cover.width }}>
+          <Link className='block' {...props}>
+            <img className='w-full border-2 border-primary rounded-md shadow-lg' src={cover.images.fallback.src} alt={project.title} />
           </Link>
           {project.handles && (
             <div className='absolute -bottom-4 right-4'>
-              {project.handles
-                .slice(0, 2)
-                .map(({ title, href, icon }, i) => (
+              <PlatformHandle.Map data={project.handles.slice(0, 2)}>
+                {({ title, href, Icon }) => (
                   <Button
-                    key={i}
                     to={href}
                     external='project_card_link'
                     title={title}
                     size='mono'
                     className='border-primary ml-3'
-                    children={<Icon name={icon} className='h-5' />}
+                    children={<Icon className='h-5' />}
                   />
-              ))}
+                )}
+              </PlatformHandle.Map>
             </div>
           )}
           {limitCategories > 0 && categories.length > 0 && (
             <div className='absolute -top-4 left-4'>
-              {categories
-                .slice(0, limitCategories)
-                .map(({ id, props }) => (
-                  <Button key={id} color='primary' size='tiny' className='mr-1' {...props} />
-              ))}
+              <ProjectCategory.Map data={categories.slice(0, limitCategories)}>
+                {({ props }) => <Button color='primary' size='tiny' className='mr-1' {...props} />}
+              </ProjectCategory.Map>
               {categories.length > limitCategories && (
-                <Button size='tiny' color='primary' {...linkProps}>&hellip;</Button>
+                <Button size='tiny' color='primary' {...props}>+{categories.length - limitCategories}</Button>
               )}
             </div>
           )}
         </div>
       </div>
       <div className='mt-4'>
-        <h3><Link className='text-primary hover:underline' {...linkProps}>{project.title}</Link></h3>
+        <h3><Link className='text-primary hover:underline' {...props}>{project.title}</Link></h3>
         {limitSkills > 0 && skills.length > 0 && (
           <div className='mt-2'>
-            {skills
-              .slice(0, limitSkills)
-              .map(({ id, props }) => (
-                <Button key={id} color='alt' size='tiny' className='mr-1' {...props} />
-            ))}
+            <ProjectSkill.Map data={skills.slice(0, limitSkills)}>
+              {({ props }) => <Button color='alt' size='tiny' className='mr-1' {...props} />}
+            </ProjectSkill.Map>
             {skills.length > limitSkills && (
-              <Button size='tiny' color='alt' {...linkProps}>&hellip;</Button>
+              <Button size='tiny' color='alt' {...props}>+{skills.length - limitSkills}</Button>
             )}
           </div>
         )}
@@ -78,12 +73,16 @@ function ProjectCard ({ project: data, limitSkills = 4, limitCategories = 2, exc
   )
 }
 
-ProjectCard.Grid = function ProjectCardGrid({ children, className }) {
-  return (
-    <div className={classNames('grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8 text-lg', className)}>
-      {children}
-    </div>
-  )
+ProjectCard.Map = function ProjectCardMap({ data, children, ...props }) {
+  return data.map(project => {
+    if (project.node) {
+      project = project.node
+    }
+
+    return (
+      <ProjectCard key={project.slug} project={project} {...props} />
+    )
+  })
 }
 
 export const ProjectCardFragment = graphql`
@@ -99,11 +98,7 @@ export const ProjectCardFragment = graphql`
         )
       }
     }
-    handles {
-      title
-      href
-      icon
-    }
+    handles
     categories {
       id
       title

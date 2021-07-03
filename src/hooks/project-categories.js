@@ -1,8 +1,4 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { ProjectCategory } from '../models'
-
-let cache = null
-let computedCache = null
 
 export function useProjectCategories() {
   const data = useStaticQuery(
@@ -20,13 +16,7 @@ export function useProjectCategories() {
     `
   )
 
-  if (data === cache) {
-    return computedCache
-  }
-
-  cache = data
-  computedCache = data.categories.nodes.map(c => new ProjectCategory(c))
-  return computedCache
+  return data.categories.nodes
 }
 
 export function useProjectCategory(id) {

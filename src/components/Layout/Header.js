@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Helmet } from 'react-helmet'
+import { PlatformHandle } from '../../commons/platforms'
 import { useCurrentPath, useSiteMetadata } from '../../hooks'
 import { useTheme } from '../../providers/theme'
 import { Button, Icon, Link } from '..'
@@ -74,15 +75,15 @@ function Header({ className }) {
       </div>
       <div className='absolute w-12 bottom-0 right-0 -mr-6'>
         <ul>
-          {site.contacts.map(({ title, href, icon }, i) => {
-            return (
-              <li key={i}>
+          <PlatformHandle.Map data={site.contacts}>
+            {({ title, href, Icon }) => (
+              <li>
                 <Button size='mono' className='mb-4' to={href} external='header_contact' title={title}>
-                  <Icon name={icon} className='w-6' />
+                  <Icon className='w-6' />
                 </Button>
               </li>
-            )
-          })}
+            )}
+          </PlatformHandle.Map>
         </ul>
       </div>
     </header>
