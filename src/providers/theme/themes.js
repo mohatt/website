@@ -42,5 +42,5 @@ const themes = [
 module.exports = {
   THEME_STORAGE_KEY: 'mohatt:theme',
   THEME_DEFAULT: themes[0],
-  THEME_LIST: themes
+  THEME_LIST: themes,
 }

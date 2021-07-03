@@ -9,14 +9,14 @@ export function Analytics(id, settings = {}) {
   this.config = config => {
     gtagPush('config', id, {
       ...config,
-      update: true
+      update: true,
     })
   }
 
   this.event = (name, params) => {
     gtagPush('event', name, {
       ...params,
-      send_to: id
+      send_to: id,
     })
   }
 
@@ -26,25 +26,25 @@ export function Analytics(id, settings = {}) {
     } else {
       userProps = {
         ...userProps,
-        ...name
+        ...name,
       }
     }
 
     gtagPush('config', id, {
       user_properties: userProps,
-      update: true
+      update: true,
     })
   }
 }
 
-export function initializeAnalytics (analytics) {
+export function initializeAnalytics(analytics) {
   const script = document.createElement('script')
   script.src = `https://www.googletagmanager.com/gtag/js?id=${analytics.id}`
   script.async = true
   document.head.appendChild(script)
 }
 
-function gtagPush () {
+function gtagPush() {
   if (!isBrowser) {
     return
   }

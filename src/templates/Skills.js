@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectSkills } from '../hooks'
-import { Page, Section, Heading, Icon, Link } from '../components'
+import { Page, Heading, Icon, Link, Section } from '../components'
 import { ProjectSkill } from './partials'
 
 const tags = {
@@ -91,21 +91,18 @@ export default class Skills extends Page {
       <>
         <Section>
           <Heading title={this.title} primary>
-            Software development is hard. Managing projects is hard.
-            Working remotely is hard. Here are some things I'm good at, to
-            help ease the pain.
+            Software development is hard. Managing projects is hard. Working remotely is hard. Here are some
+            things I'm good at, to help ease the pain.
           </Heading>
           <div className='grid md:grid-cols-2 gap-8'>
             <SkillBlock icon='bug' title='Problem Solving'>
-              I can take vague problems and requirements and break them down into steps and
-              solutions.
+              I can take vague problems and requirements and break them down into steps and solutions.
             </SkillBlock>
             <SkillBlock icon='server' title='Systems Thinking'>
               I'm good at thinking abstractly and putting together systems with many moving parts.
             </SkillBlock>
             <SkillBlock icon='discuss' title='Communicating'>
-              I can explain things clearly, communicate problems quickly and write accurately and
-              concisely.
+              I can explain things clearly, communicate problems quickly and write accurately and concisely.
             </SkillBlock>
             <SkillBlock icon='calendar' title='Organising'>
               I can self-manage, work to deadlines, organise projects and present well-structured
@@ -115,23 +112,23 @@ export default class Skills extends Page {
         </Section>
         <Section>
           <Heading title='Back-end Development'>
-            This is my main area of expertise. Nearly every app I have
-            launched in the past had the back-end done by me. My main stack usually
-            involves PHP with the CMS/Framework of choice, and alternatively Node.js.
+            This is my main area of expertise. Nearly every app I have launched in the past had the
+            back-end done by me. My main stack usually involves PHP with the CMS/Framework of
+            choice, and alternatively Node.js.
           </Heading>
           <SkillTagGrid tag='backend' />
         </Section>
         <Section>
           <Heading title='Front-end Development'>
-            I create responsive websites that allow the user to have the
-            best and most appropriate experience suited to the device they are using.
+            I create responsive websites that allow the user to have the best and most appropriate
+            experience suited to the device they are using.
           </Heading>
           <SkillTagGrid tag='frontend' />
         </Section>
         <Section>
           <Heading title='DevOps'>
-            I use these tools and cloud services to setup an integrated, effective and
-            efficient workflows that meet the project needs.
+            I use these tools and cloud services to setup an integrated, effective and efficient
+            workflows that meet the project needs.
           </Heading>
           <SkillTagGrid tag='devops' />
         </Section>

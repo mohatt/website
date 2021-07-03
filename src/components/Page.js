@@ -12,7 +12,7 @@ function PageHelmet({ title = '', description, noIndex, image }) {
   const ogImage = image || socialBanner
 
   useAnalyticsCallback(({ config, event }) => {
-    config({ page_title: title})
+    config({ page_title: title })
     event('page_view')
   }, [])
 
@@ -114,7 +114,12 @@ export default class Page extends React.Component {
     }
     return (
       <>
-        <PageHelmet title={this.title} description={this.description} noIndex={this.noIndex} image={this.image} />
+        <PageHelmet
+          title={this.title}
+          description={this.description}
+          noIndex={this.noIndex}
+          image={this.image}
+        />
         <PageComponentSnippet {...this.snippet} />
         {content}
       </>

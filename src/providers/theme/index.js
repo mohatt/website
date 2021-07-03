@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } from './themes'
 import { useLocalStorage } from '../../hooks'
 import { useAnalyticsCallback } from '../analytics'
@@ -22,7 +22,7 @@ export function ThemeProvider({ children }) {
     if (prevTheme) {
       event('app_change_theme', {
         theme: theme,
-        prev_theme: prevTheme
+        prev_theme: prevTheme,
       })
     }
   }, [theme])

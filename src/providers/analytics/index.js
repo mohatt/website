@@ -1,10 +1,10 @@
-import { useEffect, useRef, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { environmentConfig, isBrowser } from '../../commons/environment'
 import { useCurrentLocation } from '../../hooks'
 import { Analytics, initializeAnalytics } from './analytics'
 
 const analytics = new Analytics(environmentConfig.analyticsId, {
-  send_page_view: false
+  send_page_view: false,
 })
 
 export function AnalyticsProvider({ children }) {

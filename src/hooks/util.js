@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 /**
  * Used to perform a two-pass rendering as a workaround for React’s hydration issue

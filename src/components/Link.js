@@ -21,7 +21,7 @@ function OutboundLink({ linkId, ...props }) {
         }
         event('click', {
           link_url: props.href,
-          link_domain: (new URL(props.href))?.hostname,
+          link_domain: new URL(props.href)?.hostname,
           link_id: linkId || props.id,
           outbound: true,
           event_callback: function () {

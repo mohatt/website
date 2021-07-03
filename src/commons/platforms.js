@@ -44,7 +44,7 @@ const PLATFORMS = {
   },
 }
 
-export function createPlatformHandle (id) {
+export function createPlatformHandle(id) {
   const matches = id && id.match(/^([^:]+):(.*)/)
   if (!matches) {
     throw new Error(`Invalid platform handle id "${id}"`)

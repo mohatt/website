@@ -1,5 +1,5 @@
 import React from 'react'
-import { Section, Button, ButtonGroup } from '.'
+import { Button, ButtonGroup, Section } from '.'
 
 export default function Hero({ children, title, actions, className }) {
   return (
@@ -10,12 +10,11 @@ export default function Hero({ children, title, actions, className }) {
       </header>
       <footer>
         <ButtonGroup spacing>
-          {actions &&
-            actions.map(action => (
-              <Button color='primary' to={action.to} outline={action.alt} key={action.to}>
-                {action.title}
-              </Button>
-            ))}
+          {actions && actions.map(action => (
+            <Button color='primary' to={action.to} outline={action.alt} key={action.to}>
+              {action.title}
+            </Button>
+          ))}
         </ButtonGroup>
       </footer>
     </Section>

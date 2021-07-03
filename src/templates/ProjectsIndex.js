@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useProjectCategory } from '../hooks'
-import { Page, Section, Heading, Button, ButtonGroup } from '../components'
+import { Page, Button, ButtonGroup, Heading, Section } from '../components'
 import { ProjectCardGrid, ProjectCategory } from './partials'
 
 function CategoryProjects({ id, projects, totalCount }) {
@@ -43,8 +43,9 @@ export default class ProjectsIndex extends Page {
       <>
         <Section spacing={false}>
           <Heading title={this.title} primary>
-            Since beginning my journey as a freelance developer nearly 7 years ago, I’ve done remote work for agencies,
-            consulted for startups, and collaborated with talented people to create web products for both business and consumer use.
+            Since beginning my journey as a freelance developer nearly 7 years ago, I’ve done remote
+            work for agencies, consulted for startups, and collaborated with talented people to
+            create web products for both business and consumer use.
           </Heading>
         </Section>
         {projects.group

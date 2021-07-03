@@ -2,21 +2,31 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { PlatformHandle } from '../../commons/platforms'
 import { Button, Link } from '../../components'
-import { ProjectSkill, ProjectCategory } from '.'
+import { ProjectCategory, ProjectSkill } from '.'
 
-function ProjectCard ({ project, limitSkills = 4, limitCategories = 2, filterSkills, filterCategories }) {
+function applyFilters(data, exclude, limit) {
+  const filtered = (
+    exclude && exclude.length > 0
+      ? data.filter(o => !exclude.includes(o.id))
+      : data
+  ).slice(0, limit)
+  filtered.diff = data.length - filtered.length
+  return filtered
+}
+
+function ProjectCard({ project, children, limitSkills = 4, limitCategories = 2, filterSkills, filterCategories }) {
   const cover = project.cover.childImageSharp.gatsbyImageData
   const props = {
     to: 'projects.project',
     params: { project: project.slug },
-    title: 'View project page',
+    title: 'View project details page',
   }
-  const categories = filterCategories
-    ? project.categories.filter(c => !filterCategories.includes(c.id))
-    : project.categories
-  const skills = filterSkills
-    ? project.skills.filter(s => !filterSkills.includes(s.id))
-    : project.skills
+  const categories = applyFilters(project.categories, filterCategories, limitCategories)
+  const skills = applyFilters(project.skills, filterSkills, limitSkills)
+
+  if (typeof children === 'function') {
+    return children({ ...project, cover, categories, skills, props })
+  }
 
   return (
     <div>
@@ -41,27 +51,35 @@ function ProjectCard ({ project, limitSkills = 4, limitCategories = 2, filterSki
               </PlatformHandle.Map>
             </div>
           )}
-          {limitCategories > 0 && categories.length > 0 && (
+          {categories.length > 0 && (
             <div className='absolute -top-4 left-4'>
-              <ProjectCategory.Map data={categories.slice(0, limitCategories)}>
+              <ProjectCategory.Map data={categories}>
                 {({ props }) => <Button color='primary' size='tiny' className='mr-1' {...props} />}
               </ProjectCategory.Map>
-              {categories.length > limitCategories && (
-                <Button size='tiny' color='primary' {...props}>+{categories.length - limitCategories}</Button>
+              {categories.diff > 0 && (
+                <Button size='tiny' color='primary' {...props}>
+                  +{categories.diff}
+                </Button>
               )}
             </div>
           )}
         </div>
       </div>
       <div className='mt-4'>
-        <h3><Link className='text-primary hover:underline' {...props}>{project.title}</Link></h3>
-        {limitSkills > 0 && skills.length > 0 && (
+        <h3>
+          <Link className='text-primary hover:underline' {...props}>
+            {project.title}
+          </Link>
+        </h3>
+        {skills.length > 0 && (
           <div className='mt-2'>
-            <ProjectSkill.Map data={skills.slice(0, limitSkills)}>
+            <ProjectSkill.Map data={skills}>
               {({ props }) => <Button color='alt' size='tiny' className='mr-1' {...props} />}
             </ProjectSkill.Map>
-            {skills.length > limitSkills && (
-              <Button size='tiny' color='alt' {...props}>+{skills.length - limitSkills}</Button>
+            {skills.diff > 0 && (
+              <Button size='tiny' color='alt' {...props}>
+                +{skills.diff}
+              </Button>
             )}
           </div>
         )}
@@ -74,14 +92,12 @@ function ProjectCard ({ project, limitSkills = 4, limitCategories = 2, filterSki
 }
 
 ProjectCard.Map = function ProjectCardMap({ data, children, ...props }) {
-  return data.map(project => {
-    if (project.node) {
+  return (data.edges || data).map(project => {
+    if (data.edges) {
       project = project.node
     }
 
-    return (
-      <ProjectCard key={project.slug} project={project} {...props} />
-    )
+    return <ProjectCard key={project.slug} project={project} children={children} {...props} />
   })
 }
 
@@ -92,10 +108,7 @@ export const ProjectCardFragment = graphql`
     excerpt
     cover {
       childImageSharp {
-        gatsbyImageData(
-          aspectRatio: 1.8
-          width: 430
-        )
+        gatsbyImageData(aspectRatio: 1.8, width: 430)
       }
     }
     handles

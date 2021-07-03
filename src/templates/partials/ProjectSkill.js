@@ -8,10 +8,11 @@ export default function ProjectSkill({ skill, children }) {
       to: 'projects.skill',
       params: { skill: skill.id },
       children: skill.title,
-      title: `View ${skill.projects !== undefined
-        ? skill.projects + ' project' + (skill.projects !== 1 ? 's' : '')
-        : 'all projects'
-      } tagged with "${skill.id}" skill`
+      title: `View ${
+        skill.projects !== undefined
+          ? skill.projects + ' project' + (skill.projects !== 1 ? 's' : '')
+          : 'all projects'
+      } tagged with "${skill.id}" skill`,
     },
     Icon(props) {
       return <BaseIcon path={skill.icon} {...props} />

@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { PlatformHandle } from '../commons/platforms'
-import { Page, Markdown, Heading, Section, Button, Icon, Link } from '../components'
-import { ProjectSkill, ProjectCategory } from './partials'
+import { Page, Button, Heading, Icon, Link, Markdown, Section } from '../components'
+import { ProjectCategory, ProjectSkill } from './partials'
 
 function ProjectMetadata({ title, children }) {
   return (
@@ -41,7 +41,7 @@ export default class Project extends Page {
         {screens.length > 0 && (
           <div className='flex overflow-x-auto mb-12'>
             {screens.map((screen, i) => (
-              <img key={i} src={screen.images.fallback.src} alt={`Screen ${i+1}`} />
+              <img key={i} src={screen.images.fallback.src} alt={`Screen ${i + 1}`} />
             ))}
           </div>
         )}
@@ -93,16 +93,12 @@ export const query = graphql`
       hasCover
       cover {
         childImageSharp {
-          gatsbyImageData(
-            height: 500
-          )
+          gatsbyImageData(height: 500)
         }
       }
       screens {
         childImageSharp {
-          gatsbyImageData(
-            height: 500
-          )
+          gatsbyImageData(height: 500)
         }
       }
       handles
