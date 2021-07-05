@@ -62,7 +62,7 @@ function Header({ className }) {
               id='avatar'
               className='block rounded-full h-16 lg:h-32 bg-cover bg-center border-2 lg:border-4 border-primary transition-all'
               to='home'
-              title='Homepage'
+              title={site.title}
             />
           </li>
           <li>

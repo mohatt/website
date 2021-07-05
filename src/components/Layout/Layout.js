@@ -24,14 +24,14 @@ export default function Layout({ children }) {
           <div
             id='menu'
             className={`${
-              menuOpen ? 'w-60' : 'w-0'
-            } lg:w-60 h-screen sticky top-0 overflow-hidden flex-shrink-0 flex flex-col justify-center bg-accent text-typo-dim text-shadow transition-box`}>
-            <Menu isHome={isHome} className='w-60' />
+              menuOpen ? 'w-56' : 'w-0'
+            } lg:w-56 h-screen sticky top-0 overflow-hidden flex-shrink-0 flex flex-col justify-center bg-accent text-typo-dim text-shadow transition-box`}>
+            <Menu isHome={isHome} className='w-56' />
           </div>
           <div
             id='main'
             className={`${
-              menuOpen ? '-mr-60' : ''
+              menuOpen ? '-mr-56' : ''
             } lg:-mr-0 flex-grow flex flex-col bg-secondary text-typo-dim text-shadow transition-box`}>
             <main className='mt-16 2xl:mt-24 flex-grow flex-shrink-0 flex flex-col justify-center'>
               {children}

@@ -53,13 +53,6 @@
     transform: translateX(-20px);
   }
 
-  #menu nav h1 a::before,
-  #menu nav h2 a::before,
-  #menu nav h1 a::after,
-  #menu nav h2 a::after {
-    @apply text-primary;
-  }
-
   #menu nav li a,
   #menu nav li a::before,
   #menu nav li a::after {
