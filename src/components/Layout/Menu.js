@@ -5,12 +5,12 @@ import { useCurrentPath, useSiteMetadata } from '../../hooks'
 import { Link } from '..'
 import { LayoutContext } from './Layout'
 
-function MenuItemSubs({ items, onClick, hashPath, isHashPath }) {
+function MenuItemSubs({ items, onClick, hashPath, currentPath }) {
   const [activeHash, setActiveHash] = useState(null)
 
   useEffect(() => {
     const hashElms = items.map(i => i.hash && document.getElementById(i.hash)).filter(Boolean)
-    if (!isHashPath || hashElms.length === 0) {
+    if (hashElms.length === 0) {
       setActiveHash(null)
       return
     }
@@ -50,7 +50,7 @@ function MenuItemSubs({ items, onClick, hashPath, isHashPath }) {
     return function () {
       window.removeEventListener('scroll', scrollListner)
     }
-  }, [items, setActiveHash, isHashPath])
+  }, [items, setActiveHash, currentPath])
 
   return (
     <ul>
@@ -59,13 +59,13 @@ function MenuItemSubs({ items, onClick, hashPath, isHashPath }) {
           <Link
             to={to || hashPath + '#' + hash}
             params={params}
-            onClick={to || !hash || !isHashPath ? onClick : function (e) {
+            onClick={to || !hash || currentPath !== hashPath ? onClick : function (e) {
               document.getElementById(hash).scrollIntoView({ behavior: 'smooth' })
-              onClick()
+              onClick(e)
               e.preventDefault()
             }}
             className={classNames(
-              'block font-display font-medium italic mb-6 text-right tag-open-close hover:text-primary',
+              'block mb-8 sm:mb-6 tag-open-close hover:text-primary',
               hash && hash === activeHash && 'text-primary active'
             )}
             activeClassName='text-primary active'
@@ -87,28 +87,19 @@ function MenuItem({ label, to, params, items, onClick }) {
     current = realpath.startsWith(href) ? href : null
   }
 
-  function InnerLink({ className }) {
-    return (
+  return (
+    <li>
       <Link
         to={to}
         params={params}
         onClick={onClick}
-        className={classNames('block font-display font-medium italic mb-6 text-right hover:text-typo', className)}
+        className='block mb-8 sm:mb-6 tag-open-close hover:text-typo'
         activeClassName='text-typo active'
         partiallyActive={to !== 'home'}
         children={label}
       />
-    )
-  }
-
-  return (
-    <li className='mr-6'>
-      <InnerLink className={current ? 'tag-open' : 'tag-open-close'} />
       {current && (
-        <>
-          <MenuItemSubs items={items} hashPath={current} isHashPath={realpath === current} onClick={onClick} />
-          <InnerLink className='tag-close' />
-        </>
+        <MenuItemSubs items={items} hashPath={current} currentPath={realpath} onClick={onClick} />
       )}
     </li>
   )
@@ -121,7 +112,7 @@ function Menu({ isHome, className }) {
   return (
     <nav className={className}>
       {isHome && <h1 className='hidden'>{title}</h1>}
-      <ul>
+      <ul className='font-display font-medium italic text-right mr-6'>
         {menu.map((props, i) => <MenuItem key={i} onClick={closeMenu} {...props} />)}
       </ul>
     </nav>

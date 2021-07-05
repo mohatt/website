@@ -12,15 +12,15 @@
     }
 
     &.sep-2 {
-      height: 2px;
+      height: 0.1rem;
     }
 
     &.sep-3 {
-      height: 3px;
+      height: 0.15rem;
     }
 
     &.sep-4 {
-      height: 4px;
+      height: 0.2rem;
     }
   }
 }

@@ -34,7 +34,7 @@ export default class Project extends Page {
     }
 
     return (
-      <Section>
+      <Section id={project.categories[0]?.id}>
         <Heading title={this.title} primary>
           {this.description}
         </Heading>

@@ -47,5 +47,6 @@
 
   .tag-open-close::after {
     content: '/>';
+    margin-left: 0.2rem;
   }
 }
