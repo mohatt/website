@@ -18,4 +18,34 @@
   .underline-dashed {
     text-decoration: underline dashed;
   }
+
+  .tag-open::before,
+  .tag-close::before,
+  .tag-open-close::before {
+    margin-right: 0.1rem;
+  }
+
+  .tag-open::after,
+  .tag-close::after,
+  .tag-open-close::after {
+    margin-left: 0.1rem;
+  }
+
+  .tag-open::before,
+  .tag-open-close::before {
+    content: '<';
+  }
+
+  .tag-close::before {
+    content: '</';
+  }
+
+  .tag-open::after,
+  .tag-close::after {
+    content: '>';
+  }
+
+  .tag-open-close::after {
+    content: '/>';
+  }
 }

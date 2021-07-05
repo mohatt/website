@@ -110,7 +110,7 @@ export default class Skills extends Page {
             </SkillBlock>
           </div>
         </Section>
-        <Section>
+        <Section id='backend'>
           <Heading title='Back-end Development'>
             This is my main area of expertise. Nearly every app I have launched in the past had the
             back-end done by me. My main stack usually involves PHP with the CMS/Framework of
@@ -118,22 +118,24 @@ export default class Skills extends Page {
           </Heading>
           <SkillTagGrid tag='backend' />
         </Section>
-        <Section>
+        <Section id='frontend'>
           <Heading title='Front-end Development'>
             I create responsive websites that allow the user to have the best and most appropriate
             experience suited to the device they are using.
           </Heading>
           <SkillTagGrid tag='frontend' />
         </Section>
-        <Section>
+        <Section id='devops'>
           <Heading title='DevOps'>
             I use these tools and cloud services to setup an integrated, effective and efficient
             workflows that meet the project needs.
           </Heading>
           <SkillTagGrid tag='devops' />
         </Section>
-        <Section>
-          <Heading title='Software'>My local web development setup.</Heading>
+        <Section id='software'>
+          <Heading title='Software'>
+            My local web development setup.
+          </Heading>
           <SkillTagGrid tag='software' />
         </Section>
       </>

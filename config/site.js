@@ -11,8 +11,16 @@ module.exports = {
     copyright: '© 2021 All rights reserved.',
     menu: [
       { label: 'Intro', to: 'home' },
-      { label: 'Skills', to: 'skills' },
-      { label: 'Projects', to: 'projects' },
+      { label: 'Skills', to: 'skills', items: [
+        { hash: 'backend', label: 'Backend' },
+        { hash: 'frontend', label: 'Frontend' },
+        { hash: 'devops', label: 'DevOps' },
+        { hash: 'software', label: 'Software' },
+      ]},
+      { label: 'Projects', to: 'projects', items: [
+          { label: 'OpenSource', to: 'projects.category', params: { category: 'open-source' }, hash: 'open-source' },
+          { label: 'Agency', to: 'projects.category', params: { category: 'agency' }, hash: 'agency' },
+      ]},
       { label: 'Clients', to: '/clients' },
       { label: 'Contact', to: '/contact' },
     ],

@@ -94,7 +94,11 @@ exports.definitions = [
   },
 ];
 
-exports.extendTypes = {}
+exports.extendTypes = {
+  Site: {
+    'siteMetadata.menu': 'JSON!'
+  }
+}
 
 exports.namespaceTypeMap = {
   project: {

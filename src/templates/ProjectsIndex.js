@@ -7,7 +7,7 @@ import { ProjectCardGrid, ProjectCategory } from './partials'
 function CategoryProjects({ id, projects, totalCount }) {
   const category = useProjectCategory(id)
   return (
-    <Section>
+    <Section id={id}>
       <Heading title={category.title}>
         {category.desc}
       </Heading>

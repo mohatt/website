@@ -12,10 +12,7 @@ export default function useSiteMetadata() {
             url
             copyright
             contacts
-            menu {
-              label
-              to
-            }
+            menu
           }
         }
       }
