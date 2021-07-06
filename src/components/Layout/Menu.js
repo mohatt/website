@@ -21,20 +21,15 @@ function MenuItemSubs({ items, onClick, hashPath, currentPath }) {
         busy = true
         requestAnimationFrame(function () {
           const { innerHeight } = window
-          // Minimum intersection ratio for the element to be considered active
+          // Minimum intersection area for the element to be considered active
           // 40% of the viewport height
           let max = innerHeight * 0.4
           let active = null
           hashElms.forEach(el => {
             const { top, height } = el.getBoundingClientRect()
-            // Element current visible area
-            const visible = top >= innerHeight ? 0 : (
-              top >= 0
-                ? Math.min(innerHeight - top, height)
-                : Math.max(height + top, 0)
-            )
-            if (visible >= max) {
-              max = visible
+            const intersect = Math.min(height, height + top, innerHeight - top)
+            if (intersect >= max) {
+              max = intersect
               active = el.id
             }
           })
