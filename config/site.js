@@ -19,15 +19,15 @@ module.exports = {
       ]},
       { label: 'Projects', to: 'projects', items: [
           { label: 'OpenSource', to: 'projects.category', params: { category: 'open-source' }, hash: 'open-source' },
-          { label: 'Agency', to: 'projects.category', params: { category: 'agency' }, hash: 'agency' },
+          { label: 'Portafolio', to: 'projects.category', params: { category: 'portafolio' }, hash: 'portafolio' },
       ]},
       { label: 'Clients', to: '/clients' },
       { label: 'Contact', to: '/contact' },
     ],
     contacts: [
-      'email:mohatt@pm.me',
-      'linkedin:mdkholy',
       'github:mohatt',
+      'linkedin:mdkholy',
+      'email:mohatt@pm.me',
     ]
   },
   pagination: {

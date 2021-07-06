@@ -41,43 +41,28 @@
     box-shadow: rgba(0, 0, 0, 0.5) -30px 0 20px -20px inset;
   }
 
-  #menu nav li a::before {
-    @apply translate-x-2;
+  #menu nav a,
+  #menu nav a::before,
+  #menu nav a::after {
+    @apply inline-block transition-all duration-200;
   }
 
-  #menu nav li a::after {
-    @apply -translate-x-2;
+  #menu nav > ul > li > a::before {
+    @apply content-['<'] mr-0.5 translate-x-2 opacity-0;
   }
 
-  #menu nav li a,
-  #menu nav li a::before,
-  #menu nav li a::after {
-    @apply transition-all duration-300;
-  }
-
-  #menu nav li a::before,
-  #menu nav li a::after {
-    @apply inline-block opacity-0;
-  }
-
-  #menu nav li li a::before,
-  #menu nav li li a::after {
-    @apply translate-x-0 opacity-100;
-  }
-
-  #menu nav li li a::before {
-    content: '{';
+  #menu nav > ul > li > a::after {
+    @apply content-['/>'] ml-1 -translate-x-2 opacity-0;
   }
 
   #menu nav li li a::after {
-    content: '}\2004\2022';
-    margin-left: 0.1rem;
+    @apply content-['\2000\266F'] ml-1;
   }
 
-  #menu nav li a.active::before,
-  #menu nav li a.active::after,
-  #menu nav li a:hover::before,
-  #menu nav li a:hover::after {
+  #menu nav > ul > li > a.active::before,
+  #menu nav > ul > li > a.active::after,
+  #menu nav > ul > li > a:hover::before,
+  #menu nav > ul > li > a:hover::after {
     @apply translate-x-0 opacity-100;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { generatePath, routeExists } from 'gatsby-plugin-advanced-pages'
 import { useCurrentPath, useSiteMetadata } from '../../hooks'
@@ -6,35 +6,34 @@ import { Link } from '..'
 import { LayoutContext } from './Layout'
 
 function MenuItemSubs({ items, onClick, hashPath, currentPath }) {
+  const hashElms = useRef([])
   const [activeHash, setActiveHash] = useState(null)
 
   useEffect(() => {
-    const hashElms = items.map(i => i.hash && document.getElementById(i.hash)).filter(Boolean)
-    if (hashElms.length === 0) {
+    hashElms.current = items.map(i => i.hash && document.getElementById(i.hash))
+    const elms = hashElms.current.filter(Boolean)
+    if (elms.length === 0) {
       setActiveHash(null)
       return
     }
 
     let busy = false
-    function scrollListner() {
+    const scrollListner = function () {
       if (!busy) {
         busy = true
         requestAnimationFrame(function () {
           const { innerHeight } = window
-          // Minimum intersection area for the element to be considered active
-          // 40% of the viewport height
+          // Minimum intersecting area of the element to be considered active (40% vh)
           let max = innerHeight * 0.4
-          let active = null
-          hashElms.forEach(el => {
+          setActiveHash(elms.reduce(function (acc, el) {
             const { top, height } = el.getBoundingClientRect()
             const intersect = Math.min(height, height + top, innerHeight - top)
             if (intersect >= max) {
               max = intersect
-              active = el.id
+              return el.id
             }
-          })
-
-          setActiveHash(active)
+            return acc
+          }, null))
           busy = false
         })
       }
@@ -48,22 +47,24 @@ function MenuItemSubs({ items, onClick, hashPath, currentPath }) {
   }, [items, setActiveHash, currentPath])
 
   return (
-    <ul>
+    <ul className='mr-2'>
       {items.map(({ label, to, params, hash }, i) => (
         <li key={i}>
           <Link
             to={to || hashPath + '#' + hash}
             params={params}
-            onClick={to || !hash || currentPath !== hashPath ? onClick : function (e) {
-              document.getElementById(hash).scrollIntoView({ behavior: 'smooth' })
+            onClick={to || currentPath !== hashPath ? onClick : function (e) {
               onClick(e)
-              e.preventDefault()
+              if (hashElms.current[i]) {
+                hashElms.current[i].scrollIntoView({ behavior: 'smooth' })
+                e.preventDefault()
+              }
             }}
             className={classNames(
-              'block mb-8 sm:mb-6 tag-open-close hover:text-primary',
-              hash && hash === activeHash && 'text-primary active'
+              'block mb-8 sm:mb-6 hover:text-primary',
+              hash && hash === activeHash && 'text-primary'
             )}
-            activeClassName='text-primary active'
+            activeClassName='text-primary'
             children={label}
           />
         </li>
@@ -88,7 +89,7 @@ function MenuItem({ label, to, params, items, onClick }) {
         to={to}
         params={params}
         onClick={onClick}
-        className='block mb-8 sm:mb-6 tag-open-close hover:text-typo'
+        className='block mb-8 sm:mb-6 hover:text-typo'
         activeClassName='text-typo active'
         partiallyActive={to !== 'home'}
         children={label}
