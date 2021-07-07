@@ -28,13 +28,13 @@ exports.definitions = [
         }
       },
       skills: {
-        type: '[ProjectSkillYaml]',
+        type: '[ProjectSkill]',
         extensions: {
           link: {},
         },
       },
       categories: {
-        type: '[ProjectCategoryYaml]',
+        type: '[ProjectCategory]',
         extensions: {
           link: {},
         },
@@ -49,7 +49,7 @@ exports.definitions = [
     interfaces: ['Node'],
   },
   {
-    name: 'ProjectSkillYaml',
+    name: 'ProjectSkill',
     fields: {
       title: 'String!',
       icon: {
@@ -76,7 +76,7 @@ exports.definitions = [
     interfaces: ['Node'],
   },
   {
-    name: 'ProjectCategoryYaml',
+    name: 'ProjectCategory',
     fields: {
       title: 'String!',
       desc: 'String!',
@@ -102,6 +102,10 @@ exports.extendTypes = {
 
 exports.namespaceTypeMap = {
   project: {
-    mdx: 'Project'
-  }
+    mdx: 'Project',
+    yaml: {
+      'categories.yaml': 'ProjectCategory',
+      'skills.yaml': 'ProjectSkill',
+    },
+  },
 }

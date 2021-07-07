@@ -4,7 +4,7 @@ export function useProjectCategories() {
   const data = useStaticQuery(
     graphql`
       query {
-        categories: allProjectCategoryYaml {
+        categories: allProjectCategory {
           nodes {
             id
             title

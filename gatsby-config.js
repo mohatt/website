@@ -1,5 +1,6 @@
 const env = require('./config/environment')
 const site = require('./config/site')
+const { getYamlTypename } = require('./gatsby/types')
 const theme = require('./src/providers/theme/themes').THEME_DEFAULT
 
 module.exports = {
@@ -34,7 +35,12 @@ module.exports = {
         pages: site.pages,
       },
     },
-    'gatsby-transformer-yaml',
+    {
+      resolve: 'gatsby-transformer-yaml',
+      options: {
+        typeName: getYamlTypename,
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-sharp',

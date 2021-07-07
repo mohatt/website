@@ -41,7 +41,7 @@ export const query = graphql`
       ...ProjectCardGridPaginatedFragment
     }
 
-    categoryObj: projectCategoryYaml(id: { eq: $category }) {
+    categoryObj: projectCategory(id: { eq: $category }) {
       title
       desc
     }

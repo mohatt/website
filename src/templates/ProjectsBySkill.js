@@ -41,7 +41,7 @@ export const query = graphql`
       ...ProjectCardGridPaginatedFragment
     }
 
-    skillObj: projectSkillYaml(id: { eq: $skill }) {
+    skillObj: projectSkill(id: { eq: $skill }) {
       title
     }
   }

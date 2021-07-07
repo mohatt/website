@@ -4,7 +4,7 @@ function useProjectSkillsData() {
   const data = useStaticQuery(
     graphql`
       query {
-        skills: allProjectSkillYaml {
+        skills: allProjectSkill {
           nodes {
             id
             title
