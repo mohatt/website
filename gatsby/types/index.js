@@ -72,29 +72,29 @@ function prepareNodeFields(node, type, { namespace, file }) {
       )
   }
 
-  if (fields.cover) {
+  if (fields.image) {
     const nsPath = path.join(contentPath, namespace)
-    if (!node.cover) {
+    if (!node.image) {
       const pathNoExt = path.join(nsPath, file.slice(0, file.lastIndexOf('.') + 1 || undefined))
       for (const ext of ImageExts) {
         if (fs.existsSync(pathNoExt + ext)) {
-          node.cover = pathNoExt + ext
+          node.image = pathNoExt + ext
           break
         }
       }
     }
-    if (fields.hasCover) {
-      node.hasCover = Boolean(node.cover)
+    if (fields.hasImage) {
+      node.hasImage = Boolean(node.image)
     }
-    if (!node.cover) {
+    if (!node.image) {
       let dir = path.join(nsPath, file);
       do {
-        dir = path.dirname(dir);
-        const imgFile = path.join(dir, 'placeholder.png');
+        dir = path.dirname(dir)
+        const imgFile = path.join(dir, 'placeholder.png')
         if (fs.existsSync(imgFile)) {
-          node.cover = imgFile;
+          node.image = imgFile
         }
-      } while (!node.cover && dir !== nsPath)
+      } while (!node.image && dir !== nsPath)
     }
   }
 

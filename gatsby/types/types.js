@@ -14,13 +14,13 @@ exports.definitions = [
           dateformat: {},
         },
       },
-      cover: {
+      image: {
         type: 'File!',
         extensions: {
           fileByRelativePath: {},
         }
       },
-      hasCover: 'Boolean!',
+      hasImage: 'Boolean!',
       screens: {
         type: '[File]',
         extensions: {

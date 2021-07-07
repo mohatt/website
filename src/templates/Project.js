@@ -23,11 +23,11 @@ export default class Project extends Page {
       id: pageContext.project,
     }
 
-    const cover = project.cover.childImageSharp.gatsbyImageData
+    const image = project.image.childImageSharp.gatsbyImageData
     const screens = []
-    if (project.hasCover) {
-      screens.push(cover)
-      this.image = cover.images.fallback.src
+    if (project.hasImage) {
+      screens.push(image)
+      this.image = image.images.fallback.src
     }
     if (project.screens) {
       project.screens.forEach(s => s && screens.push(s.childImageSharp.gatsbyImageData))
@@ -90,8 +90,8 @@ export const query = graphql`
       excerpt
       started(formatString: "YYYY-MM")
       body
-      hasCover
-      cover {
+      hasImage
+      image {
         childImageSharp {
           gatsbyImageData(height: 500)
         }

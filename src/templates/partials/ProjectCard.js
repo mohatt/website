@@ -15,7 +15,7 @@ function applyFilters(data, exclude, limit) {
 }
 
 function ProjectCard({ project, children, limitSkills = 4, limitCategories = 2, filterSkills, filterCategories }) {
-  const cover = project.cover.childImageSharp.gatsbyImageData
+  const image = project.image.childImageSharp.gatsbyImageData
   const props = {
     to: 'projects.project',
     params: { project: project.slug },
@@ -25,15 +25,15 @@ function ProjectCard({ project, children, limitSkills = 4, limitCategories = 2, 
   const skills = applyFilters(project.skills, filterSkills, limitSkills)
 
   if (typeof children === 'function') {
-    return children({ ...project, cover, categories, skills, props })
+    return children({ ...project, image, categories, skills, props })
   }
 
   return (
     <div>
       <div>
-        <div className='relative' style={{ maxWidth: cover.width }}>
+        <div className='relative' style={{ maxWidth: image.width }}>
           <Link className='block' {...props}>
-            <img className='w-full border-2 border-primary rounded-md shadow-lg' src={cover.images.fallback.src} alt={project.title} />
+            <img className='w-full border-2 border-primary rounded-md shadow-lg' src={image.images.fallback.src} alt={project.title} />
           </Link>
           {project.handles && (
             <div className='absolute -bottom-4 right-4'>
@@ -106,7 +106,7 @@ export const ProjectCardFragment = graphql`
     slug
     title
     excerpt
-    cover {
+    image {
       childImageSharp {
         gatsbyImageData(aspectRatio: 1.8, width: 430)
       }
