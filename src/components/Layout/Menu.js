@@ -40,7 +40,7 @@ function MenuItemSubs({ items, onClick, hashPath, currentPath }) {
     }
 
     scrollListner()
-    window.addEventListener('scroll', scrollListner)
+    window.addEventListener('scroll', scrollListner, { passive: true })
     return function () {
       window.removeEventListener('scroll', scrollListner)
     }
@@ -56,7 +56,7 @@ function MenuItemSubs({ items, onClick, hashPath, currentPath }) {
             onClick={to || currentPath !== hashPath ? onClick : function (e) {
               onClick(e)
               if (hashElms.current[i]) {
-                hashElms.current[i].scrollIntoView({ behavior: 'smooth' })
+                hashElms.current[i].scrollIntoView({ behavior: 'smooth', block: 'start' })
                 e.preventDefault()
               }
             }}

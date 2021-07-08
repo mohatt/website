@@ -7,19 +7,18 @@ export default class Index extends Page {
     this.title = this.props.data.page.title
     this.description = `I'm a full-stack web developer with a broad range of skills and expertise in most web development related fields.`
     this.snippet = 'Hi, I’m Mohamed,'
-    const words = ['high quality', 'user-friendly', 'efficient', 'modern', 'beautiful']
+    const words = ['high quality', 'maintainable', 'efficient', 'user friendly', 'beautiful', 'modern']
     const hero = (
       <>
-        I move pixels and lines of
+        I move pixels and lines of code to
+        craft <Typewriter words={words} loop speed={50} backspace={30} delay={4000} className='text-primary' />
         <br />
-        code to craft <Typewriter words={words} loop speed={50} backspace={30} delay={4000} className='text-primary' />
-        <br />
-        digital experiences
+        digital products
       </>
     )
     const actions = [
       { title: 'Skills', to: 'skills', alt: true },
-      { title: 'Get In Touch', to: 'home' },
+      { title: 'Projects', to: 'projects' },
     ]
     return (
       <Hero title={hero} actions={actions}>

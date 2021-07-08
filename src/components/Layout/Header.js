@@ -73,7 +73,7 @@ function Header({ className }) {
           </li>
         </ul>
       </div>
-      <div className='absolute w-12 bottom-0 right-0 -mr-6'>
+      <div className='absolute w-12 bottom-0 mb-6 right-0 -mr-6'>
         <ul>
           <PlatformHandle.Map data={site.contacts}>
             {({ title, href, Icon }) => (

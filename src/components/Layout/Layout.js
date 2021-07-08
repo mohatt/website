@@ -23,18 +23,14 @@ export default function Layout({ children }) {
           </div>
           <div
             id='menu'
-            className={`${
-              menuOpen ? 'w-56' : 'w-0'
-            } lg:w-56 3xl:w-64 h-screen sticky top-0 overflow-hidden flex-shrink-0 flex flex-col justify-center bg-accent text-typo-dim text-shadow transition-box`}>
+            className={`${menuOpen ? 'w-56' : 'w-0'} lg:w-56 3xl:w-64 h-screen sticky top-0 overflow-hidden flex-shrink-0 flex flex-col justify-center bg-accent text-typo-dim text-shadow transition-box`}>
             <Menu isHome={isHome} className='w-56 lg:w-auto' />
           </div>
           <div
             id='main'
-            className={`${
-              menuOpen ? '-mr-56' : ''
-            } lg:-mr-0 flex-grow flex flex-col bg-secondary text-typo-dim text-shadow transition-box`}
+            className='lg:-mr-0 flex-grow flex flex-col bg-secondary text-typo-dim text-shadow overflow-x-hidden'
             onClick={() => setMenuOpen(false)}>
-            <main className='mt-16 2xl:mt-24 flex-grow flex-shrink-0 flex flex-col justify-center'>
+            <main className={`${menuOpen ? '-mr-56 ' : ''}mt-16 2xl:mt-24 flex-grow flex-shrink-0 flex flex-col justify-center transition-box`}>
               {children}
             </main>
             {!isHome && <Footer className='flex-shrink-0' />}

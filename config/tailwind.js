@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const { fontFamily } = require('tailwindcss/defaultTheme')
-const themes = require('../src/providers/theme/themes')
+const { THEME_LIST, THEME_DEFAULT } = require('../src/providers/theme/themes')
 
 module.exports = {
   darkMode: 'class',
@@ -11,12 +11,22 @@ module.exports = {
       body: ['"IBM Plex Serif"', ...fontFamily.serif],
       mono: ['"IBM Plex Mono"', ...fontFamily.mono],
     },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      ..._.mapValues(THEME_DEFAULT.colors, (v, k) => `var(--${k})`),
+    },
+    screens: {
+      xs: '410px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+      '3xl': '1680px',
+      '4xl': '1920px',
+    },
     extend: {
-      colors: _.mapValues(themes.THEME_DEFAULT.colors, ((v, k) => `var(--${k})`)),
-      screens: {
-        '3xl': '1680px',
-        '4xl': '1920px',
-      },
       width: {
         inherit: 'inherit',
       },
@@ -24,8 +34,8 @@ module.exports = {
         inherit: 'inherit',
       },
       transitionProperty: {
-        box: 'height, width, margin, padding'
-      }
+        box: 'height, width, margin, padding',
+      },
     },
   },
   plugins: [
@@ -34,10 +44,9 @@ module.exports = {
   purge: {
     content: [
       './src/**/*.js',
-      // './public/**/*.html',
     ],
     safelist: [
-      ..._.uniq(themes.THEME_LIST.map(t => t.getClassNames()).flat())
+      ..._.uniq(THEME_LIST.map(t => t.getClassNames()).flat()),
     ]
   },
 }

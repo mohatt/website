@@ -28,9 +28,9 @@ const tags = {
     { id: 'git', title: 'Git Hosting', icon: 'gitRepo' },
   ],
   software: [
-    { id: 'env', title: 'Environment', icon: 'computer' },
-    { id: 'app', title: 'Applications', icon: 'appStore' },
+    { id: 'dev', title: 'Development', icon: 'appStore' },
     { id: 'comms', title: 'Communication', icon: 'discuss' },
+    { id: 'env', title: 'Environment', icon: 'computer' },
   ],
 }
 
@@ -53,7 +53,7 @@ function SkillList({ tags, title, icon }) {
       <Icon name={icon} className='h-8 text-primary' />
       <div className='flex-1'>
         <h3 className='ml-2 leading-8 text-primary'>{title}</h3>
-        <ul className='mt-3 -ml-3 space-y-3 font-medium'>
+        <ul className='mt-3 -ml-4 space-y-3 font-medium'>
           <ProjectSkill.Map data={skills}>
             {({ title, projects, props, Icon }) => (
               <li className='flex leading-6'>
@@ -76,7 +76,7 @@ function SkillList({ tags, title, icon }) {
 
 function SkillTagGrid({ tag }) {
   return (
-    <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 xl:max-w-4xl text-lg'>
+    <div className='grid xs:grid-cols-2 xs:gap-x-1 xl:grid-cols-3 xl:gap-x-4 gap-y-8 xl:max-w-4xl text-lg'>
       {tags[tag].map(({ id, title, icon }) => (
         <SkillList key={id} tags={[tag, id]} title={title} icon={icon} />
       ))}

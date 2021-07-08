@@ -24,7 +24,7 @@ function getNodeNamespace(node, mime, getNode) {
     }
   }
 
-  const types = TYPES.namespaceTypeMap[namespace]
+  const types = TYPES.namespaces[namespace]
   return {
     namespace,
     types,
@@ -57,7 +57,7 @@ function getNodeNamespace(node, mime, getNode) {
 }
 
 function prepareNodeFields(node, type, { namespace, file }) {
-  const { fields } = TYPES.definitions.find(def => typeof def.name === 'string' && def.name === type) || {}
+  const { fields } = TYPES.create.find(def => typeof def.name === 'string' && def.name === type) || {}
   if (!fields) {
     throw new Error(`Unable to find valid type definition for '${type}'.`)
   }
@@ -153,7 +153,7 @@ exports.getYamlTypename = ({ node, object, isArray }) => {
 }
 
 exports.createTypes = ({ actions, schema }) => {
-  actions.createTypes(TYPES.definitions.map(def =>
+  actions.createTypes(TYPES.create.map(def =>
     typeof def === 'string'
       ? def
       : schema.buildObjectType(def)
@@ -161,11 +161,7 @@ exports.createTypes = ({ actions, schema }) => {
 }
 
 exports.extendTypes = function ({ type }) {
-  if (type.name in TYPES.extendTypes) {
-    return TYPES.extendTypes[type.name]
-  }
-
-  return {}
+  return TYPES.extend[type.name] || {}
 }
 
 exports.shouldOnCreateNode = function (args) {

@@ -1,6 +1,6 @@
 const { createParentFieldResolverProxy } = require('./resolvers')
 
-exports.definitions = [
+exports.create = [
   {
     name: 'Project',
     fields: {
@@ -94,13 +94,13 @@ exports.definitions = [
   },
 ];
 
-exports.extendTypes = {
+exports.extend = {
   Site: {
-    'siteMetadata.menu': 'JSON!'
-  }
+    'siteMetadata.menu': 'JSON!',
+  },
 }
 
-exports.namespaceTypeMap = {
+exports.namespaces = {
   project: {
     mdx: 'Project',
     yaml: {
