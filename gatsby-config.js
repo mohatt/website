@@ -1,7 +1,7 @@
 const env = require('./config/environment')
 const site = require('./config/site')
 const { getYamlTypename } = require('./gatsby/types')
-const theme = require('./src/providers/theme/themes').THEME_DEFAULT
+const { colors } = require('./src/providers/theme/themes').defaultState.color
 
 module.exports = {
   siteMetadata: {
@@ -59,8 +59,8 @@ module.exports = {
         name: site.metadata.title,
         short_name: site.metadata.title,
         start_url: '/',
-        background_color: theme.colors.secondary,
-        theme_color: theme.colors.primary,
+        background_color: colors.secondary,
+        theme_color: colors.primary,
         display: 'standalone',
         icon: 'src/images/avatar/avatar.png',
         legacy: false,

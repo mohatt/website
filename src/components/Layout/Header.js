@@ -7,19 +7,33 @@ import { Button, Icon, Link } from '..'
 import { LayoutContext } from './Layout'
 import avatarAlt from '../../images/avatar/avatar-smile.png'
 
-function ThemeButton() {
-  const { cycleTheme } = useTheme()
+function ThemeButtons() {
+  const { cycle } = useTheme()
   return (
-    <Button
-      size='mono'
-      className='my-4 lg:my-6'
-      title='Change theme'
-      onClick={e => {
-        e.preventDefault()
-        cycleTheme()
-      }}>
-      <Icon name='theme' className='w-6' />
-    </Button>
+    <>
+      <li className='mb-4'>
+        <Button
+          size='mono'
+          title='Change theme'
+          onClick={e => {
+            e.preventDefault()
+            cycle('color')
+          }}>
+          <Icon name='theme' className='w-6' />
+        </Button>
+      </li>
+      <li>
+        <Button
+          size='mono'
+          title='Change borders style'
+          onClick={e => {
+            e.preventDefault()
+            cycle('edges')
+          }}>
+          <span className='icon w-6 h-6 rounded-full border-[0.25rem]' />
+        </Button>
+      </li>
+    </>
   )
 }
 
@@ -57,7 +71,7 @@ function Header({ className }) {
       />
       <div className='absolute w-16 lg:w-32 top-0 right-0 mt-10 -mr-8 lg:-mr-16 text-center'>
         <ul>
-          <li>
+          <li className='mb-6'>
             <Link
               id='avatar'
               className='block rounded-full h-16 lg:h-32 bg-cover bg-center border-2 lg:border-4 border-primary transition-all'
@@ -65,12 +79,10 @@ function Header({ className }) {
               title={site.title}
             />
           </li>
-          <li>
-            <ThemeButton />
-          </li>
-          <li className='visible lg:invisible'>
+          <li className='mb-4 lg:hidden'>
             <MenuButton />
           </li>
+          <ThemeButtons />
         </ul>
       </div>
       <div className='absolute w-12 bottom-0 mb-6 right-0 -mr-6'>

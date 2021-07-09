@@ -1,42 +1,38 @@
 import React, { useCallback, useEffect, useRef } from 'react'
-import { THEME_DEFAULT, THEME_LIST, THEME_STORAGE_KEY } from './themes'
+import { ThemeState, defaultState, storageKey } from './themes'
 import { useLocalStorage } from '../../hooks'
 import { useAnalyticsCallback } from '../analytics'
 
 const ThemeContext = React.createContext()
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useLocalStorage(THEME_STORAGE_KEY, THEME_DEFAULT.id)
-  const themeConfig = THEME_LIST.find(t => t.id === theme) || THEME_DEFAULT
-
-  const prevThemeRef = useRef()
-  const prevTheme = prevThemeRef.current
+  const eventData = useRef()
+  const [state, setState] = useLocalStorage(storageKey, defaultState.state)
+  const theme = new ThemeState(state)
 
   useEffect(() => {
-    document.body.setAttribute('class', themeConfig.getClassName())
-    document.querySelector('meta[name=theme-color]').content = themeConfig.colors.primary
-  }, [theme])
+    document.body.setAttribute('class', theme.className)
+    document.querySelector('meta[name=theme-color]').content = theme.color.colors.primary
+  }, [state])
 
   useAnalyticsCallback(({ user, event }) => {
-    user('app_theme', theme)
-    if (prevTheme) {
-      event('app_change_theme', {
-        theme: theme,
-        prev_theme: prevTheme,
-      })
+    user({ color_theme: state.color, edges_theme: state.edges })
+    if (eventData.current) {
+      event(...eventData.current)
     }
-  }, [theme])
+  }, [state])
 
-  const cycleTheme = useCallback(() => {
-    const i = THEME_LIST.indexOf(themeConfig)
-    setTheme(prev => {
-      prevThemeRef.current = prev
-      return THEME_LIST[(i + 1) % THEME_LIST.length].id
-    })
-  }, [theme])
+  const cycle = useCallback(type => {
+    const nextState = theme.cycle(type)
+    eventData.current = [
+      `change_${type}_theme`,
+      { value: nextState[type], prev_value: theme.state[type] }
+    ]
+    setState(nextState)
+  }, [state])
 
   return (
-    <ThemeContext.Provider value={{ cycleTheme }}>
+    <ThemeContext.Provider value={{ cycle }}>
       {children}
     </ThemeContext.Provider>
   )

@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const { fontFamily } = require('tailwindcss/defaultTheme')
-const { THEME_LIST, THEME_DEFAULT } = require('../src/providers/theme/themes')
+const { themes, defaultState } = require('../src/providers/theme/themes')
 
 module.exports = {
   darkMode: 'class',
@@ -14,7 +14,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      ..._.mapValues(THEME_DEFAULT.colors, (v, k) => `var(--${k})`),
+      ..._.mapValues(defaultState.color.colors, (v, k) => `var(--${k})`),
     },
     screens: {
       xs: '410px',
@@ -46,7 +46,9 @@ module.exports = {
       './src/**/*.js',
     ],
     safelist: [
-      ..._.uniq(THEME_LIST.map(t => t.getClassNames()).flat()),
+      ..._.uniq(themes.color.map(t => t.classNames).flat()),
+      ...themes.edges.map(t => t.className),
     ]
   },
 }
+;
