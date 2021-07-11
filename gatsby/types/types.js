@@ -39,6 +39,15 @@ exports.create = [
           link: {},
         },
       },
+      testimonials: {
+        type: '[Testimonial]',
+        resolve (source, args, context) {
+          return context.nodeModel
+            .getAllNodes({ type: 'Testimonial' })
+            .filter(t => t.project === source.slug)
+            .sort((x, y) => 0)
+        },
+      },
       handles: '[String]',
       body: {
         type: 'String',
@@ -93,7 +102,38 @@ exports.create = [
     },
     interfaces: ['Node'],
   },
-];
+  {
+    name: 'Testimonial',
+    fields: {
+      name: 'String!',
+      title: 'String!',
+      quote: 'String!',
+      received: {
+        type: 'Date!',
+        extensions: {
+          dateformat: {},
+        },
+      },
+      image: {
+        type: 'File!',
+        extensions: {
+          fileByRelativePath: {},
+        }
+      },
+      handles: '[String]',
+      project: {
+        type: 'Project',
+        extensions: {
+          link: {
+            by: 'slug'
+          },
+        },
+      },
+      priority: 'Int',
+    },
+    interfaces: ['Node'],
+  },
+]
 
 exports.extend = {
   Site: {
@@ -108,6 +148,9 @@ exports.namespaces = {
       'categories.yaml': 'ProjectCategory',
       'skills.yaml': 'ProjectSkill',
     },
+  },
+  testimonial: {
+    yaml: 'Testimonial',
   },
 }
 

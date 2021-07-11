@@ -2,8 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import classNames  from 'classnames'
 import { PlatformHandle } from '../commons/platforms'
-import { Page, Button, Heading, Link, Markdown, Section } from '../components'
-import { ProjectCategory, ProjectSkill } from './partials'
+import { Page, Button, Heading, Link, Markdown, Section, Separator } from '../components'
+import { ProjectCategory, ProjectSkill, Testimonial } from './partials'
 
 const statuses = {
   CMP: 'Completed',
@@ -82,6 +82,13 @@ export default class Project extends Page {
           )}
         </div>
         <div className='xl:max-w-3xl'>
+          {project.testimonials[0] && (
+            <div className='mb-12'>
+              <Separator />
+              <Testimonial test={project.testimonials[0]} className='text-primary my-8' />
+              <Separator />
+            </div>
+          )}
           <Markdown>{project.body}</Markdown>
         </div>
       </Section>
@@ -115,6 +122,9 @@ export const query = graphql`
         ...ProjectSkillFragment
       }
       handles
+      testimonials {
+        ...TestimonialFragment
+      }
     }
   }
 `
