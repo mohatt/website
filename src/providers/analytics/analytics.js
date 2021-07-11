@@ -7,27 +7,18 @@ export function Analytics(id, settings = {}) {
   gtagPush('config', id, settings)
 
   this.config = config => {
-    gtagPush('config', id, {
-      ...config,
-      update: true,
-    })
+    gtagPush('config', id, Object.assign({}, config, { update: true }))
   }
 
   this.event = (name, params) => {
-    gtagPush('event', name, {
-      ...params,
-      send_to: id,
-    })
+    gtagPush('event', name, Object.assign({}, params, { send_to: id }))
   }
 
   this.user = (name, value) => {
     if (typeof name === 'string') {
       userProps[name] = value
     } else {
-      userProps = {
-        ...userProps,
-        ...name,
-      }
+      userProps = Object.assign({}, userProps, name)
     }
 
     gtagPush('config', id, {

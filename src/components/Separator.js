@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-export default function Separator({ size = 2, gradient = true, spacing = true, className }) {
+export default function Separator({ size = 2, gradient = true, spacing, className }) {
   return (
     <hr
       className={classNames(

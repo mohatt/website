@@ -37,7 +37,7 @@ const tags = {
 function SkillBlock({ icon, title, children }) {
   return (
     <div className='flex text-lg leading-normal'>
-      <Icon name={icon} className='h-8 text-primary' />
+      <Icon name={icon} className='w-8 h-8 text-primary' />
       <div className='flex-1'>
         <h3 className='ml-2 leading-8 text-primary'>{title}</h3>
         <div className='mt-4 -ml-3'>{children}</div>
@@ -50,17 +50,17 @@ function SkillList({ tags, title, icon }) {
   const skills = useProjectSkills(tags)
   return skills.length > 0 && (
     <div className='flex'>
-      <Icon name={icon} className='h-8 text-primary' />
+      <Icon name={icon} className='w-8 h-8 text-primary' />
       <div className='flex-1'>
         <h3 className='ml-2 leading-8 text-primary'>{title}</h3>
         <ul className='mt-3 -ml-4 space-y-3 font-medium'>
           <ProjectSkill.Map data={skills}>
-            {({ title, projects, props, Icon }) => (
+            {({ title, size, props, Icon }) => (
               <li className='flex leading-6'>
-                {projects > 0
+                {size > 0
                   ? (
-                    <Link className='text-primary hover:underline' {...props}>
-                      <Icon className='h-6 mr-2' />{title} <sup>{projects}</sup>
+                    <Link className='link' {...props}>
+                      <Icon className='h-6 mr-2' />{title} <sup>{size}</sup>
                     </Link>
                   )
                   : <><Icon className='h-6 mr-2' />{title}</>

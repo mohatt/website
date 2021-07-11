@@ -30,7 +30,7 @@ function ThemeButtons() {
             e.preventDefault()
             cycle('edges')
           }}>
-          <span className='icon w-6 h-6 rounded-full border-[0.25rem]' />
+          <span className='icon w-6 h-6 rounded-full' style={{ borderWidth: '0.35rem' }}/>
         </Button>
       </li>
     </>
@@ -55,14 +55,14 @@ function MenuButton() {
 
 function Header({ className }) {
   const site = useSiteMetadata()
-  const { realpath } = useCurrentPath()
+  const [path] = useCurrentPath()
   return (
     <header className={className}>
       <Helmet
         htmlAttributes={{ lang: 'en', class: 'text-xs sm:text-base 2xl:text-lg' }}
         meta={[
           { name: 'og:type', content: 'website' },
-          { name: 'og:url', content: site.url + realpath },
+          { name: 'og:url', content: site.url + path },
           { name: 'twitter:card', content: 'summary_large_image' },
         ]}
         link={[

@@ -10,7 +10,7 @@ export const LayoutContext = React.createContext()
 
 export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { path } = useCurrentPath()
+  const [, path] = useCurrentPath()
   const isHome = path === '/'
   return (
     <Providers>

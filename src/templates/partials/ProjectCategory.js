@@ -1,19 +1,17 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 
-export default function ProjectCategory({ category, children }) {
-  return children({
-    ...category,
-    props: {
+function ProjectCategory({ category, children }) {
+  if(!category.props) {
+    category.props = {
       to: 'projects.category',
       params: { category: category.id },
       children: category.title,
-      title: `View ${
-        category.projects !== undefined
-          ? category.projects + ' project' + (category.projects !== 1 ? 's' : '')
-          : 'all projects'
-      } published under "${category.id}" category`,
-    },
-  })
+      title: `View ${category.size} project${category.size !== 1 ? 's' : ''} published under "${category.id}" category`,
+    }
+  }
+
+  return children(category)
 }
 
 ProjectCategory.Map = function ProjectCategoryMap({ data, children }) {
@@ -21,3 +19,13 @@ ProjectCategory.Map = function ProjectCategoryMap({ data, children }) {
     <ProjectCategory key={category.id} category={category} children={children} />
   ))
 }
+
+export const ProjectCategoryFragment = graphql`
+  fragment ProjectCategoryFragment on ProjectCategory {
+    id
+    title
+    size
+  }
+`
+
+export default ProjectCategory

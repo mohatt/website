@@ -6,10 +6,8 @@ export function useProjectCategories() {
       query {
         categories: allProjectCategory {
           nodes {
-            id
-            title
+            ...ProjectCategoryFragment
             desc
-            projects
           }
         }
       }

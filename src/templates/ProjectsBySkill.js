@@ -22,7 +22,7 @@ export default class ProjectsBySkill extends Page {
     return (
       <Section>
         <Heading title={this.title} primary>
-          All projects tagged with "{skill}" skill.
+          All projects tagged with “{skill}” skill.
         </Heading>
         <ProjectCardGrid data={projects} paginated='projects.skill' params={{ skill }} />
       </Section>

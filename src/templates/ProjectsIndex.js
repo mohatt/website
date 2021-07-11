@@ -1,56 +1,49 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { useProjectCategory } from '../hooks'
 import { Page, Button, ButtonGroup, Heading, Section } from '../components'
 import { ProjectCardGrid, ProjectCategory } from './partials'
 
-function CategoryProjects({ id, projects, totalCount }) {
-  const category = useProjectCategory(id)
-  return (
-    <Section id={id}>
-      <Heading title={category.title}>
-        {category.desc}
-      </Heading>
-      <ProjectCardGrid data={projects} params={{ category: id }} />
-      {totalCount > projects.length && (
-        <ButtonGroup className='mt-12'>
-          <Button disabled outline color='primary'>
-            {projects.length} out of {totalCount}
-          </Button>
-          <ProjectCategory category={category}>
-            {({ props }) => <Button color='primary' {...props}>View all</Button>}
-          </ProjectCategory>
-        </ButtonGroup>
-      )}
-    </Section>
-  )
-}
-
 export default class ProjectsIndex extends Page {
   view() {
-    const {
-      data: {
-        page: { title },
-        projects,
-      },
-    } = this.props
-    this.title = title
+    const { data } = this.props
+    this.title = data.page.title
     this.snippet = {
       $comp: 'Projects',
     }
-
+    const groups = data.projects.group.sort(x => x.id === 'open-source' ? -1 : 0)
     return (
       <>
         <Section spacing={false}>
           <Heading title={this.title} primary>
-            Since beginning my journey as a freelance developer nearly 7 years ago, I’ve done remote
+            Since beginning my journey as a freelance developer, I’ve done remote
             work for agencies, consulted for startups, and collaborated with talented people to
             create web products for both business and consumer use.
           </Heading>
         </Section>
-        {projects.group
-          .sort(x => x.id === 'open-source' ? -1 : 0)
-          .map(props => <CategoryProjects key={props.id} {...props} />)}
+        {groups.map(({ id, totalCount, nodes }) => {
+          if(nodes.length === 0) {
+            return null
+          }
+          const category = nodes[0].categories.find(c => c.id === id)
+          return (
+            <Section key={id} id={id}>
+              <Heading title={category.title}>
+                {category.desc}
+              </Heading>
+              <ProjectCardGrid data={nodes} params={{ category: id }} />
+              {totalCount > nodes.length && (
+                <ButtonGroup className='mt-12'>
+                  <Button disabled outline size='' color='primary'>
+                    {nodes.length} out of {totalCount}
+                  </Button>
+                  <ProjectCategory category={category}>
+                    {({ props }) => <Button size='' color='primary' {...props}>View all</Button>}
+                  </ProjectCategory>
+                </ButtonGroup>
+              )}
+            </Section>
+          )
+        })}
       </>
     )
   }
@@ -65,8 +58,11 @@ export const query = graphql`
     projects: allProject(sort: { fields: [priority, title] }, filter: { draft: { ne: true } }) {
       group(field: categories___id, limit: $limit) {
         id: fieldValue
-        projects: nodes {
+        nodes {
           ...ProjectCardFragment
+          categories {
+            desc
+          }
         }
         totalCount
       }

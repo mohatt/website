@@ -18,13 +18,13 @@
     --typo-dimmer: #717c81;
   }
 
-  .edges-theme-funny {
+  .edges-theme-xl {
     & .rounded-full {
       @apply rounded-2xl;
     }
   }
 
-  .edges-theme-medium {
+  .edges-theme-md {
     & .rounded-full {
       @apply rounded-md;
     }
@@ -33,7 +33,7 @@
     }
   }
 
-  .edges-theme-sharp {
+  .edges-theme-sm {
     & .rounded-full {
       @apply rounded-sm;
     }

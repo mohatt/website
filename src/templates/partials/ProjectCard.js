@@ -4,28 +4,24 @@ import { PlatformHandle } from '../../commons/platforms'
 import { Button, Link } from '../../components'
 import { ProjectCategory, ProjectSkill } from '.'
 
-function applyFilters(data, exclude, limit) {
-  const filtered = (
-    exclude && exclude.length > 0
-      ? data.filter(o => !exclude.includes(o.id))
-      : data
-  ).slice(0, limit)
+function filter(data, exclude, limit) {
+  const filtered = (exclude ? data.filter(o => o.id !== exclude) : data).slice(0, limit)
   filtered.diff = data.length - filtered.length
   return filtered
 }
 
-function ProjectCard({ project, children, limitSkills = 4, limitCategories = 2, filterSkills, filterCategories }) {
+function ProjectCard({ project, children, skill, category }) {
   const image = project.image.childImageSharp.gatsbyImageData
   const props = {
     to: 'projects.project',
     params: { project: project.slug },
     title: 'View project details page',
   }
-  const categories = applyFilters(project.categories, filterCategories, limitCategories)
-  const skills = applyFilters(project.skills, filterSkills, limitSkills)
+  const categories = filter(project.categories, category, 2)
+  const skills = filter(project.skills, skill, 4)
 
-  if (typeof children === 'function') {
-    return children({ ...project, image, categories, skills, props })
+  if (children instanceof Function) {
+    return children(Object.assign({}, project, { image, categories, skills, props }))
   }
 
   return (
@@ -35,7 +31,7 @@ function ProjectCard({ project, children, limitSkills = 4, limitCategories = 2, 
           <Link className='block' {...props}>
             <img className='w-full border-2 border-primary rounded-md shadow-lg' src={image.images.fallback.src} alt={project.title} />
           </Link>
-          {project.handles && (
+          {project.handles.length > 0 && (
             <div className='absolute -bottom-4 right-4'>
               <PlatformHandle.Map data={project.handles.slice(0, 2)}>
                 {({ title, href, Icon }) => (
@@ -67,7 +63,7 @@ function ProjectCard({ project, children, limitSkills = 4, limitCategories = 2, 
       </div>
       <div className='mt-4'>
         <h3>
-          <Link className='text-primary hover:underline' {...props}>
+          <Link className='link-primary' {...props}>
             {project.title}
           </Link>
         </h3>
@@ -84,7 +80,7 @@ function ProjectCard({ project, children, limitSkills = 4, limitCategories = 2, 
           </div>
         )}
         <div className='mt-4'>
-          {project.excerpt}
+          {project.desc}
         </div>
       </div>
     </div>
@@ -105,7 +101,7 @@ export const ProjectCardFragment = graphql`
   fragment ProjectCardFragment on Project {
     slug
     title
-    excerpt
+    desc
     image {
       childImageSharp {
         gatsbyImageData(aspectRatio: 1.8, width: 430)
@@ -113,14 +109,10 @@ export const ProjectCardFragment = graphql`
     }
     handles
     categories {
-      id
-      title
-      projects
+      ...ProjectCategoryFragment
     }
     skills {
-      id
-      title
-      projects
+      ...ProjectSkillFragment
     }
   }
 `

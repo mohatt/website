@@ -74,13 +74,13 @@ function MenuItemSubs({ items, onClick, hashPath, currentPath }) {
 }
 
 function MenuItem({ label, to, params, items, onClick }) {
-  const { realpath } = useCurrentPath()
+  const [, currentPath] = useCurrentPath()
   let current = null
   if (items) {
     const href = routeExists(to)
-      ? generatePath(to, params)
+      ? generatePath(to, params, null, true)
       : to
-    current = realpath.startsWith(href) ? href : null
+    current = currentPath.startsWith(href) ? href : null
   }
 
   return (
@@ -95,7 +95,7 @@ function MenuItem({ label, to, params, items, onClick }) {
         children={label}
       />
       {current && (
-        <MenuItemSubs items={items} hashPath={current} currentPath={realpath} onClick={onClick} />
+        <MenuItemSubs items={items} hashPath={current} currentPath={currentPath} onClick={onClick} />
       )}
     </li>
   )

@@ -3,19 +3,31 @@
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
   }
 
-  .text-shadow-none {
-    text-shadow: none;
-  }
-
   .dark .text-shadow {
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
   }
 
-  .underline-dotted {
-    text-decoration: underline dotted;
+  .text-shadow-none {
+    text-shadow: none;
   }
 
-  .underline-dashed {
-    text-decoration: underline dashed;
+  .underline {
+    text-decoration: underline solid;
+    text-underline-offset: 0.1em;
+    text-decoration-thickness: from-font;
+  }
+
+  .underline-dotted {
+    text-decoration: underline dotted;
+    text-underline-offset: 0.1em;
+    text-decoration-thickness: from-font;
+  }
+
+  .link {
+    @apply font-medium underline-dotted hover:text-primary;
+  }
+
+  .link-primary {
+    @apply font-medium text-primary hover:underline-dotted;
   }
 }

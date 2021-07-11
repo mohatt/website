@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from '../components'
 
-const PLATFORMS = {
+const platforms = {
   email: {
     title: 'Email',
     icon: 'email',
@@ -44,35 +44,31 @@ const PLATFORMS = {
   },
 }
 
-export function createPlatformHandle(id) {
+export function PlatformHandleObject(id) {
   const matches = id && id.match(/^([^:]+):(.*)/)
   if (!matches) {
     throw new Error(`Invalid platform handle id "${id}"`)
   }
 
   const [, type, handle] = matches
-  const props = PLATFORMS[type]
-  if (!props) {
+  const { title, icon, href } = platforms[type]
+  if (!href) {
     throw new Error(`Invalid platform handle type "${type}"`)
   }
 
   return {
     id,
     type,
-    ...props,
-    href: typeof props.href === 'function'
-      ? props.href(handle)
-      : props.href.replace('%s', handle),
+    title,
+    href: href instanceof Function ? href(handle) : href.replace('%s', handle),
+    Icon(props) {
+      return <Icon name={icon} {...props} />
+    },
   }
 }
 
 export function PlatformHandle({ id, children }) {
-  const handle = createPlatformHandle(id)
-  handle.Icon = function PlatformHandleIcon(props) {
-    return <Icon name={handle.icon} {...props} />
-  }
-
-  return children(handle)
+  return children(new PlatformHandleObject(id))
 }
 
 PlatformHandle.Map = function PlatformHandleMap({ data, children }) {

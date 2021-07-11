@@ -1,10 +1,10 @@
 import React from 'react'
 import classNames from 'classnames'
-import ICONS from '../commons/icons'
+import icons from '../commons/icons'
 import { BaseIcon } from '.'
 
 export default function Icon({ name, className }) {
-  const def = ICONS[name]
+  const def = icons[name]
   if (!def) {
     throw new Error(`Invalid icon "${name}"`)
   }

@@ -6,7 +6,7 @@ function Footer({ className }) {
   const { copyright } = useSiteMetadata()
   return (
     <footer className={className}>
-      <Separator size='4' spacing={false} />
+      <Separator size='4' />
       <Section className='py-14 bg-accent font-display' spacing={false}>
         {copyright}
       </Section>

@@ -62,6 +62,11 @@ function prepareNodeFields(node, type, { namespace, file }) {
     throw new Error(`Unable to find valid type definition for '${type}'.`)
   }
 
+  const defaults = TYPES.defaults[type]
+  if (defaults) {
+    _.defaults(node, defaults)
+  }
+
   if (fields.slug && !node.slug) {
     const parsedRelPath = path.parse(file)
     node.slug = parsedRelPath.dir === ''

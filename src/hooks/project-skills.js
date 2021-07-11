@@ -6,11 +6,9 @@ function useProjectSkillsData() {
       query {
         skills: allProjectSkill {
           nodes {
-            id
-            title
+            ...ProjectSkillFragment
             icon
             tags
-            projects
           }
         }
       }

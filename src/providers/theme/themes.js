@@ -65,9 +65,9 @@ const themes = {
   ],
   edges: [
     new EdgesTheme('default'),
-    new EdgesTheme('funny'),
-    new EdgesTheme('medium'),
-    new EdgesTheme('sharp'),
+    new EdgesTheme('xl'),
+    new EdgesTheme('md'),
+    new EdgesTheme('sm')
   ],
 }
 

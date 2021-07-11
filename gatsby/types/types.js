@@ -6,7 +6,7 @@ exports.create = [
     fields: {
       slug: 'String!',
       title: 'String!',
-      excerpt: 'String!',
+      desc: 'String!',
       draft: 'Boolean',
       started: {
         type: 'Date!',
@@ -44,6 +44,7 @@ exports.create = [
         type: 'String',
         resolve: createParentFieldResolverProxy({ field: 'body' }),
       },
+      status: 'String',
       priority: 'Int',
     },
     interfaces: ['Node'],
@@ -63,7 +64,7 @@ exports.create = [
         },
       },
       tags: '[String!]',
-      projects: {
+      size: {
         type: 'Int!',
         resolve (source, args, context) {
           return context.nodeModel
@@ -80,7 +81,7 @@ exports.create = [
     fields: {
       title: 'String!',
       desc: 'String!',
-      projects: {
+      size: {
         type: 'Int!',
         resolve (source, args, context) {
           return context.nodeModel
@@ -107,5 +108,21 @@ exports.namespaces = {
       'categories.yaml': 'ProjectCategory',
       'skills.yaml': 'ProjectSkill',
     },
+  },
+}
+
+exports.defaults = {
+  Project: {
+    draft: false,
+    screens: [],
+    categories: [],
+    skills: [],
+    handles: [],
+  },
+  ProjectSkill: {
+    tags: [],
+  },
+  Testimonial: {
+    handles: [],
   },
 }
