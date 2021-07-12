@@ -16,7 +16,10 @@ module.exports = {
         /^:/,
         // keyframes selectors
         // eg 50% {}
-        /^[0-9]+%$/
+        /^[0-9]+%$/,
+        // custom-value selectors
+        // eg w-[50rem]
+        /\[[^[]+]$/,
       ]
     },
   },

@@ -30,7 +30,7 @@ function ThemeButtons() {
             e.preventDefault()
             cycle('edges')
           }}>
-          <span className='icon w-6 h-6 rounded-full' style={{ borderWidth: '0.35rem' }}/>
+          <span className='icon w-6 h-6 rounded-full border-[.35rem]' />
         </Button>
       </li>
     </>
