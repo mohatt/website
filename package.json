@@ -54,7 +54,7 @@
     "gatsby-transformer-yaml": "3.7.1",
     "lodash": "4.17.21",
     "moment": "2.29.1",
-    "postcss": "8.3.3",
+    "postcss": "8.3.6",
     "postcss-import": "14.0.2",
     "postcss-preset-env": "6.7.0",
     "postcss-url": "10.1.3",
