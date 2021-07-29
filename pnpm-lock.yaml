@@ -21,7 +21,7 @@ specifiers:
   gatsby-plugin-graphql-config: 0.16.1
   gatsby-plugin-manifest: 3.7.1
   gatsby-plugin-mdx: 2.7.1
-  gatsby-plugin-postbuild: 3.0.1
+  gatsby-plugin-postbuild: 3.0.2
   gatsby-plugin-postcss: 4.7.1
   gatsby-plugin-preload-fonts: 2.7.1
   gatsby-plugin-react-helmet: 4.7.1
@@ -62,7 +62,7 @@ dependencies:
   gatsby-plugin-graphql-config: 0.16.1_gatsby@3.7.1
   gatsby-plugin-manifest: 3.7.1_gatsby@3.7.1
   gatsby-plugin-mdx: 2.7.1_73e8d0148a4c5c71ceb6a02bbce55c80
-  gatsby-plugin-postbuild: 3.0.1_gatsby@3.7.1+postcss@8.3.3
+  gatsby-plugin-postbuild: 3.0.2_gatsby@3.7.1+postcss@8.3.3
   gatsby-plugin-postcss: 4.7.1_gatsby@3.7.1+postcss@8.3.3
   gatsby-plugin-preload-fonts: 2.7.1_gatsby@3.7.1
   gatsby-plugin-react-helmet: 4.7.1_gatsby@3.7.1+react-helmet@6.1.0
@@ -6565,8 +6565,8 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: false
 
-  /filesize/6.3.0:
-    resolution: {integrity: sha512-ytx0ruGpDHKWVoiui6+BY/QMNngtDQ/pJaFwfBpQif0J63+E8DLdFyqS3NkKQn7vIruUEpoGD9JUJSg7Kp+I0g==}
+  /filesize/7.0.0:
+    resolution: {integrity: sha512-Wsstw+O1lZ9gVmOI1thyeQvODsaoId2qw14lCqIzUhoHKXX7T2hVpB7BR6SvgodMBgWccrx/y2eyV8L7tDmY6A==}
     engines: {node: '>= 0.4.0'}
     dev: false
 
@@ -7045,8 +7045,8 @@ packages:
       - supports-color
     dev: false
 
-  /gatsby-plugin-postbuild/3.0.1_gatsby@3.7.1+postcss@8.3.3:
-    resolution: {integrity: sha512-mWP8DexDhf9CDtX9WUzhEbozyQGCDFlCIXI/QWwBGj+U3kJl5sSGKOuzYp+mvmySVumPpyHTjHJb6ltq0QBtIA==}
+  /gatsby-plugin-postbuild/3.0.2_gatsby@3.7.1+postcss@8.3.3:
+    resolution: {integrity: sha512-H0BN/F+XLlytPmT4sO9ombs7TtrJDY7i6soXSQ32w/gD8M2CtiagE3IJmjFB9c37NY3ipPyKwru7HImtBBJ0XA==}
     engines: {node: '>=10.13.0'}
     peerDependencies:
       gatsby: '>=3.0.4'
@@ -7059,7 +7059,7 @@ packages:
       chalk: 4.1.1
       cssnano: 5.0.6_postcss@8.3.3
       debug: 3.2.7
-      filesize: 6.3.0
+      filesize: 7.0.0
       gatsby: 3.7.1_react-dom@17.0.2+react@17.0.2
       glob: 7.1.7
       lodash: 4.17.21
