@@ -28,7 +28,5 @@ export function createReactMap(render) {
 }
 
 export const ReactMap = createReactMap(function ReactMap(item, { children }, i) {
-  return children
-    ? children(item, i)
-    : item
+  return children ? children(item, i) : item
 })

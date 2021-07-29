@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import classNames  from 'classnames'
+import classNames from 'classnames'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Lightbox from 'react-image-lightbox'
 import { themeScreens } from '../constants'

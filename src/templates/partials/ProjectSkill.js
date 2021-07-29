@@ -5,7 +5,7 @@ import { BaseIcon, Button } from '../../components'
 
 function ProjectSkill({ skill, children }) {
   let { id, title, size, icon, props } = skill
-  if(!props) {
+  if (!props) {
     props = skill.props = !size ? { children: title } : {
       to: 'projects.skill',
       params: { skill: id },
@@ -13,7 +13,7 @@ function ProjectSkill({ skill, children }) {
       title: `View ${size} project${size !== 1 ? 's' : ''} tagged with "${id}" skill`,
     }
 
-    if(icon) {
+    if (icon) {
       skill.Icon = function Icon(props) {
         return <BaseIcon path={icon} {...props} />
       }

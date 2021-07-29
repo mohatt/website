@@ -79,9 +79,7 @@ function Menu({ setMenuOpen, className }) {
         {site.menu.map(({ label, to, params, external, items }, i) => {
           let isActive = null
           if (items && items.length) {
-            const href = routeExists(to)
-              ? generatePath(to, params, null, true)
-              : to
+            const href = routeExists(to) ? generatePath(to, params, null, true) : to
             isActive = currentPath.startsWith(href) ? href : null
           }
 
