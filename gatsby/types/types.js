@@ -135,11 +135,7 @@ exports.create = [
   },
 ]
 
-exports.extend = {
-  Site: {
-    'siteMetadata.menu': 'JSON!',
-  },
-}
+exports.extend = {}
 
 exports.namespaces = {
   project: {

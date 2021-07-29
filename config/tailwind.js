@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const { fontFamily } = require('tailwindcss/defaultTheme')
-const { themes, defaultState } = require('../src/providers/theme/themes')
+const { themes, screens, colors } = require('../src/constants/tailwind')
 
 module.exports = {
   darkMode: 'class',
@@ -11,21 +11,8 @@ module.exports = {
       body: ['"IBM Plex Serif"', ...fontFamily.serif],
       mono: ['"IBM Plex Mono"', ...fontFamily.mono],
     },
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      ..._.mapValues(defaultState.color.colors, (v, k) => `var(--${k})`),
-    },
-    screens: {
-      xs: '410px',
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      '2xl': '1536px',
-      '3xl': '1680px',
-      '4xl': '1920px',
-    },
+    colors,
+    screens,
     extend: {
       width: {
         inherit: 'inherit',
@@ -38,17 +25,14 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
   purge: {
     content: [
       './src/**/*.js',
     ],
     safelist: [
-      ..._.uniq(themes.color.map(t => t.classNames).flat()),
-      ...themes.edges.map(t => t.className),
-    ]
+      ..._.uniq(themes.color.map(t => t.class.split(' ')).flat()),
+      ...themes.edges.map(t => t.class),
+    ],
   },
 }
-;

@@ -2,8 +2,8 @@
  * Tailwind core styles
  */
 @import 'tailwindcss/base';
-@import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import 'tailwindcss/components';
 
 /**
  * Self-hosted fonts
@@ -11,11 +11,21 @@
 @import 'fonts.css';
 
 /**
+ * Custom utilities
+ */
+@import 'utilities.css';
+
+/**
+ * Custom components
+ */
+@import 'components.css';
+
+/**
  * Theme classes
  */
 @import 'themes.css';
 
 /**
- * Custom utilities
+ * 3rd-party imports
  */
-@import 'utilities/text-effects.css';
+@import 'react-image-lightbox/style.css';

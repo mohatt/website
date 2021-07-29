@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useIsBrowser } from '../hooks'
+import { useMounted } from '../hooks'
 import classNames from 'classnames'
 
 function TypewriterText({ words, loop, typeSpeed, deleteSpeed, delay }) {
@@ -24,6 +24,7 @@ function TypewriterText({ words, loop, typeSpeed, deleteSpeed, delay }) {
       if (!loop && counter >= words.length - 1) {
         return
       }
+
       setDeleting(true)
       setSpeed(delay)
     } else if (deleting && text === '') {
@@ -33,7 +34,7 @@ function TypewriterText({ words, loop, typeSpeed, deleteSpeed, delay }) {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => typewriter(), speed)
+    const timer = setTimeout(typewriter, speed)
     return () => clearTimeout(timer)
   }, [typewriter, speed])
 
@@ -45,24 +46,24 @@ function Typewriter({
   loop = false,
   speed = 100,
   delay = 1500,
-  backspace = null,
+  backspace = speed,
   cursor = '|',
   className,
 }) {
-  const isBrowser = useIsBrowser()
+  const mounted = useMounted()
   return (
     <span className={classNames('typewriter', className)}>
-      {isBrowser
+      {mounted
         ? <TypewriterText
             words={words}
             loop={loop}
             typeSpeed={speed}
-            deleteSpeed={backspace || speed}
+            deleteSpeed={backspace}
             delay={delay}
           />
         : words[0]
       }
-      {cursor && isBrowser && (
+      {cursor && mounted && (
         <span className='typewriter-cursor'>
           {cursor}
         </span>

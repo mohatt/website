@@ -1,7 +1,8 @@
-const env = require('./environment')
+const deployment = require('./deployment')
 
 module.exports = {
   enabled: true,
+  reporting: false,
   ignore: [
     'webpack.report.html',
   ],
@@ -12,31 +13,30 @@ module.exports = {
     safelist: {
       standard: [
         // pseudo selectors starting with `:`
-        // eg :-moz-focusring ::-webkit-file-upload-button
-        /^:/,
+        // selectors with important modifier `!`
+        // eg :-moz-focusring ::-webkit-file-upload-button !underline
+        /^[:!]/,
         // keyframes selectors
         // eg 50% {}
         /^[0-9]+%$/,
         // custom-value selectors
         // eg w-[50rem]
         /\[[^[]+]$/,
-      ]
+      ],
     },
   },
   'http-headers': {
     enabled: true,
     provider: 'firebase',
     headers: {
-      '[*]': !env.isProduction()
-        ? { 'X-Robots-Tag': 'noindex' }
-        : {},
+      '[*]': !deployment.is.production ? { 'X-Robots-Tag': 'noindex' } : {},
       '[pages]': {
         link: [
           '<https://www.googletagmanager.com>; rel=preconnect',
           '<https://www.google-analytics.com>; rel=preconnect',
-        ]
-      }
-    }
+        ],
+      },
+    },
   },
   minify: {
     enabled: true,
@@ -44,8 +44,8 @@ module.exports = {
       discardComments: {
         remove: comment => {
           return comment !== '!'
-        }
-      }
-    }]
-  }
+        },
+      },
+    }],
+  },
 }

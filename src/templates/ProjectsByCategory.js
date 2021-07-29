@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Page, Section, Heading } from '../components'
-import { ProjectCardGrid } from './partials'
+import { ProjectCard } from './partials'
 
 export default class ProjectsByCategory extends Page {
   view() {
@@ -24,7 +24,7 @@ export default class ProjectsByCategory extends Page {
         <Heading title={this.title} primary>
           {categoryObj.desc}
         </Heading>
-        <ProjectCardGrid data={projects} paginated='projects.category' params={{ category }} />
+        <ProjectCard.Grid data={projects} paginated='projects.category' params={{ category }} />
       </Section>
     )
   }

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { useSiteMetadata } from '../hooks'
-import { useAnalyticsCallback } from '../providers/analytics'
+import { site } from '../constants'
+import { useAnalyticsCallback, useSiteMetadata } from '../hooks'
 import { Layout, Section } from '.'
 import socialBanner from '../images/social-banner.png'
 
 function PageHelmet({ title = '', description, noIndex, image }) {
-  const site = useSiteMetadata()
+  const { deployment } = useSiteMetadata()
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
   const ogImage = image || socialBanner
@@ -25,7 +25,7 @@ function PageHelmet({ title = '', description, noIndex, image }) {
           : { name: 'description', content: seoDescription },
         { name: 'og:title', content: seoTitle },
         { name: 'og:description', content: seoDescription },
-        { name: 'og:image', content: site.url + ogImage },
+        { name: 'og:image', content: deployment.config.url + ogImage },
       ]}
     />
   )
@@ -89,7 +89,7 @@ export default class Page extends React.Component {
    * Default layout
    * @type Function
    */
-  static layout = Layout
+  static Layout = Layout
 
   /**
    * Should be implemented by child Page components

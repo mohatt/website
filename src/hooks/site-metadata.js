@@ -6,13 +6,13 @@ export default function useSiteMetadata() {
       query {
         site {
           siteMetadata {
-            title
-            titleShort
-            description
-            url
-            copyright
-            contacts
-            menu
+            deployment {
+              date
+              config {
+                url
+                analytics
+              }
+            }
           }
         }
       }

@@ -1,18 +1,15 @@
-const types = require('./types')
-module.exports = {
-  node: {
-    createSchemaCustomization: types.createTypes,
-    setFieldsOnGraphQLNodeType: types.extendTypes,
-    onCreateNode: types.onCreateNode,
-    unstable_shouldOnCreateNode: types.shouldOnCreateNode,
-    onCreateWebpackConfig: require('./webpack')
-  },
-  ssr: {
-    onRenderBody: args => {
-      require('./setup-theme')(args)
-    },
-    onPreRenderHTML: args => {
-      require('./reorder-head-tags')(args)
-    }
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+
+exports.setupWebpack = function ({ stage, actions }) {
+  if (stage === 'build-javascript') {
+    actions.setWebpackConfig({
+      plugins: [
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          reportFilename: 'webpack.report.html',
+          openAnalyzer: false
+        })
+      ]
+    })
   }
 }

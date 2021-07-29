@@ -1,20 +1,19 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Helmet } from 'react-helmet'
-import { PlatformHandle } from '../../commons/platforms'
-import { useCurrentPath, useSiteMetadata } from '../../hooks'
-import { useTheme } from '../../providers/theme'
+import { site } from '../../constants'
+import { usePath, useSiteMetadata, useTheme } from '../../hooks'
+import { PlatformHandle } from '../../util'
 import { Button, Icon, Link } from '..'
-import { LayoutContext } from './Layout'
 import avatarAlt from '../../images/avatar/avatar-smile.png'
 
 function ThemeButtons() {
-  const { cycle } = useTheme()
+  const cycle = useTheme()
   return (
     <>
       <li className='mb-4'>
         <Button
           size='mono'
-          title='Change theme'
+          title='Change colors theme'
           onClick={e => {
             e.preventDefault()
             cycle('color')
@@ -37,32 +36,31 @@ function ThemeButtons() {
   )
 }
 
-function MenuButton() {
-  const { menuOpen, setMenuOpen } = useContext(LayoutContext)
+function MenuButton({ setMenuOpen }) {
   return (
     <Button
       size='mono'
-      active={menuOpen}
       title='Toggle side menu'
       onClick={e => {
         e.preventDefault()
-        setMenuOpen(!menuOpen)
+        setMenuOpen('t')
       }}>
       <Icon name='menu' className='w-6' />
     </Button>
   )
 }
 
-function Header({ className }) {
-  const site = useSiteMetadata()
-  const [path] = useCurrentPath()
+function Header({ setMenuOpen, className }) {
+  const { deployment } = useSiteMetadata()
+  const [path, realPath] = usePath()
+
   return (
     <header className={className}>
       <Helmet
-        htmlAttributes={{ lang: 'en', class: 'text-xs sm:text-base 2xl:text-lg' }}
+        htmlAttributes={{ lang: 'en' }}
         meta={[
           { name: 'og:type', content: 'website' },
-          { name: 'og:url', content: site.url + path },
+          { name: 'og:url', content: deployment.config.url + realPath },
           { name: 'twitter:card', content: 'summary_large_image' },
         ]}
         link={[
@@ -74,30 +72,32 @@ function Header({ className }) {
           <li className='mb-6'>
             <Link
               id='avatar'
-              className='block rounded-full h-16 lg:h-32 bg-cover bg-center border-2 lg:border-4 border-primary transition-all'
+              className='block rounded-full h-16 lg:h-32 bg-cover bg-center transition-all'
               to='home'
               title={site.title}
             />
+            {path === '/' && <h1 className='hidden'>{site.title}</h1>}
           </li>
-          <li className='mb-4 lg:hidden'>
-            <MenuButton />
+          <li className='mb-4 xl:hidden'>
+            <MenuButton setMenuOpen={setMenuOpen} />
           </li>
           <ThemeButtons />
         </ul>
       </div>
-      <div className='absolute w-12 bottom-0 mb-6 right-0 -mr-6'>
-        <ul>
-          <PlatformHandle.Map data={site.contacts}>
-            {({ title, href, Icon }) => (
-              <li className='mb-4'>
-                <Button size='mono' to={href} external='header_contact' title={title}>
-                  <Icon className='w-6' />
-                </Button>
-              </li>
-            )}
-          </PlatformHandle.Map>
-        </ul>
-      </div>
+      <PlatformHandle.Map data={site.contacts}>
+        {items => (
+          <div className='absolute w-12 bottom-0 mb-6 right-0 -mr-6'>
+            <ul>{items}</ul>
+          </div>
+        )}
+        {({ title, href, Icon }) => (
+          <li className='mb-4'>
+            <Button size='mono' to={href} external='header_contact' title={title}>
+              <Icon className='w-6' />
+            </Button>
+          </li>
+        )}
+      </PlatformHandle.Map>
     </header>
   )
 }

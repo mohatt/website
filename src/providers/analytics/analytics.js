@@ -1,54 +1,53 @@
-import { isBrowser, isProduction } from '../../commons/environment'
+import { $window, $document } from '../../constants'
 
-export function Analytics(id, settings = {}) {
-  this.id = id
+if ($window) {
+  $window.dataLayer = $window.dataLayer || []
+  $window.gtag = gtag
+  gtag('js', new Date())
+}
+
+function gtag() {
+  if (!$window) {
+    return
+  }
+
+  if (process.env.NODE_ENV !== `production`) {
+    console.log('gtag', arguments)
+  }
+
+  $window.dataLayer.push(arguments)
+}
+
+export function createAnalytics(id, settings = {}) {
+  gtag('config', id, settings)
   let userProps = {}
 
-  gtagPush('config', id, settings)
+  return {
+    id,
+    config(config) {
+      gtag('config', id, Object.assign({}, config, { update: true }))
+    },
+    event(name, params) {
+      gtag('event', name, Object.assign({}, params, { send_to: id }))
+    },
+    user(name, value) {
+      if (typeof name === 'string') {
+        userProps[name] = value
+      } else {
+        userProps = Object.assign({}, userProps, name)
+      }
 
-  this.config = config => {
-    gtagPush('config', id, Object.assign({}, config, { update: true }))
-  }
-
-  this.event = (name, params) => {
-    gtagPush('event', name, Object.assign({}, params, { send_to: id }))
-  }
-
-  this.user = (name, value) => {
-    if (typeof name === 'string') {
-      userProps[name] = value
-    } else {
-      userProps = Object.assign({}, userProps, name)
-    }
-
-    gtagPush('config', id, {
-      user_properties: userProps,
-      update: true,
-    })
+      gtag('config', id, {
+        user_properties: userProps,
+        update: true,
+      })
+    },
   }
 }
 
 export function initializeAnalytics(analytics) {
-  const script = document.createElement('script')
+  const script = $document.createElement('script')
   script.src = `https://www.googletagmanager.com/gtag/js?id=${analytics.id}`
   script.async = true
-  document.head.appendChild(script)
-}
-
-function gtagPush() {
-  if (!isBrowser) {
-    return
-  }
-
-  if (!isProduction) {
-    console.log('gtag', arguments)
-  }
-
-  window.dataLayer.push(arguments)
-}
-
-if (isBrowser) {
-  window.dataLayer = window.dataLayer || []
-  window.gtag = gtagPush
-  gtagPush('js', new Date())
+  $document.head.appendChild(script)
 }

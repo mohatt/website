@@ -1,5 +1,5 @@
-const presetenv = require('postcss-preset-env')({
-  /* use stage 1 features + css nesting rules */
+const presetEnv = require('postcss-preset-env')({
+  /* Use stage 1 features + css nesting rules */
   stage: 1,
   features: {
     'nesting-rules': true,
@@ -10,7 +10,7 @@ const presetenv = require('postcss-preset-env')({
 })
 
 const tailwindcss = require('tailwindcss')({
-  config: require('./tailwind')
+  config: require('./tailwind'),
 })
 
 module.exports = {
@@ -18,6 +18,6 @@ module.exports = {
     require('postcss-import'),
     require('postcss-url'),
     tailwindcss,
-    presetenv,
-  ]
+    presetEnv,
+  ],
 }

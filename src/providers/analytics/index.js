@@ -1,38 +1,44 @@
-import { useEffect, useMemo, useRef } from 'react'
-import { environmentConfig, isBrowser } from '../../commons/environment'
-import { useCurrentLocation } from '../../hooks'
-import { Analytics, initializeAnalytics } from './analytics'
+import React, { createContext, useContext, useEffect, useMemo, useRef } from 'react'
+import { $document } from '../../constants'
+import { useSiteMetadata } from '../../hooks'
+import { createAnalytics, initializeAnalytics } from './analytics'
 
-const analytics = new Analytics(environmentConfig.analyticsId, {
-  send_page_view: false,
-})
+const AnalyticsContext = createContext()
 
-export function AnalyticsProvider({ children }) {
-  const location = useCurrentLocation()
-  const url = location.href
-  const referrer = useRef(isBrowser && document.referrer)
+export function AnalyticsProvider({ children, location }) {
+  const { href, pathname, search, hash } = location
+  const { deployment } = useSiteMetadata()
+  const { current } = useRef({})
 
-  useAnalyticsCallback(({ config }) => {
-    config({
-      page_path: location.pathname + location.search + location.hash,
-      page_referrer: referrer.current
+  if (!current.instance) {
+    current.instance = createAnalytics(deployment.config.analytics, {
+      send_page_view: false,
     })
-    referrer.current = url
-  }, [url])
+    current.ref = $document && $document.referrer
+  }
 
-  useEffect(() => initializeAnalytics(analytics), [])
+  if (href !== current.ref) {
+    current.instance.config({
+      page_path: pathname + search + hash,
+      page_referrer: current.ref,
+    })
+    current.ref = href
+  }
 
-  return children
+  useEffect(() => initializeAnalytics(current.instance), [])
+
+  return (
+    <AnalyticsContext.Provider value={current.instance}>
+      {children}
+    </AnalyticsContext.Provider>
+  )
 }
 
 export function useAnalytics() {
-  return analytics
+  return useContext(AnalyticsContext)
 }
 
 export function useAnalyticsCallback(callback, deps) {
-  return useMemo(
-    () => isBrowser && callback(analytics),
-    // eslint-disable-next-line
-    deps
-  )
+  const analytics = useAnalytics()
+  return useMemo(() => callback(analytics), deps)
 }

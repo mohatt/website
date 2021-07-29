@@ -1,7 +1,4 @@
-import React from 'react'
-import { Icon } from '../components'
-
-const platforms = {
+export const platformHandles = {
   email: {
     title: 'Email',
     icon: 'email',
@@ -42,35 +39,4 @@ const platforms = {
     icon: 'packagist',
     href: 'https://packagist.org/packages/%s',
   },
-}
-
-export function PlatformHandleObject(id) {
-  const matches = id && id.match(/^([^:]+):(.*)/)
-  if (!matches) {
-    throw new Error(`Invalid platform handle id "${id}"`)
-  }
-
-  const [, type, handle] = matches
-  const { title, icon, href } = platforms[type]
-  if (!href) {
-    throw new Error(`Invalid platform handle type "${type}"`)
-  }
-
-  return {
-    id,
-    type,
-    title,
-    href: href instanceof Function ? href(handle) : href.replace('%s', handle),
-    Icon(props) {
-      return <Icon name={icon} {...props} />
-    },
-  }
-}
-
-export function PlatformHandle({ id, children }) {
-  return children(new PlatformHandleObject(id))
-}
-
-PlatformHandle.Map = function PlatformHandleMap({ data, children }) {
-  return data.map(id => <PlatformHandle key={id} id={id} children={children} />)
 }

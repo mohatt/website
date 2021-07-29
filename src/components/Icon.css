@@ -1,6 +1,10 @@
 @layer components {
   .icon {
     @apply inline-block fill-current font-normal not-italic normal-case align-middle;
+
+    & ~ * {
+      @apply align-middle;
+    }
   }
 
   .icon-spinner {

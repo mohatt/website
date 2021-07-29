@@ -5,9 +5,14 @@
 @import '../index.css';
 
 @layer base {
+  html {
+    @apply text-[11.5px] sm:text-[16px] 3xl:text-[17.5px];
+  }
+
   body {
     @apply font-body font-normal antialiased text-left;
     text-underline-position: under;
+    text-underline-offset: 0.1em;
   }
 
   h1,
@@ -24,12 +29,12 @@
   }
 
   #header #avatar:hover {
+    @apply bg-secondary;
     background-image: url('../../images/avatar/avatar-smile.png');
-    background-color: theme('colors.secondary');
   }
 
   #header ul li > * {
-    @apply lg:border-4 border-primary;
+    @apply border-2 lg:border-4 border-primary;
     box-shadow: 0 0.2rem 0 0.09rem theme('colors.typo');
   }
 

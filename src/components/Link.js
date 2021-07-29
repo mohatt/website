@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link as InternalLink } from 'gatsby-plugin-advanced-pages'
-import { useAnalytics } from '../providers/analytics'
+import { $document } from '../constants'
+import { useAnalytics } from '../hooks'
 
 function OutboundLink({ linkId, ...props }) {
   const { event } = useAnalytics()
@@ -26,7 +27,7 @@ function OutboundLink({ linkId, ...props }) {
           outbound: true,
           event_callback: function () {
             if (redirect) {
-              document.location = props.href
+              $document.location = props.href
             }
           },
         })

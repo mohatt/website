@@ -18,16 +18,16 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/.pnpm-store
-          key: pnpm-install-v4-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-install-v5-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            pnpm-install-v4-
+            pnpm-install-v5-
       - uses: pnpm/action-setup@v2.0.1
         with:
           version: 6
           run_install: true
       - name: Build
         env:
-          BUILD_ENV: staging
+          DEPLOY_TARGET: staging
         run: |
           pnpm run build
           mkdir deploy

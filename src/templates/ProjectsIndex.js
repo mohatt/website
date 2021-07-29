@@ -1,45 +1,39 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Page, Button, ButtonGroup, Heading, Section } from '../components'
-import { ProjectCardGrid, ProjectCategory } from './partials'
+import { Page, Heading, Section, Link } from '../components'
+import { ProjectCard, ProjectCategory } from './partials'
 
 export default class ProjectsIndex extends Page {
   view() {
-    const { data } = this.props
-    this.title = data.page.title
+    const { page: { title }, projects } = this.props.data
+    this.title = title
     this.snippet = {
       $comp: 'Projects',
     }
-    const groups = data.projects.group.sort(x => x.id === 'open-source' ? -1 : 0)
+    const groups = projects.group.sort(x => x.id === 'open-source' ? -1 : 0)
     return (
       <>
         <Section spacing={false}>
-          <Heading title={this.title} primary>
+          <Heading title={title} primary>
             Since beginning my journey as a freelance developer, I’ve done remote
             work for agencies, consulted for startups, and collaborated with talented people to
             create web products for both business and consumer use.
           </Heading>
         </Section>
         {groups.map(({ id, totalCount, nodes }) => {
-          if(nodes.length === 0) {
-            return null
-          }
+          if (nodes.length === 0) return null
           const category = nodes[0].categories.find(c => c.id === id)
           return (
             <Section key={id} id={id}>
-              <Heading title={category.title}>
-                {category.desc}
-              </Heading>
-              <ProjectCardGrid data={nodes} params={{ category: id }} />
+              <Heading title={category.title}>{category.desc}</Heading>
+              <ProjectCard.Grid data={nodes} params={{ category: id }} />
               {totalCount > nodes.length && (
-                <ButtonGroup className='mt-12'>
-                  <Button disabled outline size='' color='primary'>
-                    {nodes.length} out of {totalCount}
-                  </Button>
+                <div className='mt-12 text-lg'>
+                  <span>[{nodes.length} out of {totalCount}] </span>
                   <ProjectCategory category={category}>
-                    {({ props }) => <Button size='' color='primary' {...props}>View all</Button>}
+                    {({ props }) => <Link className='link-primary' {...props}>View all »</Link>}
                   </ProjectCategory>
-                </ButtonGroup>
+                </div>
               )}
             </Section>
           )

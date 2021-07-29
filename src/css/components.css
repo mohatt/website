@@ -1,0 +1,20 @@
+@layer components {
+  .link,
+  .link-primary {
+    @apply inline-block font-medium;
+  }
+
+  .link {
+    @apply underline-dotted hover:text-primary;
+  }
+
+  .link-primary {
+    @apply text-primary hover:underline-dotted;
+  }
+
+  .overflow-grad {
+    @apply block absolute right-0 bottom-0;
+    width: 15%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, theme('colors.secondary') 70%);
+  }
+}

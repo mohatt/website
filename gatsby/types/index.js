@@ -165,15 +165,15 @@ exports.createTypes = ({ actions, schema }) => {
   ))
 }
 
-exports.extendTypes = function ({ type }) {
+exports.extendTypes = ({ type }) => {
   return TYPES.extend[type.name] || {}
 }
 
-exports.shouldOnCreateNode = function (args) {
+exports.shouldOnCreateNode = args => {
   return shouldCreateChildMdxNode(args)
 }
 
-exports.onCreateNode = async function (args) {
+exports.onCreateNode = async args => {
   if (shouldCreateChildMdxNode(args)) {
     await createChildMdxNode(args)
   }

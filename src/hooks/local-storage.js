@@ -1,21 +1,20 @@
 import { useState } from 'react'
 
-export default function useLocalStorage(key, initialValue) {
-  // Pass initial state function to useState so logic is only executed once
+export default function useLocalStorage(key, initialValue, normalizer) {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(key)
-      return item ? JSON.parse(item) : initialValue
-    } catch (error) {
-      return initialValue
-    }
+      if (item) {
+        initialValue = JSON.parse(item)
+      }
+    } catch (error) {}
+    return normalizer ? normalizer(initialValue, true) : initialValue
   })
 
-  // Wrapped version of useState's setter function that persists the new value to localStorage
   const setValue = value => {
+    setStoredValue(value)
     try {
-      setStoredValue(value)
-      window.localStorage.setItem(key, JSON.stringify(value))
+      window.localStorage.setItem(key, JSON.stringify(normalizer ? normalizer(value) : value))
     } catch (error) {}
   }
 

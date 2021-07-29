@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import icons from '../commons/icons'
+import { icons } from '../constants'
 import { BaseIcon } from '.'
 
 export default function Icon({ name, className }) {

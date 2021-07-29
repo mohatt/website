@@ -5,20 +5,18 @@ import { Page, Hero } from '../components'
 export default class Error extends Page {
   view() {
     const {
-      data: {
-        page: {
-          title,
-          data: { code = 404, message },
-        },
+      page: {
+        title,
+        data: { code = 404, message },
       },
-    } = this.props
+    } = this.props.data
     this.title = title
     this.noIndex = true
     this.snippet = {
       $comp: 'Error',
       code,
     }
-    return <Hero title={this.title}>{message}</Hero>
+    return <Hero title={title}>{message}</Hero>
   }
 }
 

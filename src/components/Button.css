@@ -40,11 +40,7 @@
     }
 
     &.btn-mono {
-      @apply leading-none p-2;
-
-      & .icon {
-        @apply block;
-      }
+      @apply font-body leading-none p-2;
     }
 
     &.btn-disabled {

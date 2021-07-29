@@ -18,9 +18,9 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/.pnpm-store
-          key: pnpm-install-v4-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: pnpm-install-v5-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            pnpm-install-v4-
+            pnpm-install-v5-
       - uses: pnpm/action-setup@v2.0.1
         with:
           version: 6

@@ -1,19 +1,18 @@
-const env = require('./config/environment')
-const site = require('./config/site')
+const { deployment, contentPath, pages } = require('./config/site')
 const { getYamlTypename } = require('./gatsby/types')
-const { colors } = require('./src/providers/theme/themes').defaultState.color
+const { title } = require('./src/constants/site')
 
 module.exports = {
   siteMetadata: {
-    ...site.metadata,
-    siteUrl: site.metadata.url, // for gatsby-plugin-sitemap
+    deployment,
+    siteUrl: deployment.config.url, // for gatsby-plugin-sitemap
   },
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content',
-        path: site.contentPath,
+        path: contentPath,
       },
     },
     {
@@ -24,55 +23,50 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: { maxWidth: 960 },
           },
-          'gatsby-remark-prismjs',
           'gatsby-remark-smartypants',
         ],
       },
     },
     {
       resolve: 'gatsby-plugin-advanced-pages',
-      options: {
-        pages: site.pages,
-      },
+      options: { pages },
     },
     {
       resolve: 'gatsby-transformer-yaml',
-      options: {
-        typeName: getYamlTypename,
-      },
+      options: { typeName: getYamlTypename },
     },
+    'gatsby-plugin-image',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaults: {
           transformOptions: {
-            cropFocus: 'center'
+            cropFocus: 'center',
           },
-          quality: 90
+          quality: 90,
         },
       },
     },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: site.metadata.title,
-        short_name: site.metadata.title,
+        name: title,
+        short_name: title,
         start_url: '/',
-        background_color: colors.secondary,
-        theme_color: colors.primary,
+        background_color: '#234e52',
+        theme_color: '#b28e59',
         display: 'standalone',
         icon: 'src/images/avatar/avatar.png',
         legacy: false,
       },
     },
-    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-postcss',
       options: require('./config/postcss'),
     },
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-catch-links',
     'gatsby-plugin-preload-fonts',
     {
       resolve: 'gatsby-plugin-postbuild',
@@ -81,7 +75,7 @@ module.exports = {
   ],
 }
 
-// Development plugins
-if (env.isDevelopment()) {
+// dev-only plugins
+if (deployment.is.local) {
   module.exports.plugins.push('gatsby-plugin-graphql-config')
 }
