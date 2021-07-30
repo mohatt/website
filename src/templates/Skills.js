@@ -6,8 +6,8 @@ import { ProjectSkill } from './partials'
 
 const skillTagGroups = {
   back: ['lang', 'frame', 'cms', 'db', 'api', 'test'],
-  front: ['lang', 'frame', 'ui', 'api', 'ssg'],
-  devops: ['tool', 'deploy', 'ci', 'pkgm', 'git'],
+  front: ['lang', 'frame', 'ui', 'api', 'lib', 'test'],
+  devops: ['tool', 'deploy', 'ci', 'build', 'pkgm', 'git'],
   soft: ['dev', 'env', 'comm'],
 }
 

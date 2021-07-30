@@ -19,10 +19,6 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         gatsbyRemarkPlugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: { maxWidth: 960 },
-          },
           'gatsby-remark-smartypants',
         ],
       },
