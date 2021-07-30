@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import classNames from 'classnames'
 import { generatePath, routeExists } from 'gatsby-plugin-advanced-pages'
 import { site, $window, $document } from '../../constants'
+import { cx } from '../../util'
 import { usePath } from '../../hooks'
 import { Link } from '..'
 
@@ -57,7 +57,7 @@ function SubMenu({ items, hashPath, currentPath, onClick }) {
                 e.preventDefault()
               }
             }}
-            className={classNames('block mb-8 sm:mb-6 hover:text-primary', hash && hash === activeHash && 'text-primary')}
+            className={cx('block mb-8 sm:mb-6 hover:text-primary', hash && hash === activeHash && 'text-primary')}
             children={label}
             {...external ? { external } : {
               params: params,

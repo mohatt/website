@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { cx } from '../util'
 import { useMounted } from '../hooks'
-import classNames from 'classnames'
 
 function TypewriterText({ words, loop, typeSpeed, deleteSpeed, delay }) {
   const [speed, setSpeed] = useState(typeSpeed)
@@ -52,7 +52,7 @@ function Typewriter({
 }) {
   const mounted = useMounted()
   return (
-    <span className={classNames('typewriter', className)}>
+    <span className={cx('typewriter', className)}>
       {mounted
         ? <TypewriterText
             words={words}

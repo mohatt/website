@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import classNames from 'classnames'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Lightbox from 'react-image-lightbox'
 import { themeScreens } from '../constants'
-import { PlatformHandle } from '../util'
+import { cx, PlatformHandle } from '../util'
 import { Page, Heading, Link, Markdown, Section, Separator } from '../components'
 import { ProjectCategory, ProjectSkill, Testimonial } from './partials'
 
@@ -66,7 +65,7 @@ function Gallery({ screens }) {
 
 function Metadata({ title, children, className }) {
   return (
-    <div className={classNames('text-lg leading-normal', className)}>
+    <div className={cx('text-lg leading-normal', className)}>
       <h3 className='text-primary'>{title}</h3>
       <div className='mt-4 font-medium'>{children}</div>
     </div>

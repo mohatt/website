@@ -1,9 +1,9 @@
 import React from 'react'
-import classNames from 'classnames'
+import { cx } from '../util'
 
 export default function ButtonGroup({ children, spacing, className }) {
   return (
-    <div className={classNames('btn-group', { 'btn-group-glue': !spacing }, className)}>
+    <div className={cx('btn-group', { 'btn-group-glue': !spacing }, className)}>
       {children}
     </div>
   )

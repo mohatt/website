@@ -1,6 +1,6 @@
 import React from 'react'
-import classNames from 'classnames'
+import { cx } from '../util'
 
 export default function Typography({ className, ...props }) {
-  return <div className={classNames('typography', className)} {...props} />
+  return <div className={cx('typography', className)} {...props} />
 }

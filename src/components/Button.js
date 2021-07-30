@@ -1,12 +1,12 @@
 import React from 'react'
-import classNames from 'classnames'
+import { cx } from '../util'
 import { Link } from '.'
 
 export default function Button({ color, size, rounded = true, active, disabled, outline, className, ...props }) {
   const Element = props.to ? Link : 'button'
   return (
     <Element
-      className={classNames(
+      className={cx(
         'btn',
         color && `btn-${color}`,
         size && `btn-${size}`,
