@@ -16,7 +16,7 @@ specifiers:
   classnames: 2.3.1
   eslint: 7.28.0
   gatsby: 3.7.1
-  gatsby-plugin-advanced-pages: 2.2.1
+  gatsby-plugin-advanced-pages: 3.0.1
   gatsby-plugin-catch-links: 3.7.1
   gatsby-plugin-graphql-config: 0.16.1
   gatsby-plugin-manifest: 3.7.1
@@ -57,7 +57,7 @@ dependencies:
   autoprefixer: 10.2.6_postcss@8.3.3
   classnames: 2.3.1
   gatsby: 3.7.1_react-dom@17.0.2+react@17.0.2
-  gatsby-plugin-advanced-pages: 2.2.1_gatsby@3.7.1+react@17.0.2
+  gatsby-plugin-advanced-pages: 3.0.1_gatsby@3.7.1+react@17.0.2
   gatsby-plugin-catch-links: 3.7.1_gatsby@3.7.1
   gatsby-plugin-graphql-config: 0.16.1_gatsby@3.7.1
   gatsby-plugin-manifest: 3.7.1_gatsby@3.7.1
@@ -4361,6 +4361,11 @@ packages:
       mimic-response: 1.0.1
     dev: false
 
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
+    dev: false
+
   /coa/2.0.2:
     resolution: {integrity: sha512-q5/jG+YQnSy4nRTV4F7lPepBJZ8qBNJJDBuJdoejDyLXgmL7IEo+Le2JDZudFTFt7mrCqIRaSjws4ygRCTCAXA==}
     engines: {node: '>= 4.0'}
@@ -6920,15 +6925,15 @@ packages:
       micromatch: 4.0.4
     dev: false
 
-  /gatsby-plugin-advanced-pages/2.2.1_gatsby@3.7.1+react@17.0.2:
-    resolution: {integrity: sha512-twts6sT+N6C3fzf6SvqN6rFtQKZWyDBkWkNwZ/AygpXjwrzUxJNZbVKop8g6L6c7R9sBY41K1E9FUHYREIZ98Q==}
+  /gatsby-plugin-advanced-pages/3.0.1_gatsby@3.7.1+react@17.0.2:
+    resolution: {integrity: sha512-2k3jJXVNyxfeX9N5bqECLTtNJXnLc4LQPin1RMukk2rEreCqyZRVFdQgipeVgT3iWPdAh3aZfIwnuYo4ksuHdQ==}
     engines: {node: '>=10.13.0'}
     peerDependencies:
-      gatsby: '>=2.25.4'
+      gatsby: '>=3.0.4'
       react: '>=16.8.6'
     dependencies:
       '@babel/runtime': 7.14.5
-      classnames: 2.3.1
+      clsx: 1.1.1
       debug: 3.2.7
       gatsby: 3.7.1_react-dom@17.0.2+react@17.0.2
       js-yaml: 4.1.0
