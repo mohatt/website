@@ -24,8 +24,3 @@
  * Theme classes
  */
 @import 'themes.css';
-
-/**
- * 3rd-party imports
- */
-@import 'react-image-lightbox/style.css';

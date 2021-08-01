@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import Lightbox from 'react-image-lightbox'
 import { themeScreens } from '../constants'
 import { cx, PlatformHandle } from '../util'
+import { useLightbox } from '../hooks'
 import { Page, Heading, Link, Markdown, Section, Separator } from '../components'
 import { ProjectCategory, ProjectSkill, Testimonial } from './partials'
 
@@ -14,52 +14,37 @@ const statuses = {
 }
 
 function Gallery({ screens }) {
-  const [index, setIndex] = useState(-1)
-
-  const size = screens.length
-  if (size === 0) {
-    return null
-  }
+  const [lightbox, styles] = useLightbox({
+    dataSource: screens.map(({ org, full, thumb }) => ({
+      w: org.width,
+      h: org.height,
+      src: full.images.fallback.src,
+      srcset: full.images.fallback.srcSet,
+      msrc: thumb.placeholder.fallback,
+    })),
+  })
 
   return (
-    <>
-      <div className='flex overflow-x-auto mb-12'>
-        {screens.map(({ thumb }, i) => {
-          const cls = `scr_thumb_${i}`
-          const ratio = thumb.width / thumb.height
-          return (
-            <React.Fragment key={i}>
-              <style>{`
-                .${cls} { width: ${200 * ratio}px }
-                @media(min-width: ${themeScreens.lg}) {
-                  .${cls} { width: ${300 * ratio}px }
-                }
-                @media(min-width: ${themeScreens['2xl']}) {
-                  .${cls} { width: ${500 * ratio}px }
-                }
-              `.replace(/\s+/g, '')
-              }</style>
-              <GatsbyImage
-                image={thumb}
-                className={`flex-shrink-0 cursor-zoom mr-1 ${cls}`}
-                onClick={() => setIndex(i)}
-                alt={`Screen ${i + 1}`}
-              />
-            </React.Fragment>
-          )
-        })}
-      </div>
-      {index > -1 && (
-        <Lightbox
-          mainSrc={screens[index].full.images.fallback.src}
-          nextSrc={screens[(index + 1) % size].full.images.fallback.src}
-          prevSrc={screens[(index + size - 1) % size].full.images.fallback.src}
-          onCloseRequest={() => setIndex(-1)}
-          onMovePrevRequest={() => setIndex((index + size - 1) % size)}
-          onMoveNextRequest={() => setIndex((index + 1) % size)}
-        />
-      )}
-    </>
+    <div className='flex overflow-x-auto mb-12'>
+      <style>{styles}</style>
+      {screens.map(({ thumb }, i) => {
+        const cls = `scr_thumb_${i}`
+        const ratio = thumb.width / thumb.height
+        return (
+          <div key={i} className={`flex-shrink-0 cursor-zoom mr-1 ${cls}`} onClick={() => lightbox.loadAndOpen(i)}>
+            <style>{`.${cls} { width: ${200 * ratio}px }
+              @media(min-width: ${themeScreens.lg}) {
+                .${cls} { width: ${300 * ratio}px }
+              }
+              @media(min-width: ${themeScreens['2xl']}) {
+                .${cls} { width: ${500 * ratio}px }
+              }`.replace(/\s+/g, '')}
+            </style>
+              <GatsbyImage image={thumb} alt={`Screen ${i + 1}`} />
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
@@ -95,7 +80,7 @@ export default class Project extends Page {
         <Heading title={this.title} primary>
           {this.description}
         </Heading>
-        <Gallery screens={screens} />
+        {screens.length && <Gallery screens={screens}/>}
         <div className='grid md:grid-cols-3 gap-x-4 gap-y-8 mb-12'>
           <Metadata title='Project Name'>{project.title}</Metadata>
           <Metadata title='Start Date'>{project.started}</Metadata>
@@ -144,14 +129,22 @@ export const query = graphql`
       hasImage
       image {
         childImageSharp {
+          org: original {
+            width
+            height
+          }
           thumb: gatsbyImageData(height: 500, placeholder: BLURRED)
-          full: gatsbyImageData(layout: FULL_WIDTH, formats: [AUTO], breakpoints: [1920])
+          full: gatsbyImageData(layout: FULL_WIDTH, formats: [AUTO])
         }
       }
       screens {
         childImageSharp {
+          org: original {
+            width
+            height
+          }
           thumb: gatsbyImageData(height: 500, placeholder: BLURRED)
-          full: gatsbyImageData(layout: FULL_WIDTH, formats: [AUTO], breakpoints: [1920])
+          full: gatsbyImageData(layout: FULL_WIDTH, formats: [AUTO])
         }
       }
       categories {

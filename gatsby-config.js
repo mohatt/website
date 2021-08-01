@@ -59,7 +59,9 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-postcss',
-      options: require('./config/postcss'),
+      options: {
+        postcssOptions: require('./config/postcss'),
+      },
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',

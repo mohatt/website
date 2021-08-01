@@ -14,7 +14,7 @@ const tailwindcss = require('tailwindcss')({
 })
 
 module.exports = {
-  postCssPlugins: [
+  plugins: [
     require('postcss-import'),
     require('postcss-url'),
     tailwindcss,
