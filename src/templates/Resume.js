@@ -7,7 +7,6 @@ import { useSiteMetadata } from '../hooks'
 import { Page, Heading, Section, Link, Icon } from '../components'
 import { Contacts } from '../layouts/partials'
 import { ProjectSkill, Testimonial } from './partials'
-import resumePDF from '../documents/resume.pdf'
 
 const experience = [
   {
@@ -94,7 +93,7 @@ export default class Resume extends Page {
     this.snippet.$comp = 'Resume'
     this.actions = (
       <>
-        <a className='link' href={resumePDF} title='Download Resume'>
+        <a className='link' href='/resume.pdf' title='Download Resume'>
           <Icon name='download' className='w-5 mr-1' />
         </a>
         <a className='link ml-2 hidden lg:inline' onClick={() => setPrintLayout(true)} title='Print Preview'>
