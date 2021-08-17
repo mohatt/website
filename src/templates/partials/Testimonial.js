@@ -7,7 +7,12 @@ function Testimonial({ test: { name, title, quote, image }, className }) {
     <blockquote className={className}>
       <div className='text-xl italic'>“{quote}”</div>
       <div className='mt-4 flex flex-row items-center opacity-90'>
-        <img className='w-14 border-2 border-primary rounded-full shadow-lg' src={image.childImageSharp.resize.src} alt={name} />
+        <img
+          width='120'
+          height='120'
+          className='w-14 border-2 border-primary rounded-full shadow-lg'
+          src={image.childImageSharp.resize.src} alt={name}
+        />
         <div className='ml-2 leading-normal'>{name}<br />{title}</div>
       </div>
     </blockquote>

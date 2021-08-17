@@ -62,7 +62,7 @@ const experience = [
   {
     title: 'Web Developer',
     at: 'Queen Tech Solutions',
-    url: 'https://www.queentechsolutions.net',
+    url: 'https://queentechsolutions.net',
     time: '2010 — 2012',
     desc: [
       'Built several dynamic websites and applications from scratch using PHP/MySQL.',
