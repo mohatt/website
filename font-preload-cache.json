@@ -1,0 +1,451 @@
+{
+  "timestamp": 1629189635529,
+  "hash": "708623db9737ebff1adcbd79588ea462",
+  "assets": {
+    "/": {
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true
+    },
+    "/skills/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/category/open-source/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/category/portfolio/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/angular/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/aws/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/bootstrap/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/composer/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/css/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/d3/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/docker/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/express/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/firebase/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/gatsby/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/ghactions/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/github/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/graphql/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/html/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/javascript/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/jenkins/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/jest/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/material/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/mobx/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/mysql/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/netlify/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/next/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/node/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/php/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/pnpm/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/react/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/redis/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/rest/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/ruby/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/rxjs/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/sass/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/shell/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/shopify/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/symfony/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/tailwind/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/terraform/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/typescript/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/vagrant/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/skill/wordpress/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/projects/gatsby-advanced-pages/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/gatsby-postbuild/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/github-api-utils/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/package-skeleton-php/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/ac-shop/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/alan/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/awesomehub-cli/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/awesomehub/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/caa-contest/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-italic-1736b2738313516b472e52013d0421bf.woff2": true
+    },
+    "/projects/dashbrew/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-700-455f367c7984c7d84297d04183e73a85.woff2": true
+    },
+    "/projects/ezews/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/ge-cheese-app/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/projects/innovation-factory/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-italic-1736b2738313516b472e52013d0421bf.woff2": true
+    },
+    "/projects/website/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500-1eeaa99b03ad926d0cd60abcc4ffb901.woff2": true
+    },
+    "/resume/": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-italic-1736b2738313516b472e52013d0421bf.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true
+    },
+    "/404.html": {
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true
+    },
+    "/404/": {
+      "/static/ibm-plex-mono-v6-latin-italic-1c4b3c62369a45fdc78f4146f9b16417.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-500italic-2f3ff4c87e1d23f6a7be79e61607dbc7.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-regular-36d1794d9b478119b1b23f3314b20fc5.woff2": true,
+      "/static/ibm-plex-mono-v6-latin-regular-c708fd4f02694c48059ff599eaab6a33.woff2": true,
+      "/static/ibm-plex-serif-v9-latin-500-a3db2c3279ad389f04960680d4d7ace4.woff2": true
+    }
+  }
+}

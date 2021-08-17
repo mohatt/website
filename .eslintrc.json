@@ -1,0 +1,8 @@
+{
+  "root": true,
+  "extends": "@mohatt/gatsby-standard",
+  "globals": {
+    "__ENVIRONMENT__": "readonly",
+    "__ENVIRONMENT_CONFIG__": "readonly"
+  }
+}

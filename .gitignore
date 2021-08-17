@@ -1,0 +1,22 @@
+# Logs
+logs/
+*.log
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+/public/
+/.cache/
+/.lighthouseci/
+/.firebase/
+
+
+# IDE stuff
+.idea/
+.vscode/
+
+# Generic files
+.DS_Store
+Thumbs.db
+Desktop.ini

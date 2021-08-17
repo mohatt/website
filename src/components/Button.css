@@ -1,0 +1,100 @@
+@layer components {
+  .btn {
+    @apply
+      inline-block
+      relative
+      text-base
+      font-display
+      font-medium
+      italic
+      py-2
+      px-6
+      border-2
+      rounded
+      shadow-lg
+      text-shadow-none
+      cursor-pointer
+      select-none
+      align-middle
+      whitespace-nowrap
+      transition-all;
+    @apply bg-accent text-typo-dim border-accent;
+
+    &:focus {
+      @apply outline-none;
+    }
+
+    &.btn-tiny,
+    &.btn-small,
+    &.btn-mono {
+      @apply not-italic shadow-md;
+    }
+
+    &.btn-small {
+      @apply text-sm py-2 px-4;
+    }
+
+    &.btn-tiny {
+      @apply font-body text-xs py-0 px-1.5;
+      border-width: 1px;
+    }
+
+    &.btn-mono {
+      @apply font-body leading-none p-2;
+    }
+
+    &.btn-disabled {
+      @apply cursor-auto;
+    }
+
+    &:hover:not(.btn-disabled),
+    &.btn-active:not(.btn-disabled) {
+      @apply bg-typo-dim text-accent border-typo-dim;
+    }
+
+    &.btn-outline {
+      @apply bg-transparent text-accent;
+
+      &:hover:not(.btn-disabled),
+      &.btn-active:not(.btn-disabled) {
+        @apply bg-accent text-typo-dim border-accent;
+      }
+    }
+
+    &.btn-alt {
+      @apply bg-typo-dim text-accent border-typo-dim;
+
+      &:hover:not(.btn-disabled),
+      &.btn-active:not(.btn-disabled) {
+        @apply bg-accent text-typo-dim border-accent;
+      }
+
+      &.btn-outline {
+        @apply bg-transparent text-typo-dim;
+
+        &:hover:not(.btn-disabled),
+        &.btn-active:not(.btn-disabled) {
+          @apply bg-typo-dim text-accent border-typo-dim;
+        }
+      }
+    }
+
+    &.btn-primary {
+      @apply bg-primary text-accent border-primary;
+
+      &:hover:not(.btn-disabled),
+      &.btn-active:not(.btn-disabled) {
+        @apply bg-typo-dim text-accent border-typo-dim;
+      }
+
+      &.btn-outline {
+        @apply bg-transparent text-primary;
+
+        &:hover:not(.btn-disabled),
+        &.btn-active:not(.btn-disabled) {
+          @apply bg-primary text-accent border-primary;
+        }
+      }
+    }
+  }
+}

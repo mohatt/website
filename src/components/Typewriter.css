@@ -1,0 +1,17 @@
+@layer components {
+  .typewriter {
+    & .typewriter-cursor {
+      animation: blink 0.8s infinite;
+    }
+  }
+
+  @keyframes blink {
+    0% {
+      @apply opacity-100;
+    }
+
+    to {
+      @apply opacity-0;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@layer components {
+  .btn-group {
+    & > .btn:not(:last-child) {
+      @apply mr-4;
+
+      &.btn-small,
+      &.btn-tiny {
+        @apply mr-2;
+      }
+    }
+
+    &.btn-group-glue > .btn {
+      &:not(:last-child) {
+        @apply mr-0 rounded-r-none;
+
+        &.btn-outline {
+          @apply border-r-0;
+        }
+      }
+
+      &:not(:first-child) {
+        @apply rounded-l-none;
+      }
+    }
+  }
+}

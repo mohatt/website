@@ -1,0 +1,500 @@
+- id: php
+  title: PHP
+  icon: php
+  tags:
+    - back
+    - lang
+- id: node
+  title: Node.js
+  icon: nodedotjs
+  tags:
+    - back
+    - lang
+- id: ruby
+  title: Ruby
+  icon: ruby
+  tags:
+    - back
+    - lang
+- id: javascript
+  title: JavaScript (ES6+)
+  icon: javascript
+  tags:
+    - front
+    - lang
+- id: typescript
+  title: TypeScript
+  icon: typescript
+  tags:
+    - front
+    - back
+    - lang
+- id: shell
+  title: Shell
+  icon: gnubash
+  tags:
+    - back
+    - lang
+- id: html
+  title: HTML5
+  icon: html5
+  tags:
+    - front
+    - lang
+- id: css
+  title: CSS3
+  icon: css3
+  tags:
+    - front
+    - lang
+- id: sass
+  title: Sass
+  icon: sass
+  tags:
+    - front
+    - lang
+- id: symfony
+  title: Symfony
+  icon: symfony
+  tags:
+    - back
+    - frame
+- id: laravel
+  title: Laravel
+  icon: laravel
+  tags:
+    - back
+    - frame
+- id: express
+  title: Express.js
+  icon: express
+  tags:
+    - back
+    - frame
+- id: serverless
+  title: Serverless
+  icon: serverless
+  tags:
+    - back
+    - frame
+- id: angular
+  title: Angular
+  icon: angular
+  tags:
+    - front
+    - frame
+- id: react
+  title: React
+  icon: react
+  tags:
+    - front
+    - frame
+- id: vue
+  title: Vue.js
+  icon: vuedotjs
+  tags:
+    - front
+    - frame
+- id: gatsby
+  title: Gatsby
+  icon: gatsby
+  tags:
+    - front
+    - frame
+- id: next
+  title: Next.js
+  icon: nextdotjs
+  tags:
+    - front
+    - frame
+- id: apollo
+  title: Apollo
+  icon: apollographql
+  tags:
+    - front
+    - lib
+- id: rxjs
+  title: RxJS
+  icon: reactivex
+  tags:
+    - front
+    - lib
+- id: redux
+  title: Redux
+  icon: redux
+  tags:
+    - front
+    - lib
+- id: mobx
+  title: MobX
+  icon: mobx
+  tags:
+    - front
+    - lib
+- id: d3
+  title: D3.js
+  icon: d3dotjs
+  tags:
+    - front
+    - lib
+- id: firebase
+  title: Firebase
+  icon: firebase
+  tags:
+    - front
+    - api
+- id: awsamplify
+  title: AWS Amplify
+  icon: awsamplify
+  tags:
+    - front
+    - api
+- id: tailwind
+  title: Tailwind CSS
+  icon: tailwindcss
+  tags:
+    - front
+    - ui
+- id: bootstrap
+  title: Bootstrap
+  icon: bootstrap
+  tags:
+    - front
+    - ui
+- id: material
+  title: Material UI
+  icon: materialui
+  tags:
+    - front
+    - ui
+- id: antdesign
+  title: Ant Design
+  icon: antdesign
+  tags:
+    - front
+    - ui
+- id: strapi
+  title: Strapi
+  icon: strapi
+  tags:
+    - back
+    - cms
+- id: shopify
+  title: Shopify
+  icon: shopify
+  tags:
+    - back
+    - cms
+- id: magento
+  title: Magento
+  icon: magento
+  tags:
+    - back
+    - cms
+- id: wordpress
+  title: Wordpress
+  icon: wordpress
+  tags:
+    - back
+    - cms
+- id: rest
+  title: REST
+  icon: json
+  tags:
+    - back
+    - api
+- id: graphql
+  title: GraphQL
+  icon: graphql
+  tags:
+    - back
+    - api
+- id: aws
+  title: Amazon AWS
+  icon: amazonaws
+  tags:
+    - devops
+    - back
+    - api
+    - deploy
+- id: paymentapi
+  title: Payment Gatways
+  icon: paypal
+  tags:
+    - back
+    - api
+- id: phpunit
+  title: PHPUnit
+  icon: php
+  tags:
+    - back
+    - test
+- id: codeception
+  title: Codeception
+  icon: codeceptjs
+  tags:
+    - back
+    - test
+- id: dusk
+  title: Laravel Dusk
+  icon: laravel
+  tags:
+    - back
+    - test
+- id: jest
+  title: Jest
+  icon: jest
+  tags:
+    - front
+    - back
+    - test
+- id: cypress
+  title: Cypress
+  icon: cypress
+  tags:
+    - front
+    - test
+- id: doctrine
+  title: Doctrine
+  icon: M17.969 8.086l-.012-.008-.152-.172L10.543.652a2.22 2.22 0 00-3.14 3.141l2.343 2.344a9.065 9.065 0 00-6.82 8.789A9.069 9.069 0 0012 24a9.069 9.069 0 009.074-9.074c0-2.73-1.199-5.176-3.105-6.84zm-.188 8.18l-5.242 5.246a1.61 1.61 0 01-2.277 0 1.62 1.62 0 010-2.285l2.488-2.489H7.363a1.61 1.61 0 110-3.223h5.383l-2.488-2.492a1.615 1.615 0 010-2.28 1.615 1.615 0 012.281 0l5.246 5.245a1.607 1.607 0 01-.004 2.278zm0 0
+  tags:
+    - back
+    - db
+- id: redis
+  title: Redis
+  icon: redis
+  tags:
+    - back
+    - db
+- id: mysql
+  title: MySQL
+  icon: mysql
+  tags:
+    - back
+    - db
+- id: postgresql
+  title: PostgresSQL
+  icon: postgresql
+  tags:
+    - back
+    - db
+- id: mongodb
+  title: MongoDB
+  icon: mongodb
+  tags:
+    - back
+    - db
+- id: elasticsearch
+  title: Elasticsearch
+  icon: elasticsearch
+  tags:
+    - back
+    - db
+- id: github
+  title: Github
+  icon: github
+  tags:
+    - devops
+    - git
+- id: gitlab
+  title: Gitlab
+  icon: gitlab
+  tags:
+    - devops
+    - git
+- id: bitbucket
+  title: Bitbucket
+  icon: bitbucket
+  tags:
+    - devops
+    - git
+- id: gcp
+  title: Google GCP
+  icon: google
+  tags:
+    - devops
+    - deploy
+- id: netlify
+  title: Netlify
+  icon: netlify
+  tags:
+    - devops
+    - front
+    - api
+    - deploy
+- id: wpengine
+  title: WP Engine
+  icon: wpengine
+  tags:
+    - devops
+    - deploy
+- id: jenkins
+  title: Jenkins
+  icon: jenkins
+  tags:
+    - devops
+    - ci
+- id: ghactions
+  title: Github Actions
+  icon: githubactions
+  tags:
+    - devops
+    - ci
+- id: circleci
+  title: CircleCI
+  icon: circleci
+  tags:
+    - devops
+    - ci
+- id: ubuntu
+  title: Ubuntu
+  icon: ubuntu
+  tags:
+    - soft
+    - env
+- id: windows
+  title: Windows
+  icon: windows
+  tags:
+    - soft
+    - env
+- id: git
+  title: Git
+  icon: git
+  tags:
+    - devops
+    - tool
+- id: docker
+  title: Docker
+  icon: docker
+  tags:
+    - devops
+    - soft
+    - tool
+    - env
+- id: kubernetes
+  title: Kubernetes
+  icon: kubernetes
+  tags:
+    - devops
+    - tool
+- id: terraform
+  title: Terraform
+  icon: terraform
+  tags:
+    - devops
+    - tool
+- id: vagrant
+  title: Vagrant
+  icon: vagrant
+  tags:
+    - devops
+    - tool
+- id: fish
+  title: Fish Shell
+  icon: powershell
+  tags:
+    - soft
+    - env
+- id: vim
+  title: VIM
+  icon: vim
+  tags:
+    - soft
+    - dev
+- id: phpstorm
+  title: PhpStorm
+  icon: phpstorm
+  tags:
+    - soft
+    - dev
+- id: webstorm
+  title: WebStorm
+  icon: webstorm
+  tags:
+    - soft
+    - dev
+- id: postman
+  title: Postman
+  icon: postman
+  tags:
+    - soft
+    - dev
+- id: chrome
+  title: DevTools
+  icon: googlechrome
+  tags:
+    - soft
+    - dev
+- id: notion
+  title: Notion
+  icon: notion
+  tags:
+    - soft
+    - prod
+- id: jira
+  title: Jira
+  icon: jirasoftware
+  tags:
+    - soft
+    - prod
+- id: slack
+  title: Slack
+  icon: slack
+  tags:
+    - soft
+    - prod
+- id: skype
+  title: Skype
+  icon: skype
+  tags:
+    - soft
+    - prod
+- id: webpack
+  title: Webpack
+  icon: webpack
+  tags:
+    - devops
+    - build
+- id: babel
+  title: Babel
+  icon: babel
+  tags:
+    - devops
+    - build
+- id: gulp
+  title: Gulp
+  icon: gulp
+  tags:
+    - devops
+    - build
+- id: postcss
+  title: PostCSS
+  icon: postcss
+  tags:
+    - devops
+    - build
+- id: composer
+  title: Composer
+  icon: cplusplus
+  tags:
+    - devops
+    - pkgm
+- id: npm
+  title: NPM
+  icon: npm
+  tags:
+    - devops
+    - pkgm
+- id: pnpm
+  title: PNPM
+  icon: pnpm
+  tags:
+    - devops
+    - pkgm
+- id: yarn
+  title: Yarn
+  icon: yarn
+  tags:
+    - devops
+    - pkgm
