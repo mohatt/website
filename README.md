@@ -58,8 +58,8 @@ $ pnpm serve # Preview the site as it will appear once deployed
 [ci-dev-img]: https://img.shields.io/github/workflow/status/mohatt/website/CI/development?logo=github&label=development
 [ci-prod-url]: https://github.com/mohatt/website/tree/production
 [ci-prod-img]: https://img.shields.io/github/workflow/status/mohatt/website/CI/production?logo=github&label=production
-[gatsby-url]: https://github.com/gatsbyjs/gatsby/blob/gatsby%403.7.2/packages/gatsby/CHANGELOG.md
-[gatsby-img]: https://img.shields.io/badge/gatsby-v3.7-blueviolet.svg?logo=gatsby
+[gatsby-url]: https://github.com/gatsbyjs/gatsby/blob/gatsby%403.11.1/packages/gatsby/CHANGELOG.md
+[gatsby-img]: https://img.shields.io/badge/gatsby-v3.11-blueviolet.svg?logo=gatsby
 [website-url]: https://mohatt.web.app
 [website-img]: https://img.shields.io/website?logo=statuspal&url=https%3A%2F%2Fmohatt.web.app
 [s-headers-url]: https://securityheaders.com/?followRedirects=on&q=mohatt.web.app

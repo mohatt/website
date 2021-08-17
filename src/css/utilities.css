@@ -1,10 +1,10 @@
 @layer utilities {
   .text-shadow {
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
-  }
 
-  .dark .text-shadow {
-    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+    @nest .dark & {
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+    }
   }
 
   .text-shadow-none {
@@ -23,5 +23,32 @@
 
   .cursor-zoom {
     cursor: zoom-in;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .columns-2 {
+    columns: 2;
+    column-gap: 1rem;
+
+    & > * {
+      display: inline-block;
+    }
+  }
+
+  .list-style-diamond {
+    list-style-type: '❖';
+    padding-left: 0.65rem;
+
+    & > li {
+      padding-left: 0.25rem;
+    }
   }
 }

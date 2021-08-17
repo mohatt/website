@@ -1,6 +1,6 @@
 export const skillTags = {
-  back: 'Backend',
-  front: 'Frontend',
+  back: 'Back-end Development',
+  front: 'Front-end Development',
   devops: 'DevOps',
   soft: 'Software',
   lang: 'Languages',
@@ -18,6 +18,43 @@ export const skillTags = {
   pkgm: 'Package Managers',
   git: 'Git Hosting',
   dev: 'Development',
-  comm: 'Communication',
+  prod: 'Productivity',
   env: 'Environment',
+}
+
+export const skillTagGroups = createSkillTagGroups({
+  backend: {
+    tag: 'back',
+    desc: 'My main area of expertise, nearly every project I have launched in the past had the back-end done by me. My stack usually involves PHP and/or Node.js with the CMS/Framework of choice.',
+    tags: ['lang', 'frame', 'cms', 'db', 'api', 'test']
+  },
+  frontend: {
+    tag: 'front',
+    desc: 'I write standards-compliant front-end code that powers web user interfaces. With a particular  focus on responsive design, semantic markup, accessibility, and performance.',
+    tags: ['lang', 'frame', 'ui', 'api', 'lib', 'test']
+  },
+  devops: {
+    tag: 'devops',
+    desc: 'I use these tools and cloud services to setup integrated infrastructures and CI/CD pipelines that meet the project needs.',
+    tags: ['tool', 'deploy', 'ci', 'build', 'pkgm', 'git']
+  },
+  software: {
+    tag: 'soft',
+    desc: 'My local web development setup.',
+    tags: ['dev', 'env', 'prod']
+  },
+})
+
+function createSkillTagGroups(groups) {
+  return Object.keys(groups).map(id => {
+    const group = groups[id]
+    return Object.assign(group, {
+      id,
+      title: skillTags[group.tag],
+      tags: group.tags.map(id => ({
+        id,
+        title: skillTags[id]
+      }))
+    })
+  })
 }

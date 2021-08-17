@@ -5,11 +5,11 @@
   }
 
   .link {
-    @apply underline-dotted hover:text-primary;
+    @apply underline-dotted hover:text-primary cursor-pointer;
   }
 
   .link-primary {
-    @apply text-primary hover:underline-dotted;
+    @apply text-primary hover:underline-dotted cursor-pointer;
   }
 
   .overflow-grad {

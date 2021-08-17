@@ -8,5 +8,5 @@ export const $document = $window && $window.document
 export { site } from './site'
 export { themes, colors as themeColors, screens as themeScreens } from './tailwind'
 export { icons } from './icons'
-export { platformHandles } from './platform-handles'
-export { skillTags } from './skill-tags'
+export { networkHandles } from './network-handles'
+export { skillTags, skillTagGroups } from './skill-tags'

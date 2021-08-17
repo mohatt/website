@@ -1,4 +1,4 @@
 export { default as cx } from 'clsx'
 
-export { PlatformHandle, createPlatformHandle } from './PlatformHandle'
+export { NetworkHandle, createNetworkHandle } from './NetworkHandle'
 export { ReactMap, createReactMap } from './ReactMap'

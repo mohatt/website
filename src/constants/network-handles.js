@@ -1,4 +1,9 @@
-export const platformHandles = {
+export const networkHandles = {
+  phone: {
+    title: 'Phone',
+    icon: 'phone',
+    href: 'tel:%s',
+  },
   email: {
     title: 'Email',
     icon: 'email',
@@ -22,17 +27,22 @@ export const platformHandles = {
   twitter: {
     title: 'Twitter Profile',
     icon: 'twitter',
-    href: 'https://www.twitter.com/%s',
+    href: 'https://twitter.com/%s',
   },
   linkedin: {
     title: 'Linkedin Profile',
     icon: 'linkedin',
-    href: 'https://www.linkedin.com/in/%s',
+    href: 'https://linkedin.com/in/%s',
   },
   npm: {
     title: 'NPM Package',
     icon: 'npm',
-    href: 'https://www.npmjs.com/package/%s',
+    href: 'https://npmjs.com/package/%s',
+  },
+  stackoverflow: {
+    title: 'Stack Overflow Profile',
+    icon: 'stackoverflow',
+    href: 'https://stackoverflow.com/users/%s',
   },
   packagist: {
     title: 'Composer Package',

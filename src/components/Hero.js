@@ -4,7 +4,7 @@ import { Button, ButtonGroup, Section } from '.'
 export default function Hero({ children, title, actions, className }) {
   return (
     <Section className={className}>
-      <header className='mt-8 mb-12 max-w-lg'>
+      <header className='mb-10 max-w-lg'>
         <h2 className='italic text-3xl leading-relaxed text-typo'>{title}</h2>
         <div className='mt-8 text-2xl leading-normal text-typo-dim'>{children}</div>
       </header>

@@ -3,7 +3,7 @@ import { generatePath, routeExists } from 'gatsby-plugin-advanced-pages'
 import { site, $window, $document } from '../../constants'
 import { cx } from '../../util'
 import { usePath } from '../../hooks'
-import { Link } from '..'
+import { Link } from '../../components'
 
 function SubMenu({ items, hashPath, currentPath, onClick }) {
   const hashTargets = useRef([])
@@ -71,7 +71,7 @@ function SubMenu({ items, hashPath, currentPath, onClick }) {
   )
 }
 
-function Menu({ setMenuOpen, className }) {
+function Menu({ closeMenu, className }) {
   const [currentPath] = usePath()
   return (
     <nav className={className}>
@@ -87,7 +87,7 @@ function Menu({ setMenuOpen, className }) {
             <li key={i}>
               <Link
                 to={to}
-                onClick={setMenuOpen}
+                onClick={closeMenu}
                 className='block mb-8 sm:mb-6 hover:text-typo'
                 children={label}
                 {...external ? { external } : {
@@ -97,7 +97,7 @@ function Menu({ setMenuOpen, className }) {
                 }}
               />
               {isActive && (
-                <SubMenu items={items} hashPath={isActive} currentPath={currentPath} onClick={setMenuOpen} />
+                <SubMenu items={items} hashPath={isActive} currentPath={currentPath} onClick={closeMenu} />
               )}
             </li>
           )

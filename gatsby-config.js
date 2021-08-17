@@ -63,7 +63,7 @@ module.exports = {
         postcssOptions: require('./config/postcss'),
       },
     },
-    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-react-helmet-async',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-preload-fonts',
     {

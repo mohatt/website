@@ -15,9 +15,8 @@ export default class ProjectsIndex extends Page {
       <>
         <Section spacing={false}>
           <Heading title={title} primary>
-            Since beginning my journey as a freelance developer, I’ve done remote
-            work for agencies, consulted for startups, and collaborated with talented people to
-            create web products for both business and consumer use.
+            Since beginning my journey, I’ve done remote work for agencies, consulted for startups, and collaborated with talented people
+            to create web products for both business and consumer use.
           </Heading>
         </Section>
         {groups.map(({ id, totalCount, nodes }) => {
@@ -49,7 +48,7 @@ export const query = graphql`
       title
     }
 
-    projects: allProject(sort: { fields: [priority, title] }, filter: { draft: { ne: true } }) {
+    projects: allProject(sort: { fields: [priority, started], order: [ASC, DESC] }, filter: { draft: { ne: true } }) {
       group(field: categories___id, limit: $limit) {
         id: fieldValue
         nodes {

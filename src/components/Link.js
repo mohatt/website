@@ -8,6 +8,7 @@ function OutboundLink({ linkId, ...props }) {
 
   return (
     <a
+      rel='noreferrer nofollow noopener'
       {...props}
       onClick={e => {
         if (props.onClick) {

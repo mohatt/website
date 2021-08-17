@@ -35,7 +35,7 @@ try {
   }
 } catch (e) {}
 `
-  setHtmlAttributes({ className: createThemeState().class})
+  setHtmlAttributes({ className: createThemeState().class })
   setHeadComponents([
     <script key='theme-setup' dangerouslySetInnerHTML={{ __html }} />
   ])

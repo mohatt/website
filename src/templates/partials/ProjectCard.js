@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { PlatformHandle } from '../../util'
+import { NetworkHandle } from '../../util'
 import { Button, Link, Pagination } from '../../components'
 import { ProjectCategory, ProjectSkill } from '.'
 
@@ -23,7 +23,7 @@ function ProjectCard({ project, skill, category }) {
               alt={project.title}
             />
           </Link>
-          <PlatformHandle.Map data={project.handles} limit={2}>
+          <NetworkHandle.Map data={project.handles} limit={2}>
             {items => (
               <div className='absolute -bottom-4 right-4'>
                 {items}
@@ -39,7 +39,7 @@ function ProjectCard({ project, skill, category }) {
                 children={<Icon className='h-5' />}
               />
             )}
-          </PlatformHandle.Map>
+          </NetworkHandle.Map>
           <ProjectCategory.Map data={project.categories} exclude={category} limit={2} color='primary'>
             {items => (
               <div className='absolute -top-4 left-4'>

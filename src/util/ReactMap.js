@@ -1,7 +1,8 @@
-export function createReactMap(render) {
-  function ReactMap({ data, limit, children, ...props }) {
+export function createReactMap(render, defaults = {}) {
+  function ReactMap(props) {
+    const { data, children, limit, ...itemProps } = Object.assign({}, defaults, props)
     const [wrapper, renderer] = Array.isArray(children) ? children : [children]
-    props.children = renderer
+    itemProps.children = renderer
 
     let i = 0
     const items = []
@@ -10,7 +11,7 @@ export function createReactMap(render) {
         break
       }
 
-      item = render(item, props, i)
+      item = render(item, itemProps, i)
       if (item) {
         i = items.push(item)
       }

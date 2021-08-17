@@ -1,4 +1,5 @@
 import React from 'react'
+import './src/css/index.css'
 
 /**
  * We use this to prevent re-mounting Layout component on every route change.
@@ -9,14 +10,14 @@ import React from 'react'
 export function wrapPageElement({ element, props: { location } }) {
   const PageComponent = element.type
   if (PageComponent) {
-    // Search for layout in page component type
-    // Fallback to the default layout defined in parent component (if implemented)
-    const { Layout } = PageComponent || Object.getPrototypeOf(PageComponent)
+    // Search for Layout and Providers in page component type
+    // Fallback to defaults defined in parent component (if implemented)
+    const { Layout, Providers } = PageComponent || Object.getPrototypeOf(PageComponent)
     if (Layout) {
       return (
-        <Layout.Outer location={location}>
-          <Layout>{element}</Layout>
-        </Layout.Outer>
+        <Providers Layout={Layout} location={location}>
+          {element}
+        </Providers>
       )
     }
   }

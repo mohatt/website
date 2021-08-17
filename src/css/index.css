@@ -2,8 +2,13 @@
  * Tailwind core styles
  */
 @import 'tailwindcss/base';
-@import 'tailwindcss/utilities';
 @import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/**
+ * Base classes
+ */
+@import 'base.css';
 
 /**
  * Self-hosted fonts
@@ -11,14 +16,15 @@
 @import 'fonts.css';
 
 /**
- * Custom utilities
- */
-@import 'utilities.css';
-
-/**
  * Custom components
  */
 @import 'components.css';
+@import '../components/index.css';
+
+/**
+ * Custom utilities
+ */
+@import 'utilities.css';
 
 /**
  * Theme classes

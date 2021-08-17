@@ -7,7 +7,7 @@ export default function useSiteMetadata() {
         site {
           siteMetadata {
             deployment {
-              date
+              date(formatString: "YYYY-MM-DD")
               config {
                 url
                 analytics

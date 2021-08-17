@@ -1,0 +1,101 @@
+@layer base {
+  html[data-layout=default] {
+    @apply text-[11.5px] sm:text-[16px] 3xl:text-[17.5px];
+  }
+
+  html[data-layout=print] {
+    @apply text-[13px];
+  }
+
+  @screen print {
+    @page {
+      margin: 0;
+      size: letter;
+    }
+
+    body {
+      color-adjust: exact;
+    }
+  }
+
+  body {
+    @apply font-body font-normal antialiased text-left;
+    text-underline-position: under;
+    text-underline-offset: 0.1em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-medium;
+
+    @nest html[data-layout=print] & {
+      /* @apply is not supported within @nest */
+      & {
+        @apply font-body uppercase;
+      }
+    }
+  }
+
+  #header {
+    & #avatar {
+      background-image: url('../images/avatar/avatar.png');
+
+      &:hover {
+        @apply bg-secondary;
+        background-image: url('../images/avatar/avatar-smile.png');
+      }
+    }
+
+    & ul > li > * {
+      @apply border-2 border-primary;
+
+      @nest html[data-layout=default] & {
+        & {
+          @apply lg:border-4;
+          box-shadow: 0 0.2rem 0 0.09rem theme('colors.typo');
+        }
+      }
+    }
+  }
+
+  #menu {
+    box-shadow: rgba(0, 0, 0, 0.1) -30px 0 20px -20px inset;
+
+    @nest .dark & {
+      box-shadow: rgba(0, 0, 0, 0.5) -30px 0 20px -20px inset;
+    }
+
+    & nav {
+      & a,
+      & a::before,
+      & a::after {
+        @apply inline-block transition-all duration-200;
+      }
+
+      & > ul > li {
+        & > a::before {
+          @apply content-['<'] mr-0.5 translate-x-2 opacity-0;
+        }
+
+        & > a::after {
+          @apply content-['/>'] ml-1 -translate-x-2 opacity-0;
+        }
+
+        & li a::after {
+          @apply content-['\2000\266F'] ml-1;
+        }
+
+        & > a.active::before,
+        & > a.active::after,
+        & > a:hover::before,
+        & > a:hover::after {
+          @apply translate-x-0 opacity-100;
+        }
+      }
+    }
+  }
+}

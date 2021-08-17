@@ -8,7 +8,6 @@ exports.themes = {
         accent: '#222',
         typo: '#f7f3e3',
         'typo-dim': '#9a937c',
-        'typo-dimmer': '#7c8171',
       },
       true,
     ],
@@ -20,9 +19,41 @@ exports.themes = {
         accent: '#222',
         typo: '#f7f3e3',
         'typo-dim': '#7c8d9a',
-        'typo-dimmer': '#717c81',
       },
       true,
+    ],
+    [
+      'eclipse',
+      {
+        primary: '#f98376',
+        secondary: '#fff',
+        accent: '#f7f6f3',
+        typo: '#3d3d3d',
+        'typo-dim': '#928763',
+      },
+      false,
+    ],
+    [
+      'moonlight',
+      {
+        primary: '#75a1fa',
+        secondary: '#fff',
+        accent: '#f3f5f7',
+        typo: '#3d3d3d',
+        'typo-dim': '#73819d',
+      },
+      false,
+    ],
+    [
+      'trajan',
+      {
+        primary: '#667a8d',
+        secondary: '#f8f1e9',
+        accent: '#e8e4e0',
+        typo: '#342d26',
+        'typo-dim': '#969089',
+      },
+      false,
     ],
   ]),
   edges: createEdgesThemes(['default', 'xl', 'md', 'sm']),
@@ -40,6 +71,7 @@ exports.colors = {
 }
 
 exports.screens = {
+  print: { 'raw': 'print' },
   xs: '410px',
   sm: '640px',
   md: '768px',
@@ -52,10 +84,10 @@ exports.screens = {
 
 function createColorThemes(themes) {
   return themes.map(([id, colors, dark]) => ({
-    id, colors, dark, class: 'color-theme-' + id + (dark ? ' dark' : '')
+    id, colors, dark, class: 'ct-' + id + (dark ? ' dark' : '')
   }))
 }
 
 function createEdgesThemes(themes) {
-  return themes.map(id => ({ id, class: 'edges-theme-' + id }))
+  return themes.map(id => ({ id, class: 'et-' + id }))
 }

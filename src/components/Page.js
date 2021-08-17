@@ -1,11 +1,15 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { site } from '../constants'
+import { cx } from '../util'
 import { useAnalyticsCallback, useSiteMetadata } from '../hooks'
-import { Layout, Section } from '.'
+import Providers from '../providers'
+import { LayoutContext } from '../providers/layout'
+import { DefaultLayout } from '../layouts'
+import { Section } from '.'
 import socialBanner from '../images/social-banner.png'
 
-function PageHelmet({ title = '', description, noIndex, image }) {
+function PageHelmet({ page: { context, title = '', description, noIndex, image } }) {
   const { deployment } = useSiteMetadata()
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
@@ -19,6 +23,7 @@ function PageHelmet({ title = '', description, noIndex, image }) {
   return (
     <Helmet
       title={seoTitle}
+      htmlAttributes={{ 'data-layout': context.id }}
       meta={[
         noIndex === true
           ? { name: 'robots', content: 'noindex' }
@@ -28,25 +33,6 @@ function PageHelmet({ title = '', description, noIndex, image }) {
         { name: 'og:image', content: deployment.config.url + ogImage },
       ]}
     />
-  )
-}
-
-function PageComponentSnippet({ $code, $comp = 'undefined', ...props }) {
-  let className = 'font-display italic'
-  if (!$code) {
-    $comp = $comp.replace(/(?:^[^A-Za-z]*|[\W_]+)(.)?/g, (_, c) => c ? c.toUpperCase() : '')
-    $code = `<${$comp} ${Object.keys(props)
-      .filter(a => props[a] !== undefined)
-      .map(a => `${a}=${JSON.stringify(props[a])} `)
-      .join('')
-    }/>`
-  } else {
-    className += ' text-lg'
-  }
-  return (
-    <Section spacing={false} className={className}>
-      {$code}
-    </Section>
   )
 }
 
@@ -86,10 +72,24 @@ export default class Page extends React.Component {
   snippet = {}
 
   /**
+   * Page actions
+   * @type {JSX.Element}
+   */
+  actions
+
+  /**
    * Default layout
    * @type Function
    */
-  static Layout = Layout
+  static Layout = DefaultLayout
+
+  /**
+   * Default providers
+   * @type Function
+   */
+  static Providers = Providers
+
+  static contextType = LayoutContext
 
   /**
    * Should be implemented by child Page components
@@ -99,29 +99,40 @@ export default class Page extends React.Component {
     return null
   }
 
-  /**
-   * Renders Page view template
-   * @return {JSX.Element}
-   */
-  render() {
-    const content = this.view()
-    if (typeof this.snippet === 'string') {
-      this.snippet = {
-        $code: this.snippet,
-      }
-    } else if (!this.snippet.$comp) {
-      this.snippet.$comp = this.title
+  preView() {
+    let { snippet, actions } = this
+    const isText = typeof snippet === 'string'
+    if (!isText) {
+      let { $comp = this.title || 'undefined', ...props } = snippet
+      $comp = $comp.replace(/(?:^[^A-Za-z]*|[\W_]+)(.)?/g, (_, c) => c ? c.toUpperCase() : '')
+      snippet = `<${$comp} ${Object.keys(props)
+        .filter(a => props[a] !== undefined)
+        .map(a => `${a}=${JSON.stringify(props[a])} `)
+        .join('')
+      }/>`
     }
     return (
+      <Section spacing={false} className={cx('flex font-display italic mb-4', isText && 'text-lg')}>
+        <div className='flex-grow'>{snippet}</div>
+        {actions && (
+          <div className='text-right'>
+            {actions}
+          </div>
+        )}
+      </Section>
+    )
+  }
+
+  render() {
+    const { Layout, isPrint } = this.context
+    const page = this.view()
+    return (
       <>
-        <PageHelmet
-          title={this.title}
-          description={this.description}
-          noIndex={this.noIndex}
-          image={this.image}
-        />
-        <PageComponentSnippet {...this.snippet} />
-        {content}
+        <PageHelmet page={this} />
+        <Layout layout={this.context}>
+          {!isPrint && this.preView()}
+          {page}
+        </Layout>
       </>
     )
   }

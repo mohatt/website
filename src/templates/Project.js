@@ -2,9 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { themeScreens } from '../constants'
-import { cx, PlatformHandle } from '../util'
+import { cx, NetworkHandle } from '../util'
 import { useLightbox } from '../hooks'
-import { Page, Heading, Link, Markdown, Section, Separator } from '../components'
+import { Page, Heading, Link, Markdown, Section } from '../components'
 import { ProjectCategory, ProjectSkill, Testimonial } from './partials'
 
 const statuses = {
@@ -15,6 +15,7 @@ const statuses = {
 
 function Gallery({ screens }) {
   const [lightbox, styles] = useLightbox({
+    showHideAnimationType: 'none',
     dataSource: screens.map(({ org, full, thumb }) => ({
       w: org.width,
       h: org.height,
@@ -76,44 +77,42 @@ export default class Project extends Page {
     project.screens.forEach(s => s && screens.push(s.childImageSharp))
 
     return (
-      <Section id={project.categories[0]?.id}>
-        <Heading title={this.title} primary>
-          {this.description}
-        </Heading>
-        {screens.length && <Gallery screens={screens}/>}
-        <div className='grid md:grid-cols-3 gap-x-4 gap-y-8 mb-12'>
-          <Metadata title='Project Name'>{project.title}</Metadata>
-          <Metadata title='Start Date'>{project.started}</Metadata>
-          <Metadata title='Status'>{statuses[project.status] || statuses.CMP}</Metadata>
-          <ProjectSkill.Map data={project.skills}>
-            {items => <Metadata title='Skills'>{items}</Metadata>}
-          </ProjectSkill.Map>
-          <ProjectCategory.Map data={project.categories}>
-            {items => <Metadata title='Categories'>{items}</Metadata>}
-          </ProjectCategory.Map>
-          <PlatformHandle.Map data={project.handles}>
-            {items => <Metadata title='Links'>{items}</Metadata>}
-            {({ title, href, Icon }) => (
-              <Link to={href} external='project_link' className='link mr-4'>
-                <Icon className='h-5 mr-2' />
-                <span>{title}</span>
-              </Link>
-            )}
-          </PlatformHandle.Map>
-        </div>
-        <div className='xl:max-w-3xl'>
-          <Testimonial.Map data={project.testimonials} limit={1} className='text-primary my-8'>
-            {items => (
-              <div className='mb-12'>
-                <Separator />
-                {items}
-                <Separator />
-              </div>
-            )}
-          </Testimonial.Map>
-          <Markdown>{project.body}</Markdown>
-        </div>
-      </Section>
+      <>
+        <Section id={project.categories[0]?.id}>
+          <Heading title={this.title} primary>
+            {this.description}
+          </Heading>
+          {screens.length && <Gallery screens={screens}/>}
+          <div className='grid md:grid-cols-3 gap-x-4 gap-y-8'>
+            <Metadata title='Project Name'>{project.title}</Metadata>
+            <Metadata title='Start Date'>{project.started}</Metadata>
+            <Metadata title='Status'>{statuses[project.status] || statuses.CMP}</Metadata>
+            <ProjectSkill.Map data={project.skills}>
+              {items => <Metadata title='Skills'>{items}</Metadata>}
+            </ProjectSkill.Map>
+            <ProjectCategory.Map data={project.categories}>
+              {items => <Metadata title='Categories'>{items}</Metadata>}
+            </ProjectCategory.Map>
+            <NetworkHandle.Map data={project.handles}>
+              {items => <Metadata title='Links'>{items}</Metadata>}
+              {({ title, href, Icon }) => (
+                <Link to={href} external='project_link' className='link mr-4'>
+                  <Icon className='w-5 mr-1' />
+                  <span>{title}</span>
+                </Link>
+              )}
+            </NetworkHandle.Map>
+          </div>
+        </Section>
+        <Testimonial.Map data={project.testimonials} limit={1}>
+          {items => <Section fill><div className='xl:max-w-3xl'>{items}</div></Section>}
+        </Testimonial.Map>
+        <Section>
+          <div className='xl:max-w-3xl'>
+            <Markdown>{project.body}</Markdown>
+          </div>
+        </Section>
+      </>
     )
   }
 }

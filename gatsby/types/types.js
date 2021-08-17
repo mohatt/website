@@ -65,6 +65,9 @@ exports.create = [
       icon: {
         type: 'String',
         resolve (source) {
+          if (source.icon.length >= 64) {
+            return source.icon
+          }
           try {
             return require(`simple-icons/icons/${source.icon}.js`).path
           } catch (e) {
