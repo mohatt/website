@@ -5,6 +5,7 @@ module.exports = {
   reporting: false,
   ignore: [
     'webpack.report.html',
+    'google7a76cf0ab3da37d0.html',
   ],
   purgecss: {
     enabled: true,
