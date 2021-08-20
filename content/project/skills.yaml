@@ -308,9 +308,9 @@
   tags:
     - devops
     - git
-- id: gcp
-  title: Google GCP
-  icon: google
+- id: heroku
+  title: Heroku
+  icon: heroku
   tags:
     - devops
     - deploy
@@ -352,12 +352,6 @@
   tags:
     - soft
     - env
-- id: windows
-  title: Windows
-  icon: windows
-  tags:
-    - soft
-    - env
 - id: git
   title: Git
   icon: git
@@ -390,18 +384,18 @@
   tags:
     - devops
     - tool
+- id: vim
+  title: VIM
+  icon: vim
+  tags:
+    - soft
+    - env
 - id: fish
   title: Fish Shell
   icon: powershell
   tags:
     - soft
     - env
-- id: vim
-  title: VIM
-  icon: vim
-  tags:
-    - soft
-    - dev
 - id: phpstorm
   title: PhpStorm
   icon: phpstorm

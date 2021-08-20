@@ -25,7 +25,7 @@ export const skillTags = {
 export const skillTagGroups = createSkillTagGroups({
   backend: {
     tag: 'back',
-    desc: 'My main area of expertise, nearly every project I have launched in the past had the back-end done by me. My stack usually involves PHP and/or Node.js with the CMS/Framework of choice.',
+    desc: 'This is my main area of expertise. My backend stack usually involves PHP and/or Node.js with the CMS/Framework of choice.',
     tags: ['lang', 'frame', 'cms', 'db', 'api', 'test']
   },
   frontend: {
@@ -40,7 +40,7 @@ export const skillTagGroups = createSkillTagGroups({
   },
   software: {
     tag: 'soft',
-    desc: 'My local web development setup.',
+    desc: 'Software applications I use in everyday work.',
     tags: ['dev', 'env', 'prod']
   },
 })

@@ -10,56 +10,57 @@ import { ProjectSkill, Testimonial } from './partials'
 
 const experience = [
   {
-    title: 'Freelance Web Developer',
-    at: 'Self Employed',
-    time: '2015 — Present',
+    title: 'Full Stack Web Developer',
+    at: 'Freelance (Self employed)',
+    time: '2014 — Present',
     desc: [
       'Working on projects of different scales — from small micro-sites to larger web applications, using different technology stacks.',
-      'Designing and implementing infrastructure solutions using modern technologies, as well as delivering consultations, products recommendation, and technical support to IT Lands’ clients.',
-      'Developed new procedures for requirements gathering, needs analysis, testing, ci/cd pipelines and documentation to strengthen quality and functionality of business-critical applications.',
-      'Built reusable code and libraries to accelerate development cycles.',
-      'Developed a team management module for a CRM system in PHP that helped managers to assign members and keep track of their performance by using comprehensive dashboards and reports.',
+      'Designing and implementing modern infrastructure solutions, as well as delivering consultations, products recommendation, and technical support to IT Lands’ clients.',
+      'Developed multiple serverless web apps using React, GraphQL, and AWS APIs.',
+      'Developed a team management module for a CRM system in PHP that helped managers to assign members and keep track of their performance.',
+      'Built reusable code and libraries for future use to accelerate development cycles.',
     ]
   },
   {
-    title: 'Full Stack Developer',
+    title: 'Senior PHP/Wordpress Developer',
     at: 'Point Hacks',
     url: 'https://pointhacks.com.au',
     time: '2016 — 2018',
     desc: [
       'Developed and maintained Point Hacks main website as well as their REST API service.',
       'Developed new user-facing features and improved existing one.',
-      'Worked with WordPress as a headless CMS using GraphQL and REST APIs.',
+      'Worked with WordPress as a headless CMS using WP REST API.',
       'Implemented Redis server-assisted client side caching to improve performance.',
       'Used Nginx for load balancing, processing a large number of requests up to 30,000 simultaneously.',
     ]
   },
   {
-    title: 'Full Stack Developer',
+    title: 'Full Stack Web Developer',
     at: 'Dimentians',
     url: 'https://dimentians.com',
     time: '2014 — 2016',
     desc: [
-      'Maintained ongoing web-based projects and launched new ones as part of the development team.',
-      'Built a number of web apps using PHP and Symfony framework.',
+      'Maintained ongoing web-based projects and launched new ones as part of an Agile team.',
+      'Developed multiple web apps using PHP and Symfony framework.',
       'Developed several internal apps and microservices built on PHP backends.',
       'Developed custom Wordpress plugins and themes and resolved configuration and updates issues.',
       'Translated wireframes, UX flows and content into functional and engaging interfaces.',
     ]
   },
   {
-    title: 'Web Developer & Tech Lead',
+    title: 'Lead PHP Developer',
     at: 'Axis Digital Solutions',
     url: 'https://axsisnet.com/?lang=en',
     time: '2012 — 2014',
     desc: [
-      'Led a small team of developers and designers.',
-      'Developed and maintained websites for dozens of clients, ranging from CMS-built to bespoke websites from the ground up.',
-      'Attended client meetings to discuss their business goals and milestones, maintained hosting environments.',
+      'Led project development together with an intern and a seasoned designer.',
+      'Developed and maintained websites for multiple clients, ranging from CMS-built to custom-built from scratch.',
+      'Developed and maintained a web service for storing data from social networks.',
+      'Implemented and maintained LAMP stack on multiple hosting environments.',
     ]
   },
   {
-    title: 'Web Developer',
+    title: 'PHP Backend Developer',
     at: 'Queen Tech Solutions',
     url: 'https://queentechsolutions.net',
     time: '2010 — 2012',
@@ -82,7 +83,7 @@ function ProjectsCategoryLink({ id, outbound }) {
     category: id
   })
   const url = deployment.config.url + path
-  return <Link className='link' to={outbound ? url : path} external={outbound}>{stripUrlProto(url)}</Link>
+  return <Link className='link' to={url} external>{stripUrlProto(url)}</Link>
 }
 
 export default class Resume extends Page {
@@ -111,10 +112,10 @@ export default class Resume extends Page {
         </Section>
         <Section spacing={false}>
           <Heading title='About'>
-            Full stack web developer with a strong focus on PHP, TypeScript and Node.js.
-            I’ve been doing web development stuff for over 8+ years now, that includes full time and freelance work.
+            Full stack web developer with a strong focus on PHP, JavaScript, and Node.js.
+            I’ve been doing web development stuff for over 8+ years now, including full-time and freelance work.
             I live with a passion for software engineering, particularly in the world of architecture, functional development, and enhancing developer productivity.
-            I enjoy working on new frameworks and libraries on my own time and have a fairly active Github profile.
+            I embrace using open source technologies to deliver high quality software products and have a fairly active Github profile.
           </Heading>
         </Section>
         <Section id='experience'>
@@ -144,12 +145,13 @@ export default class Resume extends Page {
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
             <div>
               <h3 className='font-body uppercase text-lg text-primary'>Soft Skills</h3>
-              <ul className='list-style-diamond ml-2 mt-2 space-y-1'>
+              <ul className={cx('grid list-style-diamond ml-2 mt-2 gap-2', isPrint && 'grid-cols-3')}>
                 <li>Problem Solving</li>
                 <li>Decision-making</li>
                 <li>Systematic Thinking</li>
                 <li>Organizational Skills</li>
-                <li>Brainstorming</li>
+                <li>Test Driven Development</li>
+                <li>Communication</li>
               </ul>
             </div>
             {skillTagGroups.map(({ id, title, desc, tag, tags }) => (
@@ -178,25 +180,25 @@ export default class Resume extends Page {
             ))}
           </div>
         </Section>
-        <Section id='education'>
+        <Section id='education' className='page-break'>
           <Heading title='Education'>
-            Self-taught, highly motivated individual with a drive to learn new things.
+            Self-taught, highly motivated professional who likes to introduce value and leave impact wherever I am.
           </Heading>
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
-            <div>
-              <h3 className='font-body uppercase text-lg text-primary'>
-                <Link className='link' to='https://www.edx.org/course/introduction-computer-science-harvardx-cs50x' external='resume_edu'>
-                  CS50 — HarvardX
-                </Link>
-              </h3>
-              <div>Online education programme of Harvard University</div>
-              <div>C | Python | SQL | Algorithms | Data Structures</div>
-              <div>2016</div>
-            </div>
             <div>
               <h3 className='font-body uppercase text-lg text-primary'>Misr University for Science and Technology</h3>
               <div>Bachelor's degree, Physical Therapy</div>
               <div>2010 – 2016</div>
+            </div>
+            <div>
+              <h3 className='font-body uppercase text-lg text-primary'>
+                <Link className='link' to='https://www.edx.org/course/introduction-computer-science-harvardx-cs50x' external='resume_edu'>
+                  CS50x — HarvardX
+                </Link>
+              </h3>
+              <div>Online education programme of Harvard University</div>
+              <div>C | Python | SQL | Algorithms | Data Structures</div>
+              <div>2016 – 2017</div>
             </div>
             <div>
               <h3 className='font-body uppercase text-lg text-primary'>Other relevant course work</h3>
@@ -206,27 +208,24 @@ export default class Resume extends Page {
             </div>
           </div>
         </Section>
-        <Section id='projects'>
-          <Heading title='Projects'>Links to some of my past work.</Heading>
-          <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
-            <div>
-              <h3 className='font-body uppercase text-lg text-primary'>Open Source</h3>
-              <div><ProjectsCategoryLink id='open-source' outbound={isPrint} /></div>
-            </div>
-            <div>
-              <h3 className='font-body uppercase text-lg text-primary'>Portfolio</h3>
-              <div><ProjectsCategoryLink id='portfolio' outbound={isPrint} /></div>
-            </div>
-            <div>
-              <h3 className='font-body uppercase text-lg text-primary'>Legacy Projects</h3>
-              <div>Here you will find some legacy PHP projects I have worked on in my early days.</div>
-              <Link className='link' to='https://phpclasses.org/browse/author/560033.html'>
-                phpclasses.org/browse/author/560033.html
-              </Link>
-            </div>
-          </div>
-        </Section>
         {isPrint && (
+          <>
+          <Section>
+            <Heading title='Portfolio'>
+              Links to some of my work can be found on my portfolio website.
+              <div className='italic'>More details can be provided upon request.</div>
+            </Heading>
+            <div className='space-y-4'>
+              <div>
+                <h3 className='font-body uppercase text-lg text-primary'>Open Source</h3>
+                <div><ProjectsCategoryLink id='open-source' /></div>
+              </div>
+              <div>
+                <h3 className='font-body uppercase text-lg text-primary'>Portfolio</h3>
+                <div><ProjectsCategoryLink id='portfolio' /></div>
+              </div>
+            </div>
+          </Section>
           <Section className='grid grid-cols-2' fill sep>
             <div>
               <h3 className='font-body uppercase text-lg text-primary'>Interests</h3>
@@ -255,10 +254,12 @@ export default class Resume extends Page {
               )}
             </Contacts>
           </Section>
+          </>
         )}
-        <Section id='references' className='page-break'>
-          <Heading title='References'>
+        <Section id='testimonials' className='page-break'>
+          <Heading title='Testimonials'>
             Some feedback from people I have worked with in the past.
+            <div className='italic'>Additional references can be provided upon request.</div>
           </Heading>
           <div className={cx(isPrint ? 'columns-2' : 'xl:columns-2', '-mb-8')}>
             <Testimonial.Map data={tests.nodes} className='mb-8' />
