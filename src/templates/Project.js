@@ -82,7 +82,7 @@ export default class Project extends Page {
           <Heading title={this.title} primary>
             {this.description}
           </Heading>
-          {screens.length && <Gallery screens={screens}/>}
+          {screens.length > 1 && <Gallery screens={screens}/>}
           <div className='grid md:grid-cols-3 gap-x-4 gap-y-8'>
             <Metadata title='Project Name'>{project.title}</Metadata>
             <Metadata title='Start Date'>{project.started}</Metadata>

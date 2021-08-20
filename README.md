@@ -7,24 +7,6 @@ and [MDX](https://mdxjs.com).
 The project is a constant work in progress, so if you find any bugs, typos or other errors, please feel free to open an issue or a pull
 request. This project is open source, so you are free to fork and adapt for your own projects (credit would be appreciated).
 
-## Deployment
-The website is currently hosted at [Firebase Hosting](https://firebase.google.com).
-
-### Channels
-- Staging
-  - **Domain**: [mohatt-staging.web.app](https://mohatt-staging.web.app)
-  - **Branch**: [development](https://github.com/mohatt/website/tree/development)
-- Production
-  - **Domain**: [mohatt.web.app][website-url]
-  - **Branch**: [production](https://github.com/mohatt/website/tree/production)
-
-### Pipeline
-The deployment workflow is fully managed by git and works as follows:
-- Direct branch commits or PR merges are built then deployed directly to the branch live channel
-- Pull requests are built then deployed to a unique sub-channel under the target branch channel (eg. `some-feature.mohatt.web.app`)
-
-For more information, check out `.github/workflows` directory.
-
 ## Setup
 
 To get the website up and running locally, first clone the repo
@@ -54,7 +36,29 @@ $ pnpm build # Generate a fully static production build of the website
 $ pnpm serve # Preview the site as it will appear once deployed
 ```
 
+## Deployment
+
+The website is currently hosted at [Firebase Hosting](https://firebase.google.com).
+
+### Channels
+
+- Staging
+    - **Domain**: [mohatt-staging.web.app](https://mohatt-staging.web.app)
+    - **Branch**: [development](https://github.com/mohatt/website/tree/development)
+- Production
+    - **Domain**: [mohatt.web.app][website-url]
+    - **Branch**: [production](https://github.com/mohatt/website/tree/production)
+
+### Workflow
+
+The deployment workflow is fully managed by git and works as follows:
+- Direct branch commits or PR merges are built then deployed directly to the branch live channel
+- Pull requests are built then deployed to a unique sub-channel under the target branch channel (e.g. `some-feature.mohatt.web.app`)
+
+For more information, check out [`.github/workflows`](.github/workflows) directory.
+
 ## License
+
 [MIT](https://github.com/mohatt/website/blob/development/LICENSE)
 
 [ci-dev-url]: https://github.com/mohatt/website/actions/workflows/main.yml
