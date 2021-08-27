@@ -113,7 +113,7 @@ export default class Resume extends Page {
         <Section spacing={false}>
           <Heading title='About'>
             Full stack web developer with a strong focus on PHP, JavaScript, and Node.js.
-            I’ve been doing web development stuff for over 8+ years now, including full-time and freelance work.
+            I’ve been doing web development stuff for over 8 years now, including full-time and freelance work.
             I live with a passion for software engineering, particularly in the world of architecture, functional development, and enhancing developer productivity.
             I embrace using open source technologies to deliver high quality software products and have a fairly active Github profile.
           </Heading>
