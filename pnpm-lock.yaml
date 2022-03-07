@@ -4,7 +4,7 @@ specifiers:
   '@mdx-js/mdx': 1.6.22
   '@mdx-js/react': 1.6.22
   '@mohatt/eslint-config-gatsby-standard': 3.2.0
-  '@types/tailwindcss': 2.2.1
+  '@types/tailwindcss': 2.2.4
   autoprefixer: 10.3.3
   clsx: 1.1.1
   eslint: 7.32.0
@@ -37,7 +37,7 @@ specifiers:
   simple-icons: 5.11.0
   stylelint: 13.13.1
   stylelint-config-standard: 22.0.0
-  tailwindcss: 2.2.8
+  tailwindcss: 2.2.19
   webpack-bundle-analyzer: 4.4.2
 
 dependencies:
@@ -62,7 +62,7 @@ dependencies:
   gatsby-transformer-sharp: 3.12.0_9b4a4c8f5cce30d6de8bc4e8e31573dc
   gatsby-transformer-yaml: 3.12.0_gatsby@3.12.1
   lodash: 4.17.21
-  photoswipe: github.com/dimsemenov/photoswipe/afc1683f316107c9d10927e60679934d51fca5b0
+  photoswipe: github.com/dimsemenov/photoswipe/008338268efddc55d36cfc3a8fbbb3940a6ddd23
   postcss: 8.3.6
   postcss-import: 14.0.2_postcss@8.3.6
   postcss-preset-env: 6.7.0
@@ -70,11 +70,11 @@ dependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-helmet-async: 1.1.2_react-dom@17.0.2+react@17.0.2
-  tailwindcss: 2.2.8_3ae63246f7b6ebdbe8521b4b745e51c3
+  tailwindcss: 2.2.19_3ae63246f7b6ebdbe8521b4b745e51c3
 
 devDependencies:
   '@mohatt/eslint-config-gatsby-standard': 3.2.0_c8f2c2f8ce214fd5ea2586b3eeb51710
-  '@types/tailwindcss': 2.2.1
+  '@types/tailwindcss': 2.2.4
   eslint: 7.32.0
   prettier: 2.3.2
   simple-icons: 5.11.0
@@ -2723,8 +2723,8 @@ packages:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: false
 
-  /@types/tailwindcss/2.2.1:
-    resolution: {integrity: sha512-raLwtQF+uul9lsvs7+GUizeNrpxRqbnckIu/va5hzPPwZsImZunkyLFAS/1rwEHhhvFMNiMJmTiP5PPGa0oNJA==}
+  /@types/tailwindcss/2.2.4:
+    resolution: {integrity: sha512-8mIk+0BoReKiaBI4e3hjaz9YDQto+rdZ2eEExHf6AfS38FZcALQ6s8mTd+74N8BtBaLnTzLdNe5GbkzObWlSXw==}
     dev: true
 
   /@types/tmp/0.0.33:
@@ -2766,6 +2766,7 @@ packages:
 
   /@types/yauzl/2.9.2:
     resolution: {integrity: sha512-8uALY5LTvSuHgloDVUvWP3pIauILm+8/0pDMokuDYIoNsOkSwd5AiHBTSEJjKTDcZr5z8UpgOWZkxBF4iJftoA==}
+    requiresBuild: true
     dependencies:
       '@types/node': 16.7.3
     dev: false
@@ -3731,6 +3732,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: false
@@ -4175,7 +4177,7 @@ packages:
 
   /chokidar/2.1.8:
     resolution: {integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==}
-    deprecated: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
+    deprecated: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
     dependencies:
       anymatch: 2.0.0
       async-each: 1.0.3
@@ -4705,6 +4707,10 @@ packages:
     hasBin: true
     dependencies:
       postcss: 7.0.36
+    dev: false
+
+  /css-color-names/0.0.4:
+    resolution: {integrity: sha1-gIrcLnnPhHOAabZGyyDsJ762KeA=}
     dev: false
 
   /css-color-names/1.0.1:
@@ -6475,6 +6481,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -6745,6 +6752,7 @@ packages:
     engines: {node: '>= 4.0'}
     os: [darwin]
     deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    requiresBuild: true
     dependencies:
       bindings: 1.5.0
       nan: 2.15.0
@@ -6755,6 +6763,7 @@ packages:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -8181,6 +8190,10 @@ packages:
       upper-case: 1.1.3
     dev: false
 
+  /hex-color-regex/1.1.0:
+    resolution: {integrity: sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==}
+    dev: false
+
   /hicat/0.8.0:
     resolution: {integrity: sha512-om8L9O5XwqeSdwl5NtHgrzK3wcF4fT9T4gb/NktoH8EyoZipas/tvUZLV48xT7fQfMYr9qvb0WEutqdf0LWSqA==}
     hasBin: true
@@ -8217,6 +8230,14 @@ packages:
       obuf: 1.1.2
       readable-stream: 2.3.7
       wbuf: 1.7.3
+    dev: false
+
+  /hsl-regex/1.0.0:
+    resolution: {integrity: sha1-1JMwx4ntgZ4nakwNJy3/owsY/m4=}
+    dev: false
+
+  /hsla-regex/1.0.0:
+    resolution: {integrity: sha1-wc56MWjIxmFAM6S194d/OyJfnDg=}
     dev: false
 
   /html-entities/1.4.0:
@@ -8678,6 +8699,17 @@ packages:
     hasBin: true
     dependencies:
       ci-info: 2.0.0
+    dev: false
+
+  /is-color-stop/1.1.0:
+    resolution: {integrity: sha1-z/9HGu5N1cnhWFmPvhKWe1za00U=}
+    dependencies:
+      css-color-names: 0.0.4
+      hex-color-regex: 1.1.0
+      hsl-regex: 1.0.0
+      hsla-regex: 1.0.0
+      rgb-regex: 1.0.1
+      rgba-regex: 1.0.0
     dev: false
 
   /is-core-module/2.6.0:
@@ -10221,6 +10253,7 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -12991,6 +13024,14 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
+  /rgb-regex/1.0.1:
+    resolution: {integrity: sha1-wODWiC3w4jviVKR16O3UGRX+rrE=}
+    dev: false
+
+  /rgba-regex/1.0.0:
+    resolution: {integrity: sha1-QzdOLiyglosO8VI0YLfXMP8i7rM=}
+    dev: false
+
   /rimraf/2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
     hasBin: true
@@ -14121,8 +14162,8 @@ packages:
       string-width: 4.2.2
       strip-ansi: 6.0.0
 
-  /tailwindcss/2.2.8_3ae63246f7b6ebdbe8521b4b745e51c3:
-    resolution: {integrity: sha512-sq6pKVIjklgtuj7OKn+6KD6UqNebYKZYUSx0oKx8aS1usdUXn1TLuwFyr/85HNYu5uHNduLFsXrtQJtkNmYlqQ==}
+  /tailwindcss/2.2.19_3ae63246f7b6ebdbe8521b4b745e51c3:
+    resolution: {integrity: sha512-6Ui7JSVtXadtTUo2NtkBBacobzWiQYVjYW0ZnKaP9S1ZCKQ0w7KVNz+YSDI/j7O7KCMHbOkz94ZMQhbT9pOqjw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     peerDependencies:
@@ -14143,6 +14184,7 @@ packages:
       fs-extra: 10.0.0
       glob-parent: 6.0.1
       html-tags: 3.1.0
+      is-color-stop: 1.1.0
       is-glob: 4.0.1
       lodash: 4.17.21
       lodash.topath: 4.5.2
@@ -15604,9 +15646,9 @@ packages:
   /zwitch/1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
 
-  github.com/dimsemenov/photoswipe/afc1683f316107c9d10927e60679934d51fca5b0:
-    resolution: {tarball: https://codeload.github.com/dimsemenov/photoswipe/tar.gz/afc1683f316107c9d10927e60679934d51fca5b0}
+  github.com/dimsemenov/photoswipe/008338268efddc55d36cfc3a8fbbb3940a6ddd23:
+    resolution: {tarball: https://codeload.github.com/dimsemenov/photoswipe/tar.gz/008338268efddc55d36cfc3a8fbbb3940a6ddd23}
     name: photoswipe
-    version: 5.1.2
+    version: 5.1.8
     engines: {node: '>= 0.12.0'}
     dev: false
