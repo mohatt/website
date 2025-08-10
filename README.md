@@ -62,9 +62,9 @@ For more information, check out [`.github/workflows`](.github/workflows) directo
 [MIT](https://github.com/mohatt/website/blob/development/LICENSE)
 
 [ci-dev-url]: https://github.com/mohatt/website/actions/workflows/main.yml
-[ci-dev-img]: https://img.shields.io/github/workflow/status/mohatt/website/Staging/development?logo=github&label=development
+[ci-dev-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/staging.yml?logo=github&label=development
 [ci-prod-url]: https://github.com/mohatt/website/tree/production
-[ci-prod-img]: https://img.shields.io/github/workflow/status/mohatt/website/Production/production?logo=github&label=production
+[ci-prod-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/production.yml?logo=github&label=production
 [gatsby-url]: https://github.com/gatsbyjs/gatsby/blob/gatsby%403.12.0/packages/gatsby/CHANGELOG.md
 [gatsby-img]: https://img.shields.io/badge/gatsby-v3.12-blueviolet.svg?logo=gatsby
 [website-url]: https://mohatt.web.app
