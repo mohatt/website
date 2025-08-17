@@ -1,215 +1,215 @@
-- id: php
+- slug: php
   title: PHP
   icon: php
   tags:
     - back
     - lang
-- id: node
+- slug: node
   title: Node.js
   icon: nodedotjs
   tags:
     - back
     - lang
-- id: ruby
+- slug: ruby
   title: Ruby
   icon: ruby
   tags:
     - back
     - lang
-- id: javascript
+- slug: javascript
   title: JavaScript (ES6+)
   icon: javascript
   tags:
     - front
     - lang
-- id: typescript
+- slug: typescript
   title: TypeScript
   icon: typescript
   tags:
     - front
     - back
     - lang
-- id: shell
+- slug: shell
   title: Shell
   icon: gnubash
   tags:
     - back
     - lang
-- id: html
+- slug: html
   title: HTML5
   icon: html5
   tags:
     - front
     - lang
-- id: css
+- slug: css
   title: CSS3
   icon: css3
   tags:
     - front
     - lang
-- id: sass
+- slug: sass
   title: Sass
   icon: sass
   tags:
     - front
     - lang
-- id: symfony
+- slug: symfony
   title: Symfony
   icon: symfony
   tags:
     - back
     - frame
-- id: laravel
+- slug: laravel
   title: Laravel
   icon: laravel
   tags:
     - back
     - frame
-- id: express
+- slug: express
   title: Express.js
   icon: express
   tags:
     - back
     - frame
-- id: serverless
+- slug: serverless
   title: Serverless
   icon: serverless
   tags:
     - back
     - frame
-- id: angular
+- slug: angular
   title: Angular
   icon: angular
   tags:
     - front
     - frame
-- id: react
+- slug: react
   title: React
   icon: react
   tags:
     - front
     - frame
-- id: vue
+- slug: vue
   title: Vue.js
   icon: vuedotjs
   tags:
     - front
     - frame
-- id: gatsby
+- slug: gatsby
   title: Gatsby
   icon: gatsby
   tags:
     - front
     - frame
-- id: next
+- slug: next
   title: Next.js
   icon: nextdotjs
   tags:
     - front
     - frame
-- id: apollo
+- slug: apollo
   title: Apollo
   icon: apollographql
   tags:
     - front
     - lib
-- id: rxjs
+- slug: rxjs
   title: RxJS
   icon: reactivex
   tags:
     - front
     - lib
-- id: redux
+- slug: redux
   title: Redux
   icon: redux
   tags:
     - front
     - lib
-- id: mobx
+- slug: mobx
   title: MobX
   icon: mobx
   tags:
     - front
     - lib
-- id: d3
+- slug: d3
   title: D3.js
   icon: d3dotjs
   tags:
     - front
     - lib
-- id: firebase
+- slug: firebase
   title: Firebase
   icon: firebase
   tags:
     - front
     - api
-- id: awsamplify
+- slug: awsamplify
   title: AWS Amplify
   icon: awsamplify
   tags:
     - front
     - api
-- id: tailwind
+- slug: tailwind
   title: Tailwind CSS
   icon: tailwindcss
   tags:
     - front
     - ui
-- id: bootstrap
+- slug: bootstrap
   title: Bootstrap
   icon: bootstrap
   tags:
     - front
     - ui
-- id: material
+- slug: material
   title: Material UI
-  icon: materialui
+  icon: mui
   tags:
     - front
     - ui
-- id: antdesign
+- slug: antdesign
   title: Ant Design
   icon: antdesign
   tags:
     - front
     - ui
-- id: strapi
+- slug: strapi
   title: Strapi
   icon: strapi
   tags:
     - back
     - cms
-- id: shopify
+- slug: shopify
   title: Shopify
   icon: shopify
   tags:
     - back
     - cms
-- id: magento
+- slug: magento
   title: Magento
   icon: magento
   tags:
     - back
     - cms
-- id: wordpress
+- slug: wordpress
   title: Wordpress
   icon: wordpress
   tags:
     - back
     - cms
-- id: rest
+- slug: rest
   title: REST
   icon: json
   tags:
     - back
     - api
-- id: graphql
+- slug: graphql
   title: GraphQL
   icon: graphql
   tags:
     - back
     - api
-- id: aws
+- slug: aws
   title: Amazon AWS
   icon: amazonaws
   tags:
@@ -217,104 +217,104 @@
     - back
     - api
     - deploy
-- id: paymentapi
+- slug: paymentapi
   title: Payment Gatways
   icon: paypal
   tags:
     - back
     - api
-- id: phpunit
+- slug: phpunit
   title: PHPUnit
   icon: php
   tags:
     - back
     - test
-- id: codeception
+- slug: codeception
   title: Codeception
   icon: codeceptjs
   tags:
     - back
     - test
-- id: dusk
+- slug: dusk
   title: Laravel Dusk
   icon: laravel
   tags:
     - back
     - test
-- id: jest
+- slug: jest
   title: Jest
   icon: jest
   tags:
     - front
     - back
     - test
-- id: cypress
+- slug: cypress
   title: Cypress
   icon: cypress
   tags:
     - front
     - test
-- id: doctrine
+- slug: doctrine
   title: Doctrine
   icon: M17.969 8.086l-.012-.008-.152-.172L10.543.652a2.22 2.22 0 00-3.14 3.141l2.343 2.344a9.065 9.065 0 00-6.82 8.789A9.069 9.069 0 0012 24a9.069 9.069 0 009.074-9.074c0-2.73-1.199-5.176-3.105-6.84zm-.188 8.18l-5.242 5.246a1.61 1.61 0 01-2.277 0 1.62 1.62 0 010-2.285l2.488-2.489H7.363a1.61 1.61 0 110-3.223h5.383l-2.488-2.492a1.615 1.615 0 010-2.28 1.615 1.615 0 012.281 0l5.246 5.245a1.607 1.607 0 01-.004 2.278zm0 0
   tags:
     - back
     - db
-- id: redis
+- slug: redis
   title: Redis
   icon: redis
   tags:
     - back
     - db
-- id: mysql
+- slug: mysql
   title: MySQL
   icon: mysql
   tags:
     - back
     - db
-- id: postgresql
+- slug: postgresql
   title: PostgresSQL
   icon: postgresql
   tags:
     - back
     - db
-- id: mongodb
+- slug: mongodb
   title: MongoDB
   icon: mongodb
   tags:
     - back
     - db
-- id: elasticsearch
+- slug: elasticsearch
   title: Elasticsearch
   icon: elasticsearch
   tags:
     - back
     - db
-- id: github
+- slug: github
   title: Github
   icon: github
   tags:
     - devops
     - git
-- id: gitlab
+- slug: gitlab
   title: Gitlab
   icon: gitlab
   tags:
     - devops
     - git
-- id: bitbucket
+- slug: bitbucket
   title: Bitbucket
   icon: bitbucket
   tags:
     - devops
     - git
-- id: heroku
+- slug: heroku
   title: Heroku
   icon: heroku
   tags:
     - devops
     - deploy
-- id: netlify
+- slug: netlify
   title: Netlify
   icon: netlify
   tags:
@@ -322,43 +322,43 @@
     - front
     - api
     - deploy
-- id: wpengine
+- slug: wpengine
   title: WP Engine
   icon: wpengine
   tags:
     - devops
     - deploy
-- id: jenkins
+- slug: jenkins
   title: Jenkins
   icon: jenkins
   tags:
     - devops
     - ci
-- id: ghactions
+- slug: ghactions
   title: Github Actions
   icon: githubactions
   tags:
     - devops
     - ci
-- id: circleci
+- slug: circleci
   title: CircleCI
   icon: circleci
   tags:
     - devops
     - ci
-- id: ubuntu
+- slug: ubuntu
   title: Ubuntu
   icon: ubuntu
   tags:
     - soft
     - env
-- id: git
+- slug: git
   title: Git
   icon: git
   tags:
     - devops
     - tool
-- id: docker
+- slug: docker
   title: Docker
   icon: docker
   tags:
@@ -366,127 +366,127 @@
     - soft
     - tool
     - env
-- id: kubernetes
+- slug: kubernetes
   title: Kubernetes
   icon: kubernetes
   tags:
     - devops
     - tool
-- id: terraform
+- slug: terraform
   title: Terraform
   icon: terraform
   tags:
     - devops
     - tool
-- id: vagrant
+- slug: vagrant
   title: Vagrant
   icon: vagrant
   tags:
     - devops
     - tool
-- id: vim
+- slug: vim
   title: VIM
   icon: vim
   tags:
     - soft
     - env
-- id: fish
+- slug: fish
   title: Fish Shell
   icon: powershell
   tags:
     - soft
     - env
-- id: phpstorm
+- slug: phpstorm
   title: PhpStorm
   icon: phpstorm
   tags:
     - soft
     - dev
-- id: webstorm
+- slug: webstorm
   title: WebStorm
   icon: webstorm
   tags:
     - soft
     - dev
-- id: postman
+- slug: postman
   title: Postman
   icon: postman
   tags:
     - soft
     - dev
-- id: chrome
+- slug: chrome
   title: DevTools
   icon: googlechrome
   tags:
     - soft
     - dev
-- id: notion
+- slug: notion
   title: Notion
   icon: notion
   tags:
     - soft
     - prod
-- id: jira
+- slug: jira
   title: Jira
   icon: jirasoftware
   tags:
     - soft
     - prod
-- id: slack
+- slug: slack
   title: Slack
   icon: slack
   tags:
     - soft
     - prod
-- id: skype
+- slug: skype
   title: Skype
   icon: skype
   tags:
     - soft
     - prod
-- id: webpack
+- slug: webpack
   title: Webpack
   icon: webpack
   tags:
     - devops
     - build
-- id: babel
+- slug: babel
   title: Babel
   icon: babel
   tags:
     - devops
     - build
-- id: gulp
+- slug: gulp
   title: Gulp
   icon: gulp
   tags:
     - devops
     - build
-- id: postcss
+- slug: postcss
   title: PostCSS
   icon: postcss
   tags:
     - devops
     - build
-- id: composer
+- slug: composer
   title: Composer
   icon: cplusplus
   tags:
     - devops
     - pkgm
-- id: npm
+- slug: npm
   title: NPM
   icon: npm
   tags:
     - devops
     - pkgm
-- id: pnpm
+- slug: pnpm
   title: PNPM
   icon: pnpm
   tags:
     - devops
     - pkgm
-- id: yarn
+- slug: yarn
   title: Yarn
   icon: yarn
   tags:

@@ -60,7 +60,7 @@ function Metadata({ title, children, className }) {
 
 export default class Project extends Page {
   view() {
-    const { data: { project }, pageContext } = this.props
+    const { data: { project }, children, pageContext } = this.props
     this.title = project.title
     this.description = project.desc
     this.snippet = {
@@ -109,7 +109,7 @@ export default class Project extends Page {
         </Testimonial.Map>
         <Section>
           <div className='xl:max-w-3xl'>
-            <Markdown>{project.body}</Markdown>
+            <Markdown>{children}</Markdown>
           </div>
         </Section>
       </>
@@ -124,7 +124,6 @@ export const query = graphql`
       desc
       started(formatString: "YYYY-MM")
       status
-      body
       hasImage
       image {
         childImageSharp {

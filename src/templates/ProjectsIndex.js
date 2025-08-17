@@ -48,8 +48,8 @@ export const query = graphql`
       title
     }
 
-    projects: allProject(sort: { fields: [priority, started], order: [ASC, DESC] }, filter: { draft: { ne: true } }) {
-      group(field: categories___id, limit: $limit) {
+    projects: allProject(sort: [{ priority: ASC }, { started: DESC }], filter: { draft: { ne: true } }) {
+      group(field: { categories: { id: SELECT } }, limit: $limit) {
         id: fieldValue
         nodes {
           ...ProjectCardFragment

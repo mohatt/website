@@ -4,13 +4,13 @@ import { createReactMap } from '../../util'
 import { BaseIcon, Button } from '../../components'
 
 function ProjectSkill({ skill, children }) {
-  let { id, title, size, icon, props } = skill
+  let { slug, title, size, icon, props } = skill
   if (!props) {
     props = skill.props = !size ? { children: title } : {
       to: 'projects.skill',
-      params: { skill: id },
+      params: { skill: slug },
       children: title,
-      title: `View ${size} project${size !== 1 ? 's' : ''} tagged with "${id}" skill`,
+      title: `View ${size} project${size !== 1 ? 's' : ''} tagged with "${slug}" skill`,
     }
 
     if (icon) {
@@ -26,7 +26,7 @@ function ProjectSkill({ skill, children }) {
 }
 
 ProjectSkill.Map = createReactMap(function ProjectSkillMap(skill, { exclude, tags, children }) {
-  if (exclude === skill.id || (tags && !tags.every(tag => skill.tags.indexOf(tag) > -1))) {
+  if (exclude === skill.slug || (tags && !tags.every(tag => skill.tags.indexOf(tag) > -1))) {
     return
   }
 
@@ -36,6 +36,7 @@ ProjectSkill.Map = createReactMap(function ProjectSkillMap(skill, { exclude, tag
 export const ProjectSkillFragment = graphql`
   fragment ProjectSkillFragment on ProjectSkill {
     id
+    slug
     title
     size
   }

@@ -283,7 +283,7 @@ export const query = graphql`
       }
     }
 
-    tests: allTestimonial(sort: { order: [ASC, DESC], fields: [priority, received] }, limit: 10) {
+    tests: allTestimonial(sort: [{ priority: ASC }, { received: DESC }], limit: 10) {
       nodes {
         ...TestimonialFragment
       }

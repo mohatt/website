@@ -30,25 +30,30 @@ exports.create = [
       skills: {
         type: '[ProjectSkill]',
         extensions: {
-          link: {},
+          link: {
+            by: 'slug'
+          },
         },
       },
       categories: {
         type: '[ProjectCategory]',
         extensions: {
-          link: {},
+          link: {
+            by: 'slug'
+          },
         },
       },
       testimonials: {
         type: '[Testimonial]',
-        resolve (source, args, context) {
-          return context.nodeModel
-            .getAllNodes({ type: 'Testimonial' })
+        async resolve (source, args, context) {
+          const { entries } = await context.nodeModel.findAll({ type: 'Testimonial' })
+          return [...entries]
             .filter(t => t.project === source.slug)
             .sort((x, y) => 0)
         },
       },
       handles: '[String]',
+      // This field is not currently being used anywhere
       body: {
         type: 'String',
         resolve: createParentFieldResolverProxy({ field: 'body' }),
@@ -69,7 +74,7 @@ exports.create = [
             return source.icon
           }
           try {
-            return require(`simple-icons/icons/${source.icon}.js`).path
+            return require(`simple-icons/icons/${source.icon}`).path
           } catch (e) {
             return source.icon
           }
@@ -78,10 +83,10 @@ exports.create = [
       tags: '[String!]',
       size: {
         type: 'Int!',
-        resolve (source, args, context) {
-          return context.nodeModel
-            .getAllNodes({ type: 'Project' })
-            .filter(p => p.skills.find(s => s === source.id))
+        async resolve (source, args, context) {
+          const { entries } = await context.nodeModel.findAll({ type: 'Project' })
+          return [...entries]
+            .filter(p => p.skills.find(s => s === source.slug))
             .length
         },
       },
@@ -95,10 +100,10 @@ exports.create = [
       desc: 'String!',
       size: {
         type: 'Int!',
-        resolve (source, args, context) {
-          return context.nodeModel
-            .getAllNodes({ type: 'Project' })
-            .filter(p => p.categories.find(s => s === source.id))
+        async resolve (source, args, context) {
+          const { entries } = await context.nodeModel.findAll({ type: 'Project' })
+          return [...entries]
+            .filter(p => p.categories.find(s => s === source.slug))
             .length
         },
       },

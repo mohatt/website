@@ -56,22 +56,6 @@ html[data-layout=print] {
 /**
  * Edges themes
  */
-.et-xl {
-  & .rounded-full {
-    @apply rounded-2xl;
-  }
-}
-
-.et-md {
-  & .rounded-full {
-    @apply rounded-md;
-  }
-
-  & .rounded-md {
-    @apply rounded-sm;
-  }
-}
-
 .et-sm {
   & .rounded-full {
     @apply rounded-sm;

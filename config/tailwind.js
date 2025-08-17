@@ -4,7 +4,6 @@ const { themes, screens, colors } = require('../src/constants/tailwind')
 
 module.exports = {
   darkMode: 'class',
-  mode: 'jit',
   theme: {
     fontFamily: {
       display: ['"IBM Plex Mono"', ...fontFamily.mono],
@@ -26,13 +25,11 @@ module.exports = {
     },
   },
   plugins: [],
-  purge: {
-    content: [
-      './src/**/*.js',
-    ],
-    safelist: [
-      ..._.uniq(themes.color.map(t => t.class.split(' ')).flat()),
-      ...themes.edges.map(t => t.class),
-    ],
-  },
+  content: [
+    './src/**/*.js',
+  ],
+  safelist: [
+    ..._.uniq(themes.color.map(t => t.class.split(' ')).flat()),
+    ...themes.edges.map(t => t.class),
+  ],
 }

@@ -8,7 +8,8 @@ module.exports = {
     'google7a76cf0ab3da37d0.html',
   ],
   purgecss: {
-    enabled: true,
+    // Disable purgecss until it's tested in gatsby-plugin-postbuild
+    enabled: false,
     allowSymbols: true,
     writeRejected: true,
     safelist: {

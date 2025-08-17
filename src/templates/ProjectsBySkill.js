@@ -35,13 +35,13 @@ export const query = graphql`
     projects: allProject(
       limit: $limit
       skip: $offset
-      filter: { skills: { elemMatch: { id: { eq: $skill } } }, draft: { ne: true } }
-      sort: { fields: [priority, started], order: [ASC, DESC] }
+      filter: { skills: { elemMatch: { slug: { eq: $skill } } }, draft: { ne: true } }
+      sort: [{ priority: ASC }, { started: DESC }]
     ) {
       ...ProjectCardGridPaginatedFragment
     }
 
-    skillObj: projectSkill(id: { eq: $skill }) {
+    skillObj: projectSkill(slug: { eq: $skill }) {
       title
     }
   }

@@ -4,13 +4,13 @@ import { createReactMap } from '../../util'
 import { Button } from '../../components'
 
 function ProjectCategory({ category, children, color = 'alt' }) {
-  let { id, title, size, props } = category
+  let { slug, title, size, props } = category
   if(!props) {
     props = category.props = !size ? { children: title } : {
       to: 'projects.category',
-      params: { category: id },
+      params: { category: slug },
       children: title,
-      title: `View ${size} project${size !== 1 ? 's' : ''} published under "${id}" category`,
+      title: `View ${size} project${size !== 1 ? 's' : ''} published under "${title}" category`,
     }
   }
 
@@ -20,7 +20,7 @@ function ProjectCategory({ category, children, color = 'alt' }) {
 }
 
 ProjectCategory.Map = createReactMap(function ProjectCategoryMap(category, { exclude, color, children }){
-  return exclude !== category.id && (
+  return exclude !== category.slug && (
     <ProjectCategory key={category.id} category={category} color={color} children={children} />
   )
 })
@@ -28,6 +28,7 @@ ProjectCategory.Map = createReactMap(function ProjectCategoryMap(category, { exc
 export const ProjectCategoryFragment = graphql`
   fragment ProjectCategoryFragment on ProjectCategory {
     id
+    slug
     title
     size
   }

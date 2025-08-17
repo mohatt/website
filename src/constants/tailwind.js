@@ -56,7 +56,7 @@ exports.themes = {
       false,
     ],
   ]),
-  edges: createEdgesThemes(['default', 'xl', 'md', 'sm']),
+  edges: createEdgesThemes(['default', 'sm']),
 }
 
 exports.colors = {
