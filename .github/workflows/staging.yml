@@ -36,7 +36,6 @@ jobs:
           mkdir deploy
           mv public/firebase.json deploy/
           mv public deploy/
-          cp .firebaserc deploy/.firebaserc
 
       - uses: actions/upload-artifact@v4
         with:
@@ -61,7 +60,7 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOHATT_STAGING }}
-          projectId: staging
+          projectId: mohatt-staging
           channelId: ${{ env.DEPLOY_CHANNEL }}
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
