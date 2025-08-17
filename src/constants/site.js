@@ -1,7 +1,7 @@
 exports.site = {
   title: 'Mohamed Elkholy',
   description: 'Full stack web developer with a broad range of skills and expertise in all web development related fields.',
-  copyright: '© 2021 All rights reserved.',
+  copyright: '© 2025 All rights reserved.',
   menu: [
     { label: 'Intro', to: 'home' },
     { label: 'Skills', to: 'skills', items: [
