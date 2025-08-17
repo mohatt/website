@@ -39,11 +39,11 @@
 
   #header {
     & #avatar {
-      background-image: url('../images/avatar/photo-mono.webp');
+      background-image: url('../images/avatar/photo-nobg-mono.webp');
 
       &:hover, html[data-layout=print] & {
         @apply bg-secondary;
-        background-image: url('../images/avatar/photo.webp');
+        background-image: url('../images/avatar/photo-nobg.webp');
       }
     }
 
