@@ -21,19 +21,35 @@ export function onPreRenderHTML({ getHeadComponents, replaceHeadComponents }) {
  * @see https://github.com/gatsbyjs/gatsby/issues/14601#issuecomment-499922794
  */
 function setupTheme({ setHeadComponents, setHtmlAttributes }) {
-  const __html = `
-try {
-  let theme = JSON.parse(localStorage.getItem("${site.themeStorageKey}"))
-  if(theme) {
-    let themes = ${JSON.stringify({
+  const lookups = {
     c: themes.color.reduce((acc, t) => (acc[t.id] = [t.class, t.colors.primary], acc), {}),
     e: themes.edges.reduce((acc, t) => (acc[t.id] = t.class, acc), {}),
-  })},
-    color = themes.c[theme.color]
-    document.documentElement.setAttribute("class", color[0] + " " + themes.e[theme.edges])
-    document.querySelector("meta[name=theme-color]").content = color[1]
   }
-} catch (e) {}
+  const defaults = {
+    ctLight: themes.color.find(t => !t.dark),
+    ctDark: themes.color.find(t => t.dark),
+    et: themes.edges[0].id
+  }
+  const __html = `
+let prefersDark = false
+try {
+  prefersDark = !!window.matchMedia("(prefers-color-scheme: dark)").matches
+} catch (_) {}
+let themes = ${JSON.stringify(lookups)},
+  systemTheme = {
+    color: prefersDark ? "${defaults.ctDark.id}" : "${defaults.ctLight.id}",
+    edges: "${defaults.et}",
+  },
+  userTheme
+try {
+  userTheme = JSON.parse(localStorage.getItem("${site.themeStorageKey}"))
+} catch (_) {}
+let theme = userTheme || systemTheme,
+  color = themes.c[theme.color],
+  htmlEl = document.documentElement
+htmlEl.setAttribute("class", color[0] + " " + themes.e[theme.edges])
+document.querySelector("meta[name=theme-color]").content = color[1]
+htmlEl.setAttribute("data-system-ct", systemTheme.color)
 `
   setHtmlAttributes({ className: createThemeState().class })
   setHeadComponents([

@@ -2,7 +2,8 @@ import React, { createContext, useContext, useRef } from 'react'
 import { $document, themes, site } from '../constants'
 import { useAnalyticsCallback, useLocalStorage } from '../hooks'
 
-export function createThemeState({ color, edges } = {}) {
+export function createThemeState(props) {
+  let { color, edges } = props || {}
   color = color && themes.color.find(t => t.id === color) || themes.color[0]
   edges = edges && themes.edges.find(t => t.id === edges) || themes.edges[0]
   return {
@@ -25,11 +26,15 @@ function themeStateNormalizer(state, initial) {
   return initial ? createThemeState(state) : state.state
 }
 
+function getSystemTheme() {
+  return { color: $document.documentElement.getAttribute('data-system-ct') }
+}
+
 const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
   const eventData = useRef()
-  const [theme, setTheme] = useLocalStorage(site.themeStorageKey, undefined, themeStateNormalizer)
+  const [theme, setTheme] = useLocalStorage(site.themeStorageKey, getSystemTheme, themeStateNormalizer)
 
   useAnalyticsCallback(({ user, event }) => {
     user({ color_theme: theme.color.id, edges_theme: theme.edges.id })
