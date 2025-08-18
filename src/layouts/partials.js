@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { site } from '../constants'
 import { NetworkHandle } from '../util'
 import { usePath, useSiteMetadata } from '../hooks'
-import avatarAlt from '../images/avatar/avatar-smile.png'
+import avatarAlt from '../images/avatar/photo-nobg.webp'
 
 export function DocumentHead() {
   const { deployment } = useSiteMetadata()
