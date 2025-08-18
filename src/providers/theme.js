@@ -27,6 +27,9 @@ function themeStateNormalizer(state, initial) {
 }
 
 function getSystemTheme() {
+  if (!$document) {
+     return null
+  }
   return { color: $document.documentElement.getAttribute('data-system-ct') }
 }
 
