@@ -53,12 +53,12 @@ function Header({ className }) {
   return (
     <header className={className}>
       <DocumentHead />
-      <div className='absolute w-16 lg:w-32 top-0 right-0 mt-10 -mr-8 lg:-mr-16 text-center'>
+      <div className='absolute w-16 lg:w-28 xl:w-32 top-0 right-0 mt-10 -mr-8 lg:-mr-14 xl:-mr-16 text-center'>
         <ul>
           <li className='mb-6'>
             <Link
               id='avatar'
-              className='block rounded-full h-16 lg:h-32 bg-cover bg-center transition-all'
+              className='block rounded-full h-16 lg:h-28 xl:h-32 bg-cover bg-center transition-all'
               to='home'
               title='Go to homepage'
             />
