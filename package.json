@@ -33,7 +33,7 @@
     "@mdx-js/react": "1.6.22",
     "autoprefixer": "10.3.3",
     "clsx": "1.1.1",
-    "gatsby": "3.12.1",
+    "gatsby": "4.25.7",
     "gatsby-plugin-advanced-pages": "3.0.1",
     "gatsby-plugin-graphql-config": "0.21.0",
     "gatsby-plugin-image": "1.12.0",
