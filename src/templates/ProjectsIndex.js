@@ -10,7 +10,7 @@ export default class ProjectsIndex extends Page {
     this.snippet = {
       $comp: 'Projects',
     }
-    const groups = projects.group.sort(x => x.id === 'portfolio' ? -1 : 0)
+    const groups = projects.group.sort(x => x.slug === 'portfolio' ? -1 : 0)
     return (
       <>
         <Section spacing={false}>
@@ -19,13 +19,13 @@ export default class ProjectsIndex extends Page {
             to ship web products for both business and consumer use.
           </Heading>
         </Section>
-        {groups.map(({ id, totalCount, nodes }) => {
+        {groups.map(({ slug, totalCount, nodes }) => {
           if (nodes.length === 0) return null
-          const category = nodes[0].categories.find(c => c.id === id)
+          const category = nodes[0].categories.find(c => c.slug === slug)
           return (
-            <Section key={id} id={id}>
+            <Section key={slug} id={slug}>
               <Heading title={category.title}>{category.desc}</Heading>
-              <ProjectCard.Grid data={nodes} params={{ category: id }} />
+              <ProjectCard.Grid data={nodes} params={{ category: slug }} />
               {totalCount > nodes.length && (
                 <div className='mt-12 text-lg'>
                   <span>[{nodes.length} out of {totalCount}] </span>
@@ -49,8 +49,8 @@ export const query = graphql`
     }
 
     projects: allProject(sort: [{ priority: ASC }, { started: DESC }], filter: { draft: { ne: true } }) {
-      group(field: { categories: { id: SELECT } }, limit: $limit) {
-        id: fieldValue
+      group(field: { categories: { slug: SELECT } }, limit: $limit) {
+        slug: fieldValue
         nodes {
           ...ProjectCardFragment
           categories {
