@@ -11,13 +11,15 @@ export default function DefaultLayout({ layout: { state: { menu }, dispatch }, c
     <div className='flex'>
       <div
         id='header'
-        className='w-9 lg:w-[4.375rem] h-screen sticky top-0 flex-shrink-0 border-r-2 lg:border-r-4 bg-typo text-primary z-20'>
+        className='w-9 lg:w-[4.375rem] flex-shrink-0 border-r-2 lg:border-r-4 bg-typo text-primary z-20'>
         <Header className='h-full relative' />
       </div>
       <div
         id='menu'
-        className={`${menu ? 'w-56' : 'w-0'} xl:w-56 3xl:w-64 h-screen sticky top-0 flex-shrink-0 overflow-x-hidden flex flex-col justify-center bg-accent text-typo-dim text-shadow transition-box`}>
-        <Menu closeMenu={closeMenu} className='w-56 xl:w-auto' />
+        className={`${menu ? 'w-56' : 'w-0'} xl:w-56 3xl:w-64 flex-shrink-0 bg-accent text-typo-dim text-shadow transition-box`}>
+        <div className='h-screen sticky top-0 flex flex-col justify-center overflow-x-hidden overflow-y-auto'>
+          <Menu closeMenu={closeMenu} className='py-16 w-56 xl:w-auto' />
+        </div>
       </div>
       <div
         id='main'

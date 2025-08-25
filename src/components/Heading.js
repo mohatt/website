@@ -7,7 +7,7 @@ export default function Heading({ title, primary, children, className }) {
   return (
     <Layout print>
       <header className={cx('mb-6', className)}>
-        <Hn className='leading-normal text-typo text-2xl'>
+        <Hn className={cx('leading-normal text-typo text-2xl', !primary && 'uppercase')}>
           {title}
         </Hn>
         {children && <div className='leading-normal text-typo-dim'>{children}</div>}

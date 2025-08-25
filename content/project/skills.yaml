@@ -1,18 +1,18 @@
-- slug: php
-  title: PHP
-  icon: php
-  tags:
-    - back
-    - lang
 - slug: node
   title: Node.js
   icon: nodedotjs
   tags:
     - back
     - lang
-- slug: ruby
-  title: Ruby
-  icon: ruby
+- slug: php
+  title: PHP
+  icon: php
+  tags:
+    - back
+    - lang
+- slug: python
+  title: Python
+  icon: python
   tags:
     - back
     - lang
@@ -53,6 +53,18 @@
   tags:
     - front
     - lang
+- slug: nestjs
+  title: NestJS
+  icon: nestjs
+  tags:
+    - back
+    - frame
+- slug: express
+  title: Express.js
+  icon: express
+  tags:
+    - back
+    - frame
 - slug: symfony
   title: Symfony
   icon: symfony
@@ -65,33 +77,15 @@
   tags:
     - back
     - frame
-- slug: express
-  title: Express.js
-  icon: express
-  tags:
-    - back
-    - frame
-- slug: serverless
-  title: Serverless
-  icon: serverless
-  tags:
-    - back
-    - frame
-- slug: angular
-  title: Angular
-  icon: angular
-  tags:
-    - front
-    - frame
 - slug: react
   title: React
   icon: react
   tags:
     - front
     - frame
-- slug: vue
-  title: Vue.js
-  icon: vuedotjs
+- slug: angular
+  title: Angular
+  icon: angular
   tags:
     - front
     - frame
@@ -107,14 +101,20 @@
   tags:
     - front
     - frame
+- slug: stripe
+  title: Stripe.js
+  icon: stripe
+  tags:
+    - front
+    - api
 - slug: apollo
-  title: Apollo
+  title: Apollo GraphQL
   icon: apollographql
   tags:
     - front
     - lib
 - slug: rxjs
-  title: RxJS
+  title: RxJS Observables
   icon: reactivex
   tags:
     - front
@@ -125,30 +125,18 @@
   tags:
     - front
     - lib
-- slug: mobx
-  title: MobX
-  icon: mobx
-  tags:
-    - front
-    - lib
 - slug: d3
   title: D3.js
   icon: d3dotjs
   tags:
     - front
     - lib
-- slug: firebase
-  title: Firebase
-  icon: firebase
+- slug: material
+  title: Material UI
+  icon: mui
   tags:
     - front
-    - api
-- slug: awsamplify
-  title: AWS Amplify
-  icon: awsamplify
-  tags:
-    - front
-    - api
+    - ui
 - slug: tailwind
   title: Tailwind CSS
   icon: tailwindcss
@@ -161,27 +149,9 @@
   tags:
     - front
     - ui
-- slug: material
-  title: Material UI
-  icon: mui
-  tags:
-    - front
-    - ui
-- slug: antdesign
-  title: Ant Design
-  icon: antdesign
-  tags:
-    - front
-    - ui
-- slug: strapi
-  title: Strapi
-  icon: strapi
-  tags:
-    - back
-    - cms
-- slug: shopify
-  title: Shopify
-  icon: shopify
+- slug: wordpress
+  title: WordPress
+  icon: wordpress
   tags:
     - back
     - cms
@@ -191,9 +161,15 @@
   tags:
     - back
     - cms
-- slug: wordpress
-  title: Wordpress
-  icon: wordpress
+- slug: shopify
+  title: Shopify
+  icon: shopify
+  tags:
+    - back
+    - cms
+- slug: strapi
+  title: Strapi
+  icon: strapi
   tags:
     - back
     - cms
@@ -209,6 +185,14 @@
   tags:
     - back
     - api
+- slug: gcp
+  title: Google Cloud
+  icon: googlecloud
+  tags:
+    - devops
+    - back
+    - api
+    - deploy
 - slug: aws
   title: Amazon AWS
   icon: amazonaws
@@ -217,28 +201,32 @@
     - back
     - api
     - deploy
+- slug: firebase
+  title: Firebase
+  icon: firebase
+  tags:
+    - devops
+    - back
+    - front
+    - api
+    - deploy
+- slug: auth0
+  title: Auth0
+  icon: auth0
+  tags:
+    - front
+    - api
 - slug: paymentapi
-  title: Payment Gatways
+  title: Payment Gateways
   icon: paypal
   tags:
     - back
     - api
-- slug: phpunit
-  title: PHPUnit
-  icon: php
+- slug: vitest
+  title: Vitest
+  icon: vite
   tags:
-    - back
-    - test
-- slug: codeception
-  title: Codeception
-  icon: codeceptjs
-  tags:
-    - back
-    - test
-- slug: dusk
-  title: Laravel Dusk
-  icon: laravel
-  tags:
+    - front
     - back
     - test
 - slug: jest
@@ -248,15 +236,40 @@
     - front
     - back
     - test
+- slug: phpunit
+  title: PHPUnit
+  icon: php
+  tags:
+    - back
+    - test
+- slug: dusk
+  title: Laravel Dusk
+  icon: laravel
+  tags:
+    - back
+    - test
+
+- slug: codeception
+  title: Codeception
+  icon: codeceptjs
+  tags:
+    - back
+    - test
+- slug: playwright
+  title: Playwright
+  icon: M23.996 7.462c-.056.837-.257 2.135-.716 3.85-.995 3.715-4.27 10.874-10.42 9.227-6.15-1.65-5.407-9.487-4.412-13.201.46-1.716.934-2.94 1.305-3.694.42-.853.846-.289 1.815.523.684.573 2.41 1.791 5.011 2.488 2.601.697 4.706.506 5.583.352 1.245-.219 1.897-.494 1.834.455Zm-9.807 3.863s-.127-1.819-1.773-2.286c-1.644-.467-2.613 1.04-2.613 1.04Zm4.058 4.539-7.769-2.172s.446 2.306 3.338 3.153c2.862.836 4.43-.98 4.43-.981Zm2.701-2.51s-.13-1.818-1.773-2.286c-1.644-.469-2.612 1.038-2.612 1.038ZM8.57 18.23c-4.749 1.279-7.261-4.224-8.021-7.08C.197 9.831.044 8.832.003 8.188c-.047-.73.455-.52 1.415-.354.677.118 2.3.261 4.308-.28a11.28 11.28 0 0 0 2.41-.956c-.058.197-.114.4-.17.61-.433 1.618-.827 4.055-.632 6.426-1.976.732-2.267 2.423-2.267 2.423l2.524-.715c.227 1.002.6 1.987 1.15 2.838a5.914 5.914 0 0 1-.171.049Zm-4.188-6.298c1.265-.333 1.363-1.631 1.363-1.631l-3.374.888s.745 1.076 2.01.743Z
+  tags:
+    - front
+    - test
 - slug: cypress
   title: Cypress
   icon: cypress
   tags:
     - front
     - test
-- slug: doctrine
-  title: Doctrine
-  icon: M17.969 8.086l-.012-.008-.152-.172L10.543.652a2.22 2.22 0 00-3.14 3.141l2.343 2.344a9.065 9.065 0 00-6.82 8.789A9.069 9.069 0 0012 24a9.069 9.069 0 009.074-9.074c0-2.73-1.199-5.176-3.105-6.84zm-.188 8.18l-5.242 5.246a1.61 1.61 0 01-2.277 0 1.62 1.62 0 010-2.285l2.488-2.489H7.363a1.61 1.61 0 110-3.223h5.383l-2.488-2.492a1.615 1.615 0 010-2.28 1.615 1.615 0 012.281 0l5.246 5.245a1.607 1.607 0 01-.004 2.278zm0 0
+- slug: mongodb
+  title: MongoDB
+  icon: mongodb
   tags:
     - back
     - db
@@ -273,14 +286,14 @@
     - back
     - db
 - slug: postgresql
-  title: PostgresSQL
+  title: PostgreSQL
   icon: postgresql
   tags:
     - back
     - db
-- slug: mongodb
-  title: MongoDB
-  icon: mongodb
+- slug: cloudspanner
+  title: Cloud Spanner
+  icon: googlecloud
   tags:
     - back
     - db
@@ -290,74 +303,66 @@
   tags:
     - back
     - db
-- slug: github
-  title: Github
+- slug: pnpm
+  title: PNPM Workspaces
+  icon: pnpm
+  tags:
+    - devops
+    - git
+- slug: semanticrelease
+  title: Semantic Release
+  icon: semanticrelease
+  tags:
+    - devops
+    - git
+- slug: dependabot
+  title: Dependabot
+  icon: dependabot
+  tags:
+    - devops
+    - git
+- slug: githooks
+  title: Git Hooks
+  icon: git
+  tags:
+    - devops
+    - git
+- slug: vercel
+  title: Vercel
+  icon: vercel
+  tags:
+    - devops
+    - deploy
+- slug: ghactions
+  title: GitHub Actions
   icon: github
   tags:
     - devops
-    - git
-- slug: gitlab
-  title: Gitlab
-  icon: gitlab
+    - ci
+- slug: cloudbuild
+  title: Cloud Build
+  icon: googlecloud
   tags:
     - devops
-    - git
-- slug: bitbucket
-  title: Bitbucket
-  icon: bitbucket
-  tags:
-    - devops
-    - git
-- slug: heroku
-  title: Heroku
-  icon: heroku
-  tags:
-    - devops
-    - deploy
-- slug: netlify
-  title: Netlify
-  icon: netlify
-  tags:
-    - devops
-    - front
-    - api
-    - deploy
-- slug: wpengine
-  title: WP Engine
-  icon: wpengine
-  tags:
-    - devops
-    - deploy
+    - ci
 - slug: jenkins
   title: Jenkins
   icon: jenkins
   tags:
     - devops
     - ci
-- slug: ghactions
-  title: Github Actions
-  icon: githubactions
-  tags:
-    - devops
-    - ci
-- slug: circleci
-  title: CircleCI
-  icon: circleci
-  tags:
-    - devops
-    - ci
-- slug: ubuntu
-  title: Ubuntu
-  icon: ubuntu
+- slug: macos
+  title: macOS
+  icon: apple
   tags:
     - soft
     - env
-- slug: git
-  title: Git
-  icon: git
+- slug: fedora
+  title: Fedora
+  icon: fedora
   tags:
-    - devops
-    - tool
+    - soft
+    - env
 - slug: docker
   title: Docker
   icon: docker
@@ -369,6 +374,12 @@
 - slug: kubernetes
   title: Kubernetes
   icon: kubernetes
+  tags:
+    - devops
+    - tool
+- slug: helm
+  title: Helm
+  icon: helm
   tags:
     - devops
     - tool
@@ -384,27 +395,21 @@
   tags:
     - devops
     - tool
-- slug: vim
-  title: VIM
-  icon: vim
-  tags:
-    - soft
-    - env
 - slug: fish
   title: Fish Shell
-  icon: powershell
+  icon: windowsterminal
   tags:
     - soft
     - env
-- slug: phpstorm
-  title: PhpStorm
-  icon: phpstorm
+- slug: jetbrains
+  title: JetBrains IDEs
+  icon: jetbrains
   tags:
     - soft
     - dev
-- slug: webstorm
-  title: WebStorm
-  icon: webstorm
+- slug: vscode
+  title: Visual Studio Code
+  icon: visualstudiocode
   tags:
     - soft
     - dev
@@ -420,15 +425,15 @@
   tags:
     - soft
     - dev
+- slug: git
+  title: Git
+  icon: git
+  tags:
+    - soft
+    - dev
 - slug: notion
   title: Notion
   icon: notion
-  tags:
-    - soft
-    - prod
-- slug: jira
-  title: Jira
-  icon: jirasoftware
   tags:
     - soft
     - prod
@@ -438,27 +443,27 @@
   tags:
     - soft
     - prod
-- slug: skype
-  title: Skype
-  icon: skype
+- slug: jira
+  title: Jira
+  icon: jirasoftware
   tags:
     - soft
     - prod
+- slug: vite
+  title: Vite
+  icon: vite
+  tags:
+    - devops
+    - build
 - slug: webpack
   title: Webpack
   icon: webpack
   tags:
     - devops
     - build
-- slug: babel
-  title: Babel
-  icon: babel
-  tags:
-    - devops
-    - build
-- slug: gulp
-  title: Gulp
-  icon: gulp
+- slug: swc
+  title: SWC
+  icon: swc
   tags:
     - devops
     - build
@@ -468,27 +473,41 @@
   tags:
     - devops
     - build
-- slug: composer
-  title: Composer
-  icon: cplusplus
+- slug: opentelemetry
+  title: OpenTelemetry
+  icon: opentelemetry
   tags:
     - devops
     - pkgm
-- slug: npm
-  title: NPM
-  icon: npm
+- slug: datadog
+  title: Datadog
+  icon: datadog
   tags:
     - devops
     - pkgm
-- slug: pnpm
-  title: PNPM
-  icon: pnpm
+- slug: sentry
+  title: Sentry
+  icon: sentry
   tags:
     - devops
     - pkgm
-- slug: yarn
-  title: Yarn
-  icon: yarn
+- slug: cloudflare
+  title: Cloudflare CDN
+  icon: cloudflare
+  tags:
+    - front
+    - api
+- slug: netlify
+  title: Netlify
+  icon: netlify
   tags:
     - devops
-    - pkgm
+    - front
+    - api
+    - deploy
+- slug: wpengine
+  title: WP Engine
+  icon: wpengine
+  tags:
+    - devops
+    - deploy

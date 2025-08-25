@@ -53,12 +53,12 @@ function Header({ className }) {
   return (
     <header className={className}>
       <DocumentHead />
-      <div className='absolute w-16 lg:w-28 xl:w-32 top-0 right-0 mt-10 -mr-8 lg:-mr-14 xl:-mr-16 text-center'>
-        <ul>
-          <li className='mb-6'>
+      <div className='min-h-screen sticky top-0 flex flex-col items-center w-16 lg:w-28 xl:w-32 ml-0.5 pt-10 pb-6'>
+        <ul className='w-full flex flex-col items-center'>
+          <li className='w-full mb-6'>
             <Link
               id='avatar'
-              className='block rounded-full h-16 lg:h-28 xl:h-32 bg-cover bg-center transition-all'
+              className='w-full block rounded-full h-16 lg:h-28 xl:h-32 bg-cover bg-center transition-all'
               to='home'
               title='Go to homepage'
             />
@@ -67,21 +67,22 @@ function Header({ className }) {
           <li className='mb-4'><ColorThemeButton /></li>
           <li><EdgesThemeButton /></li>
         </ul>
+        <div className='flex-grow min-h-32' />
+        <Contacts>
+          {items => (
+            <div>
+              <ul>{items}</ul>
+            </div>
+          )}
+          {({ title, href, Icon }) => (
+            <li className='mb-4'>
+              <Button size='mono' to={href} external='header_contact' title={title}>
+                <Icon className='w-6' />
+              </Button>
+            </li>
+          )}
+        </Contacts>
       </div>
-      <Contacts>
-        {items => (
-          <div className='absolute w-12 bottom-0 mb-6 right-0 -mr-6'>
-            <ul>{items}</ul>
-          </div>
-        )}
-        {({ title, href, Icon }) => (
-          <li className='mb-4'>
-            <Button size='mono' to={href} external='header_contact' title={title}>
-              <Icon className='w-6' />
-            </Button>
-          </li>
-        )}
-      </Contacts>
     </header>
   )
 }

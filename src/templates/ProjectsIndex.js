@@ -15,8 +15,8 @@ export default class ProjectsIndex extends Page {
       <>
         <Section spacing={false}>
           <Heading title={title} primary>
-            Since beginning my journey, I’ve done remote work for agencies, consulted for startups, and collaborated with talented people
-            to create web products for both business and consumer use.
+            I’ve done remote work for agencies and startups, and collaborated with talented people
+            to ship web products for both business and consumer use.
           </Heading>
         </Section>
         {groups.map(({ id, totalCount, nodes }) => {

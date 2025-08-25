@@ -27,6 +27,7 @@ module.exports = {
   plugins: [],
   content: [
     './src/**/*.js',
+    './content/**/*.mdx',
   ],
   safelist: [
     ..._.uniq(themes.color.map(t => t.class.split(' ')).flat()),

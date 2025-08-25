@@ -1,0 +1,17 @@
+@layer components {
+  .masonry {
+    display: flex;
+    margin-left: calc(var(--masonry-gap) * -1);
+    margin-bottom: calc(var(--masonry-gap) * -1);
+
+    & > * {
+      padding-left: var(--masonry-gap);
+      background-clip: padding-box;
+
+      & > * {
+        display: block;
+        margin-bottom: var(--masonry-gap);
+      }
+    }
+  }
+}

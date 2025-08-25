@@ -1,6 +1,6 @@
 exports.site = {
   title: 'Mohamed Elkholy',
-  description: 'Full stack web developer with a broad range of skills and expertise in all web development related fields.',
+  description: 'Full-stack web developer with years of hands-on experience across front-end, back-end, and cloud infrastructure.',
   copyright: '© 2025 All rights reserved.',
   menu: [
     { label: 'Intro', to: 'home' },
@@ -8,11 +8,11 @@ exports.site = {
       { label: 'Backend', hash: 'backend' },
       { label: 'Frontend', hash: 'frontend' },
       { label: 'DevOps', hash: 'devops' },
-      { label: 'Software', hash: 'software' },
+      { label: 'Tools', hash: 'software' },
     ]},
     { label: 'Projects', to: 'projects', items: [
-      { label: 'OpenSource', to: 'projects.category', params: { category: 'open-source' }, hash: 'open-source' },
       { label: 'Portfolio', to: 'projects.category', params: { category: 'portfolio' }, hash: 'portfolio' },
+      { label: 'OpenSource', to: 'projects.category', params: { category: 'open-source' }, hash: 'open-source' },
     ]},
     { label: 'Resumé', to: 'resume', items: [
       { label: 'Experience', hash: 'experience' },

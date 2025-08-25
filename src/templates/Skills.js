@@ -24,22 +24,20 @@ export default class Skills extends Page {
       <>
         <Section>
           <Heading title={title} primary>
-            Software development is hard. Managing projects is hard. Working remotely is hard. Here are some
-            things I'm good at, to help ease the pain.
+            Shipping software takes more than code—here’s how I keep projects moving with fewer surprises and predictable delivery.
           </Heading>
           <div className='grid md:grid-cols-2 gap-8'>
             <SoftSkill title='Problem Solving' icon='bug'>
-              I can take vague problems and requirements and break them down into steps and solutions.
+              Turn ambiguous requirements into clear, actionable steps and pragmatic solutions.
             </SoftSkill>
-            <SoftSkill title='Systematic Thinking' icon='stack'>
-              I'm good at thinking abstractly and putting together systems with many moving parts.
+            <SoftSkill title='Systems thinking' icon='stack'>
+              See the whole system (data flow, dependencies, failure modes) and design accordingly.
             </SoftSkill>
-            <SoftSkill title='Communicating' icon='chat'>
-              I can explain things clearly, communicate problems quickly and write accurately and concisely.
+            <SoftSkill title='Communication' icon='chat'>
+              Explain trade-offs clearly, write concise docs, give and receive constructive code reviews, and surface risks early.
             </SoftSkill>
-            <SoftSkill title='Organising' icon='calendar'>
-              I can self-manage, work to deadlines, organise projects and present well-structured
-              and complete deliverables.
+            <SoftSkill title='Planning & ownership' icon='calendar'>
+              Self-manage, set priorities, and deliver on time with well-structured outcomes.
             </SoftSkill>
           </div>
         </Section>

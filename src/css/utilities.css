@@ -21,6 +21,26 @@
     text-decoration-thickness: from-font;
   }
 
+  .word-tracking-tighter {
+    word-spacing: -0.2em;
+  }
+
+  .word-tracking-tight {
+    word-spacing: -0.1em;
+  }
+
+  .word-tracking-normal {
+    word-spacing: 0;
+  }
+
+  .word-tracking-wide {
+    word-spacing: 0.1em;
+  }
+
+  .word-tracking-wider {
+    word-spacing: 0.2em;
+  }
+
   .cursor-zoom {
     cursor: zoom-in;
   }

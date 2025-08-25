@@ -1,22 +1,22 @@
 export const skillTags = {
   back: 'Back-end Development',
   front: 'Front-end Development',
-  devops: 'DevOps',
-  soft: 'Software',
+  devops: 'DevOps & Cloud',
+  soft: 'Developer Tools',
   lang: 'Languages',
   frame: 'Frameworks',
-  lib: 'Libraries',
-  cms: 'Content Management',
+  lib: 'State and Data',
+  cms: 'CMS and Commerce',
   db: 'Databases',
   api: 'APIs',
   test: 'Testing',
   ui: 'User Interface',
-  tool: 'Tools',
+  tool: 'Containers and IaC',
   build: 'Build Tools',
-  deploy: 'Deployment',
+  deploy: 'Platforms',
   ci: 'CI/CD',
-  pkgm: 'Package Managers',
-  git: 'Git Hosting',
+  pkgm: 'Observability',
+  git: 'Repo Automation',
   dev: 'Development',
   prod: 'Productivity',
   env: 'Environment',
@@ -25,22 +25,22 @@ export const skillTags = {
 export const skillTagGroups = createSkillTagGroups({
   backend: {
     tag: 'back',
-    desc: 'This is my main area of expertise. My backend stack usually involves PHP and/or Node.js with the CMS/Framework of choice.',
+    desc: 'Primary focus on Node.js/TypeScript (Express/NestJS, GraphQL/Apollo) — stack adapts to project scope.',
     tags: ['lang', 'frame', 'cms', 'db', 'api', 'test']
   },
   frontend: {
     tag: 'front',
-    desc: 'I write standards-compliant front-end code that powers web user interfaces. With a particular  focus on responsive design, semantic markup, accessibility, and performance.',
-    tags: ['lang', 'frame', 'ui', 'api', 'lib', 'test']
+    desc: 'Primary focus on React and Angular — TypeScript-first, standards-compliant UIs optimized for performance, usability, and responsiveness.',
+    tags: ['lang', 'frame', 'ui', 'lib', 'api', 'test']
   },
   devops: {
     tag: 'devops',
-    desc: 'I use these tools and cloud services to setup integrated infrastructures and CI/CD pipelines that meet the project needs.',
+    desc: 'I set up cloud infrastructure and CI/CD pipelines to ship reliably.',
     tags: ['tool', 'deploy', 'ci', 'build', 'pkgm', 'git']
   },
   software: {
     tag: 'soft',
-    desc: 'Software applications I use in everyday work.',
+    desc: 'Development workflow & tooling.',
     tags: ['dev', 'env', 'prod']
   },
 })

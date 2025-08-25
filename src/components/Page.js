@@ -7,7 +7,7 @@ import Providers from '../providers'
 import { LayoutContext } from '../providers/layout'
 import { DefaultLayout } from '../layouts'
 import { Section } from '.'
-import socialBanner from '../images/social-banner.png'
+import socialBanner from '../images/social-banner-photo.jpg'
 
 function PageHelmet({ page: { context, title = '', description, noIndex, image } }) {
   const { deployment } = useSiteMetadata()
