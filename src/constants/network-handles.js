@@ -12,7 +12,7 @@ export const networkHandles = {
   homepage: {
     title: 'Homepage',
     icon: 'globe',
-    href: handle => /^(https?:)?\/\//.test(handle) ? handle : `https://${handle}`,
+    href: (handle) => (/^(https?:)?\/\//.test(handle) ? handle : `https://${handle}`),
   },
   github: {
     title: 'Github Profile',

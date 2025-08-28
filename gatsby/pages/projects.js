@@ -12,13 +12,18 @@ async function getData(graphql) {
         edges {
           node {
             slug
+            parent {
+              internal {
+                contentFilePath
+              }
+            }
           }
         }
-        skills: group(field: skills___id) {
+        skills: group(field: { skills: { slug: SELECT } }) {
           fieldValue
           totalCount
         }
-        categories: group(field: categories___id) {
+        categories: group(field: { categories: { slug: SELECT } }) {
           fieldValue
           totalCount
         }
@@ -85,11 +90,15 @@ async function createDetailsPages({ graphql, createAdvancedPage }) {
       params: {
         project: node.slug,
       },
+      templateArgs: {
+        // Required for gatsby-plugin-mdx to render mdx content into React element
+        __contentFilePath: node.parent.internal.contentFilePath,
+      },
     })
   }
 }
 
-module.exports = async args => {
+module.exports = async (args) => {
   switch (args.page.templateName) {
     case 'ProjectsIndex.js':
       await createIndexPage(args)

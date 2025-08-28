@@ -2,7 +2,7 @@
 const config = {
   develop: {
     url: 'http://localhost:8000',
-    analytics: 'XX-000000'
+    analytics: 'XX-000000',
   },
   'staging-local': {
     url: 'http://localhost:9000',
@@ -24,7 +24,7 @@ function createDeployment() {
     target = process.env.CI ? 'production' : 'staging-local'
     const envTarget = process.env.DEPLOY_TARGET
     if (envTarget) {
-      if(!config[envTarget]) {
+      if (!config[envTarget]) {
         throw new Error(`Invalid deploy target "${envTarget}"`)
       }
       target = envTarget

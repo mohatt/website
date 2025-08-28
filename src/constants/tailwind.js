@@ -1,7 +1,7 @@
 exports.themes = {
   color: createColorThemes([
     [
-      'default',
+      'oasis',
       {
         primary: '#b28e59',
         secondary: '#234e52',
@@ -56,7 +56,7 @@ exports.themes = {
       false,
     ],
   ]),
-  edges: createEdgesThemes(['default', 'xl', 'md', 'sm']),
+  edges: createEdgesThemes(['sm', 'full']),
 }
 
 exports.colors = {
@@ -71,7 +71,7 @@ exports.colors = {
 }
 
 exports.screens = {
-  print: { 'raw': 'print' },
+  print: { raw: 'print' },
   xs: '410px',
   sm: '640px',
   md: '768px',
@@ -84,10 +84,13 @@ exports.screens = {
 
 function createColorThemes(themes) {
   return themes.map(([id, colors, dark]) => ({
-    id, colors, dark, class: 'ct-' + id + (dark ? ' dark' : '')
+    id,
+    colors,
+    dark,
+    class: 'ct-' + id + (dark ? ' dark' : ''),
   }))
 }
 
 function createEdgesThemes(themes) {
-  return themes.map(id => ({ id, class: 'et-' + id }))
+  return themes.map((id) => ({ id, class: 'et-' + id }))
 }

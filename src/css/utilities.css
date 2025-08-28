@@ -2,7 +2,7 @@
   .text-shadow {
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
 
-    @nest .dark & {
+    .dark & {
       text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
     }
   }
@@ -19,6 +19,26 @@
   .underline-dotted {
     text-decoration: underline dotted;
     text-decoration-thickness: from-font;
+  }
+
+  .word-tracking-tighter {
+    word-spacing: -0.2em;
+  }
+
+  .word-tracking-tight {
+    word-spacing: -0.1em;
+  }
+
+  .word-tracking-normal {
+    word-spacing: 0;
+  }
+
+  .word-tracking-wide {
+    word-spacing: 0.1em;
+  }
+
+  .word-tracking-wider {
+    word-spacing: 0.2em;
   }
 
   .cursor-zoom {
@@ -49,6 +69,15 @@
 
     & > li {
       padding-left: 0.25rem;
+    }
+
+    html[data-layout='print'] & {
+      list-style-type: '•';
+      padding-left: 0.4rem;
+
+      & > li {
+        padding-left: 0.45rem;
+      }
     }
   }
 }

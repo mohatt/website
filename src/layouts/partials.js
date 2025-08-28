@@ -3,12 +3,12 @@ import { Helmet } from 'react-helmet-async'
 import { site } from '../constants'
 import { NetworkHandle } from '../util'
 import { usePath, useSiteMetadata } from '../hooks'
-import avatarAlt from '../images/avatar/avatar-smile.png'
+import avatarAlt from '../images/avatar/photo-nobg.webp'
 
 export function DocumentHead() {
   const { deployment } = useSiteMetadata()
   const [path, realPath] = usePath()
-  return(
+  return (
     <>
       {path === '/' && <h1 className='hidden'>{site.title}</h1>}
       <Helmet
@@ -18,9 +18,7 @@ export function DocumentHead() {
           { name: 'og:url', content: deployment.config.url + realPath },
           { name: 'twitter:card', content: 'summary_large_image' },
         ]}
-        link={[
-          { rel: 'prefetch', as: 'image', href: avatarAlt },
-        ]}
+        link={[{ rel: 'prefetch', as: 'image', href: avatarAlt }]}
       />
     </>
   )
@@ -35,7 +33,5 @@ export function Contacts({ homepage, phone, ...props }) {
   if (phone) {
     contacts.unshift('phone:' + site.phone)
   }
-  return (
-    <NetworkHandle.Map data={contacts} {...props} />
-  )
+  return <NetworkHandle.Map data={contacts} {...props} />
 }

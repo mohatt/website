@@ -9,9 +9,7 @@ export default function Providers({ children, Layout, location }) {
     <PathProvider location={location}>
       <AnalyticsProvider location={location}>
         <ThemeProvider>
-          <LayoutProvider Layout={Layout}>
-            {children}
-          </LayoutProvider>
+          <LayoutProvider Layout={Layout}>{children}</LayoutProvider>
         </ThemeProvider>
       </AnalyticsProvider>
     </PathProvider>

@@ -7,7 +7,7 @@ import Providers from '../providers'
 import { LayoutContext } from '../providers/layout'
 import { DefaultLayout } from '../layouts'
 import { Section } from '.'
-import socialBanner from '../images/social-banner.png'
+import socialBanner from '../images/social-banner-photo.jpg'
 
 function PageHelmet({ page: { context, title = '', description, noIndex, image } }) {
   const { deployment } = useSiteMetadata()
@@ -104,21 +104,16 @@ export default class Page extends React.Component {
     const isText = typeof snippet === 'string'
     if (!isText) {
       let { $comp = this.title || 'undefined', ...props } = snippet
-      $comp = $comp.replace(/(?:^[^A-Za-z]*|[\W_]+)(.)?/g, (_, c) => c ? c.toUpperCase() : '')
+      $comp = $comp.replace(/(?:^[^A-Za-z]*|[\W_]+)(.)?/g, (_, c) => (c ? c.toUpperCase() : ''))
       snippet = `<${$comp} ${Object.keys(props)
-        .filter(a => props[a] !== undefined)
-        .map(a => `${a}=${JSON.stringify(props[a])} `)
-        .join('')
-      }/>`
+        .filter((a) => props[a] !== undefined)
+        .map((a) => `${a}=${JSON.stringify(props[a])} `)
+        .join('')}/>`
     }
     return (
       <Section spacing={false} className={cx('flex font-display italic mb-4', isText && 'text-lg')}>
         <div className='flex-grow'>{snippet}</div>
-        {actions && (
-          <div className='text-right'>
-            {actions}
-          </div>
-        )}
+        {actions && <div className='text-right'>{actions}</div>}
       </Section>
     )
   }

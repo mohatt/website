@@ -27,11 +27,7 @@ export function AnalyticsProvider({ children, location }) {
 
   useEffect(() => initializeAnalytics(current.instance), [])
 
-  return (
-    <AnalyticsContext.Provider value={current.instance}>
-      {children}
-    </AnalyticsContext.Provider>
-  )
+  return <AnalyticsContext.Provider value={current.instance}>{children}</AnalyticsContext.Provider>
 }
 
 export function useAnalytics() {

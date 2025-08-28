@@ -1,7 +1,8 @@
 exports.createParentFieldResolver = function ({ field, defaultValue = null }) {
   return function (source, args, context, info) {
-    return context.nodeModel
-      .getNodeById({ id: source.parent })[field || info.fieldName] || defaultValue
+    return (
+      context.nodeModel.getNodeById({ id: source.parent })[field || info.fieldName] || defaultValue
+    )
   }
 }
 

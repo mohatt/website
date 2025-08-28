@@ -3,7 +3,5 @@
   "singleQuote": true,
   "jsxSingleQuote": true,
   "semi": false,
-  "trailingComma": "es5",
-  "jsxBracketSameLine": true,
-  "arrowParens": "avoid"
+  "trailingComma": "all"
 }

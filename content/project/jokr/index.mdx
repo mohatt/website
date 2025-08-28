@@ -1,0 +1,89 @@
+---
+title: JOKR
+desc: Smart grocery shopping powered by AI.
+started: 2024-09-15
+screens:
+  - mobile-01.jpg
+  - mobile-02.jpg
+  - mobile-03.jpg
+categories:
+  - portfolio
+skills:
+ - typescript
+ - node
+ - nestjs
+ - mongodb
+ - react
+ - graphql
+ - material
+ - gcp
+ - jest
+ - docker
+ - kubernetes
+ - helm
+ - terraform
+ - auth0
+ - datadog
+ - cypress
+ - ghactions
+ - cloudspanner
+ - cloudflare
+ - vite
+handles:
+  - homepage:www.jokr.com
+---
+#### Project Description
+
+JOKR is a grocery delivery mobile app that enables quick home deliveries from personalized, user-specific lists.
+
+I owned several **NestJS/GraphQL** microservices within JOKR’s **Apollo Federation** supergraph (the primary API for the iOS and Android app) and helped build internal dashboards. The product also incorporated smart shopping—a unique **AI-powered mechanism** for recommending products.
+
+As the product expanded, we needed to:
+- Ship new features quickly across multiple GraphQL microservices without breaking the supergraph.
+- Give operations teams reliable dashboards to manage catalog, content, and promotions.
+- Improve performance, reliability, and developer velocity as traffic increased.
+
+#### What I built
+
+<div className='[&>ol>li]:text-primary [&>ol]:space-y-4 [&>ol_ul]:pt-2 [&_li]:text-typo-dim'>
+
+  1. Federated GraphQL microservices
+     - Designed schemas/contracts that play well inside Apollo Federation.
+     - Delivered resolvers and data layers with strict typing and validation.
+     - Added performance guardrails (DataLoader, pagination) and monitoring hooks.
+  2. Internal dashboards (React + Material UI)
+     - Built dashboards for ops to manage entities exposed by the services.
+     - Built reusable packages, component libraries, and internal scripts to standardize quality and shorten delivery cycles.
+     - Added feature flags and audit logs to keep changes traceable.
+  3. CI/CD and release hygiene
+     - PR preview environments for services and dashboards.
+     - Automated tests (Jest, Cypress) as required PR checks.
+     - Docker/Kubernetes/Helm deployment workflows to staging/production via GitHub Actions and Terraform.
+     - Slimmer images and parallelized steps to shorten deploy time.
+  4. Observability and reliability
+     - Structured logging, metrics, and traces in Datadog with actionable alerts.
+     - Incident runbooks that lowered MTTR and improved on-call confidence.
+     - Hardened input validation and Auth0/JWT scope enforcement.
+  5. Performance & scale
+     - Caching/batching cut hot-path latency; pagination stabilized queries under load.
+     - Load testing to validate capacity and catch regressions before release.
+     - Optimized media delivery with Cloudflare to cut payload size and improve page render time.
+  6. AI-powered product recommendations
+     - Integrated a recommendations service using signals like order history, category affinity, and declared interests.
+     - Exposed via the federated GraphQL layer and controllable from dashboards.
+     - Added guardrails (fallbacks, caps, telemetry) to keep recs safe and measurable.
+
+</div>
+
+####  Collaboration
+
+  - Partnered with Product to scope features and clarify trade-offs.
+  - Worked closely with Design on usable, consistent internal tooling.
+  - Performed peer reviews; mentored teammates on federation patterns, testing, security, and observability best practises.
+  - Coordinated across time zones; kept progress transparent with PRs, preview environments, Slack dev-channel updates, and change logs.
+
+####  What I’d do next
+
+  - Introduce contract tests between federated services to catch schema drift earlier.
+  - Add scenario-based load tests tied to growth projections.
+  - Expand recommendation features with feature stores and clearer offline evaluation.

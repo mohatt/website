@@ -5,32 +5,41 @@ import { ProjectCard, ProjectCategory } from './partials'
 
 export default class ProjectsIndex extends Page {
   view() {
-    const { page: { title }, projects } = this.props.data
+    const {
+      page: { title },
+      projects,
+    } = this.props.data
     this.title = title
     this.snippet = {
       $comp: 'Projects',
     }
-    const groups = projects.group.sort(x => x.id === 'open-source' ? -1 : 0)
+    const groups = [...projects.group].sort((x) => (x.slug === 'portfolio' ? -1 : 0))
     return (
       <>
         <Section spacing={false}>
           <Heading title={title} primary>
-            Since beginning my journey, I’ve done remote work for agencies, consulted for startups, and collaborated with talented people
-            to create web products for both business and consumer use.
+            I’ve done remote work for agencies and startups, and collaborated with talented people
+            to ship web products for both business and consumer use.
           </Heading>
         </Section>
-        {groups.map(({ id, totalCount, nodes }) => {
+        {groups.map(({ slug, totalCount, nodes }) => {
           if (nodes.length === 0) return null
-          const category = nodes[0].categories.find(c => c.id === id)
+          const category = nodes[0].categories.find((c) => c.slug === slug)
           return (
-            <Section key={id} id={id}>
+            <Section key={slug} id={slug}>
               <Heading title={category.title}>{category.desc}</Heading>
-              <ProjectCard.Grid data={nodes} params={{ category: id }} />
+              <ProjectCard.Grid data={nodes} params={{ category: slug }} />
               {totalCount > nodes.length && (
                 <div className='mt-12 text-lg'>
-                  <span>[{nodes.length} out of {totalCount}] </span>
+                  <span>
+                    [{nodes.length} out of {totalCount}]{' '}
+                  </span>
                   <ProjectCategory category={category}>
-                    {({ props }) => <Link className='link-primary' {...props}>View all »</Link>}
+                    {({ props }) => (
+                      <Link className='link-primary' {...props}>
+                        View all »
+                      </Link>
+                    )}
                   </ProjectCategory>
                 </div>
               )}
@@ -48,9 +57,12 @@ export const query = graphql`
       title
     }
 
-    projects: allProject(sort: { fields: [priority, started], order: [ASC, DESC] }, filter: { draft: { ne: true } }) {
-      group(field: categories___id, limit: $limit) {
-        id: fieldValue
+    projects: allProject(
+      sort: [{ priority: ASC }, { started: DESC }]
+      filter: { draft: { ne: true } }
+    ) {
+      group(field: { categories: { slug: SELECT } }, limit: $limit) {
+        slug: fieldValue
         nodes {
           ...ProjectCardFragment
           categories {

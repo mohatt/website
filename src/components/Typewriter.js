@@ -53,21 +53,18 @@ function Typewriter({
   const mounted = useMounted()
   return (
     <span className={cx('typewriter', className)}>
-      {mounted
-        ? <TypewriterText
-            words={words}
-            loop={loop}
-            typeSpeed={speed}
-            deleteSpeed={backspace}
-            delay={delay}
-          />
-        : words[0]
-      }
-      {cursor && mounted && (
-        <span className='typewriter-cursor'>
-          {cursor}
-        </span>
+      {mounted ? (
+        <TypewriterText
+          words={words}
+          loop={loop}
+          typeSpeed={speed}
+          deleteSpeed={backspace}
+          delay={delay}
+        />
+      ) : (
+        words[0]
       )}
+      {cursor && mounted && <span className='typewriter-cursor'>{cursor}</span>}
     </span>
   )
 }

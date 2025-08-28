@@ -1,9 +1,9 @@
 @layer base {
-  html[data-layout=default] {
+  html[data-layout='default'] {
     @apply text-[11.5px] sm:text-[16px] 3xl:text-[17.5px];
   }
 
-  html[data-layout=print] {
+  html[data-layout='print'] {
     @apply text-[13px];
   }
 
@@ -14,7 +14,7 @@
     }
 
     body {
-      color-adjust: exact;
+      print-color-adjust: exact;
     }
   }
 
@@ -32,32 +32,34 @@
   h6 {
     @apply font-display font-medium;
 
-    @nest html[data-layout=print] & {
-      /* @apply is not supported within @nest */
-      & {
-        @apply font-body uppercase;
-      }
+    html[data-layout='print'] & {
+      @apply font-body;
     }
   }
 
   #header {
     & #avatar {
-      background-image: url('../images/avatar/avatar.png');
+      background-image: url('../images/avatar/photo-nobg-mono.webp');
 
-      &:hover {
+      html[data-layout='print'] & {
         @apply bg-secondary;
-        background-image: url('../images/avatar/avatar-smile.png');
+        background-image: url('../images/avatar/photo-nobg.webp');
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          @apply bg-secondary;
+          background-image: url('../images/avatar/photo-nobg.webp');
+        }
       }
     }
 
     & ul > li > * {
       @apply border-2 border-primary;
 
-      @nest html[data-layout=default] & {
-        & {
-          @apply lg:border-4;
-          box-shadow: 0 0.2rem 0 0.09rem theme('colors.typo');
-        }
+      html[data-layout='default'] & {
+        @apply lg:border-4;
+        box-shadow: 0 0.2rem 0 0.09rem theme('colors.typo');
       }
     }
   }
@@ -65,7 +67,7 @@
   #menu {
     box-shadow: rgba(0, 0, 0, 0.1) -30px 0 20px -20px inset;
 
-    @nest .dark & {
+    .dark & {
       box-shadow: rgba(0, 0, 0, 0.5) -30px 0 20px -20px inset;
     }
 

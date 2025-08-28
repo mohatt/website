@@ -18,9 +18,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        gatsbyRemarkPlugins: [
-          'gatsby-remark-smartypants',
-        ],
+        gatsbyRemarkPlugins: ['gatsby-remark-smartypants'],
       },
     },
     {
@@ -71,9 +69,7 @@ module.exports = {
       options: require('./config/postbuild'),
     },
   ],
-}
-
-// dev-only plugins
-if (deployment.is.local) {
-  module.exports.plugins.push('gatsby-plugin-graphql-config')
+  graphqlTypegen: {
+    typesOutputPath: 'gatsby-types.d.ts',
+  },
 }

@@ -2,3 +2,6 @@ public
 static
 .cache
 content
+firebase.json
+font-preload-cache.json
+pnpm-lock.yaml
