@@ -2,21 +2,21 @@ export const skillTags = {
   back: 'Back-end Development',
   front: 'Front-end Development',
   devops: 'DevOps & Cloud',
-  soft: 'Developer Tools',
+  tool: 'Developer Tools',
   lang: 'Languages',
   frame: 'Frameworks',
-  lib: 'State and Data',
+  state: 'State and Data',
   cms: 'CMS and Commerce',
   db: 'Databases',
   api: 'APIs',
   test: 'Testing',
   ui: 'User Interface',
-  tool: 'Containers and IaC',
+  deploy: 'Containers and IaC',
   build: 'Build Tools',
-  deploy: 'Platforms',
+  platform: 'Platforms',
   ci: 'CI/CD',
-  pkgm: 'Observability',
-  git: 'Repo Automation',
+  obsrv: 'Observability',
+  repo: 'Repo Automation',
   dev: 'Development',
   prod: 'Productivity',
   env: 'Environment',
@@ -31,15 +31,15 @@ export const skillTagGroups = createSkillTagGroups({
   frontend: {
     tag: 'front',
     desc: 'Primary focus on React and Angular — TypeScript-first, standards-compliant UIs optimized for performance, usability, and responsiveness.',
-    tags: ['lang', 'frame', 'ui', 'lib', 'api', 'test']
+    tags: ['lang', 'frame', 'ui', 'state', 'api', 'test']
   },
   devops: {
     tag: 'devops',
     desc: 'I set up cloud infrastructure and CI/CD pipelines to ship reliably.',
-    tags: ['tool', 'deploy', 'ci', 'build', 'pkgm', 'git']
+    tags: ['deploy', 'platform', 'ci', 'build', 'obsrv', 'repo']
   },
-  software: {
-    tag: 'soft',
+  tools: {
+    tag: 'tool',
     desc: 'Development workflow & tooling.',
     tags: ['dev', 'env', 'prod']
   },
@@ -57,4 +57,26 @@ function createSkillTagGroups(groups) {
       }))
     })
   })
+}
+
+function getSkillRank ({ tags, slug }) {
+  const p = skillTagGroups.findIndex((group) => tags.includes(group.tag))
+  const c = p === -1 ? -1 : skillTagGroups[p].tags.findIndex((t) => tags.includes(t.id))
+  // push unknowns to the end
+  const P = p === -1 ? 99 : p
+  const C = c === -1 ? 99 : c
+  // fixed-width key: 'PCC' (e.g., back/lang -> 0, front/frame -> 1.02)
+  return parseFloat(`${P}.${String(C).padStart(2, '0')}`)
+}
+
+export function sortSkillsByTagGroups(skills, ignoredTags = []) {
+  const sorted = [...skills].sort((a, b) => getSkillRank(a) - getSkillRank(b))
+  if (ignoredTags?.length) {
+    sorted.sort((a, b) => {
+      const ia = a.tags.some(t => ignoredTags.includes(t))
+      const ib = b.tags.some(t => ignoredTags.includes(t))
+      return ia - ib
+    })
+  }
+  return sorted
 }

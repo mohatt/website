@@ -8,7 +8,7 @@ exports.site = {
       { label: 'Backend', hash: 'backend' },
       { label: 'Frontend', hash: 'frontend' },
       { label: 'DevOps', hash: 'devops' },
-      { label: 'Tools', hash: 'software' },
+      { label: 'Tools', hash: 'tools' },
     ]},
     { label: 'Projects', to: 'projects', items: [
       { label: 'Portfolio', to: 'projects.category', params: { category: 'portfolio' }, hash: 'portfolio' },

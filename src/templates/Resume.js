@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { generatePath } from 'gatsby-plugin-advanced-pages'
-import { education, experience } from '../constants'
+import { education, experience, sortSkillsByTagGroups } from '../constants'
 import { cx } from '../util'
 import { useSiteMetadata } from '../hooks'
 import { Page, Heading, Section, Link, Icon, Masonry } from '../components'
@@ -32,6 +32,10 @@ export default class Resume extends Page {
         </a>
       </>
     )
+    const skills = {
+      first: sortSkillsByTagGroups(firstSkills.nodes, ['deploy', 'ci', 'test']),
+      second: sortSkillsByTagGroups(secondSkills.nodes, ['deploy', 'ci', 'test']),
+    }
 
     function subtitleProps(subtitle) {
       if (isPrint) {
@@ -129,7 +133,7 @@ export default class Resume extends Page {
               <h3 className='font-body text-lg text-primary inline'>Soft Skills & Practices</h3> —
               Problem-solving · Decision-making · Systems thinking · Communication · Organization · Test-driven development (TDD) · Code reviews · Clean architecture · Documentation
             </div>
-            {[['Recently used', firstSkills.nodes], ['Also used', secondSkills.nodes]].map(([title, nodes]) => (
+            {[['Recently used', skills.first], ['Also used', skills.second]].map(([title, nodes]) => (
               <div key={title} className={!isPrint && 'max-w-3xl'}>
                 <h3 className='font-body text-lg text-primary inline'>{title}</h3> — {nodes.map(skill => skill.title).join(' · ')}
               </div>
@@ -203,12 +207,14 @@ export const query = graphql`
     firstSkills: allProjectSkill(filter: { tags: { eq: "1st" } }) {
       nodes {
         ...ProjectSkillFragment
+        tags
       }
     }
 
     secondSkills: allProjectSkill(filter: { tags: { eq: "2nd" } }) {
       nodes {
         ...ProjectSkillFragment
+        tags
       }
     }
 

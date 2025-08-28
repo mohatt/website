@@ -112,6 +112,13 @@
     - 2nd
     - front
     - frame
+- slug: vite
+  title: Vite
+  icon: vite
+  tags:
+    - 1st
+    - front
+    - frame
 - slug: stripe
   title: Stripe.js
   icon: stripe
@@ -125,26 +132,28 @@
   tags:
     - 1st
     - front
-    - lib
+    - state
+    - back
+    - api
 - slug: rxjs
   title: RxJS
   icon: reactivex
   tags:
     - 1st
     - front
-    - lib
+    - state
 - slug: redux
   title: Redux
   icon: redux
   tags:
     - front
-    - lib
+    - state
 - slug: d3
   title: D3.js
   icon: d3dotjs
   tags:
     - front
-    - lib
+    - state
 - slug: material
   title: Material UI
   icon: mui
@@ -191,18 +200,6 @@
   tags:
     - back
     - cms
-- slug: rest
-  title: REST
-  icon: json
-  tags:
-    - back
-    - api
-- slug: graphql
-  title: GraphQL
-  icon: graphql
-  tags:
-    - back
-    - api
 - slug: gcp
   title: Google Cloud
   icon: googlecloud
@@ -211,7 +208,7 @@
     - devops
     - back
     - api
-    - deploy
+    - platform
 - slug: aws
   title: Amazon AWS
   icon: amazonaws
@@ -220,7 +217,7 @@
     - devops
     - back
     - api
-    - deploy
+    - platform
 - slug: firebase
   title: Firebase
   icon: firebase
@@ -230,7 +227,7 @@
     - back
     - front
     - api
-    - deploy
+    - platform
 - slug: auth0
   title: Auth0
   icon: auth0
@@ -241,6 +238,12 @@
 - slug: paymentapi
   title: Payment Gateways
   icon: paypal
+  tags:
+    - back
+    - api
+- slug: rest
+  title: REST
+  icon: json
   tags:
     - back
     - api
@@ -345,31 +348,31 @@
   icon: pnpm
   tags:
     - devops
-    - git
+    - repo
 - slug: semanticrelease
   title: Semantic Release
   icon: semanticrelease
   tags:
     - devops
-    - git
+    - repo
 - slug: dependabot
   title: Dependabot
   icon: dependabot
   tags:
     - devops
-    - git
+    - repo
 - slug: githooks
   title: Git Hooks
   icon: git
   tags:
     - devops
-    - git
+    - repo
 - slug: vercel
   title: Vercel
   icon: vercel
   tags:
     - devops
-    - deploy
+    - platform
 - slug: ghactions
   title: GitHub Actions
   icon: github
@@ -393,13 +396,13 @@
   title: macOS
   icon: apple
   tags:
-    - soft
+    - tool
     - env
 - slug: fedora
   title: Fedora
   icon: fedora
   tags:
-    - soft
+    - tool
     - env
 - slug: docker
   title: Docker
@@ -407,8 +410,8 @@
   tags:
     - 1st
     - devops
-    - soft
     - tool
+    - deploy
     - env
 - slug: kubernetes
   title: Kubernetes
@@ -416,87 +419,80 @@
   tags:
     - 2nd
     - devops
-    - tool
+    - deploy
 - slug: helm
   title: Helm
   icon: helm
   tags:
     - devops
-    - tool
+    - deploy
 - slug: terraform
   title: Terraform
   icon: terraform
   tags:
     - 2nd
     - devops
-    - tool
+    - deploy
 - slug: vagrant
   title: Vagrant
   icon: vagrant
   tags:
     - devops
-    - tool
+    - deploy
 - slug: fish
   title: Fish Shell
   icon: windowsterminal
   tags:
-    - soft
+    - tool
     - env
 - slug: jetbrains
   title: JetBrains IDEs
   icon: jetbrains
   tags:
-    - soft
+    - tool
     - dev
 - slug: vscode
   title: Visual Studio Code
   icon: visualstudiocode
   tags:
-    - soft
+    - tool
     - dev
 - slug: postman
   title: Postman
   icon: postman
   tags:
-    - soft
+    - tool
     - dev
 - slug: chrome
   title: DevTools
   icon: googlechrome
   tags:
-    - soft
+    - tool
     - dev
 - slug: git
   title: Git
   icon: git
   tags:
-    - soft
+    - tool
     - dev
 - slug: notion
   title: Notion
   icon: notion
   tags:
-    - soft
+    - tool
     - prod
 - slug: slack
   title: Slack
   icon: slack
   tags:
-    - soft
+    - tool
     - prod
 - slug: jira
   title: Jira
   icon: jirasoftware
   tags:
-    - soft
+    - tool
     - prod
-- slug: vite
-  title: Vite
-  icon: vite
-  tags:
-    - 1st
-    - devops
-    - build
 - slug: webpack
   title: Webpack
   icon: webpack
@@ -521,19 +517,19 @@
   icon: opentelemetry
   tags:
     - devops
-    - pkgm
+    - obsrv
 - slug: datadog
   title: Datadog
   icon: datadog
   tags:
     - devops
-    - pkgm
+    - obsrv
 - slug: sentry
   title: Sentry
   icon: sentry
   tags:
     - devops
-    - pkgm
+    - obsrv
 - slug: cloudflare
   title: Cloudflare CDN
   icon: cloudflare
@@ -547,10 +543,10 @@
     - devops
     - front
     - api
-    - deploy
+    - platform
 - slug: wpengine
   title: WP Engine
   icon: wpengine
   tags:
     - devops
-    - deploy
+    - platform
