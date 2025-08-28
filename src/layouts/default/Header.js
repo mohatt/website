@@ -65,7 +65,7 @@ function Header({ className }) {
           </li>
           <li className='mb-4 xl:hidden'><MenuButton /></li>
           <li className='mb-4'><ColorThemeButton /></li>
-          <li><EdgesThemeButton /></li>
+          {/* <li><EdgesThemeButton /></li> */}
         </ul>
         <div className='flex-grow min-h-32' />
         <Contacts>

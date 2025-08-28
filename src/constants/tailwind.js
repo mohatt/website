@@ -1,7 +1,7 @@
 exports.themes = {
   color: createColorThemes([
     [
-      'default',
+      'oasis',
       {
         primary: '#b28e59',
         secondary: '#234e52',
@@ -56,7 +56,7 @@ exports.themes = {
       false,
     ],
   ]),
-  edges: createEdgesThemes(['default', 'sm']),
+  edges: createEdgesThemes(['sm', 'full']),
 }
 
 exports.colors = {
