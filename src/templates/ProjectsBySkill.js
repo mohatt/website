@@ -36,7 +36,7 @@ export const query = graphql`
       limit: $limit
       skip: $offset
       filter: { skills: { elemMatch: { slug: { eq: $skill } } }, draft: { ne: true } }
-      sort: [{ categories: { slug: DESC }}, { priority: ASC }, { started: DESC }]
+      sort: [{ categories: { slug: DESC } }, { priority: ASC }, { started: DESC }]
     ) {
       ...ProjectCardGridPaginatedFragment
     }

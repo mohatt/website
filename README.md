@@ -1,4 +1,5 @@
 # Personal website
+
 [![][ci-dev-img]][ci-dev-url] [![][ci-prod-img]][ci-prod-url] [![][website-img]][website-url] [![][gatsby-img]][gatsby-url] [![][s-headers-img]][s-headers-url] [![][observatory-img]][observatory-url]
 
 The third version of my personal website built with [Gatsby](https://www.gatsbyjs.org), [Tailwind CSS](https://tailwindcss.com)
@@ -10,11 +11,13 @@ request. This project is open source, so you are free to fork and adapt for your
 ## Setup
 
 To get the website up and running locally, first clone the repo
+
 ```sh
 $ git clone git@github.com:mohatt/website.git
 ```
 
 Install dependencies
+
 ```sh
 $ pnpm install
 ```
@@ -31,7 +34,7 @@ $ pnpm lint:css # Lint CSS sources
 ### Production
 
 ```sh
-$ pnpm clean # (Optional) Clear gatsby cache before build 
+$ pnpm clean # (Optional) Clear gatsby cache before build
 $ pnpm build # Generate a fully static production build of the website
 $ pnpm serve # Preview the site as it will appear once deployed
 ```
@@ -43,15 +46,16 @@ The website is currently hosted at [Firebase Hosting](https://firebase.google.co
 ### Channels
 
 - Staging
-    - **Domain**: [mohatt-staging.web.app](https://mohatt-staging.web.app)
-    - **Branch**: [development](https://github.com/mohatt/website/tree/development)
+  - **Domain**: [mohatt-staging.web.app](https://mohatt-staging.web.app)
+  - **Branch**: [development](https://github.com/mohatt/website/tree/development)
 - Production
-    - **Domain**: [mohatt.web.app][website-url]
-    - **Branch**: [production](https://github.com/mohatt/website/tree/production)
+  - **Domain**: [mohatt.web.app][website-url]
+  - **Branch**: [production](https://github.com/mohatt/website/tree/production)
 
 ### Workflow
 
 The deployment workflow is fully managed by git and works as follows:
+
 - Direct branch commits or PR merges are built then deployed directly to the branch live channel
 - Pull requests are built then deployed to a unique sub-channel under the target branch channel (e.g. `some-feature.mohatt.web.app`)
 

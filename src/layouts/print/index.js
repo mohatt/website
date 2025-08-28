@@ -14,7 +14,11 @@ export default function PrintLayout({ layout: { setPrintLayout, isEnforced }, ch
             </li>
             {isEnforced && (
               <li className='mb-4 print:hidden'>
-                <Button size='mono' onClick={() => setPrintLayout(false)} title='Exit print preview'>
+                <Button
+                  size='mono'
+                  onClick={() => setPrintLayout(false)}
+                  title='Exit print preview'
+                >
                   <Icon name='back' className='w-5' />
                 </Button>
               </li>
@@ -22,7 +26,10 @@ export default function PrintLayout({ layout: { setPrintLayout, isEnforced }, ch
           </ul>
         </div>
       </header>
-      <main id='main' className='pt-6 flex-grow flex flex-col justify-center bg-secondary text-typo-dim text-shadow'>
+      <main
+        id='main'
+        className='pt-6 flex-grow flex flex-col justify-center bg-secondary text-typo-dim text-shadow'
+      >
         {children}
       </main>
     </div>

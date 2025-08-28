@@ -16,7 +16,7 @@ export default function useLocalStorage(key, initialValue, normalizer) {
     return normalizer ? normalizer(value, true) : value
   })
 
-  const setValue = value => {
+  const setValue = (value) => {
     setStoredValue(value)
     try {
       window.localStorage.setItem(key, JSON.stringify(normalizer ? normalizer(value) : value))

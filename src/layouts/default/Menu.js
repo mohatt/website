@@ -10,7 +10,7 @@ function SubMenu({ items, hashPath, currentPath, onClick }) {
   const [activeHash, setActiveHash] = useState(null)
 
   useEffect(() => {
-    hashTargets.current = items.map(i => i.hash && $document.getElementById(i.hash))
+    hashTargets.current = items.map((i) => i.hash && $document.getElementById(i.hash))
     const targets = hashTargets.current.filter(Boolean)
     if (targets.length === 0) {
       setActiveHash(null)
@@ -25,15 +25,17 @@ function SubMenu({ items, hashPath, currentPath, onClick }) {
           const { innerHeight } = $window
           // Minimum intersecting area of the element to be considered active (40% vh)
           let max = innerHeight * 0.4
-          setActiveHash(targets.reduce((acc, target) => {
-            const { top, height } = target.getBoundingClientRect()
-            const intersect = Math.min(height, height + top, innerHeight - top)
-            if (intersect >= max) {
-              max = intersect
-              return target.id
-            }
-            return acc
-          }, null))
+          setActiveHash(
+            targets.reduce((acc, target) => {
+              const { top, height } = target.getBoundingClientRect()
+              const intersect = Math.min(height, height + top, innerHeight - top)
+              if (intersect >= max) {
+                max = intersect
+                return target.id
+              }
+              return acc
+            }, null),
+          )
           busy = false
         })
       }
@@ -50,20 +52,29 @@ function SubMenu({ items, hashPath, currentPath, onClick }) {
         <li key={i}>
           <Link
             to={to || hashPath + '#' + hash}
-            onClick={to || currentPath !== hashPath ? onClick : e => {
-              onClick(e)
-              if (hashTargets.current[i]) {
-                hashTargets.current[i].scrollIntoView({ behavior: 'smooth', block: 'start' })
-                e.preventDefault()
-              }
-            }}
-            className={cx('block mb-8 sm:mb-6 hover:text-primary', hash && hash === activeHash && 'text-primary')}
+            onClick={
+              to || currentPath !== hashPath
+                ? onClick
+                : (e) => {
+                    onClick(e)
+                    if (hashTargets.current[i]) {
+                      hashTargets.current[i].scrollIntoView({ behavior: 'smooth', block: 'start' })
+                      e.preventDefault()
+                    }
+                  }
+            }
+            className={cx(
+              'block mb-8 sm:mb-6 hover:text-primary',
+              hash && hash === activeHash && 'text-primary',
+            )}
             children={label}
-            {...external ? { external } : {
-              params: params,
-              activeClassName: 'text-primary',
-              partiallyActive: true,
-            }}
+            {...(external
+              ? { external }
+              : {
+                  params: params,
+                  activeClassName: 'text-primary',
+                  partiallyActive: true,
+                })}
           />
         </li>
       ))}
@@ -90,14 +101,21 @@ function Menu({ closeMenu, className }) {
                 onClick={closeMenu}
                 className='block mb-8 sm:mb-6 hover:text-typo'
                 children={label}
-                {...external ? { external } : {
-                  params: params,
-                  activeClassName: 'text-typo active',
-                  partiallyActive: to !== 'home',
-                }}
+                {...(external
+                  ? { external }
+                  : {
+                      params: params,
+                      activeClassName: 'text-typo active',
+                      partiallyActive: to !== 'home',
+                    })}
               />
               {isActive && (
-                <SubMenu items={items} hashPath={isActive} currentPath={currentPath} onClick={closeMenu} />
+                <SubMenu
+                  items={items}
+                  hashPath={isActive}
+                  currentPath={currentPath}
+                  onClick={closeMenu}
+                />
               )}
             </li>
           )

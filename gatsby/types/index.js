@@ -1,7 +1,9 @@
 const path = require('path')
 const fs = require('fs')
 const _ = require('lodash')
-const ImageExts = Object.keys(require('gatsby-transformer-sharp/supported-extensions').supportedExtensions)
+const ImageExts = Object.keys(
+  require('gatsby-transformer-sharp/supported-extensions').supportedExtensions,
+)
 const { contentPath } = require('../../config/site')
 const TYPES = require('./types')
 
@@ -19,7 +21,7 @@ function getNodeNamespace(node, mime, getNode) {
   if (node.sourceInstanceName === 'content') {
     const segments = path.normalize(node.relativePath).split(path.sep)
     if (segments.length > 1) {
-      [namespace, ...file] = segments
+      ;[namespace, ...file] = segments
       file = path.join(...file)
     }
   }
@@ -57,7 +59,8 @@ function getNodeNamespace(node, mime, getNode) {
 }
 
 function prepareNodeFields(node, type, { namespace, file }) {
-  const { fields } = TYPES.create.find(def => typeof def.name === 'string' && def.name === type) || {}
+  const { fields } =
+    TYPES.create.find((def) => typeof def.name === 'string' && def.name === type) || {}
   if (!fields) {
     throw new Error(`Unable to find valid type definition for '${type}'.`)
   }
@@ -69,12 +72,14 @@ function prepareNodeFields(node, type, { namespace, file }) {
 
   if (fields.slug && !node.slug) {
     const parsedRelPath = path.parse(file)
-    node.slug = parsedRelPath.dir === ''
-      ? parsedRelPath.name
-      : _.kebabCase(parsedRelPath.name === 'index'
-        ? parsedRelPath.dir
-        : `${parsedRelPath.dir}/${parsedRelPath.name}`
-      )
+    node.slug =
+      parsedRelPath.dir === ''
+        ? parsedRelPath.name
+        : _.kebabCase(
+            parsedRelPath.name === 'index'
+              ? parsedRelPath.dir
+              : `${parsedRelPath.dir}/${parsedRelPath.name}`,
+          )
   }
 
   if (fields.image) {
@@ -92,7 +97,7 @@ function prepareNodeFields(node, type, { namespace, file }) {
       node.hasImage = Boolean(node.image)
     }
     if (!node.image) {
-      let dir = path.join(nsPath, file);
+      let dir = path.join(nsPath, file)
       do {
         dir = path.dirname(dir)
         const imgFile = path.join(dir, 'placeholder.png')
@@ -158,22 +163,20 @@ exports.getYamlTypename = ({ node, object, isArray }) => {
 }
 
 exports.createTypes = ({ actions, schema }) => {
-  actions.createTypes(TYPES.create.map(def =>
-    typeof def === 'string'
-      ? def
-      : schema.buildObjectType(def)
-  ))
+  actions.createTypes(
+    TYPES.create.map((def) => (typeof def === 'string' ? def : schema.buildObjectType(def))),
+  )
 }
 
 exports.extendTypes = ({ type }) => {
   return TYPES.extend[type.name] || {}
 }
 
-exports.shouldOnCreateNode = args => {
+exports.shouldOnCreateNode = (args) => {
   return shouldCreateChildMdxNode(args)
 }
 
-exports.onCreateNode = async args => {
+exports.onCreateNode = async (args) => {
   if (shouldCreateChildMdxNode(args)) {
     await createChildMdxNode(args)
   }

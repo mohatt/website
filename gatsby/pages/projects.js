@@ -19,11 +19,11 @@ async function getData(graphql) {
             }
           }
         }
-        skills: group(field: {skills: { slug: SELECT }}) {
+        skills: group(field: { skills: { slug: SELECT } }) {
           fieldValue
           totalCount
         }
-        categories: group(field: {categories: { slug: SELECT }}) {
+        categories: group(field: { categories: { slug: SELECT } }) {
           fieldValue
           totalCount
         }
@@ -98,7 +98,7 @@ async function createDetailsPages({ graphql, createAdvancedPage }) {
   }
 }
 
-module.exports = async args => {
+module.exports = async (args) => {
   switch (args.page.templateName) {
     case 'ProjectsIndex.js':
       await createIndexPage(args)

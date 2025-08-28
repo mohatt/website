@@ -6,12 +6,14 @@ import { BaseIcon, Button } from '../../components'
 function ProjectSkill({ skill, children }) {
   let { slug, title, size, icon, props } = skill
   if (!props) {
-    props = skill.props = !size ? { children: title } : {
-      to: 'projects.skill',
-      params: { skill: slug },
-      children: title,
-      title: `View ${size} project${size !== 1 ? 's' : ''} tagged with "${slug}" skill`,
-    }
+    props = skill.props = !size
+      ? { children: title }
+      : {
+          to: 'projects.skill',
+          params: { skill: slug },
+          children: title,
+          title: `View ${size} project${size !== 1 ? 's' : ''} tagged with "${slug}" skill`,
+        }
 
     if (icon) {
       skill.Icon = function Icon(props) {
@@ -20,13 +22,11 @@ function ProjectSkill({ skill, children }) {
     }
   }
 
-  return children
-    ? children(skill)
-    : <Button color='alt' size='tiny' className='mr-1' {...props} />
+  return children ? children(skill) : <Button color='alt' size='tiny' className='mr-1' {...props} />
 }
 
 ProjectSkill.Map = createReactMap(function ProjectSkillMap(skill, { exclude, tags, children }) {
-  if (exclude === skill.slug || (tags && !tags.every(tag => skill.tags.indexOf(tag) > -1))) {
+  if (exclude === skill.slug || (tags && !tags.every((tag) => skill.tags.indexOf(tag) > -1))) {
     return
   }
 

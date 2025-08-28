@@ -1,9 +1,9 @@
 @layer base {
-  html[data-layout=default] {
+  html[data-layout='default'] {
     @apply text-[11.5px] sm:text-[16px] 3xl:text-[17.5px];
   }
 
-  html[data-layout=print] {
+  html[data-layout='print'] {
     @apply text-[13px];
   }
 
@@ -32,7 +32,7 @@
   h6 {
     @apply font-display font-medium;
 
-    html[data-layout=print] & {
+    html[data-layout='print'] & {
       @apply font-body;
     }
   }
@@ -41,7 +41,7 @@
     & #avatar {
       background-image: url('../images/avatar/photo-nobg-mono.webp');
 
-      html[data-layout=print] & {
+      html[data-layout='print'] & {
         @apply bg-secondary;
         background-image: url('../images/avatar/photo-nobg.webp');
       }
@@ -57,7 +57,7 @@
     & ul > li > * {
       @apply border-2 border-primary;
 
-      html[data-layout=default] & {
+      html[data-layout='default'] & {
         @apply lg:border-4;
         box-shadow: 0 0.2rem 0 0.09rem theme('colors.typo');
       }

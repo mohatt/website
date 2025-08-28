@@ -25,12 +25,9 @@ module.exports = {
     },
   },
   plugins: [],
-  content: [
-    './src/**/*.js',
-    './content/**/*.mdx',
-  ],
+  content: ['./src/**/*.js', './content/**/*.mdx'],
   safelist: [
-    ..._.uniq(themes.color.map(t => t.class.split(' ')).flat()),
-    ...themes.edges.map(t => t.class),
+    ..._.uniq(themes.color.map((t) => t.class.split(' ')).flat()),
+    ...themes.edges.map((t) => t.class),
   ],
 }

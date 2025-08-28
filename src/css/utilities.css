@@ -71,7 +71,7 @@
       padding-left: 0.25rem;
     }
 
-    html[data-layout=print] & {
+    html[data-layout='print'] & {
       list-style-type: '•';
       padding-left: 0.4rem;
 

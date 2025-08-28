@@ -18,9 +18,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        gatsbyRemarkPlugins: [
-          'gatsby-remark-smartypants',
-        ],
+        gatsbyRemarkPlugins: ['gatsby-remark-smartypants'],
       },
     },
     {

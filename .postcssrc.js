@@ -8,6 +8,6 @@ module.exports = require('./config/postcss')
 
 module.exports.plugins.push(
   require('cssnano')({
-    preset: ['default', { discardComments: { removeAll: true } }]
-  })
+    preset: ['default', { discardComments: { removeAll: true } }],
+  }),
 )

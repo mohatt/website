@@ -19,20 +19,20 @@ exports.create = [
         type: 'File!',
         extensions: {
           fileByRelativePath: {},
-        }
+        },
       },
       hasImage: 'Boolean!',
       screens: {
         type: '[File]',
         extensions: {
           fileByRelativePath: {},
-        }
+        },
       },
       skills: {
         type: '[ProjectSkill]',
         extensions: {
           link: {
-            by: 'slug'
+            by: 'slug',
           },
         },
       },
@@ -40,17 +40,15 @@ exports.create = [
         type: '[ProjectCategory]',
         extensions: {
           link: {
-            by: 'slug'
+            by: 'slug',
           },
         },
       },
       testimonials: {
         type: '[Testimonial]',
-        async resolve (source, args, context) {
+        async resolve(source, args, context) {
           const { entries } = await context.nodeModel.findAll({ type: 'Testimonial' })
-          return [...entries]
-            .filter(t => t.project === source.slug)
-            .sort((x, y) => 0)
+          return [...entries].filter((t) => t.project === source.slug).sort((x, y) => 0)
         },
       },
       handles: '[String]',
@@ -70,7 +68,7 @@ exports.create = [
       title: 'String!',
       icon: {
         type: 'String',
-        resolve (source) {
+        resolve(source) {
           if (source.icon.length >= 32) {
             return source.icon
           }
@@ -82,11 +80,9 @@ exports.create = [
       tags: '[String!]',
       size: {
         type: 'Int!',
-        async resolve (source, args, context) {
+        async resolve(source, args, context) {
           const { entries } = await context.nodeModel.findAll({ type: 'Project' })
-          return [...entries]
-            .filter(p => p.skills.find(s => s === source.slug))
-            .length
+          return [...entries].filter((p) => p.skills.find((s) => s === source.slug)).length
         },
       },
     },
@@ -99,11 +95,9 @@ exports.create = [
       desc: 'String!',
       size: {
         type: 'Int!',
-        async resolve (source, args, context) {
+        async resolve(source, args, context) {
           const { entries } = await context.nodeModel.findAll({ type: 'Project' })
-          return [...entries]
-            .filter(p => p.categories.find(s => s === source.slug))
-            .length
+          return [...entries].filter((p) => p.categories.find((s) => s === source.slug)).length
         },
       },
     },
@@ -125,14 +119,14 @@ exports.create = [
         type: 'File!',
         extensions: {
           fileByRelativePath: {},
-        }
+        },
       },
       handles: '[String]',
       project: {
         type: 'Project',
         extensions: {
           link: {
-            by: 'slug'
+            by: 'slug',
           },
         },
       },

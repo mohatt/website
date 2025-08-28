@@ -10,7 +10,9 @@
       margin-bottom: 0;
     }
 
-    & p, & ul, & ol {
+    & p,
+    & ul,
+    & ol {
       margin-bottom: 1.3em;
     }
 

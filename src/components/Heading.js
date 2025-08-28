@@ -2,7 +2,14 @@ import React from 'react'
 import { cx } from '../util'
 import { Layout } from '.'
 
-export default function Heading({ title, multiline = true, primary, children, endChildren, className }) {
+export default function Heading({
+  title,
+  multiline = true,
+  primary,
+  children,
+  endChildren,
+  className,
+}) {
   function renderHeading(classes) {
     const Component = primary ? 'h1' : 'h2'
     const titleElement = (

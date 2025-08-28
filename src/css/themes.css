@@ -41,7 +41,7 @@
   --typo-dim: #969089;
 }
 
-html[data-layout=print] {
+html[data-layout='print'] {
   --primary: #bd3147;
   --secondary: #fff;
   --accent: #e7ebee;

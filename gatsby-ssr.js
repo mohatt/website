@@ -10,7 +10,9 @@ import { createThemeState } from './src/providers/theme'
 export function onPreRenderHTML({ getHeadComponents, replaceHeadComponents }) {
   const order = ['title', 'base', 'meta', 'script', 'style', 'link', 'noscript']
   replaceHeadComponents(
-    getHeadComponents().flat().sort((x, y) => order.indexOf(x.type) - order.indexOf(y.type))
+    getHeadComponents()
+      .flat()
+      .sort((x, y) => order.indexOf(x.type) - order.indexOf(y.type)),
   )
 }
 
@@ -22,13 +24,13 @@ export function onPreRenderHTML({ getHeadComponents, replaceHeadComponents }) {
  */
 function setupTheme({ setHeadComponents, setHtmlAttributes }) {
   const lookups = {
-    c: themes.color.reduce((acc, t) => (acc[t.id] = [t.class, t.colors.primary], acc), {}),
-    e: themes.edges.reduce((acc, t) => (acc[t.id] = t.class, acc), {}),
+    c: themes.color.reduce((acc, t) => ((acc[t.id] = [t.class, t.colors.primary]), acc), {}),
+    e: themes.edges.reduce((acc, t) => ((acc[t.id] = t.class), acc), {}),
   }
   const defaults = {
-    ctLight: themes.color.find(t => !t.dark),
-    ctDark: themes.color.find(t => t.dark),
-    et: themes.edges[0].id
+    ctLight: themes.color.find((t) => !t.dark),
+    ctDark: themes.color.find((t) => t.dark),
+    et: themes.edges[0].id,
   }
   const __html = `
 let prefersDark = false
@@ -52,9 +54,7 @@ document.querySelector("meta[name=theme-color]").content = color[1]
 htmlEl.setAttribute("data-system-ct", systemTheme.color)
 `
   setHtmlAttributes({ className: createThemeState().class })
-  setHeadComponents([
-    <script key='theme-setup' dangerouslySetInnerHTML={{ __html }} />
-  ])
+  setHeadComponents([<script key='theme-setup' dangerouslySetInnerHTML={{ __html }} />])
 }
 
 export function onRenderBody(args) {

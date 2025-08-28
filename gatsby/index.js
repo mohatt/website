@@ -7,9 +7,9 @@ exports.setupWebpack = function ({ stage, actions }) {
         new BundleAnalyzerPlugin({
           analyzerMode: 'static',
           reportFilename: 'webpack.report.html',
-          openAnalyzer: false
-        })
-      ]
+          openAnalyzer: false,
+        }),
+      ],
     })
   }
 }

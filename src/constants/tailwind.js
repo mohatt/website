@@ -71,7 +71,7 @@ exports.colors = {
 }
 
 exports.screens = {
-  print: { 'raw': 'print' },
+  print: { raw: 'print' },
   xs: '410px',
   sm: '640px',
   md: '768px',
@@ -84,10 +84,13 @@ exports.screens = {
 
 function createColorThemes(themes) {
   return themes.map(([id, colors, dark]) => ({
-    id, colors, dark, class: 'ct-' + id + (dark ? ' dark' : '')
+    id,
+    colors,
+    dark,
+    class: 'ct-' + id + (dark ? ' dark' : ''),
   }))
 }
 
 function createEdgesThemes(themes) {
-  return themes.map(id => ({ id, class: 'et-' + id }))
+  return themes.map((id) => ({ id, class: 'et-' + id }))
 }

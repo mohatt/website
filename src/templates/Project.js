@@ -32,8 +32,13 @@ function Gallery({ screens }) {
         const cls = `scr_thumb_${i}`
         const ratio = thumb.width / thumb.height
         return (
-          <div key={i} className={`flex-shrink-0 cursor-zoom mr-1 ${cls}`} onClick={() => lightbox.loadAndOpen(i)}>
-            <style>{`.${cls} { width: ${200 * ratio}px }
+          <div
+            key={i}
+            className={`flex-shrink-0 cursor-zoom mr-1 ${cls}`}
+            onClick={() => lightbox.loadAndOpen(i)}
+          >
+            <style>
+              {`.${cls} { width: ${200 * ratio}px }
               @media(min-width: ${themeScreens.lg}) {
                 .${cls} { width: ${300 * ratio}px }
               }
@@ -41,7 +46,7 @@ function Gallery({ screens }) {
                 .${cls} { width: ${500 * ratio}px }
               }`.replace(/\s+/g, '')}
             </style>
-              <GatsbyImage image={thumb} alt={`Screen ${i + 1}`} />
+            <GatsbyImage image={thumb} alt={`Screen ${i + 1}`} />
           </div>
         )
       })}
@@ -60,7 +65,11 @@ function Metadata({ title, children, className }) {
 
 export default class Project extends Page {
   view() {
-    const { data: { project }, children, pageContext } = this.props
+    const {
+      data: { project },
+      children,
+      pageContext,
+    } = this.props
     this.title = project.title
     this.description = project.desc
     this.snippet = {
@@ -74,7 +83,7 @@ export default class Project extends Page {
       screens.push(image)
       this.image = image.thumb.images.fallback.src
     }
-    project.screens.forEach(s => s && screens.push(s.childImageSharp))
+    project.screens.forEach((s) => s && screens.push(s.childImageSharp))
 
     // Don't index portfolio projects
     if (project.categories.some(({ slug }) => slug === 'portfolio')) {
@@ -87,19 +96,19 @@ export default class Project extends Page {
           <Heading title={this.title} primary>
             {this.description}
           </Heading>
-          {screens.length > 1 && <Gallery screens={screens}/>}
+          {screens.length > 1 && <Gallery screens={screens} />}
           <div className='grid md:grid-cols-3 gap-x-4 gap-y-8'>
             <Metadata title='Project Name'>{project.title}</Metadata>
             <Metadata title='Start Date'>{project.started}</Metadata>
             <Metadata title='Status'>{statuses[project.status] || statuses.CMP}</Metadata>
             <ProjectSkill.Map data={project.skills}>
-              {items => <Metadata title='Skills'>{items}</Metadata>}
+              {(items) => <Metadata title='Skills'>{items}</Metadata>}
             </ProjectSkill.Map>
             <ProjectCategory.Map data={project.categories}>
-              {items => <Metadata title='Categories'>{items}</Metadata>}
+              {(items) => <Metadata title='Categories'>{items}</Metadata>}
             </ProjectCategory.Map>
             <NetworkHandle.Map data={project.handles}>
-              {items => <Metadata title='Links'>{items}</Metadata>}
+              {(items) => <Metadata title='Links'>{items}</Metadata>}
               {({ title, href, Icon }) => (
                 <Link to={href} external='project_link' className='link mr-4'>
                   <Icon className='w-5 mr-1' />
@@ -110,7 +119,11 @@ export default class Project extends Page {
           </div>
         </Section>
         <Testimonial.Map data={project.testimonials} limit={1}>
-          {items => <Section fill><div className='xl:max-w-3xl'>{items}</div></Section>}
+          {(items) => (
+            <Section fill>
+              <div className='xl:max-w-3xl'>{items}</div>
+            </Section>
+          )}
         </Testimonial.Map>
         <Section>
           <div className='xl:max-w-3xl'>

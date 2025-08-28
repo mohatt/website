@@ -17,9 +17,7 @@ const shortcodes = {
 export default function Markdown({ children }) {
   return (
     <MDXProvider components={shortcodes}>
-      <Typography>
-        {children}
-      </Typography>
+      <Typography>{children}</Typography>
     </MDXProvider>
   )
 }

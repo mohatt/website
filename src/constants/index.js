@@ -1,8 +1,9 @@
-export const $window = !!(
-  typeof window !== 'undefined' &&
-  typeof window.document !== 'undefined' &&
-  typeof window.document.createElement !== 'undefined'
-) && window
+export const $window =
+  !!(
+    typeof window !== 'undefined' &&
+    typeof window.document !== 'undefined' &&
+    typeof window.document.createElement !== 'undefined'
+  ) && window
 export const $document = $window && $window.document
 
 export { site } from './site'

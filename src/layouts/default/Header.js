@@ -4,16 +4,20 @@ import { Button, Icon, Link } from '../../components'
 import { DocumentHead, Contacts } from '../partials'
 
 function MenuButton() {
-  const { state: { menu }, dispatch } = useLayout()
+  const {
+    state: { menu },
+    dispatch,
+  } = useLayout()
   return (
     <Button
       size='mono'
       title='Toggle side menu'
       active={menu}
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault()
         dispatch('menu', !menu)
-      }}>
+      }}
+    >
       <Icon name='menu' className='w-6' />
     </Button>
   )
@@ -25,10 +29,11 @@ export function ColorThemeButton() {
     <Button
       size='mono'
       title='Change colors theme'
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault()
         cycle('color')
-      }}>
+      }}
+    >
       <Icon name='theme' className='w-6' />
     </Button>
   )
@@ -40,10 +45,11 @@ export function EdgesThemeButton() {
     <Button
       size='mono'
       title='Change borders style'
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault()
         cycle('edges')
-      }}>
+      }}
+    >
       <span className='icon w-6 h-6 rounded-full border-[.35rem]' />
     </Button>
   )
@@ -63,13 +69,17 @@ function Header({ className }) {
               title='Go to homepage'
             />
           </li>
-          <li className='mb-4 xl:hidden'><MenuButton /></li>
-          <li className='mb-4'><ColorThemeButton /></li>
+          <li className='mb-4 xl:hidden'>
+            <MenuButton />
+          </li>
+          <li className='mb-4'>
+            <ColorThemeButton />
+          </li>
           {/* <li><EdgesThemeButton /></li> */}
         </ul>
         <div className='flex-grow min-h-32' />
         <Contacts>
-          {items => (
+          {(items) => (
             <div>
               <ul>{items}</ul>
             </div>

@@ -13,13 +13,22 @@ function PrintLink({ to, params, children }) {
   const { deployment } = useSiteMetadata()
   const path = generatePath(to, params)
   const url = deployment.config.url + path
-  return <Link className='link' to={url} external='resume_print'>{children ?? url}</Link>
+  return (
+    <Link className='link' to={url} external='resume_print'>
+      {children ?? url}
+    </Link>
+  )
 }
 
 export default class Resume extends Page {
   view() {
     const { isPrint, setPrintLayout } = this.context
-    const { page: { title }, firstSkills, secondSkills, tests } = this.props.data
+    const {
+      page: { title },
+      firstSkills,
+      secondSkills,
+      tests,
+    } = this.props.data
     this.title = title
     this.snippet.$comp = 'Resume'
     this.actions = (
@@ -27,7 +36,11 @@ export default class Resume extends Page {
         <a className='link' href='/resume.pdf' title='Download Resume'>
           <Icon name='download' className='w-5 mr-1' />
         </a>
-        <a className='link ml-2 hidden lg:inline' onClick={() => setPrintLayout(true)} title='Print Preview'>
+        <a
+          className='link ml-2 hidden lg:inline'
+          onClick={() => setPrintLayout(true)}
+          title='Print Preview'
+        >
           <Icon name='print' className='w-5 mr-1' />
         </a>
       </>
@@ -54,14 +67,14 @@ export default class Resume extends Page {
         {isPrint && (
           <Section className='grid' fill sep>
             <Contacts homepage phone>
-              {items => (
+              {(items) => (
                 <div>
                   <ul className='space-y-3 columns-3'>
                     <li>
-                    <span className='inline-block font-medium'>
-                      <Icon name='map-pin' className='h-5 mr-1'/>
-                      <span>Dubai, UAE (UTC+4)</span>
-                    </span>
+                      <span className='inline-block font-medium'>
+                        <Icon name='map-pin' className='h-5 mr-1' />
+                        <span>Dubai, UAE (UTC+4)</span>
+                      </span>
                     </li>
                     {items}
                   </ul>
@@ -70,7 +83,7 @@ export default class Resume extends Page {
               {({ id, href, Icon }) => (
                 <li key={id}>
                   <Link className='link' to={href} external='resume_contact'>
-                    <Icon className='h-5 mr-1'/>
+                    <Icon className='h-5 mr-1' />
                     <span>{href}</span>
                   </Link>
                 </li>
@@ -80,74 +93,138 @@ export default class Resume extends Page {
         )}
         <Section>
           <Heading>
-            Full-stack engineer specializing in <b>Node.js</b>, <b>TypeScript</b>, and <b>GraphQL</b>, with front-end expertise in <b>React</b> and <b>Angular</b>. Over <b>8 years</b> of delivering production web apps from <b>UI</b> to <b>APIs</b> and <b>CI/CD</b>, with a focus on performance, reliability, maintainability, and developer experience. Open-source contributor, passionate about building software.
+            Full-stack engineer specializing in <b>Node.js</b>, <b>TypeScript</b>, and{' '}
+            <b>GraphQL</b>, with front-end expertise in <b>React</b> and <b>Angular</b>. Over{' '}
+            <b>8 years</b> of delivering production web apps from <b>UI</b> to <b>APIs</b> and{' '}
+            <b>CI/CD</b>, with a focus on performance, reliability, maintainability, and developer
+            experience. Open-source contributor, passionate about building software.
           </Heading>
           <b>Highlights:</b>
           <ul className='list-style-diamond ml-2 space-y-1 mt-2'>
             <li>Owned GraphQL microservices within an Apollo Federation supergraph.</li>
-            <li>Integrated an AI-powered product-recommendation service into a grocery delivery app.</li>
-            <li>Built Stripe operations dashboards (charges, refunds, transfers, payouts) with reconciliation.</li>
+            <li>
+              Integrated an AI-powered product-recommendation service into a grocery delivery app.
+            </li>
+            <li>
+              Built Stripe operations dashboards (charges, refunds, transfers, payouts) with
+              reconciliation.
+            </li>
             <li>Scaled web apps/back ends to thousands of requests per minute with low latency.</li>
           </ul>
         </Section>
         <Section id='experience'>
-          <Heading title='Experience' {...subtitleProps(isPrint && <>See full history:&nbsp;<PrintLink to='resume' /></>)} />
+          <Heading
+            title='Experience'
+            {...subtitleProps(
+              isPrint && (
+                <>
+                  See full history:&nbsp;
+                  <PrintLink to='resume' />
+                </>
+              ),
+            )}
+          />
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
-            {experience.map(({ role, at, type, url, time, loc, print, desc, printDesc, legacy }) => {
-              if (isPrint && !print) {
-                return null
-              }
-              const bullets = isPrint ? (printDesc ?? desc) : desc
-              const collapsed = isPrint && legacy
-              return (
-                <div key={at} className={cx(isPrint ? 'page-break-avoid' : 'max-w-4xl')}>
-                  <div className={isPrint ? 'flex items-center' : ''}>
-                    <h3 className='font-body text-lg text-primary'>{role}</h3>
-                    {isPrint ? (
-                      <>
-                        <div className='font-medium flex-grow'>
-                          &nbsp;— {url ? <Link className='link' to={url} external='resume_role'>{at}</Link> : at} · {type} · {loc}
+            {experience.map(
+              ({ role, at, type, url, time, loc, print, desc, printDesc, legacy }) => {
+                if (isPrint && !print) {
+                  return null
+                }
+                const bullets = isPrint ? (printDesc ?? desc) : desc
+                const collapsed = isPrint && legacy
+                return (
+                  <div key={at} className={cx(isPrint ? 'page-break-avoid' : 'max-w-4xl')}>
+                    <div className={isPrint ? 'flex items-center' : ''}>
+                      <h3 className='font-body text-lg text-primary'>{role}</h3>
+                      {isPrint ? (
+                        <>
+                          <div className='font-medium flex-grow'>
+                            &nbsp;—{' '}
+                            {url ? (
+                              <Link className='link' to={url} external='resume_role'>
+                                {at}
+                              </Link>
+                            ) : (
+                              at
+                            )}{' '}
+                            · {type} · {loc}
+                          </div>
+                          <div>{time}</div>
+                        </>
+                      ) : (
+                        <div className='font-medium'>
+                          {url ? (
+                            <Link className='link' to={url} external='resume_role'>
+                              {at}
+                            </Link>
+                          ) : (
+                            at
+                          )}{' '}
+                          · {type} · {loc} · {time}
                         </div>
-                        <div>{time}</div>
-                      </>
-                    ) : (
-                      <div className='font-medium'>
-                        {url ? <Link className='link' to={url} external='resume_role'>{at}</Link> : at} · {type} · {loc} · {time}
-                      </div>
+                      )}
+                    </div>
+                    {bullets?.length > 0 && !collapsed && (
+                      <ul className='list-style-diamond ml-2 mt-3 space-y-1'>
+                        {bullets.map((text) => (
+                          <li key={text}>{text}</li>
+                        ))}
+                      </ul>
                     )}
                   </div>
-                  {bullets?.length > 0 && !collapsed && (
-                    <ul className='list-style-diamond ml-2 mt-3 space-y-1'>
-                      {bullets.map(text => <li key={text}>{text}</li>)}
-                    </ul>
-                  )}
-                </div>
-              )
-            })}
+                )
+              },
+            )}
           </div>
         </Section>
         <Section id='skills' className='print:page-break print:mt-6'>
-          <Heading title='Skills' {...subtitleProps(isPrint && <>See full list:&nbsp;<PrintLink to='skills' /></>)} />
+          <Heading
+            title='Skills'
+            {...subtitleProps(
+              isPrint && (
+                <>
+                  See full list:&nbsp;
+                  <PrintLink to='skills' />
+                </>
+              ),
+            )}
+          />
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
             <div className={!isPrint && 'max-w-3xl'}>
               <h3 className='font-body text-lg text-primary inline'>Soft Skills & Practices</h3> —
-              Problem-solving · Decision-making · Systems thinking · Communication · Organization · Test-driven development (TDD) · Code reviews · Clean architecture · Documentation
+              Problem-solving · Decision-making · Systems thinking · Communication · Organization ·
+              Test-driven development (TDD) · Code reviews · Clean architecture · Documentation
             </div>
-            {[['Recently used', skills.first], ['Also used', skills.second]].map(([title, nodes]) => (
+            {[
+              ['Recently used', skills.first],
+              ['Also used', skills.second],
+            ].map(([title, nodes]) => (
               <div key={title} className={!isPrint && 'max-w-3xl'}>
-                <h3 className='font-body text-lg text-primary inline'>{title}</h3> — {nodes.map(skill => skill.title).join(' · ')}
+                <h3 className='font-body text-lg text-primary inline'>{title}</h3> —{' '}
+                {nodes.map((skill) => skill.title).join(' · ')}
               </div>
             ))}
           </div>
         </Section>
         <Section id='education'>
-          <Heading title='Education' {...subtitleProps('Formal degree with self-directed CS foundation and ongoing coursework')} />
+          <Heading
+            title='Education'
+            {...subtitleProps(
+              'Formal degree with self-directed CS foundation and ongoing coursework',
+            )}
+          />
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
             {education.map(({ title, subtitle, time, url, desc }) => (
               <div key={title}>
                 <div className={isPrint ? 'flex items-center' : ''}>
                   <h3 className='font-body text-lg text-primary'>
-                    {url ? <Link className='link' to={url} external='resume_edu'>{title}</Link> : title}
+                    {url ? (
+                      <Link className='link' to={url} external='resume_edu'>
+                        {title}
+                      </Link>
+                    ) : (
+                      title
+                    )}
                   </h3>
                   {isPrint ? (
                     <>
@@ -167,28 +244,58 @@ export default class Resume extends Page {
         </Section>
         {isPrint && (
           <>
-          <Section>
-            <Heading title='Portfolio' {...subtitleProps(<>See more projects:&nbsp;<PrintLink to='projects' /></>)} />
-            <div className='space-y-4'>
-              <div className='flex items-start'>
-                <img alt='JOKR logo' src={JokrLogo} width={96} height={96} className='border-2 border-primary rounded-md'/>
-                <div className='flex-grow ml-4 flex flex-col justify-between h-[92px]'>
-                  <h3 className='font-body text-lg text-primary inline'>
-                    <PrintLink to='projects.project' params={{ project: 'jokr' }}>
-                      JOKR — Smart grocery shopping powered by AI
-                    </PrintLink>
-                  </h3>
-                  <div>Federated GraphQL platform + AI recommendations for a fast grocery delivery startup.</div>
-                  <div>React/MUI dashboards; Datadog observability; high-throughput, low-latency GraphQL.</div>
-                  <div>Case study: <PrintLink to='projects.project' params={{ project: 'jokr' }} /></div>
+            <Section>
+              <Heading
+                title='Portfolio'
+                {...subtitleProps(
+                  <>
+                    See more projects:&nbsp;
+                    <PrintLink to='projects' />
+                  </>,
+                )}
+              />
+              <div className='space-y-4'>
+                <div className='flex items-start'>
+                  <img
+                    alt='JOKR logo'
+                    src={JokrLogo}
+                    width={96}
+                    height={96}
+                    className='border-2 border-primary rounded-md'
+                  />
+                  <div className='flex-grow ml-4 flex flex-col justify-between h-[92px]'>
+                    <h3 className='font-body text-lg text-primary inline'>
+                      <PrintLink to='projects.project' params={{ project: 'jokr' }}>
+                        JOKR — Smart grocery shopping powered by AI
+                      </PrintLink>
+                    </h3>
+                    <div>
+                      Federated GraphQL platform + AI recommendations for a fast grocery delivery
+                      startup.
+                    </div>
+                    <div>
+                      React/MUI dashboards; Datadog observability; high-throughput, low-latency
+                      GraphQL.
+                    </div>
+                    <div>
+                      Case study: <PrintLink to='projects.project' params={{ project: 'jokr' }} />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Section>
+            </Section>
           </>
         )}
         <Section id='testimonials'>
-          <Heading title='Testimonials' {...subtitleProps(<>What clients and colleagues say{isPrint && <span className='italic'>&nbsp;(references available on request)</span>}</>)} />
+          <Heading
+            title='Testimonials'
+            {...subtitleProps(
+              <>
+                What clients and colleagues say
+                {isPrint && <span className='italic'>&nbsp;(references available on request)</span>}
+              </>,
+            )}
+          />
           <Testimonial.Map data={isPrint ? tests.nodes.slice(0, 4) : tests.nodes}>
             {(items) => <Masonry cols={{ default: 2, 1280: 1 }}>{items}</Masonry>}
           </Testimonial.Map>

@@ -1,7 +1,6 @@
 @layer components {
   .btn {
-    @apply
-      inline-block
+    @apply inline-block
       relative
       text-base
       font-display
