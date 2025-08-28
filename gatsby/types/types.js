@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const { createParentFieldResolverProxy } = require('./resolvers')
 
 exports.create = [
@@ -70,14 +71,12 @@ exports.create = [
       icon: {
         type: 'String',
         resolve (source) {
-          if (source.icon.length >= 64) {
+          if (source.icon.length >= 32) {
             return source.icon
           }
-          try {
-            return require(`simple-icons/icons/${source.icon}`).path
-          } catch (e) {
-            return source.icon
-          }
+          const icons = require('simple-icons')
+          const icon = icons[`si${_.upperFirst(source.icon)}`]
+          return icon?.path ?? source.icon
         },
       },
       tags: '[String!]',

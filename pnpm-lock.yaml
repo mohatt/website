@@ -112,8 +112,8 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2
       simple-icons:
-        specifier: ^6.23.0
-        version: 6.23.0
+        specifier: ^15.12.0
+        version: 15.12.0
       stylelint:
         specifier: ^16.23.1
         version: 16.23.1(typescript@5.9.2)
@@ -6397,8 +6397,8 @@ packages:
   simple-get@4.0.1:
     resolution: {integrity: sha512-brv7p5WgH0jmQJr1ZDDfKDOSeWWg+OVypG99A/5vYGPqJ6pxiaHLy8nxtFjBA7oMa01ebA9gfh1uMCFqOuXxvA==}
 
-  simple-icons@6.23.0:
-    resolution: {integrity: sha512-9ql+6OdW5Dnfx1/z5z8MYO2y+OM4Oj4XBvQY5Nlye4eW+Nf5igHzHIKKtTmFkvCmR0lrddZpe1F/89chgoUXhg==}
+  simple-icons@15.12.0:
+    resolution: {integrity: sha512-C5hMZsJ7naKwjbpzodQE9qjuExnZ1z1lb5rV52FKUdBJvCEc082WgyTGNCazmoGDUae2LVckqSv0zC+zcS8jxA==}
     engines: {node: '>=0.12.18'}
 
   simple-swizzle@0.2.2:
@@ -15224,7 +15224,7 @@ snapshots:
       once: 1.4.0
       simple-concat: 1.0.1
 
-  simple-icons@6.23.0: {}
+  simple-icons@15.12.0: {}
 
   simple-swizzle@0.2.2:
     dependencies:
