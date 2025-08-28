@@ -45,7 +45,7 @@ exports.site = {
     },
     { label: 'Contact', to: 'mailto:mohatt@pm.me', external: 'menu_contact' },
   ],
-  phone: '+201553720847',
+  phone: '+971501761107',
   contacts: ['github:mohatt', 'linkedin:mohatt', 'email:mohatt@pm.me'],
   themeStorageKey: 'mohatt:theme',
 }
