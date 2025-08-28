@@ -5,6 +5,6 @@ module.exports = {
   createSchemaCustomization: types.createTypes,
   setFieldsOnGraphQLNodeType: types.extendTypes,
   onCreateNode: types.onCreateNode,
-  unstable_shouldOnCreateNode: types.shouldOnCreateNode,
+  shouldOnCreateNode: types.shouldOnCreateNode,
   onCreateWebpackConfig: setupWebpack,
 }

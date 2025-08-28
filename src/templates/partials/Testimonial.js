@@ -11,9 +11,14 @@ function Testimonial({ test: { name, title, quote, image }, className }) {
           width='120'
           height='120'
           className='w-14 border-2 border-primary rounded-full shadow-lg'
-          src={image.childImageSharp.resize.src} alt={name}
+          src={image.childImageSharp.resize.src}
+          alt={name}
         />
-        <div className='ml-2 leading-normal'>{name}<br />{title}</div>
+        <div className='ml-2 leading-normal'>
+          {name}
+          <br />
+          {title}
+        </div>
       </div>
     </blockquote>
   )

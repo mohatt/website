@@ -24,11 +24,7 @@ function ProjectCard({ project, skill, category }) {
             />
           </Link>
           <NetworkHandle.Map data={project.handles} limit={2}>
-            {items => (
-              <div className='absolute -bottom-4 right-4'>
-                {items}
-              </div>
-            )}
+            {(items) => <div className='absolute -bottom-4 right-4'>{items}</div>}
             {({ title, href, Icon }) => (
               <Button
                 to={href}
@@ -40,12 +36,13 @@ function ProjectCard({ project, skill, category }) {
               />
             )}
           </NetworkHandle.Map>
-          <ProjectCategory.Map data={project.categories} exclude={category} limit={2} color='primary'>
-            {items => (
-              <div className='absolute -top-4 left-4'>
-                {items}
-              </div>
-            )}
+          <ProjectCategory.Map
+            data={project.categories}
+            exclude={category}
+            limit={2}
+            color='primary'
+          >
+            {(items) => <div className='absolute -top-4 left-4'>{items}</div>}
           </ProjectCategory.Map>
         </div>
       </div>
@@ -54,7 +51,7 @@ function ProjectCard({ project, skill, category }) {
           {project.title}
         </Link>
         <ProjectSkill.Map data={project.skills} exclude={skill} limit={8}>
-          {items => (
+          {(items) => (
             <div className='mt-3 flex overflow-hidden relative'>
               {items}
               <span className='overflow-grad h-full' />
@@ -71,7 +68,7 @@ function ProjectCard({ project, skill, category }) {
 }
 
 ProjectCard.Map = function ProjectCardMap({ data, ...props }) {
-  return (data.edges || data).map(project => {
+  return (data.edges || data).map((project) => {
     if (data.edges) {
       project = project.node
     }
@@ -84,9 +81,7 @@ ProjectCard.Grid = function ProjectCardGrid({ data, paginated, params }) {
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 text-lg'>
       <ProjectCard.Map data={data} category={params.category} skill={params.skill} />
-      {paginated && (
-        <Pagination route={paginated} params={params} pageInfo={data.pageInfo} />
-      )}
+      {paginated && <Pagination route={paginated} params={params} pageInfo={data.pageInfo} />}
     </div>
   )
 }

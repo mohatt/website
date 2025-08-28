@@ -10,7 +10,7 @@ export default function Separator({ size = 2, gradient = true, spacing, classNam
           'sep-gradient': gradient,
           'my-4': spacing,
         },
-        className
+        className,
       )}
     />
   )

@@ -8,8 +8,13 @@ import './src/css/index.css'
  *   - Better code splitting
  */
 export function wrapPageElement({ element, props: { location } }) {
-  const PageComponent = element.type
+  let PageComponent = element.type
   if (PageComponent) {
+    // MDX pages are wrapped in a GatsbyMDXWrapper component,
+    // so we need to access the wrapped element
+    if (element.props.pageContext?.frontmatter) {
+      PageComponent = PageComponent().type
+    }
     // Search for Layout and Providers in page component type
     // Fallback to defaults defined in parent component (if implemented)
     const { Layout, Providers } = PageComponent || Object.getPrototypeOf(PageComponent)

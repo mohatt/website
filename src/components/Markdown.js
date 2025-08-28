@@ -1,5 +1,4 @@
 import React from 'react'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 import { BaseIcon, Button, Heading, Icon, Link, Separator, Typography } from '.'
 
@@ -15,12 +14,10 @@ const shortcodes = {
   Separator,
 }
 
-export default function Markdown({ children, ...props }) {
+export default function Markdown({ children }) {
   return (
     <MDXProvider components={shortcodes}>
-      <Typography>
-        <MDXRenderer {...props}>{children}</MDXRenderer>
-      </Typography>
+      <Typography>{children}</Typography>
     </MDXProvider>
   )
 }

@@ -2,7 +2,16 @@ import React from 'react'
 import { cx } from '../util'
 import { Link } from '.'
 
-export default function Button({ color, size, rounded = true, active, disabled, outline, className, ...props }) {
+export default function Button({
+  color,
+  size,
+  rounded = true,
+  active,
+  disabled,
+  outline,
+  className,
+  ...props
+}) {
   const Element = props.to ? Link : 'button'
   return (
     <Element
@@ -16,7 +25,7 @@ export default function Button({ color, size, rounded = true, active, disabled, 
           'btn-active': active,
           'btn-disabled': disabled,
         },
-        className
+        className,
       )}
       {...props}
     />

@@ -3,12 +3,10 @@ const deployment = require('./deployment')
 module.exports = {
   enabled: true,
   reporting: false,
-  ignore: [
-    'webpack.report.html',
-    'google7a76cf0ab3da37d0.html',
-  ],
+  ignore: ['webpack.report.html', 'google7a76cf0ab3da37d0.html'],
   purgecss: {
-    enabled: true,
+    // Disable purgecss until it's tested in gatsby-plugin-postbuild
+    enabled: false,
     allowSymbols: true,
     writeRejected: true,
     safelist: {
@@ -41,12 +39,15 @@ module.exports = {
   },
   minify: {
     enabled: true,
-    style: ['default', {
-      discardComments: {
-        remove: comment => {
-          return comment !== '!'
+    style: [
+      'default',
+      {
+        discardComments: {
+          remove: (comment) => {
+            return comment !== '!'
+          },
         },
       },
-    }],
+    ],
   },
 }

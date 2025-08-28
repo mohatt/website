@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const { createParentFieldResolverProxy } = require('./resolvers')
 
 exports.create = [
@@ -18,37 +19,40 @@ exports.create = [
         type: 'File!',
         extensions: {
           fileByRelativePath: {},
-        }
+        },
       },
       hasImage: 'Boolean!',
       screens: {
         type: '[File]',
         extensions: {
           fileByRelativePath: {},
-        }
+        },
       },
       skills: {
         type: '[ProjectSkill]',
         extensions: {
-          link: {},
+          link: {
+            by: 'slug',
+          },
         },
       },
       categories: {
         type: '[ProjectCategory]',
         extensions: {
-          link: {},
+          link: {
+            by: 'slug',
+          },
         },
       },
       testimonials: {
         type: '[Testimonial]',
-        resolve (source, args, context) {
-          return context.nodeModel
-            .getAllNodes({ type: 'Testimonial' })
-            .filter(t => t.project === source.slug)
-            .sort((x, y) => 0)
+        async resolve(source, args, context) {
+          const { entries } = await context.nodeModel.findAll({ type: 'Testimonial' })
+          return [...entries].filter((t) => t.project === source.slug).sort((x, y) => 0)
         },
       },
       handles: '[String]',
+      // This field is not currently being used anywhere
       body: {
         type: 'String',
         resolve: createParentFieldResolverProxy({ field: 'body' }),
@@ -64,25 +68,21 @@ exports.create = [
       title: 'String!',
       icon: {
         type: 'String',
-        resolve (source) {
-          if (source.icon.length >= 64) {
+        resolve(source) {
+          if (source.icon.length >= 32) {
             return source.icon
           }
-          try {
-            return require(`simple-icons/icons/${source.icon}.js`).path
-          } catch (e) {
-            return source.icon
-          }
+          const icons = require('simple-icons')
+          const icon = icons[`si${_.upperFirst(source.icon)}`]
+          return icon?.path ?? source.icon
         },
       },
       tags: '[String!]',
       size: {
         type: 'Int!',
-        resolve (source, args, context) {
-          return context.nodeModel
-            .getAllNodes({ type: 'Project' })
-            .filter(p => p.skills.find(s => s === source.id))
-            .length
+        async resolve(source, args, context) {
+          const { entries } = await context.nodeModel.findAll({ type: 'Project' })
+          return [...entries].filter((p) => p.skills.find((s) => s === source.slug)).length
         },
       },
     },
@@ -95,11 +95,9 @@ exports.create = [
       desc: 'String!',
       size: {
         type: 'Int!',
-        resolve (source, args, context) {
-          return context.nodeModel
-            .getAllNodes({ type: 'Project' })
-            .filter(p => p.categories.find(s => s === source.id))
-            .length
+        async resolve(source, args, context) {
+          const { entries } = await context.nodeModel.findAll({ type: 'Project' })
+          return [...entries].filter((p) => p.categories.find((s) => s === source.slug)).length
         },
       },
     },
@@ -121,14 +119,14 @@ exports.create = [
         type: 'File!',
         extensions: {
           fileByRelativePath: {},
-        }
+        },
       },
       handles: '[String]',
       project: {
         type: 'Project',
         extensions: {
           link: {
-            by: 'slug'
+            by: 'slug',
           },
         },
       },

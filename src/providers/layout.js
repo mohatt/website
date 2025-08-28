@@ -4,16 +4,14 @@ import { PrintLayout } from '../layouts'
 export const LayoutContext = createContext()
 
 function defaultLayoutReducer(state, prop, payload) {
-  return state[prop] !== payload
-    ? Object.assign({}, state, { [prop]: payload })
-    : state
+  return state[prop] !== payload ? Object.assign({}, state, { [prop]: payload }) : state
 }
 
 export class LayoutProvider extends React.Component {
   layouts = {}
   enforcedLayout
 
-  createDispatcher({ id, reducer = defaultLayoutReducer }){
+  createDispatcher({ id, reducer = defaultLayoutReducer }) {
     return (action, payload) => {
       const prev = this.layouts[id].state
       const state = reducer(prev, action, payload)
@@ -31,34 +29,34 @@ export class LayoutProvider extends React.Component {
     }
   }
 
-  setPrintLayout = enabled => this.setLayout(enabled ? PrintLayout : this.props.Layout)
+  setPrintLayout = (enabled) => this.setLayout(enabled ? PrintLayout : this.props.Layout)
 
   getLayout() {
     return this.enforcedLayout || this.props.Layout
   }
 
   render() {
-    const { props: { children, Layout: SourceLayout }, layouts, setPrintLayout } = this
+    const {
+      props: { children, Layout: SourceLayout },
+      layouts,
+      setPrintLayout,
+    } = this
     const Layout = this.getLayout()
     const { id, state } = Layout
     let layout = layouts[id]
-    if(!layout) {
+    if (!layout) {
       layout = layouts[id] = {
         id,
         Layout,
         state,
         dispatch: this.createDispatcher(Layout),
-        setPrintLayout
+        setPrintLayout,
       }
     }
     layout.isEnforced = Layout !== SourceLayout
     layout.isPrint = Layout === PrintLayout
 
-    return (
-      <LayoutContext.Provider value={layout}>
-        {children}
-      </LayoutContext.Provider>
-    )
+    return <LayoutContext.Provider value={layout}>{children}</LayoutContext.Provider>
   }
 }
 
@@ -83,9 +81,7 @@ export function Layout({ not, id, print, enforced, children }) {
 
   const isArray = Array.isArray(children)
   assert = not ? !assert : assert
-  const element = assert
-    ? isArray ? children[0] : children
-    : isArray ? children[1] : null
+  const element = assert ? (isArray ? children[0] : children) : isArray ? children[1] : null
 
   if (element instanceof Function) {
     return element(layout)
