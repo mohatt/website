@@ -126,7 +126,7 @@
     - 1st
     - front
     - api
-- slug: apollo
+- slug: graphql
   title: Apollo GraphQL
   icon: apollographql
   tags:

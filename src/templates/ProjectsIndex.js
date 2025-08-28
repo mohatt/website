@@ -10,7 +10,7 @@ export default class ProjectsIndex extends Page {
     this.snippet = {
       $comp: 'Projects',
     }
-    const groups = projects.group.sort(x => x.slug === 'portfolio' ? -1 : 0)
+    const groups = [...projects.group].sort(x => x.slug === 'portfolio' ? -1 : 0)
     return (
       <>
         <Section spacing={false}>
