@@ -76,9 +76,14 @@ export default class Project extends Page {
     }
     project.screens.forEach(s => s && screens.push(s.childImageSharp))
 
+    // Don't index portfolio projects
+    if (project.categories.some(({ slug }) => slug === 'portfolio')) {
+      this.noIndex = true
+    }
+
     return (
       <>
-        <Section id={project.categories[0]?.slug}>
+        <Section>
           <Heading title={this.title} primary>
             {this.description}
           </Heading>
