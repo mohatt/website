@@ -1,5 +1,10 @@
 @layer components {
   .masonry {
+    --masonry-gap: 2rem;
+
+    html[data-layout=print] & {
+      --masonry-gap: 1.2rem;
+    }
     display: flex;
     margin-left: calc(var(--masonry-gap) * -1);
     margin-bottom: calc(var(--masonry-gap) * -1);

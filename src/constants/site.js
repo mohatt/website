@@ -1,6 +1,6 @@
 exports.site = {
   title: 'Mohamed Elkholy',
-  description: 'Full-stack web developer with years of hands-on experience across front-end, back-end, and cloud infrastructure.',
+  description: 'Full-stack software engineer with years of hands-on experience across front-end, back-end, and cloud infrastructure.',
   copyright: '© 2025 All rights reserved.',
   menu: [
     { label: 'Intro', to: 'home' },

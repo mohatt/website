@@ -5,7 +5,7 @@ import { Layout, Separator } from '.'
 export default function Section({ spacing = true, fill, sep = fill, className, children, ...props }) {
   return (
     <Layout print>
-      <section {...props} className={cx('px-10', { 'mb-10': spacing, 'py-10 bg-accent': fill }, className)}>
+      <section {...props} className={cx('px-6', { 'mb-6': spacing, 'py-6 bg-accent': fill }, className)}>
         {children}
       </section>
       <section {...props} className={spacing ? 'mb-10 md:mb-14 lg:mb-20' : undefined}>

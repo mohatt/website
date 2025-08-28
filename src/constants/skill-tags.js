@@ -25,7 +25,7 @@ export const skillTags = {
 export const skillTagGroups = createSkillTagGroups({
   backend: {
     tag: 'back',
-    desc: 'Primary focus on Node.js/TypeScript (Express/NestJS, GraphQL/Apollo) — stack adapts to project scope.',
+    desc: 'Primary focus on Node.js/TypeScript/GraphQL — stack adapts to project scope.',
     tags: ['lang', 'frame', 'cms', 'db', 'api', 'test']
   },
   frontend: {

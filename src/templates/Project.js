@@ -78,7 +78,7 @@ export default class Project extends Page {
 
     return (
       <>
-        <Section id={project.categories[0]?.id}>
+        <Section id={project.categories[0]?.slug}>
           <Heading title={this.title} primary>
             {this.description}
           </Heading>

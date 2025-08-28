@@ -21,13 +21,12 @@ function ProjectCategory({ category, children, color = 'alt' }) {
 
 ProjectCategory.Map = createReactMap(function ProjectCategoryMap(category, { exclude, color, children }){
   return exclude !== category.slug && (
-    <ProjectCategory key={category.id} category={category} color={color} children={children} />
+    <ProjectCategory key={category.slug} category={category} color={color} children={children} />
   )
 })
 
 export const ProjectCategoryFragment = graphql`
   fragment ProjectCategoryFragment on ProjectCategory {
-    id
     slug
     title
     size

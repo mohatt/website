@@ -10,3 +10,4 @@ export { themes, colors as themeColors, screens as themeScreens } from './tailwi
 export { icons } from './icons'
 export { networkHandles } from './network-handles'
 export { skillTags, skillTagGroups } from './skill-tags'
+export { education, experience } from './resume'

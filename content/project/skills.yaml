@@ -2,30 +2,35 @@
   title: Node.js
   icon: nodedotjs
   tags:
+    - 1st
     - back
     - lang
 - slug: php
   title: PHP
   icon: php
   tags:
+    - 2nd
     - back
     - lang
 - slug: python
   title: Python
   icon: python
   tags:
+    - 2nd
     - back
     - lang
 - slug: javascript
   title: JavaScript (ES6+)
   icon: javascript
   tags:
+    - 2nd
     - front
     - lang
 - slug: typescript
   title: TypeScript
   icon: typescript
   tags:
+    - 1st
     - front
     - back
     - lang
@@ -57,12 +62,14 @@
   title: NestJS
   icon: nestjs
   tags:
+    - 1st
     - back
     - frame
 - slug: express
   title: Express.js
   icon: express
   tags:
+    - 1st
     - back
     - frame
 - slug: symfony
@@ -81,42 +88,49 @@
   title: React
   icon: react
   tags:
+    - 1st
     - front
     - frame
 - slug: angular
   title: Angular
   icon: angular
   tags:
+    - 1st
     - front
     - frame
 - slug: gatsby
   title: Gatsby
   icon: gatsby
   tags:
+    - 2nd
     - front
     - frame
 - slug: next
   title: Next.js
   icon: nextdotjs
   tags:
+    - 2nd
     - front
     - frame
 - slug: stripe
   title: Stripe.js
   icon: stripe
   tags:
+    - 1st
     - front
     - api
 - slug: apollo
   title: Apollo GraphQL
   icon: apollographql
   tags:
+    - 1st
     - front
     - lib
 - slug: rxjs
-  title: RxJS Observables
+  title: RxJS
   icon: reactivex
   tags:
+    - 1st
     - front
     - lib
 - slug: redux
@@ -135,18 +149,21 @@
   title: Material UI
   icon: mui
   tags:
+    - 1st
     - front
     - ui
 - slug: tailwind
   title: Tailwind CSS
   icon: tailwindcss
   tags:
+    - 2nd
     - front
     - ui
 - slug: bootstrap
   title: Bootstrap
   icon: bootstrap
   tags:
+    - 2nd
     - front
     - ui
 - slug: wordpress
@@ -165,6 +182,7 @@
   title: Shopify
   icon: shopify
   tags:
+    - 2nd
     - back
     - cms
 - slug: strapi
@@ -189,6 +207,7 @@
   title: Google Cloud
   icon: googlecloud
   tags:
+    - 1st
     - devops
     - back
     - api
@@ -197,6 +216,7 @@
   title: Amazon AWS
   icon: amazonaws
   tags:
+    - 2nd
     - devops
     - back
     - api
@@ -205,6 +225,7 @@
   title: Firebase
   icon: firebase
   tags:
+    - 1st
     - devops
     - back
     - front
@@ -214,6 +235,7 @@
   title: Auth0
   icon: auth0
   tags:
+    - 1st
     - front
     - api
 - slug: paymentapi
@@ -226,6 +248,7 @@
   title: Vitest
   icon: vite
   tags:
+    - 1st
     - front
     - back
     - test
@@ -233,7 +256,15 @@
   title: Jest
   icon: jest
   tags:
+    - 2nd
     - front
+    - back
+    - test
+- slug: k6
+  title: K6
+  icon: M24 23.646H0L7.99 6.603l4.813 3.538L19.08.354Zm-8.8-3.681h.052a2.292 2.292 0 0 0 1.593-.64 2.088 2.088 0 0 0 .685-1.576 1.912 1.912 0 0 0-.66-1.511 2.008 2.008 0 0 0-1.37-.59h-.04a.716.716 0 0 0-.199.027l1.267-1.883-1.01-.705-.477.705-1.22 1.864c-.21.31-.386.582-.495.77-.112.2-.21.41-.29.625a1.942 1.942 0 0 0-.138.719 2.086 2.086 0 0 0 .676 1.558c.422.411.989.641 1.578.64Zm-5.365-2.027 1.398 1.978h1.496l-1.645-2.295 1.46-2.029-.97-.671-.427.565-1.314 1.853v-3.725l-1.31-1.068v7.37h1.31v-1.98Zm5.367.792a.963.963 0 1 1 0-1.927h.009a.941.941 0 0 1 .679.29.897.897 0 0 1 .29.668.978.978 0 0 1-.977.967Z
+  tags:
+    - 2nd
     - back
     - test
 - slug: phpunit
@@ -248,7 +279,6 @@
   tags:
     - back
     - test
-
 - slug: codeception
   title: Codeception
   icon: codeceptjs
@@ -259,36 +289,42 @@
   title: Playwright
   icon: M23.996 7.462c-.056.837-.257 2.135-.716 3.85-.995 3.715-4.27 10.874-10.42 9.227-6.15-1.65-5.407-9.487-4.412-13.201.46-1.716.934-2.94 1.305-3.694.42-.853.846-.289 1.815.523.684.573 2.41 1.791 5.011 2.488 2.601.697 4.706.506 5.583.352 1.245-.219 1.897-.494 1.834.455Zm-9.807 3.863s-.127-1.819-1.773-2.286c-1.644-.467-2.613 1.04-2.613 1.04Zm4.058 4.539-7.769-2.172s.446 2.306 3.338 3.153c2.862.836 4.43-.98 4.43-.981Zm2.701-2.51s-.13-1.818-1.773-2.286c-1.644-.469-2.612 1.038-2.612 1.038ZM8.57 18.23c-4.749 1.279-7.261-4.224-8.021-7.08C.197 9.831.044 8.832.003 8.188c-.047-.73.455-.52 1.415-.354.677.118 2.3.261 4.308-.28a11.28 11.28 0 0 0 2.41-.956c-.058.197-.114.4-.17.61-.433 1.618-.827 4.055-.632 6.426-1.976.732-2.267 2.423-2.267 2.423l2.524-.715c.227 1.002.6 1.987 1.15 2.838a5.914 5.914 0 0 1-.171.049Zm-4.188-6.298c1.265-.333 1.363-1.631 1.363-1.631l-3.374.888s.745 1.076 2.01.743Z
   tags:
+    - 1st
     - front
     - test
 - slug: cypress
   title: Cypress
   icon: cypress
   tags:
+    - 2nd
     - front
     - test
 - slug: mongodb
   title: MongoDB
   icon: mongodb
   tags:
+    - 1st
     - back
     - db
 - slug: redis
   title: Redis
   icon: redis
   tags:
+    - 1st
     - back
     - db
 - slug: mysql
   title: MySQL
   icon: mysql
   tags:
+    - 2nd
     - back
     - db
 - slug: postgresql
   title: PostgreSQL
   icon: postgresql
   tags:
+    - 2nd
     - back
     - db
 - slug: cloudspanner
@@ -301,6 +337,7 @@
   title: Elasticsearch
   icon: elasticsearch
   tags:
+    - 2nd
     - back
     - db
 - slug: pnpm
@@ -337,6 +374,7 @@
   title: GitHub Actions
   icon: github
   tags:
+    - 1st
     - devops
     - ci
 - slug: cloudbuild
@@ -367,6 +405,7 @@
   title: Docker
   icon: docker
   tags:
+    - 1st
     - devops
     - soft
     - tool
@@ -375,6 +414,7 @@
   title: Kubernetes
   icon: kubernetes
   tags:
+    - 2nd
     - devops
     - tool
 - slug: helm
@@ -387,6 +427,7 @@
   title: Terraform
   icon: terraform
   tags:
+    - 2nd
     - devops
     - tool
 - slug: vagrant
@@ -453,12 +494,14 @@
   title: Vite
   icon: vite
   tags:
+    - 1st
     - devops
     - build
 - slug: webpack
   title: Webpack
   icon: webpack
   tags:
+    - 2nd
     - devops
     - build
 - slug: swc

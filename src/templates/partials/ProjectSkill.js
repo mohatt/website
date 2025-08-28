@@ -30,12 +30,11 @@ ProjectSkill.Map = createReactMap(function ProjectSkillMap(skill, { exclude, tag
     return
   }
 
-  return <ProjectSkill key={skill.id} skill={skill} children={children} />
+  return <ProjectSkill key={skill.slug} skill={skill} children={children} />
 })
 
 export const ProjectSkillFragment = graphql`
   fragment ProjectSkillFragment on ProjectSkill {
-    id
     slug
     title
     size
