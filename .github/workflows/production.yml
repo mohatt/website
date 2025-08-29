@@ -83,12 +83,11 @@ jobs:
 
             # Create channel if missing (idempotent)
             echo "firebase hosting:channel:create"
-            firebase --project "$PROJECT_ID" hosting:channel:create "$CHANNEL" || echo "Channel already exists"
+            firebase --project "$PROJECT_ID" hosting:channel:create "$CHANNEL" || true
 
             # Ask CLI for the exact preview URL (stable per-channel)
             echo "firebase hosting:channel:open"
             URL_JSON=$(firebase --project "$PROJECT_ID" hosting:channel:open "$CHANNEL" --json)
-            echo $URL_JSON
             BASE_URL=$(echo "$URL_JSON" | jq -r '.result.url')
           fi
 
@@ -114,6 +113,7 @@ jobs:
         name: Deploy (${{ steps.channel.outputs.deploy_channel }})
         working-directory: deploy
         env:
+          PROJECT_ID: ${{ steps.target.outputs.project_id }}
           EVENT_NAME: ${{ github.event_name }}
           FIREBASE_CLI_PREVIEWS: hostingchannels
           DEPLOY_CHANNEL: ${{ steps.channel.outputs.deploy_channel }}
