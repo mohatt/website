@@ -94,6 +94,16 @@ jobs:
           echo "deploy_channel=$CHANNEL" >> $GITHUB_OUTPUT
           echo "deploy_url=$BASE_URL" >> $GITHUB_OUTPUT
 
+      - name: Log metadata
+        run: |
+          echo "::group::Deploy metadata"
+          echo "Event:      ${{ github.event_name }}"
+          echo "Env:        ${{ steps.target.outputs.env_name }}"
+          echo "Project:    ${{ steps.target.outputs.project_id }}"
+          echo "Channel:    ${{ steps.channel.outputs.deploy_channel }}"
+          echo "PreviewURL: ${{ steps.channel.outputs.deploy_url }}"
+          echo "::endgroup::"
+
       - name: Install dependencies
         run: pnpm install
 
@@ -124,6 +134,23 @@ jobs:
             firebase --project "$PROJECT_ID" hosting:channel:deploy "$DEPLOY_CHANNEL" --expires 7d
           fi
 
-      - name: Deploy URL
+      - name: Deploy URL (job summary)
         run: |
-          echo "Preview: ${{ steps.channel.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "Environment: **${{ steps.target.outputs.env_name }}**" >> $GITHUB_STEP_SUMMARY
+          echo "Project: **${{ steps.target.outputs.project_id }}**" >> $GITHUB_STEP_SUMMARY
+          echo "Channel: \`${{ steps.channel.outputs.deploy_channel }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "URL: ${{ steps.channel.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment preview on PR
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: preview-deploy
+          message: |
+            ### 🚀 Preview Deploy
+            **Env:** `${{ steps.target.outputs.env_name }}`
+            **Project:** `${{ steps.target.outputs.project_id }}`
+            **Channel:** `${{ steps.channel.outputs.deploy_channel }}`
+            **URL:** ${{ steps.channel.outputs.deploy_url }}
+            **Commit:** ${{ github.sha }}
+            _(This comment updates on each PR deploy)_
