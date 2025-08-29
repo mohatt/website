@@ -24,18 +24,18 @@ function PageHelmet({ page: { context, title = '', description, noIndex, image, 
     noIndex === true
       ? { name: 'robots', content: 'noindex' }
       : { name: 'description', content: seoDescription },
-    { name: 'og:title', content: seoTitle },
-    { name: 'og:description', content: seoDescription },
-    { name: 'og:image', content: deployment.config.url + ogImage },
-    { name: 'og:image:alt', content: title || site.title },
+    { property: 'og:title', content: seoTitle },
+    { property: 'og:description', content: seoDescription },
+    { property: 'og:image', content: deployment.config.url + ogImage },
+    { property: 'og:image:alt', content: title || site.title },
     { name: 'twitter:title', content: seoTitle },
     { name: 'twitter:description', content: seoDescription },
     { name: 'twitter:image', content: deployment.config.url + ogImage },
   ]
 
   if (ogImageSize) {
-    meta.push({ name: 'og:image:width', content: ogImageSize[0] })
-    meta.push({ name: 'og:image:height', content: ogImageSize[1] })
+    meta.push({ property: 'og:image:width', content: ogImageSize[0] })
+    meta.push({ property: 'og:image:height', content: ogImageSize[1] })
   }
 
   return (
