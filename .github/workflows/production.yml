@@ -1,45 +1,22 @@
-name: Production
+name: Deploy
 
 on:
   push:
-    branches: [production]
+    branches: [development, production]
   pull_request:
-    branches: [production]
+    branches: [development, production]
 
-env:
-  PROJECT_ID: mohatt
+# Cancel older runs per branch
+concurrency:
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
-  build:
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    name: Build
+  deploy:
+    if: ${{ github.event_name == 'pull_request' || !contains(github.event.head_commit.message, '[skip ci]') }}
+    name: Deploy
     runs-on: ubuntu-latest
-    outputs:
-      deploy_channel: ${{ steps.setup.outputs.deploy_channel }}
-      base_url: ${{ steps.setup.outputs.base_url }}
     steps:
-      - name: Setup
-        id: setup
-        shell: bash
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          HEAD_REF: ${{ github.head_ref }}
-          REF_NAME: ${{ github.ref_name }}
-        run: |
-          if [[ "$EVENT_NAME" == "push" ]]; then
-            CHANNEL="live"
-            BASE_URL="https://${PROJECT_ID}.web.app"
-          else
-            BRANCH="${HEAD_REF:-$REF_NAME}"
-            SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9-]+/-/g' | sed -E 's/^-+|-+$//g' | cut -c1-18)
-            CHANNEL="pr-${PR_NUMBER}-${SLUG}"
-            BASE_URL="https://${PROJECT_ID}--${CHANNEL}.web.app"
-          fi
-
-          echo "deploy_channel=$CHANNEL" >> $GITHUB_OUTPUT
-          echo "base_url=$BASE_URL" >> $GITHUB_OUTPUT
-
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
@@ -54,45 +31,99 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
+      - name: Select target (prod/staging)
+        id: target
+        shell: bash
+        env:
+          REF_NAME: ${{ github.ref_name }} # The branch being pushed to (for pushes)
+          BASE_REF: ${{ github.base_ref }} # The PR’s target branch (for pull requests)
+        run: |
+          # For PRs, route by base branch; for pushes, by the ref itself
+          TARGET_BRANCH="${BASE_REF:-$REF_NAME}"
+
+          if [[ "$TARGET_BRANCH" == "production" ]]; then
+            ENV_NAME="production"
+            PROJECT_ID="mohatt"
+            SA_SECRET="FIREBASE_SERVICE_ACCOUNT_MOHATT"
+          else
+            ENV_NAME="staging"
+            PROJECT_ID="mohatt-staging"
+            SA_SECRET="FIREBASE_SERVICE_ACCOUNT_MOHATT_STAGING"
+          fi
+
+          echo "env_name=$ENV_NAME" >> $GITHUB_OUTPUT
+          echo "project_id=$PROJECT_ID" >> $GITHUB_OUTPUT
+          echo "sa_secret=$SA_SECRET" >> $GITHUB_OUTPUT
+
+      - name: Install firebase & GCP credentials
+        env:
+          SA_JSON: ${{ secrets[steps.target.outputs.sa_secret] }}
+        run: |
+          pnpm i -g firebase-tools
+          echo "$SA_JSON" > "${RUNNER_TEMP}/sa.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=${RUNNER_TEMP}/sa.json" >> $GITHUB_ENV
+
+      - name: Setup deploy channel
+        id: channel
+        shell: bash
+        env:
+          PROJECT_ID: ${{ steps.target.outputs.project_id }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.head_ref }} # The PR’s source branch (for pull requests)
+          REF_NAME: ${{ github.ref_name }} # The branch being pushed to (for pushes)
+        run: |
+          if [[ "$EVENT_NAME" == "push" ]]; then
+            CHANNEL="live"
+            BASE_URL="https://${PROJECT_ID}.web.app"
+          else
+            BRANCH="${HEAD_REF:-$REF_NAME}"
+            SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9-]+/-/g' | sed -E 's/^-+|-+$//g' | cut -c1-12)          
+            CHANNEL="pr-${PR_NUMBER}-${SLUG}"
+
+            # Create channel if missing (idempotent)
+            echo "firebase hosting:channel:create"
+            firebase --project "$PROJECT_ID" hosting:channel:create "$CHANNEL" || echo "Channel already exists"
+
+            # Ask CLI for the exact preview URL (stable per-channel)
+            echo "firebase hosting:channel:open"
+            URL_JSON=$(firebase --project "$PROJECT_ID" hosting:channel:open "$CHANNEL" --json)
+            echo $URL_JSON
+            BASE_URL=$(echo "$URL_JSON" | jq -r '.result.url')
+          fi
+
+          echo "deploy_channel=$CHANNEL" >> $GITHUB_OUTPUT
+          echo "deploy_url=$BASE_URL" >> $GITHUB_OUTPUT
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Build
         env:
-          DEPLOY_URL: ${{ steps.setup.outputs.base_url }}
-          DEPLOY_TARGET: production
+          DEPLOY_TARGET: ${{ steps.target.outputs.env_name }}
+          DEPLOY_CHANNEL: ${{ steps.channel.outputs.deploy_channel }}
+          DEPLOY_URL: ${{ steps.channel.outputs.deploy_url }}
         run: |
           pnpm run build
           mkdir deploy
           mv public/firebase.json deploy/
           mv public deploy/
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: deploy-art
-          path: deploy
-
-  deploy:
-    if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'mohatt') }}
-    needs: build
-    name: Deploy (${{ needs.build.outputs.deploy_channel }})
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: deploy-art
-
       - id: deploy
-        name: Deploy
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOHATT }}
-          projectId: ${{ env.PROJECT_ID }}
-          channelId: ${{ needs.build.outputs.deploy_channel }}
+        if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'mohatt') }}
+        name: Deploy (${{ steps.channel.outputs.deploy_channel }})
+        working-directory: deploy
         env:
+          EVENT_NAME: ${{ github.event_name }}
           FIREBASE_CLI_PREVIEWS: hostingchannels
-
-      - name: Preview URL
+          DEPLOY_CHANNEL: ${{ steps.channel.outputs.deploy_channel }}
         run: |
-          echo "Preview: ${{ steps.deploy.outputs.details_url }}" >> $GITHUB_STEP_SUMMARY
+          if [[ "$EVENT_NAME" == "push" ]]; then
+            firebase --project "$PROJECT_ID" deploy --only hosting
+          else
+            firebase --project "$PROJECT_ID" hosting:channel:deploy "$DEPLOY_CHANNEL" --expires 7d
+          fi
+
+      - name: Deploy URL
+        run: |
+          echo "Preview: ${{ steps.channel.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY

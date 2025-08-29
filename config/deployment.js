@@ -1,3 +1,5 @@
+const { projects } = require('../.firebaserc')
+
 // Current deploy targets
 const config = {
   develop: {
@@ -9,11 +11,11 @@ const config = {
     analytics: 'G-BGXXP9P64L',
   },
   staging: {
-    url: 'https://mohatt-staging.web.app',
+    url: `https://${projects.staging}.web.app`,
     analytics: 'G-BGXXP9P64L',
   },
   production: {
-    url: 'https://mohatt.web.app',
+    url: `https://${projects.production}.web.app`,
     analytics: 'G-EC5KQR5PF7',
   },
 }
@@ -30,21 +32,20 @@ function createDeployment() {
       target = envTarget
     }
   }
-  const url = process.env.DEPLOY_URL
+  const url = process.env.DEPLOY_URL || config[target].url
+  const channel = process.env.DEPLOY_CHANNEL || 'live'
 
   console.info(`Current deploy target: ${target}`)
 
   return {
     target,
-    config: {
-      ...config[target],
-      ...(url && { url }),
-    },
+    config: { ...config[target], url, channel },
     date: new Date(),
     is: {
       local: ['develop', 'staging-local'].includes(target),
       staging: ['staging', 'staging-local'].includes(target),
       production: target === 'production',
+      live: channel === 'live',
     },
   }
 }
