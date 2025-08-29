@@ -1,4 +1,7 @@
-const { projects } = require('../.firebaserc')
+const fs = require('node:fs')
+const path = require('node:path')
+const rcPath = path.resolve(__dirname, '../.firebaserc')
+const { projects } = JSON.parse(fs.readFileSync(rcPath, 'utf8'))
 
 // Current deploy targets
 const config = {
