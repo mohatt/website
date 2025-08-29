@@ -34,7 +34,7 @@ jobs:
             BRANCH="${HEAD_REF:-$REF_NAME}"
             SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9-]+/-/g' | sed -E 's/^-+|-+$//g' | cut -c1-18)
             CHANNEL="pr-${PR_NUMBER}-${SLUG}"
-            BASE_URL="https://${SITE_ID}--${CHANNEL}.web.app"
+            BASE_URL="https://${PROJECT_ID}--${CHANNEL}.web.app"
           fi
 
           echo "deploy_channel=$CHANNEL" >> $GITHUB_OUTPUT
