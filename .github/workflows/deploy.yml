@@ -13,7 +13,9 @@ concurrency:
 
 jobs:
   deploy:
-    if: ${{ github.event_name == 'pull_request' || !contains(github.event.head_commit.message, '[skip ci]') }}
+    # For push: run only if commit message doesn’t contain [skip ci]
+    # For PR: run only if the PR author is mohatt (to avoid bot prs)
+    if: ${{ (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]')) || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'mohatt') }}
     name: Deploy
     runs-on: ubuntu-latest
     steps:
@@ -134,7 +136,7 @@ jobs:
             firebase --project "$PROJECT_ID" hosting:channel:deploy "$DEPLOY_CHANNEL" --expires 7d
           fi
 
-      - name: Deploy URL (job summary)
+      - name: Add job summary
         run: |
           echo "Environment: **${{ steps.target.outputs.env_name }}**" >> $GITHUB_STEP_SUMMARY
           echo "Project: **${{ steps.target.outputs.project_id }}**" >> $GITHUB_STEP_SUMMARY

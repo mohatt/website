@@ -19,7 +19,12 @@ export default function useSiteMetadata() {
       }
     }
   `)
-  const { site: { siteMetadata }, socialBanner: { childImageSharp: { socialBanner } } } = data
+  const {
+    site: { siteMetadata },
+    socialBanner: {
+      childImageSharp: { socialBanner },
+    },
+  } = data
   return { ...siteMetadata, socialBanner }
 }
 

@@ -1,6 +1,6 @@
 # Personal website
 
-[![][ci-dev-img]][ci-dev-url] [![][ci-prod-img]][ci-prod-url] [![][website-img]][website-url] [![][gatsby-img]][gatsby-url] [![][s-headers-img]][s-headers-url] [![][observatory-img]][observatory-url]
+[![][cd-dev-img]][cd-dev-url] [![][cd-prod-img]][cd-prod-url] [![][website-img]][website-url] [![][gatsby-img]][gatsby-url] [![][s-headers-img]][s-headers-url] [![][observatory-img]][observatory-url]
 
 The third version of my personal website built with [Gatsby](https://www.gatsbyjs.org), [Tailwind CSS](https://tailwindcss.com)
 and [MDX](https://mdxjs.com).
@@ -65,10 +65,10 @@ For more information, check out [`.github/workflows`](.github/workflows) directo
 
 [MIT](https://github.com/mohatt/website/blob/development/LICENSE)
 
-[ci-dev-url]: https://github.com/mohatt/website/actions/workflows/main.yml
-[ci-dev-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/staging.yml?logo=github&label=development
-[ci-prod-url]: https://github.com/mohatt/website/tree/production
-[ci-prod-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/production.yml?logo=github&label=production
+[cd-dev-url]: https://github.com/mohatt/website/actions/workflows/deploy.yml?query=branch%3Adevelopment
+[cd-dev-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/deploy.yml?logo=github&branch=development&label=development
+[cd-prod-url]: https://github.com/mohatt/website/actions/workflows/deploy.yml?query=branch%3Aproduction
+[cd-prod-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/deploy.yml?logo=github&branch=production&label=production
 [gatsby-url]: https://github.com/gatsbyjs/gatsby/blob/gatsby%405.14.0/packages/gatsby/CHANGELOG.md
 [gatsby-img]: https://img.shields.io/badge/gatsby-v5.14-blueviolet.svg?logo=gatsby
 [website-url]: https://mohatt.web.app

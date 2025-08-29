@@ -31,13 +31,7 @@ function PageHelmet({ page: { context, title = '', description, noIndex, image }
     { property: 'og:image:alt', content: title || site.title },
   ]
 
-  return (
-    <Helmet
-      title={seoTitle}
-      htmlAttributes={{ 'data-layout': context.id }}
-      meta={meta}
-    />
-  )
+  return <Helmet title={seoTitle} htmlAttributes={{ 'data-layout': context.id }} meta={meta} />
 }
 
 /**
