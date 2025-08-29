@@ -28,9 +28,6 @@ function PageHelmet({ page: { context, title = '', description, noIndex, image, 
     { property: 'og:description', content: seoDescription },
     { property: 'og:image', content: deployment.config.url + ogImage },
     { property: 'og:image:alt', content: title || site.title },
-    { name: 'twitter:title', content: seoTitle },
-    { name: 'twitter:description', content: seoDescription },
-    { name: 'twitter:image', content: deployment.config.url + ogImage },
   ]
 
   if (ogImageSize) {
