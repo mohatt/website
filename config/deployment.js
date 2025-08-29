@@ -30,12 +30,16 @@ function createDeployment() {
       target = envTarget
     }
   }
+  const url = process.env.DEPLOY_URL
 
   console.info(`Current deploy target: ${target}`)
 
   return {
     target,
-    config: config[target],
+    config: {
+      ...config[target],
+      ...(url && { url }),
+    },
     date: new Date(),
     is: {
       local: ['develop', 'staging-local'].includes(target),

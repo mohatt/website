@@ -6,11 +6,40 @@ on:
   pull_request:
     branches: [production]
 
+env:
+  PROJECT_ID: mohatt
+
 jobs:
-  Build:
+  build:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    name: Build
     runs-on: ubuntu-latest
+    outputs:
+      deploy_channel: ${{ steps.setup.outputs.deploy_channel }}
+      base_url: ${{ steps.setup.outputs.base_url }}
     steps:
+      - name: Setup
+        id: setup
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.head_ref }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          if [[ "$EVENT_NAME" == "push" ]]; then
+            CHANNEL="live"
+            BASE_URL="https://${PROJECT_ID}.web.app"
+          else
+            BRANCH="${HEAD_REF:-$REF_NAME}"
+            SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9-]+/-/g' | sed -E 's/^-+|-+$//g' | cut -c1-18)
+            CHANNEL="pr-${PR_NUMBER}-${SLUG}"
+            BASE_URL="https://${SITE_ID}--${CHANNEL}.web.app"
+          fi
+
+          echo "deploy_channel=$CHANNEL" >> $GITHUB_OUTPUT
+          echo "base_url=$BASE_URL" >> $GITHUB_OUTPUT
+
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
@@ -29,6 +58,9 @@ jobs:
         run: pnpm install
 
       - name: Build
+        env:
+          DEPLOY_URL: ${{ steps.setup.outputs.base_url }}
+          DEPLOY_TARGET: production
         run: |
           pnpm run build
           mkdir deploy
@@ -40,25 +72,27 @@ jobs:
           name: deploy-art
           path: deploy
 
-  Deploy:
+  deploy:
     if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'mohatt') }}
-    needs: Build
+    needs: build
+    name: Deploy (${{ needs.build.outputs.deploy_channel }})
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: deploy-art
 
-      - name: Deploy to live channel
-        if: github.event_name == 'push'
-        run: echo "DEPLOY_CHANNEL=live" >> $GITHUB_ENV
-
-      - name: Deploy
+      - id: deploy
+        name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOHATT }}
-          projectId: mohatt
-          channelId: ${{ env.DEPLOY_CHANNEL }}
+          projectId: ${{ env.PROJECT_ID }}
+          channelId: ${{ needs.build.outputs.deploy_channel }}
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
+
+      - name: Preview URL
+        run: |
+          echo "Preview: ${{ steps.deploy.outputs.details_url }}" >> $GITHUB_STEP_SUMMARY
