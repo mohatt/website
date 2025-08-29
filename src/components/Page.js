@@ -7,13 +7,12 @@ import Providers from '../providers'
 import { LayoutContext } from '../providers/layout'
 import { DefaultLayout } from '../layouts'
 import { Section } from '.'
-import socialBanner from '../images/social-banner-photo.jpg'
 
-function PageHelmet({ page: { context, title = '', description, noIndex, image, imageSize } }) {
-  const { deployment } = useSiteMetadata()
+function PageHelmet({ page: { context, title = '', description, noIndex, image } }) {
+  const { deployment, socialBanner } = useSiteMetadata()
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
-  const [ogImage, ogImageSize] = image ? [image, imageSize] : [socialBanner, [800, 674]]
+  const ogImage = image ?? socialBanner
 
   useAnalyticsCallback(({ config, event }) => {
     config({ page_title: title })
@@ -26,14 +25,11 @@ function PageHelmet({ page: { context, title = '', description, noIndex, image, 
       : { name: 'description', content: seoDescription },
     { property: 'og:title', content: seoTitle },
     { property: 'og:description', content: seoDescription },
-    { property: 'og:image', content: deployment.config.url + ogImage },
+    { property: 'og:image', content: deployment.config.url + ogImage.src },
+    { property: 'og:image:width', content: ogImage.width },
+    { property: 'og:image:height', content: ogImage.height },
     { property: 'og:image:alt', content: title || site.title },
   ]
-
-  if (ogImageSize) {
-    meta.push({ property: 'og:image:width', content: ogImageSize[0] })
-    meta.push({ property: 'og:image:height', content: ogImageSize[1] })
-  }
 
   return (
     <Helmet
@@ -63,15 +59,9 @@ export default class Page extends React.Component {
 
   /**
    * Image to be used in social media links
-   * @type string
+   * @type {{src: string, width: number, height: number}}
    */
   image
-
-  /**
-   * The image dimensions to be used in social media links
-   * @type {[number, number]}
-   */
-  imageSize
 
   /**
    * Prevents search engines from indexing the page

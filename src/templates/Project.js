@@ -81,8 +81,7 @@ export default class Project extends Page {
     const screens = []
     if (project.hasImage) {
       screens.push(image)
-      this.image = image.thumb.images.fallback.src
-      this.imageSize = [image.thumb.width, image.thumb.height]
+      this.image = image.socialBanner
     }
     project.screens.forEach((s) => s && screens.push(s.childImageSharp))
 
@@ -145,6 +144,7 @@ export const query = graphql`
       status
       hasImage
       image {
+        ...SocialBannerFragment
         childImageSharp {
           org: original {
             width
