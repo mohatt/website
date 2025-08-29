@@ -9,29 +9,36 @@ import { DefaultLayout } from '../layouts'
 import { Section } from '.'
 import socialBanner from '../images/social-banner-photo.jpg'
 
-function PageHelmet({ page: { context, title = '', description, noIndex, image } }) {
+function PageHelmet({ page: { context, title = '', description, noIndex, image, imageSize } }) {
   const { deployment } = useSiteMetadata()
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
-  const ogImage = image || socialBanner
+  const [ogImage, ogImageSize] = image ? [image, imageSize] : [socialBanner, [800, 674]]
 
   useAnalyticsCallback(({ config, event }) => {
     config({ page_title: title })
     event('page_view')
   }, [])
 
+  const meta = [
+    noIndex === true
+      ? { name: 'robots', content: 'noindex' }
+      : { name: 'description', content: seoDescription },
+    { name: 'og:title', content: seoTitle },
+    { name: 'og:description', content: seoDescription },
+    { name: 'og:image', content: deployment.config.url + ogImage },
+  ]
+
+  if (ogImageSize) {
+    meta.push({ name: 'og:image:width', content: ogImageSize[0] })
+    meta.push({ name: 'og:image:height', content: ogImageSize[1] })
+  }
+
   return (
     <Helmet
       title={seoTitle}
       htmlAttributes={{ 'data-layout': context.id }}
-      meta={[
-        noIndex === true
-          ? { name: 'robots', content: 'noindex' }
-          : { name: 'description', content: seoDescription },
-        { name: 'og:title', content: seoTitle },
-        { name: 'og:description', content: seoDescription },
-        { name: 'og:image', content: deployment.config.url + ogImage },
-      ]}
+      meta={meta}
     />
   )
 }
@@ -58,6 +65,12 @@ export default class Page extends React.Component {
    * @type string
    */
   image
+
+  /**
+   * The image dimensions to be used in social media links
+   * @type {[number, number]}
+   */
+  imageSize
 
   /**
    * Prevents search engines from indexing the page

@@ -70,7 +70,7 @@ export default class Project extends Page {
       children,
       pageContext,
     } = this.props
-    this.title = project.title
+    this.title = `${project.title} (Case Study)`
     this.description = project.desc
     this.snippet = {
       $comp: 'Project',
@@ -82,6 +82,7 @@ export default class Project extends Page {
     if (project.hasImage) {
       screens.push(image)
       this.image = image.thumb.images.fallback.src
+      this.imageSize = [image.thumb.width, image.thumb.height]
     }
     project.screens.forEach((s) => s && screens.push(s.childImageSharp))
 
