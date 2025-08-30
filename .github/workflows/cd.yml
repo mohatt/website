@@ -158,9 +158,10 @@ jobs:
           header: preview-deploy
           message: |
             ### 🚀 Preview Deploy
-            **Env:** `${{ steps.target.outputs.env_name }}`
-            **Project:** `${{ steps.target.outputs.project_id }}`
-            **Channel:** `${{ steps.channel.outputs.deploy_channel }}`
-            **URL:** ${{ steps.channel.outputs.deploy_url }}
-            **Commit:** ${{ github.sha }}
+            - **Env:** `${{ steps.target.outputs.env_name }}`
+            - **Project:** `${{ steps.target.outputs.project_id }}`
+            - **Channel:** `${{ steps.channel.outputs.deploy_channel }}`
+            - **URL:** ${{ steps.channel.outputs.deploy_url }}
+            - **Commit:** ${{ github.sha }}
+            
             _(This comment updates on each PR deploy)_
