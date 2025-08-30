@@ -6,7 +6,7 @@ export default function useSiteMetadata() {
       site {
         siteMetadata {
           deployment {
-            date(formatString: "YYYY-MM-DD")
+            date
             config {
               sha
               url

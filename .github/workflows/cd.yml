@@ -141,7 +141,7 @@ jobs:
       # For debugging build artifacts
       - uses: actions/upload-artifact@v4
         with:
-          name: deployed
+          name: deployed-files
           path: deploy
 
       - name: Add job summary
@@ -163,5 +163,5 @@ jobs:
             - **Channel:** `${{ steps.channel.outputs.deploy_channel }}`
             - **URL:** ${{ steps.channel.outputs.deploy_url }}
             - **Commit:** ${{ github.sha }}
-            
+
             _(This comment updates on each PR deploy)_
