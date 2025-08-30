@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   deploy:
-    # For push: run only if commit message doesn’t contain [skip ci]
+    # For push: run only if the commit message doesn’t contain [skip ci]
     # For PR: run only if the PR author is mohatt (to avoid bot prs)
     if: ${{ (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]')) || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'mohatt') }}
     name: Deploy
@@ -107,10 +107,30 @@ jobs:
           echo "PreviewURL: ${{ steps.channel.outputs.deploy_url }}"
           echo "::endgroup::"
 
+      - name: Check maintenance mode
+        id: maintenance
+        run: |
+          FLAG_FILE="maintenance/.maintenance"
+          if [[ -f "$FLAG_FILE" ]]; then
+            FLAG=$(tr '[:upper:]' '[:lower:]' < "$FLAG_FILE" | tr -d '[:space:]')
+          else
+            FLAG="off"
+          fi
+          if [[ "$FLAG" == "1" || "$FLAG" == "true" || "$FLAG" == "on" ]]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "⚠️ Maintenance mode enabled — skipping app build"
+            cp -a maintenance deploy
+            ls -la deploy
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install dependencies
+        if: ${{ steps.maintenance.outputs.enabled == 'false' }}
         run: pnpm install
 
       - name: Build
+        if: ${{ steps.maintenance.outputs.enabled == 'false' }}
         env:
           DEPLOY_TARGET: ${{ steps.target.outputs.env_name }}
           DEPLOY_CHANNEL: ${{ steps.channel.outputs.deploy_channel }}
@@ -123,7 +143,6 @@ jobs:
           mv public deploy/
 
       - id: deploy
-        if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'mohatt') }}
         name: Deploy (${{ steps.channel.outputs.deploy_channel }})
         working-directory: deploy
         env:
@@ -146,10 +165,11 @@ jobs:
 
       - name: Add job summary
         run: |
-          echo "Environment: **${{ steps.target.outputs.env_name }}**" >> $GITHUB_STEP_SUMMARY
-          echo "Project: **${{ steps.target.outputs.project_id }}**" >> $GITHUB_STEP_SUMMARY
-          echo "Channel: \`${{ steps.channel.outputs.deploy_channel }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "URL: ${{ steps.channel.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Environment: **${{ steps.target.outputs.env_name }}**" >> $GITHUB_STEP_SUMMARY
+          echo "- Project: **${{ steps.target.outputs.project_id }}**" >> $GITHUB_STEP_SUMMARY
+          echo "- Channel: \`${{ steps.channel.outputs.deploy_channel }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- URL: ${{ steps.channel.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Maintenance: \`${{ steps.maintenance.outputs.enabled }}\`" >> $GITHUB_STEP_SUMMARY
 
       - name: Comment preview on PR
         if: ${{ github.event_name == 'pull_request' }}
@@ -163,5 +183,6 @@ jobs:
             - **Channel:** `${{ steps.channel.outputs.deploy_channel }}`
             - **URL:** ${{ steps.channel.outputs.deploy_url }}
             - **Commit:** ${{ github.sha }}
+            - **Maintenance:** `${{ steps.maintenance.outputs.enabled }}`
 
             _(This comment updates on each PR deploy)_
