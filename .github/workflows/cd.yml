@@ -138,6 +138,12 @@ jobs:
             firebase --project "$PROJECT_ID" hosting:channel:deploy "$DEPLOY_CHANNEL" --expires 7d
           fi
 
+      # For debugging build artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deployed
+          path: deploy
+
       - name: Add job summary
         run: |
           echo "Environment: **${{ steps.target.outputs.env_name }}**" >> $GITHUB_STEP_SUMMARY
