@@ -13,7 +13,7 @@ function Footer({ className }) {
           <div>
             <Link
               to={`https://github.com/mohatt/website/commit/${deployment.config.sha}`}
-              title={`Build time: ${new Date(deployment.date).toLocaleString()}`}
+              title={`Build time: ${deployment.date}`}
               className='link opacity-75'
               external='deploy_sha'
             >
