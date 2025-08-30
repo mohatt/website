@@ -27,7 +27,7 @@ export default function useLightbox(options, onInit) {
     return () => {
       instance?.destroy()
     }
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return exports
 }

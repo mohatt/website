@@ -8,26 +8,27 @@ const AnalyticsContext = createContext()
 export function AnalyticsProvider({ children, location }) {
   const { href, pathname, search, hash } = location
   const { deployment } = useSiteMetadata()
-  const { current } = useRef({})
+  const instance = useRef(null)
+  const prevHref = useRef('')
 
-  if (!current.instance) {
-    current.instance = createAnalytics(deployment.config.analytics, {
+  if (!instance.current) {
+    instance.current = createAnalytics(deployment.config.analytics, {
       send_page_view: false,
     })
-    current.ref = $document && $document.referrer
+    prevHref.current = $document && $document.referrer
   }
 
-  if (href !== current.ref) {
-    current.instance.config({
+  if (href !== prevHref.current) {
+    instance.current.config({
       page_path: pathname + search + hash,
-      page_referrer: current.ref,
+      page_referrer: prevHref.current,
     })
-    current.ref = href
+    prevHref.current = href
   }
 
-  useEffect(() => initializeAnalytics(current.instance), [])
+  useEffect(() => initializeAnalytics(instance.current), [])
 
-  return <AnalyticsContext.Provider value={current.instance}>{children}</AnalyticsContext.Provider>
+  return <AnalyticsContext.Provider value={instance.current}>{children}</AnalyticsContext.Provider>
 }
 
 export function useAnalytics() {
@@ -36,5 +37,9 @@ export function useAnalytics() {
 
 export function useAnalyticsCallback(callback, deps) {
   const analytics = useAnalytics()
-  return useMemo(() => callback(analytics), deps)
+  return useMemo(
+    () => callback(analytics),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    deps,
+  )
 }

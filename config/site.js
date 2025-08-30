@@ -56,7 +56,7 @@ module.exports = {
       template: 'Project.js',
     },
     {
-      title: 'Resumé',
+      title: 'Résumé',
       routes: {
         resume: '/resume',
       },

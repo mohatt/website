@@ -24,8 +24,14 @@ export function onPreRenderHTML({ getHeadComponents, replaceHeadComponents }) {
  */
 function setupTheme({ setHeadComponents, setHtmlAttributes }) {
   const lookups = {
-    c: themes.color.reduce((acc, t) => ((acc[t.id] = [t.class, t.colors.primary]), acc), {}),
-    e: themes.edges.reduce((acc, t) => ((acc[t.id] = t.class), acc), {}),
+    c: themes.color.reduce((acc, t) => {
+      acc[t.id] = [t.class, t.colors.primary]
+      return acc
+    }, {}),
+    e: themes.edges.reduce((acc, t) => {
+      acc[t.id] = t.class
+      return acc
+    }, {}),
   }
   const defaults = {
     ctLight: themes.color.find((t) => !t.dark),

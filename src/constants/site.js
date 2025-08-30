@@ -34,7 +34,7 @@ exports.site = {
       ],
     },
     {
-      label: 'Resumé',
+      label: 'Résumé',
       to: 'resume',
       items: [
         { label: 'Experience', hash: 'experience' },

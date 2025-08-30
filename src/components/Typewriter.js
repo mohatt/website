@@ -8,7 +8,8 @@ function TypewriterText({ words, loop, typeSpeed, deleteSpeed, delay }) {
   const [deleting, setDeleting] = useState(false)
   const [counter, setCounter] = useState(0)
 
-  const typewriter = () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function typewriter() {
     const index = loop ? counter % words.length : counter
     const word = words[index]
 

@@ -12,7 +12,7 @@ export default function DefaultLayout({
   children,
 }) {
   const [path] = usePath()
-  const closeMenu = useCallback(() => dispatch('menu', false), [])
+  const closeMenu = useCallback(() => dispatch('menu', false), [dispatch])
   return (
     <div className='flex'>
       <div
