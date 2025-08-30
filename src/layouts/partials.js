@@ -14,8 +14,8 @@ export function DocumentHead() {
       <Helmet
         htmlAttributes={{ lang: 'en' }}
         meta={[
-          { name: 'og:type', content: 'website' },
-          { name: 'og:url', content: deployment.config.url + realPath },
+          { property: 'og:type', content: 'website' },
+          { property: 'og:url', content: deployment.config.url + realPath },
           { name: 'twitter:card', content: 'summary_large_image' },
         ]}
         link={[{ rel: 'prefetch', as: 'image', href: avatarAlt }]}

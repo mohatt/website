@@ -7,33 +7,31 @@ import Providers from '../providers'
 import { LayoutContext } from '../providers/layout'
 import { DefaultLayout } from '../layouts'
 import { Section } from '.'
-import socialBanner from '../images/social-banner-photo.jpg'
 
 function PageHelmet({ page: { context, title = '', description, noIndex, image } }) {
-  const { deployment } = useSiteMetadata()
+  const { deployment, socialBanner } = useSiteMetadata()
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
-  const ogImage = image || socialBanner
+  const ogImage = image ?? socialBanner
 
   useAnalyticsCallback(({ config, event }) => {
     config({ page_title: title })
     event('page_view')
   }, [])
 
-  return (
-    <Helmet
-      title={seoTitle}
-      htmlAttributes={{ 'data-layout': context.id }}
-      meta={[
-        noIndex === true
-          ? { name: 'robots', content: 'noindex' }
-          : { name: 'description', content: seoDescription },
-        { name: 'og:title', content: seoTitle },
-        { name: 'og:description', content: seoDescription },
-        { name: 'og:image', content: deployment.config.url + ogImage },
-      ]}
-    />
-  )
+  const meta = [
+    noIndex === true
+      ? { name: 'robots', content: 'noindex' }
+      : { name: 'description', content: seoDescription },
+    { property: 'og:title', content: seoTitle },
+    { property: 'og:description', content: seoDescription },
+    { property: 'og:image', content: deployment.config.url + ogImage.src },
+    { property: 'og:image:width', content: ogImage.width },
+    { property: 'og:image:height', content: ogImage.height },
+    { property: 'og:image:alt', content: title || site.title },
+  ]
+
+  return <Helmet title={seoTitle} htmlAttributes={{ 'data-layout': context.id }} meta={meta} />
 }
 
 /**
@@ -55,7 +53,7 @@ export default class Page extends React.Component {
 
   /**
    * Image to be used in social media links
-   * @type string
+   * @type {{src: string, width: number, height: number}}
    */
   image
 

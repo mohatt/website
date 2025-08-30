@@ -6,16 +6,38 @@ export default function useSiteMetadata() {
       site {
         siteMetadata {
           deployment {
-            date(formatString: "YYYY-MM-DD")
+            date
             config {
+              sha
               url
+              channel
               analytics
             }
           }
         }
       }
+      socialBanner: file(relativePath: { eq: "site/social-banner-photo.jpg" }) {
+        ...SocialBannerFragment
+      }
     }
   `)
-
-  return data.site.siteMetadata
+  const {
+    site: { siteMetadata },
+    socialBanner: {
+      childImageSharp: { socialBanner },
+    },
+  } = data
+  return { ...siteMetadata, socialBanner }
 }
+
+export const SocialBannerFragment = graphql`
+  fragment SocialBannerFragment on File {
+    childImageSharp {
+      socialBanner: resize(width: 1200, height: 630, fit: COVER, cropFocus: CENTER) {
+        src
+        width
+        height
+      }
+    }
+  }
+`

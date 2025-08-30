@@ -28,7 +28,7 @@ module.exports = {
     enabled: true,
     provider: 'firebase',
     headers: {
-      '[*]': !deployment.is.production ? { 'X-Robots-Tag': 'noindex' } : {},
+      '[*]': !deployment.is.production || !deployment.is.live ? { 'X-Robots-Tag': 'noindex' } : {},
       '[pages]': {
         link: [
           '<https://www.googletagmanager.com>; rel=preconnect',

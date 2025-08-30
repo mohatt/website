@@ -1,0 +1,167 @@
+name: CD
+
+on:
+  push:
+    branches: [development, production]
+  pull_request:
+    branches: [development, production]
+
+# Cancel older runs per branch
+concurrency:
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # For push: run only if commit message doesn’t contain [skip ci]
+    # For PR: run only if the PR author is mohatt (to avoid bot prs)
+    if: ${{ (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]')) || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'mohatt') }}
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Select target (prod/staging)
+        id: target
+        shell: bash
+        env:
+          REF_NAME: ${{ github.ref_name }} # The branch being pushed to (for pushes)
+          BASE_REF: ${{ github.base_ref }} # The PR’s target branch (for pull requests)
+        run: |
+          # For PRs, route by base branch; for pushes, by the ref itself
+          TARGET_BRANCH="${BASE_REF:-$REF_NAME}"
+
+          if [[ "$TARGET_BRANCH" == "production" ]]; then
+            ENV_NAME="production"
+            PROJECT_ID="mohatt"
+            SA_SECRET="FIREBASE_SERVICE_ACCOUNT_MOHATT"
+          else
+            ENV_NAME="staging"
+            PROJECT_ID="mohatt-staging"
+            SA_SECRET="FIREBASE_SERVICE_ACCOUNT_MOHATT_STAGING"
+          fi
+
+          echo "env_name=$ENV_NAME" >> $GITHUB_OUTPUT
+          echo "project_id=$PROJECT_ID" >> $GITHUB_OUTPUT
+          echo "sa_secret=$SA_SECRET" >> $GITHUB_OUTPUT
+
+      - name: Install firebase & GCP credentials
+        env:
+          SA_JSON: ${{ secrets[steps.target.outputs.sa_secret] }}
+        run: |
+          pnpm i -g firebase-tools
+          echo "$SA_JSON" > "${RUNNER_TEMP}/sa.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=${RUNNER_TEMP}/sa.json" >> $GITHUB_ENV
+
+      - name: Setup deploy channel
+        id: channel
+        shell: bash
+        env:
+          PROJECT_ID: ${{ steps.target.outputs.project_id }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.head_ref }} # The PR’s source branch (for pull requests)
+          REF_NAME: ${{ github.ref_name }} # The branch being pushed to (for pushes)
+        run: |
+          if [[ "$EVENT_NAME" == "push" ]]; then
+            CHANNEL="live"
+            BASE_URL="https://${PROJECT_ID}.web.app"
+          else
+            BRANCH="${HEAD_REF:-$REF_NAME}"
+            SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9-]+/-/g' | sed -E 's/^-+|-+$//g' | cut -c1-12)          
+            CHANNEL="pr-${PR_NUMBER}-${SLUG}"
+
+            # Create channel if missing (idempotent)
+            echo "firebase hosting:channel:create"
+            firebase --project "$PROJECT_ID" hosting:channel:create "$CHANNEL" || true
+
+            # Ask CLI for the exact preview URL (stable per-channel)
+            echo "firebase hosting:channel:open"
+            URL_JSON=$(firebase --project "$PROJECT_ID" hosting:channel:open "$CHANNEL" --json)
+            BASE_URL=$(echo "$URL_JSON" | jq -r '.result.url')
+          fi
+
+          echo "deploy_channel=$CHANNEL" >> $GITHUB_OUTPUT
+          echo "deploy_url=$BASE_URL" >> $GITHUB_OUTPUT
+          echo "deploy_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: Log metadata
+        run: |
+          echo "::group::Deploy metadata"
+          echo "Event:      ${{ github.event_name }}"
+          echo "Env:        ${{ steps.target.outputs.env_name }}"
+          echo "Project:    ${{ steps.target.outputs.project_id }}"
+          echo "Channel:    ${{ steps.channel.outputs.deploy_channel }}"
+          echo "PreviewURL: ${{ steps.channel.outputs.deploy_url }}"
+          echo "::endgroup::"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        env:
+          DEPLOY_TARGET: ${{ steps.target.outputs.env_name }}
+          DEPLOY_CHANNEL: ${{ steps.channel.outputs.deploy_channel }}
+          DEPLOY_URL: ${{ steps.channel.outputs.deploy_url }}
+          DEPLOY_SHA: ${{ steps.channel.outputs.deploy_sha }}
+        run: |
+          pnpm run build
+          mkdir deploy
+          mv public/firebase.json deploy/
+          mv public deploy/
+
+      - id: deploy
+        if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'mohatt') }}
+        name: Deploy (${{ steps.channel.outputs.deploy_channel }})
+        working-directory: deploy
+        env:
+          PROJECT_ID: ${{ steps.target.outputs.project_id }}
+          EVENT_NAME: ${{ github.event_name }}
+          FIREBASE_CLI_PREVIEWS: hostingchannels
+          DEPLOY_CHANNEL: ${{ steps.channel.outputs.deploy_channel }}
+        run: |
+          if [[ "$EVENT_NAME" == "push" ]]; then
+            firebase --project "$PROJECT_ID" deploy --only hosting
+          else
+            firebase --project "$PROJECT_ID" hosting:channel:deploy "$DEPLOY_CHANNEL" --expires 7d
+          fi
+
+      # For debugging build artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deployed-files
+          path: deploy
+
+      - name: Add job summary
+        run: |
+          echo "Environment: **${{ steps.target.outputs.env_name }}**" >> $GITHUB_STEP_SUMMARY
+          echo "Project: **${{ steps.target.outputs.project_id }}**" >> $GITHUB_STEP_SUMMARY
+          echo "Channel: \`${{ steps.channel.outputs.deploy_channel }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "URL: ${{ steps.channel.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment preview on PR
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: preview-deploy
+          message: |
+            ### 🚀 Preview Deploy
+            - **Env:** `${{ steps.target.outputs.env_name }}`
+            - **Project:** `${{ steps.target.outputs.project_id }}`
+            - **Channel:** `${{ steps.channel.outputs.deploy_channel }}`
+            - **URL:** ${{ steps.channel.outputs.deploy_url }}
+            - **Commit:** ${{ github.sha }}
+
+            _(This comment updates on each PR deploy)_
