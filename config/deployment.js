@@ -37,12 +37,13 @@ function createDeployment() {
   }
   const url = process.env.DEPLOY_URL || config[target].url
   const channel = process.env.DEPLOY_CHANNEL || 'live'
+  const sha = process.env.DEPLOY_SHA || 'local'
 
   console.info(`Current deploy target: ${target}`)
 
   return {
     target,
-    config: { ...config[target], url, channel },
+    config: { ...config[target], sha, url, channel },
     date: new Date(),
     is: {
       local: ['develop', 'staging-local'].includes(target),

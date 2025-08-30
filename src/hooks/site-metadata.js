@@ -8,7 +8,9 @@ export default function useSiteMetadata() {
           deployment {
             date(formatString: "YYYY-MM-DD")
             config {
+              sha
               url
+              channel
               analytics
             }
           }

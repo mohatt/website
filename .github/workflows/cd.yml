@@ -95,6 +95,7 @@ jobs:
 
           echo "deploy_channel=$CHANNEL" >> $GITHUB_OUTPUT
           echo "deploy_url=$BASE_URL" >> $GITHUB_OUTPUT
+          echo "deploy_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
       - name: Log metadata
         run: |
@@ -114,6 +115,7 @@ jobs:
           DEPLOY_TARGET: ${{ steps.target.outputs.env_name }}
           DEPLOY_CHANNEL: ${{ steps.channel.outputs.deploy_channel }}
           DEPLOY_URL: ${{ steps.channel.outputs.deploy_url }}
+          DEPLOY_SHA: ${{ steps.channel.outputs.deploy_sha }}
         run: |
           pnpm run build
           mkdir deploy
