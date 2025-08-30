@@ -178,7 +178,7 @@ jobs:
           header: preview-deploy
           message: |
             ### 🚀 Preview Deploy
-            - **Env:** `${{ steps.target.outputs.env_name }}`
+            - **Environment:** `${{ steps.target.outputs.env_name }}`
             - **Project:** `${{ steps.target.outputs.project_id }}`
             - **Channel:** `${{ steps.channel.outputs.deploy_channel }}`
             - **URL:** ${{ steps.channel.outputs.deploy_url }}
