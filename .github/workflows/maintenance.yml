@@ -5,9 +5,9 @@ on:
 
 jobs:
   Deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: cp ".firebaserc" "maintenance/.firebaserc"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
