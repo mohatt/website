@@ -8,9 +8,10 @@ import { LayoutContext } from '../providers/layout'
 import { DefaultLayout } from '../layouts'
 import { Section } from '.'
 
-function PageHelmet({ page: { context, title = '', description, noIndex, image } }) {
+function PageHelmet({ page: { context, title, seoTitle: sTitle, description, noIndex, image } }) {
   const { deployment, socialBanner } = useSiteMetadata()
-  const seoTitle = title ? `${title} — ${site.title}` : site.title
+  const pageTitle = sTitle || title
+  const seoTitle = pageTitle ? `${pageTitle} — ${site.title}` : site.title
   const seoDescription = description || site.description
   const ogImage = image ?? socialBanner
 
@@ -40,10 +41,16 @@ function PageHelmet({ page: { context, title = '', description, noIndex, image }
  */
 export default class Page extends React.Component {
   /**
-   * SEO title
+   * Page title
    * @type string
    */
   title
+
+  /**
+   * SEO title (overrides title)
+   * @type string
+   */
+  seoTitle
 
   /**
    * SEO description

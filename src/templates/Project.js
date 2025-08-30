@@ -70,7 +70,7 @@ export default class Project extends Page {
       children,
       pageContext,
     } = this.props
-    this.title = `${project.title} (Case Study)`
+    this.title = project.title
     this.description = project.desc
     this.snippet = {
       $comp: 'Project',
@@ -85,8 +85,9 @@ export default class Project extends Page {
     }
     project.screens.forEach((s) => s && screens.push(s.childImageSharp))
 
-    // Don't index portfolio projects
     if (project.categories.some(({ slug }) => slug === 'portfolio')) {
+      this.seoTitle = `${project.title} (Case Study)`
+      // Don't index portfolio projects
       this.noIndex = true
     }
 
