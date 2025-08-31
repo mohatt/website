@@ -101,7 +101,10 @@ export default class Resume extends Page {
           </Heading>
           <b>Highlights:</b>
           <ul className='list-style-diamond ml-2 space-y-1 mt-2'>
-            <li>Owned GraphQL services in an Apollo-federated supergraph for a high-traffic consumer app.</li>
+            <li>
+              Owned GraphQL services in an Apollo-federated supergraph for a high-traffic consumer
+              app.
+            </li>
             <li>
               Integrated an AI-powered product-recommendation service into a grocery delivery app.
             </li>
