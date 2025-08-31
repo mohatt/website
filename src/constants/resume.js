@@ -141,21 +141,21 @@ export const experience = [
 
 export const education = [
   {
-    title: 'Misr University for Science and Technology',
-    subtitle: "Bachelor's degree, Physical Therapy",
-    time: '2010 – 2016',
+    title: 'Selected Online Coursework',
+    subtitle: 'Professional development (various providers)',
+    time: '2015 – Present',
+    desc: 'AI Agents with MongoDB (2024) · Eloquent JavaScript (2024) · GraphQL Essentials (2020) · Advanced React (2018)',
   },
   {
-    title: 'CS50x — HarvardX / edX',
-    subtitle: 'Online education programme of Harvard University',
+    title: 'CS50x: Introduction to Computer Science',
+    subtitle: 'HarvardX (edX) — Online program',
     url: 'https://www.edx.org/course/introduction-computer-science-harvardx-cs50x',
     time: '2016 – 2017',
-    desc: 'C · Python · SQL · Algorithms · Data Structures',
+    desc: 'C · Python · SQL · Algorithms · Cryptography · Data Structures · Security',
   },
   {
-    title: 'Other relevant course work',
-    subtitle: 'Various online education programmes',
-    time: '2015 – Present',
-    desc: 'GraphQL Essentials (2020) · Advanced React (2018) · Advanced JavaScript (2018) · Eloquent JavaScript (2024)',
+    title: 'Misr University for Science and Technology',
+    subtitle: 'B.Sc. in Physical Therapy',
+    time: '2010 – 2016',
   },
 ]
