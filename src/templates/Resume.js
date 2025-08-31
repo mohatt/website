@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { generatePath } from 'gatsby-plugin-advanced-pages'
-import { education, experience, sortSkillsByTagGroups } from '../constants'
+import { site, resume, sortSkillsByTagGroups } from '../constants'
 import { cx } from '../util'
 import { useSiteMetadata } from '../hooks'
 import { Page, Heading, Section, Link, Icon, Masonry } from '../components'
@@ -61,7 +61,7 @@ export default class Resume extends Page {
       <div>
         <Section spacing={false}>
           <Heading title='Mohamed Elkholy' primary className={isPrint && 'pl-4'}>
-            Full-Stack Engineer
+            Full-Stack Engineer · {site.location}
           </Heading>
         </Section>
         {isPrint && (
@@ -73,7 +73,7 @@ export default class Resume extends Page {
                     <li>
                       <span className='inline-block font-medium'>
                         <Icon name='map-pin' className='h-5 mr-1' />
-                        <span>Dubai, UAE (UTC+4)</span>
+                        <span>{site.location}</span>
                       </span>
                     </li>
                     {items}
@@ -125,7 +125,7 @@ export default class Resume extends Page {
             )}
           />
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
-            {experience.map(
+            {resume.experience.map(
               ({ role, at, type, url, time, loc, print, desc, printDesc, legacy }) => {
                 if (isPrint && !print) {
                   return null
@@ -214,7 +214,7 @@ export default class Resume extends Page {
             )}
           />
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
-            {education.map(({ title, subtitle, time, url, desc }) => (
+            {resume.education.map(({ title, subtitle, time, url, desc }) => (
               <div key={title}>
                 <div className={isPrint ? 'flex items-center' : ''}>
                   <h3 className='font-body text-lg text-primary'>
