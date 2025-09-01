@@ -2,11 +2,18 @@
 
 [![][cd-dev-img]][cd-dev-url] [![][cd-prod-img]][cd-prod-url] [![][website-img]][website-url] [![][gatsby-img]][gatsby-url] [![][s-headers-img]][s-headers-url] [![][observatory-img]][observatory-url]
 
-The third version of my personal website built with [Gatsby](https://www.gatsbyjs.org), [Tailwind CSS](https://tailwindcss.com)
-and [MDX](https://mdxjs.com).
+This is the third iteration of my personal site/portfolio, built with [Gatsby](https://www.gatsbyjs.org) and [Tailwind CSS](https://tailwindcss.com). Content is authored in [MDX](https://mdxjs.com) (Git as the CMS), compiled via Gatsby’s GraphQL data layer, and deployed to a global CDN (Firebase Hosting) as a static, PWA-ready site.
 
-The project is a constant work in progress, so if you find any bugs, typos or other errors, please feel free to open an issue or a pull
-request. This project is open source, so you are free to fork and adapt for your own projects (credit would be appreciated).
+**Highlights:**
+
+- **Static-first architecture:** pre-rendered pages at built time with client-side navigation for instant route changes.
+- **MDX content system:** posts/pages live in git as Markdown files; React components can be embedded directly in content.
+- **Image pipeline:** responsive images via Sharp (WebP) created at built time, lazy-loading, and low-quality placeholders.
+- **Performance guardrails:** code-splitting, critical CSS inlined, and prefetching for likely next routes (100% score on Lighthouse).
+- **CI/CD:** GitHub Actions builds on push; production deploys go to Firebase’s global edge.
+- **Design/dev ergonomics:** Tailwind utility classes, sensible defaults, and a small, composable component set.
+
+In short, it’s a fast, maintainable Gatsby setup that balances static rendering with a smooth SPA feel, while keeping content simple to version and review in git.
 
 ## Setup
 
@@ -29,6 +36,7 @@ $ pnpm start # Start dev server at localhost:8000
 $ pnpm lint # Lint all source code files
 $ pnpm lint:js # Lint JS sources
 $ pnpm lint:css # Lint CSS sources
+$ pnpm format # Format all source code files
 ```
 
 ### Production
