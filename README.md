@@ -6,10 +6,10 @@ This is the third iteration of my personal site/portfolio, built with [Gatsby](h
 
 **Highlights:**
 
-- **Static-first architecture:** pre-rendered pages at built time with client-side navigation for instant route changes.
-- **MDX content system:** posts/pages live in git as Markdown files; React components can be embedded directly in content.
-- **Image pipeline:** responsive images via Sharp (WebP) created at built time, lazy-loading, and low-quality placeholders.
-- **Performance guardrails:** code-splitting, critical CSS inlined, and prefetching for likely next routes (100% score on Lighthouse).
+- **Static-first architecture:** pre-rendered pages with client-side navigation for instant route changes.
+- **MDX content system:** posts/pages live in git; React components can be embedded directly in content.
+- **Image pipeline:** responsive images via Sharp (WebP), lazy-loading, and low-quality placeholders.
+- **Performance guardrails:** code-splitting, critical CSS inlined, and prefetching for likely next routes.
 - **CI/CD:** GitHub Actions builds on push; production deploys go to Firebase’s global edge.
 - **Design/dev ergonomics:** Tailwind utility classes, sensible defaults, and a small, composable component set.
 
