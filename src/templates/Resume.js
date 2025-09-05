@@ -182,7 +182,7 @@ export default class Resume extends Page {
                             <div className='font-bold'>
                               {'— '}
                               {testimonial.name && <span>{testimonial.name}, </span>}
-                              <span>{testimonial.role}</span>
+                              <span className='font-medium'>{testimonial.role}</span>
                             </div>
                           </li>
                         )}

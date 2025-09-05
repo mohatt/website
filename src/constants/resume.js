@@ -62,9 +62,16 @@ export const resume = {
         'Set up CI/CD with the DevOps team using GitHub Actions and Terraform: Docker/K8s/Helm deploys to staging/production.',
       ],
       testimonial: {
-        role: 'Senior Director & PM, JOKR',
-        quote:
-          'Mohamed’s been an invaluable part of the JOKR product and engineering team—consistently reliable, raising code quality, and leading backend integration, release processes, and API security with documentation and improvements.',
+        name: 'Ben Chen',
+        role: 'VP of Engineering, JOKR',
+        quote: (
+          <>
+            Although he started as a freelancer, Mohamed integrated seamlessly with our team,
+            delivered <b>full-stack features</b> end-to-end, worked proactively{' '}
+            <b>across time zones</b>, and shipped <b>well-tested, reliable code</b> while supporting
+            other engineers.
+          </>
+        ),
       },
     },
     {
