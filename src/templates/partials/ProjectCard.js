@@ -58,7 +58,7 @@ function ProjectCard({ project, skill, category }) {
             </div>
           )}
         </ProjectSkill.Map>
-        <div className='mt-3 text-base max-h-12 overflow-hidden relative'>
+        <div className='mt-3 text-base h-12 overflow-hidden relative'>
           {project.desc}
           <span className='overflow-grad h-1/2' />
         </div>

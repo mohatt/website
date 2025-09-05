@@ -8,7 +8,9 @@ export default function Separator({ size = 2, gradient = true, spacing, classNam
         `sep sep-${size}`,
         {
           'sep-gradient': gradient,
-          'my-4': spacing,
+          'my-4': spacing === true,
+          'mb-4': spacing === 'bottom',
+          'mt-4': spacing === 'top',
         },
         className,
       )}

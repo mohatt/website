@@ -18,8 +18,7 @@ export default class ProjectsIndex extends Page {
       <>
         <Section spacing={false}>
           <Heading title={title} primary>
-            I’ve done remote work for agencies and startups, and collaborated with talented people
-            to ship web products for both business and consumer use.
+            A selection of production and open-source projects I’ve built.
           </Heading>
         </Section>
         {groups.map(({ slug, totalCount, nodes }) => {

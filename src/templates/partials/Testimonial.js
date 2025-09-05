@@ -2,7 +2,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { createReactMap } from '../../util'
 
-function Testimonial({ test: { name, title, quote, image }, className }) {
+function Testimonial({ test, children, className }) {
+  if (children) {
+    return children(test)
+  }
+
+  const { name, title, quote, image } = test
   return (
     <blockquote className={className}>
       <div className='text-xl italic'>“{quote}”</div>
@@ -10,7 +15,7 @@ function Testimonial({ test: { name, title, quote, image }, className }) {
         <img
           width='120'
           height='120'
-          className='w-14 border-2 border-primary rounded-full shadow-lg'
+          className='w-14 border-2 border-primary rounded-[999px] shadow-lg'
           src={image.childImageSharp.resize.src}
           alt={name}
         />
@@ -24,8 +29,8 @@ function Testimonial({ test: { name, title, quote, image }, className }) {
   )
 }
 
-Testimonial.Map = createReactMap(function TestimonialMap(test, { className }) {
-  return <Testimonial key={test.name} test={test} className={className} />
+Testimonial.Map = createReactMap(function TestimonialMap(test, { className, children }) {
+  return <Testimonial key={test.name} test={test} className={className} children={children} />
 })
 
 export const TestimonialFragment = graphql`

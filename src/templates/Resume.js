@@ -7,7 +7,6 @@ import { useSiteMetadata } from '../hooks'
 import { Page, Heading, Section, Link, Icon, Masonry } from '../components'
 import { Contacts } from '../layouts/partials'
 import { Testimonial } from './partials'
-import JokrLogo from '../../content/project/jokr/logo.jpg'
 
 function PrintLink({ to, params, children }) {
   const { deployment } = useSiteMetadata()
@@ -57,22 +56,34 @@ export default class Resume extends Page {
       return { children: subtitle }
     }
 
+    function renderHeading(text, inline) {
+      return (
+        <h3
+          className={cx(
+            'font-body text-lg',
+            inline && 'inline',
+            isPrint ? 'text-typo font-bold [&_a]:font-bold' : 'text-primary',
+          )}
+        >
+          {text}
+        </h3>
+      )
+    }
+
     return (
       <div>
-        <Section spacing={false}>
-          <Heading title='Mohamed Elkholy' primary className={isPrint && 'pl-4'}>
-            Full-Stack Engineer · {site.location}
+        <Section spacing={false} fill={isPrint} sep={false}>
+          <Heading title='Mohamed Elkholy' primary className={isPrint ? 'font-medium' : ''}>
+            Full-Stack Engineer {!isPrint && `· ${site.location}`}
           </Heading>
-        </Section>
-        {isPrint && (
-          <Section className='grid' fill sep>
+          {isPrint && (
             <Contacts homepage phone>
               {(items) => (
                 <div>
                   <ul className='space-y-3 columns-3'>
                     <li>
                       <span className='inline-block font-medium'>
-                        <Icon name='map-pin' className='h-5 mr-1' />
+                        <Icon name='map-pin' className='h-5 mr-2' />
                         <span>{site.location}</span>
                       </span>
                     </li>
@@ -83,76 +94,68 @@ export default class Resume extends Page {
               {({ id, href, Icon }) => (
                 <li key={id}>
                   <Link className='link' to={href} external='resume_contact'>
-                    <Icon className='h-5 mr-1' />
-                    <span>{href}</span>
+                    <Icon className='h-5 mr-2' />
+                    <span>{href.replace(/^(mailto|tel):(\/\/)?/, '')}</span>
                   </Link>
                 </li>
               )}
             </Contacts>
-          </Section>
-        )}
-        <Section>
-          <Heading>
-            Full-stack engineer specializing in <b>Node.js</b>, <b>TypeScript</b>, and{' '}
-            <b>GraphQL</b>, with front-end expertise in <b>React</b> and <b>Angular</b>. Over{' '}
-            <b>8 years</b> of delivering production web apps from <b>UI</b> to <b>APIs</b> and{' '}
-            <b>CI/CD</b>, with a focus on performance, reliability, maintainability, and developer
-            experience. Open-source contributor, passionate about building software.
-          </Heading>
-          <b>Highlights:</b>
-          <ul className='list-style-diamond ml-2 space-y-1 mt-2'>
-            <li>
-              Owned GraphQL services in an Apollo-federated supergraph for a high-traffic consumer
-              app.
-            </li>
-            <li>
-              Integrated an AI-powered product-recommendation service into a grocery delivery app.
-            </li>
-            <li>
-              Built Stripe operations dashboards (charges, refunds, transfers, payouts) with
-              reconciliation.
-            </li>
-            <li>Scaled web apps/back ends to thousands of requests per minute with low latency.</li>
-          </ul>
+          )}
         </Section>
-        <Section id='experience'>
-          <Heading
-            title='Experience'
-            {...subtitleProps(
-              isPrint && (
-                <>
-                  See full history:&nbsp;
-                  <PrintLink to='resume' />
-                </>
-              ),
-            )}
-          />
+        <Section sep={isPrint}>
+          {isPrint && <Heading title='Summary' />}
+          <div className={!isPrint ? 'max-w-4xl text-xl' : ''}>
+            Full-stack engineer with over <b>8 years</b> delivering web applications for startups
+            and SMBs, focused on performance, reliability, maintainability, and developer
+            experience. Build scalable <b>React</b>, <b>TypeScript</b>, and <b>Node.js</b> solutions
+            on <b>GCP</b> and <b>AWS</b>.
+          </div>
+        </Section>
+        <Section id='experience' sep={isPrint}>
+          <Heading title='Experience' />
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
             {resume.experience.map(
-              ({ role, at, type, url, time, loc, print, desc, printDesc, legacy }) => {
-                if (isPrint && !print) {
+              ({
+                role,
+                at,
+                type,
+                url,
+                time,
+                loc,
+                desc,
+                printDesc,
+                testimonial,
+                hidden,
+                legacy,
+              }) => {
+                if (hidden === true || (isPrint && hidden === 'print')) {
                   return null
                 }
                 const bullets = isPrint ? (printDesc ?? desc) : desc
                 const collapsed = isPrint && legacy
                 return (
-                  <div key={at} className={cx(isPrint ? 'page-break-avoid' : 'max-w-4xl')}>
-                    <div className={isPrint ? 'flex items-center' : ''}>
-                      <h3 className='font-body text-lg text-primary'>{role}</h3>
+                  <div key={at} className={cx(isPrint ? 'page-break-avoid' : 'max-w-5xl')}>
+                    <div className={isPrint ? 'flex items-center text-typo-dim' : ''}>
+                      {renderHeading(
+                        <>
+                          {role}
+                          {isPrint && <>, &nbsp;</>}
+                        </>,
+                      )}
                       {isPrint ? (
                         <>
-                          <div className='font-medium flex-grow'>
-                            &nbsp;—{' '}
+                          <div className='flex-grow'>
                             {url ? (
                               <Link className='link' to={url} external='resume_role'>
                                 {at}
                               </Link>
                             ) : (
-                              at
+                              at && <span className='font-medium'>{at}</span>
                             )}{' '}
-                            · {type} · {loc}
+                            {at && '· '}
+                            {type} · {loc}
                           </div>
-                          <div>{time}</div>
+                          <div>{time.join(' – ')}</div>
                         </>
                       ) : (
                         <div className='font-medium'>
@@ -163,15 +166,26 @@ export default class Resume extends Page {
                           ) : (
                             at
                           )}{' '}
-                          · {type} · {loc} · {time}
+                          {at && '· '}
+                          {type} · {loc} · {time.join(' – ')}
                         </div>
                       )}
                     </div>
                     {bullets?.length > 0 && !collapsed && (
-                      <ul className='list-style-diamond ml-2 mt-3 space-y-1'>
+                      <ul className='list-style-diamond ml-1 mt-3 space-y-1'>
                         {bullets.map((text) => (
                           <li key={text}>{text}</li>
                         ))}
+                        {testimonial && (
+                          <li className='list-none -ml-3 pt-2'>
+                            <blockquote>"{testimonial.quote}"</blockquote>
+                            <div className='font-bold'>
+                              {'— '}
+                              {testimonial.name && <span>{testimonial.name}, </span>}
+                              <span>{testimonial.role}</span>
+                            </div>
+                          </li>
+                        )}
                       </ul>
                     )}
                   </div>
@@ -180,129 +194,95 @@ export default class Resume extends Page {
             )}
           </div>
         </Section>
-        <Section id='skills' className='print:page-break print:mt-6'>
-          <Heading
-            title='Skills'
-            {...subtitleProps(
-              isPrint && (
-                <>
-                  See full list:&nbsp;
-                  <PrintLink to='skills' />
-                </>
-              ),
-            )}
-          />
+        <Section id='skills' sep={isPrint} pageBreak>
+          <Heading title='Skills' />
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
-            <div className={!isPrint && 'max-w-3xl'}>
-              <h3 className='font-body text-lg text-primary inline'>Soft Skills & Practices</h3> —
-              Problem-solving · Decision-making · Systems thinking · Communication · Organization ·
-              Test-driven development (TDD) · Code reviews · Clean architecture · Documentation
-            </div>
             {[
-              ['Recently used', skills.first],
+              ['Soft Skills & Practices', resume.softSkills],
+              ['Tech stack', skills.first],
               ['Also used', skills.second],
             ].map(([title, nodes]) => (
-              <div key={title} className={!isPrint && 'max-w-3xl'}>
-                <h3 className='font-body text-lg text-primary inline'>{title}</h3> —{' '}
-                {nodes.map((skill) => skill.title).join(' · ')}
+              <div key={title} className={!isPrint ? 'max-w-4xl' : ''}>
+                {renderHeading(`${title}: `, true)}
+                {nodes.map((skill) => skill.title ?? skill).join(', ')}
               </div>
             ))}
           </div>
         </Section>
-        <Section id='education'>
+        <Section id='education' sep={isPrint}>
           <Heading
             title='Education'
             {...subtitleProps(
-              'Formal degree with self-directed CS foundation and ongoing coursework',
+              <div className='text-typo-dim'>
+                Formal degree with self-directed CS foundation and ongoing coursework
+              </div>,
             )}
           />
           <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
             {resume.education.map(({ title, subtitle, time, url, desc }) => (
               <div key={title}>
                 <div className={isPrint ? 'flex items-center' : ''}>
-                  <h3 className='font-body text-lg text-primary'>
-                    {url ? (
+                  {renderHeading(
+                    url ? (
                       <Link className='link' to={url} external='resume_edu'>
                         {title}
                       </Link>
                     ) : (
                       title
-                    )}
-                  </h3>
+                    ),
+                  )}
                   {isPrint ? (
                     <>
-                      <div className='font-medium flex-grow'>&nbsp;— {subtitle}</div>
-                      <div>{time}</div>
+                      <div className='font-medium text-typo-dim flex-grow'>&nbsp;· {subtitle}</div>
+                      <div className='text-typo-dim'>{time.join(' – ')}</div>
                     </>
                   ) : (
                     <div className='font-medium'>
-                      {subtitle} · {time}
+                      {subtitle} · {time.join(' – ')}
                     </div>
                   )}
                 </div>
-                <div>{desc}</div>
+                <div className='mt-1'>{desc}</div>
               </div>
             ))}
           </div>
         </Section>
         {isPrint && (
           <>
-            <Section>
-              <Heading
-                title='Portfolio'
-                {...subtitleProps(
-                  <>
-                    See more projects:&nbsp;
-                    <PrintLink to='projects' />
-                  </>,
+            <Section sep>
+              <Heading title='Featured project' />
+              <div>
+                {renderHeading(
+                  <PrintLink to='projects.project' params={{ project: 'jokr' }}>
+                    JOKR — Smart grocery shopping powered by AI
+                  </PrintLink>,
+                  true,
                 )}
-              />
-              <div className='space-y-4'>
-                <div className='flex items-start'>
-                  <img
-                    alt='JOKR logo'
-                    src={JokrLogo}
-                    width={96}
-                    height={96}
-                    className='border-2 border-primary rounded-md'
-                  />
-                  <div className='flex-grow ml-4 flex flex-col justify-between h-[92px]'>
-                    <h3 className='font-body text-lg text-primary inline'>
-                      <PrintLink to='projects.project' params={{ project: 'jokr' }}>
-                        JOKR — Smart grocery shopping powered by AI
-                      </PrintLink>
-                    </h3>
-                    <div>
-                      Federated GraphQL platform + AI recommendations for a fast grocery delivery
-                      startup.
-                    </div>
-                    <div>
-                      React/MUI dashboards; Datadog observability; high-throughput, low-latency
-                      GraphQL.
-                    </div>
-                    <div>
-                      Case study: <PrintLink to='projects.project' params={{ project: 'jokr' }} />
-                    </div>
-                  </div>
-                </div>
+                <ul className='list-style-diamond ml-1 mt-2 space-y-1'>
+                  <li>
+                    <span className='font-medium'>Stack:</span> TypeScript/Node.js (NestJS); GraphQL
+                    (Apollo Federation); React/MUI; GCP; Docker/Kubernetes; Jest/Cypress.
+                  </li>
+                  <li>Delivered federated GraphQL microservices powering the iOS/Android app.</li>
+                  <li>Built internal operations dashboards and CI/CD pipelines.</li>
+                  <li>Integrated AI-driven product recommendations with guardrails.</li>
+                  <li>
+                    <span className='font-medium'>Case study:</span>{' '}
+                    <PrintLink to='projects.project' params={{ project: 'jokr' }} />
+                  </li>
+                </ul>
               </div>
             </Section>
           </>
         )}
-        <Section id='testimonials'>
-          <Heading
-            title='Testimonials'
-            {...subtitleProps(
-              <>
-                What clients and colleagues say
-                {isPrint && <span className='italic'>&nbsp;(references available on request)</span>}
-              </>,
-            )}
-          />
-          <Testimonial.Map data={isPrint ? tests.nodes.slice(0, 4) : tests.nodes}>
-            {(items) => <Masonry cols={{ default: 2, 1280: 1 }}>{items}</Masonry>}
-          </Testimonial.Map>
-        </Section>
+        {!isPrint && (
+          <Section id='testimonials'>
+            <Heading title='Testimonials'>What clients and colleagues say</Heading>
+            <Testimonial.Map data={tests.nodes}>
+              {(items) => <Masonry cols={{ default: 2, 1280: 1 }}>{items}</Masonry>}
+            </Testimonial.Map>
+          </Section>
+        )}
       </div>
     )
   }

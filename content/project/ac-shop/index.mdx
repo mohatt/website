@@ -1,6 +1,6 @@
 ---
 title: Alabama Chanin
-desc: Headless e-commerce webstore built with Next.js, Shopify and GraphQL
+desc: Headless e-commerce storefront
 started: 2020-03-08
 screens:
   - desktop-01.png
@@ -22,16 +22,20 @@ skills:
 handles:
   - homepage:https://alabamachanin.com
 ---
-#### About the client
+#### Project Overview
 
-Alabama Chanin is a lifestyle company producing well-designed and thoughtfully made goods for the person and the home.
+Built a **headless e-commerce storefront** for an American slow-fashion brand using **Next.js + React** with the **Shopify Storefront GraphQL API**. The web app owns browsing, cart, and pre-checkout flows, with payments via **Shopify Checkout**.
 
-#### Project Description
+#### Scope & Contributions
 
-Headless web application for a heavily trafficed e-commerce webstore built with Next.js, React and Shopify GraphQL API.
+- **Frontend (Next.js + React)** — Implemented product listing/detail, cart, and account flows against the **Shopify GraphQL API** with strong typing and clean UI patterns.
+- **Checkout integration** — Hand-off to **Shopify Checkout** while keeping in-app cart/fulfillment up to purchase; ensured data parity between cart and checkout.
+- **Infrastructure on AWS** — Provisioned hosting behind **AWS Elastic Load Balancer** using **Terraform**; used **Ansible** for server configuration and deployment automation.
+- **Release hygiene** — Defined predictable environments and IaC so app and infra changes could be rolled out consistently.
 
-The checkout is facilitated using the Shopify checkout flow, and the cart fulfillment up to the point of purchase is handled
-in the web app.
+#### Outcomes
 
-The application development included building out an infrastructure pipeline using Ansible on AWS, and the website
-is served using Amazon's Elastic Load Balancer. All the hosting infrastructure was built using Terraform.
+- **Reliable checkout path**: in-app cart + Shopify Checkout hand-off reduced friction at purchase time.
+- **Stable operations**: IaC (Terraform) + Ansible automated setup and deployments; ELB provided resilient serving.
+- **Maintainable codebase**: typed GraphQL integration and clear UI structure simplified ongoing changes.
+

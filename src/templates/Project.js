@@ -58,7 +58,7 @@ function Metadata({ title, children, className }) {
   return (
     <div className={cx('text-lg leading-normal', className)}>
       <h3 className='text-primary'>{title}</h3>
-      <div className='mt-4 font-medium'>{children}</div>
+      <div className='mt-3 font-medium'>{children}</div>
     </div>
   )
 }
@@ -99,15 +99,9 @@ export default class Project extends Page {
           </Heading>
           {screens.length > 1 && <Gallery screens={screens} />}
           <div className='grid md:grid-cols-3 gap-x-4 gap-y-8'>
-            <Metadata title='Project Name'>{project.title}</Metadata>
-            <Metadata title='Start Date'>{project.started}</Metadata>
-            <Metadata title='Status'>{statuses[project.status] || statuses.CMP}</Metadata>
             <ProjectSkill.Map data={project.skills}>
               {(items) => <Metadata title='Skills'>{items}</Metadata>}
             </ProjectSkill.Map>
-            <ProjectCategory.Map data={project.categories}>
-              {(items) => <Metadata title='Categories'>{items}</Metadata>}
-            </ProjectCategory.Map>
             <NetworkHandle.Map data={project.handles}>
               {(items) => <Metadata title='Links'>{items}</Metadata>}
               {({ title, href, Icon }) => (
@@ -117,17 +111,18 @@ export default class Project extends Page {
                 </Link>
               )}
             </NetworkHandle.Map>
+            <Metadata title='Started'>{project.started}</Metadata>
           </div>
         </Section>
         <Testimonial.Map data={project.testimonials} limit={1}>
           {(items) => (
             <Section fill>
-              <div className='xl:max-w-3xl'>{items}</div>
+              <div className='xl:max-w-4xl'>{items}</div>
             </Section>
           )}
         </Testimonial.Map>
         <Section>
-          <div className='xl:max-w-3xl'>
+          <div className='xl:max-w-4xl'>
             <Markdown>{children}</Markdown>
           </div>
         </Section>

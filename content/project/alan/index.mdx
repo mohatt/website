@@ -1,6 +1,6 @@
 ---
 title: Alan Agency
-desc: Website for a publishing and content marketing agency built with Gatsby
+desc: Headless website powered by Gatsby
 started: 2020-10-01
 screens:
   - desktop-01.png
@@ -22,11 +22,19 @@ skills:
 handles:
   - homepage:https://www.alan-agency.com
 ---
-#### About the client
+#### Project Overview
 
-Alan Agency is a publishing and content marketing agency based in London and mostly known for their special reports in The Times and
-The Sunday Times.
+Built a **website** for a London-based content marketing agency known for reports in _The Times_ and _The Sunday Times_, using **WordPress** as the CMS and **Gatsby/React** as the frontend framework, consuming content via **WP GraphQL API**. The site handles editorial pages, articles, and report content with fast, secure, cache-friendly delivery.
 
-#### Project Description
+#### Scope & Contributions
 
-The website is built with WordPress as a headless CMS with GatsbyJS as a frontend and GraphQL for the data layer.
+- **Content model & CMS** — Structured WordPress for headless use (custom fields/types), enabling editors to publish without touching code.
+- **Frontend** — Implemented Gatsby/React templates and components for articles, listings, and report pages; wired data via GraphQL queries.
+- **Performance & SEO** — Static generation with Gatsby, route-based code splitting, and sensible metadata (titles, descriptions, Open Graph) for shareability.
+- **Infrastructure/IaC** — Provisioned hosting with **Terraform** on **AWS**; automated builds/deploys from the CMS/content pipeline.
+
+#### Outcomes
+
+- **Fast page loads** and reliable delivery from static builds and CDN caching.
+- **Editor-friendly workflow**: publish and update content in WordPress with zero developer involvement.
+- **Maintainable stack**: clear content contracts and typed data access via GraphQL.

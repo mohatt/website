@@ -6,6 +6,7 @@ export default function Section({
   spacing = true,
   fill,
   sep = fill,
+  pageBreak,
   className,
   children,
   ...props
@@ -14,9 +15,19 @@ export default function Section({
     <Layout print>
       <section
         {...props}
-        className={cx('px-6', { 'mb-6': spacing, 'py-6 bg-accent': fill }, className)}
+        className={cx(
+          { 'mb-6': spacing, 'bg-accent': fill, 'print:page-break print:mt-6': pageBreak },
+          className,
+        )}
       >
-        {children}
+        {sep && (
+          <Separator
+            spacing={!fill && 'bottom'}
+            className={cx({ 'print:hidden': pageBreak })}
+            gradient={false}
+          />
+        )}
+        <div className={cx('px-6', { 'py-4': fill })}>{children}</div>
       </section>
       <section {...props} className={spacing ? 'mb-10 md:mb-14 lg:mb-20' : undefined}>
         {(sep === true || sep === 'pre') && <Separator />}

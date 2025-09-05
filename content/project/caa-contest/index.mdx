@@ -1,6 +1,6 @@
 ---
 title: CAA Eco-Driving Contest
-desc: Video Contest App built with Symfony framework, Twitter and Instagram APIs
+desc: Video contest app using social APIs
 started: 2015-03-01
 screens:
   - desktop-01.jpg
@@ -23,25 +23,19 @@ skills:
 handles:
   - homepage:http://teencontest.caa.ca/
 ---
-#### About the client
+#### Project Overview
 
-The Canadian Automobile Association (CAA) is one of the largest consumer-based organizations in Canada. They help provide freedom
-and peace of mind to 6 million Members through 9 automobile Clubs and over 140 offices located across the country.
+Built a **video contest web app** and dashboard for the **Canadian Automobile Association (CAA)** to promote teen eco-driving pledges. Entries were submitted by posting short videos on **Instagram, Vine and Twitter** platforms with the campaign hashtag (e.g., `#CAAEcoDrive`). The site aggregated, moderated, and showcased entries, enabled public voting, and supported final winner selection.
 
-#### Project Description
+#### Scope & Contributions
 
-The purpose of the Teen Eco Drive Video contest is to encourage teens to share their Eco Driving Pledge in a creative way, utilizing
-the mini video platforms, Instagram and Vine. Participation in the contest is done by creating a mini video on Instagram or Vine
-then sharing it using the contest hashtag (eg. #CAAEcoDrive).
+- **Backend (Symfony/PHP)** — Implemented ingestion services that polled social APIs by hashtag, handled rate limits/retries, de-duplicated entries, and normalized metadata; persisted to **MySQL** with **Redis** queues for background processing.
+- **Frontend (Bootstrap/JS)** — Responsive gallery, video lightbox, voting, leaderboards, and pledge copy in line with campaign creative.
+- **Admin & moderation** — Dashboard for approvals/rejections, flags, and **winner selection**; auto-notify entrants via templated comments on their posts after approval.
+- **Infrastructure (AWS)** — Deployed the app and workers on AWS with log/metric collection and scheduled jobs for safe, predictable runs throughout the contest period.
 
-I was the lead developer of the project responsible for the development of the contest system backend as well as the
-frontend. The backend was built using Symfony framework, Instagram, Vine and Twitter REST APIs. The frontend was built
-using HTML5, CSS3 and jQuery based on the design mockups I received from our web designer.
+#### Outcomes
 
-The contest system consisted of different microservices, one of them is the video collection microservice which continuously searches the mentioned video platforms for videos matching the
-contest hashtag and stores them from further processing and approval. Once a video is approved, it is displayed on the contest homepage
-and the author is notified via an auto-generated comment on his video post.
-
-Once the contest is over, the admin selects 3 winning videos based on different factors, amongst them is the number of user votes per video.
-
-
+- **Frictionless participation** via social hashtags; real-time gallery kept the campaign lively.
+- **Reduced manual effort** with automated ingestion, moderation tooling, and notifications.
+- **Reliable operations** under API limits and bursts thanks to queues, retries, and monitoring.

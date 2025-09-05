@@ -10,19 +10,25 @@ export default function Heading({
   endChildren,
   className,
 }) {
-  function renderHeading(classes) {
+  function renderHeading(props, containerProps) {
     const Component = primary ? 'h1' : 'h2'
     const titleElement = (
       <>
-        <Component className={cx(classes)}>{title}</Component>
+        <Component {...props}>{title}</Component>
         {!multiline && children && <div>&nbsp;— {children}</div>}
       </>
     )
+
     if (!endChildren) {
-      return <div className='flex items-center'>{titleElement}</div>
+      return (
+        <div {...containerProps} className={cx('flex items-center', containerProps?.className)}>
+          {titleElement}
+        </div>
+      )
     }
+
     return (
-      <div className='flex items-center'>
+      <div {...containerProps} className={cx('flex items-center', containerProps?.className)}>
         <div className='flex-grow flex items-center'>{titleElement}</div>
         {endChildren}
       </div>
@@ -34,17 +40,19 @@ export default function Heading({
       return null
     }
 
-    return <div className={cx(classes)}>{children}</div>
+    return <div className={classes}>{children}</div>
   }
 
   return (
     <Layout print>
-      <header className={cx('mb-6', className)}>
-        {renderHeading(['leading-normal text-typo text-2xl', !primary && 'uppercase'])}
-        {renderSubtitle('leading-normal text-typo-dim')}
+      <header className={cx('mb-4', className)}>
+        {renderHeading({
+          className: cx('leading-normal text-primary', primary ? 'text-3xl' : 'text-2xl uppercase'),
+        })}
+        {renderSubtitle(cx('leading-normal text-typo', primary && 'text-lg'))}
       </header>
       <header className={cx('max-w-4xl mb-12', className)}>
-        {renderHeading('italic leading-normal text-typo text-3xl')}
+        {renderHeading({ className: 'italic leading-normal text-typo text-3xl' })}
         {renderSubtitle('leading-normal text-typo-dim mt-4 text-xl')}
       </header>
     </Layout>
