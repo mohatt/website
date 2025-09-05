@@ -9,6 +9,7 @@ module.exports = {
       display: ['"IBM Plex Mono"', ...fontFamily.mono],
       body: ['"IBM Plex Serif"', ...fontFamily.serif],
       mono: ['"IBM Plex Mono"', ...fontFamily.mono],
+      sans: ['Arimo', 'Arial', ...fontFamily.sans],
     },
     colors,
     screens,

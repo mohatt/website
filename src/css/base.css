@@ -22,6 +22,10 @@
     @apply font-body font-normal antialiased text-left;
     text-underline-position: under;
     text-underline-offset: 0.1em;
+
+    html[data-layout='print'] & {
+      @apply font-sans text-[10pt];
+    }
   }
 
   h1,
@@ -33,7 +37,7 @@
     @apply font-display font-medium;
 
     html[data-layout='print'] & {
-      @apply font-body;
+      @apply font-sans;
     }
   }
 
