@@ -16,9 +16,12 @@ skills:
   - wordpress
   - react
   - graphql
+  - gcp
+  - firebase
   - html
   - javascript
   - css
+  - ghactions
 handles:
   - homepage:https://www.alan-agency.com
 ---
@@ -30,11 +33,12 @@ Built a **website** for a London-based content marketing agency known for report
 
 - **Content model & CMS** — Structured WordPress for headless use (custom fields/types), enabling editors to publish without touching code.
 - **Frontend** — Implemented Gatsby/React templates and components for articles, listings, and report pages; wired data via GraphQL queries.
-- **Performance & SEO** — Static generation with Gatsby, route-based code splitting, and sensible metadata (titles, descriptions, Open Graph) for shareability.
-- **Infrastructure/IaC** — Provisioned hosting with **Terraform** on **AWS**; automated builds/deploys from the CMS/content pipeline.
+- **Performance & SEO** — Static site generation with Gatsby, route-based code splitting, and sensible metadata (titles, descriptions, Open Graph) for shareability.
+- **Infrastructure (GCP/Firebase)** — Cloud Run for headless WordPress; Firebase Hosting for Gatsby; SSG-first pipeline with CMS-triggered builds via GitHub Actions.
 
 #### Outcomes
 
-- **Fast page loads** and reliable delivery from static builds and CDN caching.
+- **Fast page loads** and reliable delivery from CMS-triggered builds and CDN caching.
+- SSG-first delivery produced **strong Lighthouse/PageSpeed and SEO scores**.
 - **Editor-friendly workflow**: publish and update content in WordPress with zero developer involvement.
 - **Maintainable stack**: clear content contracts and typed data access via GraphQL.
