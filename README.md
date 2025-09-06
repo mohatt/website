@@ -2,18 +2,22 @@
 
 [![][cd-dev-img]][cd-dev-url] [![][cd-prod-img]][cd-prod-url] [![][website-img]][website-url] [![][gatsby-img]][gatsby-url] [![][s-headers-img]][s-headers-url] [![][observatory-img]][observatory-url]
 
-This is the third iteration of my personal site/portfolio, built with [Gatsby](https://www.gatsbyjs.org) and [Tailwind CSS](https://tailwindcss.com). Content is authored in [MDX](https://mdxjs.com) (Git as the CMS), compiled via Gatsby’s GraphQL data layer, and deployed to a global CDN (Firebase Hosting) as a static, PWA-ready site.
+Third iteration of my personal site/portfolio built with [Gatsby](https://www.gatsbyjs.org) and [Tailwind CSS](https://tailwindcss.com). Content is authored in [MDX](https://mdxjs.com) (Git-based workflow), compiled through Gatsby’s GraphQL data layer, and deployed as a static, **PWA-ready** site on **Firebase Hosting**.
 
-**Highlights:**
+### Highlights
 
-- **Static-first architecture:** pre-rendered pages with client-side navigation for instant route changes.
-- **MDX content system:** posts/pages live in git; React components can be embedded directly in content.
-- **Image pipeline:** responsive images via Sharp (WebP), lazy-loading, and low-quality placeholders.
-- **Performance guardrails:** code-splitting, critical CSS inlined, and prefetching for likely next routes.
-- **CI/CD:** GitHub Actions builds on push; production deploys go to Firebase’s global edge.
-- **Design/dev ergonomics:** Tailwind utility classes, sensible defaults, and a small, composable component set.
+- **Static-first architecture** — pre-rendered at **build time** with client-side routing for instant transitions.
+- **MDX content system** — posts/pages live in Git as Markdown files; **React components** can be used directly in content.
+- **Image pipeline** — responsive images via Sharp (**WebP**) created at built time, lazy-loading, and LQIP placeholders.
+- **Performance guardrails** — code-splitting, inlined critical CSS, and route prefetching.
+- **CI/CD** — **GitHub Actions** builds on push; production deploys to Firebase’s global edge.
+- **Design & DX** — Tailwind utility classes, sensible defaults, and a small, composable component set.
 
-In short, it’s a fast, maintainable Gatsby setup that balances static rendering with a smooth SPA feel, while keeping content simple to version and review in git.
+#### Outcomes
+
+- **Fast** page loads with SPA-smooth navigation (100% score on Lighthouse).
+- **Maintainable** content workflow via PR reviews in Git.
+- **Zero-ops** hosting and predictable releases.
 
 ## Setup
 
