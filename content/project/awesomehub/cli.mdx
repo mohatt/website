@@ -1,6 +1,6 @@
 ---
 title: AwesomeHub CLI
-desc: Awesomehub command line interface for generating API data.
+desc: CLI that crawls curated GitHub lists and generates a normalized, scored dataset for AwesomeHub
 started: 2016-04-08
 status: ONG
 categories:
@@ -14,8 +14,32 @@ handles:
   - githubRepo:awesomehub/cli
 priority: 40
 ---
-#### Project Description
+#### Project Overview
 
-CLI application for generating AwesomeHub API data, built with Symfony Console and Github REST API.
+Command-line tool built with **Symfony Console** that ingests repositories from curated “awesome” lists on GitHub, normalizes metadata, computes scores, and emits **static JSON** consumed by the AwesomeHub web app.
 
-Check project repository on Github for more info.
+#### Data Pipeline
+
+- **Ingestion (GitHub REST API)** — Handles auth, pagination, and rate limits with **automatic token rotation**, retries/backoff, and structured logging.
+- **Normalization** — Unifies repo fields (name, owner, topics, language, stars/forks, issues/PRs, contributors, latest commit) and dedupes across lists.
+- **Static analysis** — Lightweight checks to enrich data (activity recency, maintenance signals).
+
+#### Scoring (PAMT)
+
+Computes an overall **PATM score** per repo:
+- **Popularity** (e.g., stars/forks)
+- **Activity** (e.g., recent commits/issues/PRs)
+- **Trending** (e.g., short-term activity delta)
+- **Maturity** (e.g., age, release cadence)
+
+Weights and thresholds are configurable so results are reproducible.
+
+#### DevOps
+
+Runs on a **GitHub Actions** schedule (and on-demand), then publishes **versioned JSON artifacts** for the frontend (e.g., `repos.json`, `topics.json`).
+
+#### Outcomes
+
+- **Fast UX** in the app (no live API calls).
+- **Deterministic datasets** decoupled from GitHub rate limits.
+- **Simple hosting** (static files) with clear provenance.

@@ -1,6 +1,6 @@
 ---
 title: Dashbrew
-desc: Powerful, cross-platform local development environment for PHP projects
+desc: Cross-platform local PHP development environment with a management dashboard
 started: 2016-09-01
 status: ARC
 screens:
@@ -22,14 +22,25 @@ handles:
   - githubRepo:mohatt/dashbrew
 priority: 30
 ---
-#### Project Description
+#### Project Overview
 
-Powerful, cross-platform PHP development environment that can be used as a replacement for local development stacks such as MAMP, XAMPP, and
-others. It provides an easy way to manage, organize and develop PHP projects and comes with a unique dashboard that allows managing
-various environment aspects. It also comes preinstalled with [all software and tools](https://github.com/mdkholy/dashbrew-basebox#included-software)
-needed to start developing right out of the box.
+**Dashbrew** is a powerful, cross-platform local development environment for PHP projects—an alternative to MAMP/XAMPP—built on [Vagrant](https://www.vagrantup.com) with [PHPBrew](https://github.com/phpbrew/phpbrew) for per-project PHP versions. It includes a web **dashboard** to manage projects, services, and environment settings, and ships with [common tools preinstalled](https://github.com/mdkholy/dashbrew-basebox#included-software) so you can start building immediately.
 
-Dashbrew is based on [Vagrant](https://www.vagrantup.com) and uses [PHPBrew](https://github.com/phpbrew/phpbrew) -- the PHP version
-management tool, to allow developing both web and command-line projects on different PHP versions and configurations using the same machine.
+#### Key Features
 
-Check project repository on Github for more info.
+- **One-click environment** — spin up a consistent PHP workspace with preinstalled extensions and utilities (eg. Apache, MySQL, Composer, PHPUnit, etc.).
+- **PHP version management** — switch between PHP versions/configs per project via **PHPBrew** without touching your host.
+- **Dashboard UI** — manage virtual machine state, hosts, sites, and services from a browser-based control panel or dashbrew CLI.
+- **Code Runner** — write PHP snippets in the dashboard, choose any installed PHP version, run, and view output side-by-side; perfect for testing ini settings and extension behavior across versions.
+- **Project organization** — add/import projects, map vhosts, and standardize document roots and configs.
+- **Batteries included** — common PHP tooling bundled for a “ready out of the box” experience.
+- **Automated setup & deploys** — scripted provisioning for repeatable, predictable environments.
+- **Docker-friendly tooling** — optional container workflows for isolated services when needed.
+
+#### Why it’s useful
+
+- Replaces ad-hoc local stacks with **reproducible** environments.
+- Supports **multiple PHP versions** side by side and makes differences easy to test with the **Code Runner**.
+- The dashboard reduces **setup time** and day-to-day friction for teams.
+
+Check out [the project repository](https://github.com/mohatt/dashbrew) on Github for more info.

@@ -1,6 +1,6 @@
 ---
 title: Github API Utils
-desc: Utility library for Github API authentication, pagination, logging, automatic token switching and static repository analysis
+desc: PHP utility library for GitHub REST API — auth, pagination, PSR-3 logging, rate-limit-aware token rotation, and lightweight repo analysis
 started: 2016-10-20
 status: ONG
 categories:
@@ -14,6 +14,27 @@ handles:
   - packagist:mohatt/github-api-utils
 priority: 40
 ---
-#### Project Description
+#### Project Overview
 
-Check project repository on Github for more info.
+A PHP 8 library that smooths over common pain points when working with the **GitHub REST API**: authentication, pagination, logging, and **rate-limit-aware token rotation**. Built to power the **AwesomeHub** data pipeline.
+
+#### Why
+
+The raw API + generic SDKs leave you handling **rate limits**, **pagination**, and **token juggling** yourself. This library provides a focused layer that:
+- rotates across a pool of tokens when approaching `X-RateLimit-Remaining`,
+- exposes simple **iterators** for paginated endpoints,
+- logs requests/responses via **PSR-3**,
+- and adds **lightweight repo analysis** helpers used for AwesomeHub’s scoring.
+
+#### Key Features
+
+- **Auth & token rotation** — Pool multiple personal access tokens; auto-switch and backoff on rate-limit responses.
+- **Pagination helpers** — Iterate search/list endpoints without manual page math.
+- **Logging** — PSR-3 compatible; plug in Monolog or your logger of choice.
+- **Static analysis** — Helpers that collect/normalize repo signals (stars, forks, issues/PRs, contributors, commit recency) used in downstream scoring (PAMT).
+- **Client-agnostic** — Works with **KnpLabs `github-api`** and **PSR-18** HTTP clients (e.g., Guzzle, Symfony HTTP client).
+
+#### Design Notes
+
+- **Dependencies:** `knplabs/github-api`, `php-http/*` (discovery & client-common), **PSR-18/PSR-3**.
+- **Optional dev helpers:** `symfony/dom-crawler` and `css-selector` for the “inspector” that enriches data where the API lacks fields.

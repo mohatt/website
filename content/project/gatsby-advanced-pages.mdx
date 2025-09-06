@@ -1,6 +1,6 @@
 ---
 title: Gatsby Advanced Pages
-desc: Extends Gatsby page creation capabilities with dynamic features
+desc: Wrapper around Gatsby’s createPage to add pagination, named routes, helpers, and routing utilities
 started: 2019-07-31
 status: ONG
 categories:
@@ -18,7 +18,19 @@ handles:
   - npm:gatsby-plugin-advanced-pages
 priority: 40
 ---
-#### Project Description
-Gatsby plugin that allows easy creation of pages with dynamic features like pagination and custom routing.
+#### Project Overview
+**gatsby-plugin-advanced-pages** is a thin layer over Gatsby’s `createPage` that makes it easy to define pages and **named routes**, add **pagination**, and generate URLs—without hand-rolled boilerplate. It also ships a **Link** wrapper and a **Pagination** component for drop-in UIs.
 
-Check project repository on Github for more info.
+#### Key Features
+- **Pages config** via `pages.config.(yaml|json|js)` or inline plugin options.
+- **Page helpers** to create dynamic page sets (e.g., blog indexes) with built-in pagination.
+- **Named routes** + URL generation (`generatePath`, `navigate`) from route names and params.
+- **Components**: `Link` (route-aware) and `Pagination` (with GraphQL fragment support).
+- **Hooks**: `useRoute`, `useIsRoute` for route checks and active state.
+- **Boilerplate reduction**: centralizes routes, standardizes pagination/URLs, and keeps templates small.
+
+#### Why it exists
+
+Cuts repeated `createPage` boilerplate, centralizes routes, and standardizes pagination/URLs so templates stay small and maintainable.
+
+Check out [the project repository](https://github.com/mohatt/gatsby-plugin-advanced-pages) on Github for more info.
