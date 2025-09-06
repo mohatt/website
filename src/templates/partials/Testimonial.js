@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { createReactMap } from '../../util'
+import { createReactMap, cx } from '../../util'
 
-function Testimonial({ test, children, className }) {
+function Testimonial({ test, children, showImage, className }) {
   if (children) {
     return children(test)
   }
@@ -11,26 +11,43 @@ function Testimonial({ test, children, className }) {
   return (
     <blockquote className={className}>
       <div className='text-xl italic'>“{quote}”</div>
-      <div className='mt-4 flex flex-row items-center opacity-90'>
-        <img
-          width='120'
-          height='120'
-          className='w-14 border-2 border-primary rounded-[999px] shadow-lg'
-          src={image.childImageSharp.resize.src}
-          alt={name}
-        />
-        <div className='ml-2 leading-normal'>
+      <div
+        className={cx(
+          'mt-4 flex flex-row font-bold text-primary',
+          showImage ? 'items-center' : 'items-start',
+        )}
+      >
+        {showImage ? (
+          <img
+            width='120'
+            height='120'
+            className='w-14 mr-2 border-2 border-primary rounded-[999px] shadow-lg'
+            src={image.childImageSharp.resize.src}
+            alt={`Portrait of ${name}`}
+          />
+        ) : (
+          <span className='mr-1'>—</span>
+        )}
+        <div className='leading-normal'>
           {name}
           <br />
-          {title}
+          <span className='font-normal'>{title}</span>
         </div>
       </div>
     </blockquote>
   )
 }
 
-Testimonial.Map = createReactMap(function TestimonialMap(test, { className, children }) {
-  return <Testimonial key={test.name} test={test} className={className} children={children} />
+Testimonial.Map = createReactMap(function TestimonialMap(test, { showImage, className, children }) {
+  return (
+    <Testimonial
+      key={test.name}
+      test={test}
+      showImage={showImage}
+      className={className}
+      children={children}
+    />
+  )
 })
 
 export const TestimonialFragment = graphql`

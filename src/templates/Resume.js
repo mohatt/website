@@ -176,7 +176,7 @@ export default class Resume extends Page {
                         {bullets.map((text) => (
                           <li key={text}>{text}</li>
                         ))}
-                        {testimonial && (
+                        {testimonial && isPrint && (
                           <li className='list-none -ml-3 pt-2'>
                             <blockquote>"{testimonial.quote}"</blockquote>
                             <div className='font-bold'>
@@ -254,14 +254,14 @@ export default class Resume extends Page {
               <div>
                 {renderHeading(
                   <PrintLink to='projects.project' params={{ project: 'jokr' }}>
-                    JOKR — Smart grocery shopping powered by AI
+                    JOKR — Smart grocery shopping app powered by AI
                   </PrintLink>,
                   true,
                 )}
                 <ul className='list-style-diamond ml-1 mt-2 space-y-1'>
                   <li>
-                    <span className='font-medium'>Stack:</span> TypeScript/Node.js (NestJS); GraphQL
-                    (Apollo Federation); React/MUI; GCP; Docker/Kubernetes; Jest/Cypress.
+                    <span className='font-bold'>Stack:</span> TypeScript/Node.js (NestJS), GraphQL
+                    (Apollo Federation), React/MUI, GCP, Docker/Kubernetes, Jest/Cypress.
                   </li>
                   <li>Delivered federated GraphQL microservices powering the iOS/Android app.</li>
                   <li>Built internal operations dashboards and CI/CD pipelines.</li>
