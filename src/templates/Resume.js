@@ -107,7 +107,7 @@ export default class Resume extends Page {
           <div className={!isPrint ? 'max-w-4xl text-xl' : ''}>
             Full-stack engineer with over <b>8 years</b> delivering web applications for startups
             and SMBs, focused on performance, reliability, maintainability, and developer
-            experience. Build scalable <b>React</b>, <b>TypeScript</b>, and <b>Node.js</b> solutions
+            experience. Build scalable <b>TypeScript</b>, <b>Node.js</b>, and <b>React</b> solutions
             on <b>GCP</b> and <b>AWS</b>.
           </div>
         </Section>

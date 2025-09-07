@@ -60,6 +60,7 @@ export const resume = {
         'Improved performance with DataLoader caching and batching, efficient pagination, and media delivery optimizations; validated via targeted load testing to sustain thousands of requests/min at low p95 latency.',
         'Achieved 90%+ test coverage (Jest, Cypress); implemented Datadog observability and runbooks to reduce MTTR.',
         'Set up CI/CD with the DevOps team using GitHub Actions and Terraform: Docker/K8s/Helm deploys to staging/production.',
+        'Adopted AI-assisted dev workflows for refactors, tests, and docs, speeding PRs and improving documentation coverage.',
       ],
       testimonial: {
         name: 'Ben Chen',

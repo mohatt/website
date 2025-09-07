@@ -39,6 +39,7 @@ function OutboundLink({ linkId, ...props }) {
             }
           },
         })
+        e.preventDefault()
         return false
       }}
     />
