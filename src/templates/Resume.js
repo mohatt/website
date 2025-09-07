@@ -74,7 +74,7 @@ export default class Resume extends Page {
       <div>
         <Section spacing={false} fill={isPrint} sep={false}>
           <Heading title='Mohamed Elkholy' primary className={isPrint ? 'font-medium' : ''}>
-            Full-Stack Engineer {!isPrint && `· ${site.location}`}
+            Full-Stack Engineer · Independent Contractor {!isPrint && `· ${site.location}`}
           </Heading>
           {isPrint && (
             <Contacts homepage phone>
