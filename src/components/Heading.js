@@ -52,7 +52,9 @@ export default function Heading({
         {renderSubtitle(cx('leading-normal text-typo', primary && 'text-lg'))}
       </header>
       <header className={cx('max-w-4xl mb-12', className)}>
-        {renderHeading({ className: 'italic leading-normal word-tracking-tighter text-typo text-3xl' })}
+        {renderHeading({
+          className: 'italic leading-normal word-tracking-tighter text-typo text-3xl',
+        })}
         {renderSubtitle('leading-normal text-typo-dim mt-4 text-xl')}
       </header>
     </Layout>
