@@ -6,16 +6,6 @@ exports.site = {
   menu: [
     { label: 'Intro', to: 'home' },
     {
-      label: 'Skills',
-      to: 'skills',
-      items: [
-        { label: 'Backend', hash: 'backend' },
-        { label: 'Frontend', hash: 'frontend' },
-        { label: 'DevOps', hash: 'devops' },
-        { label: 'Tools', hash: 'tools' },
-      ],
-    },
-    {
       label: 'Projects',
       to: 'projects',
       items: [
@@ -26,11 +16,21 @@ exports.site = {
           hash: 'portfolio',
         },
         {
-          label: 'OpenSource',
+          label: 'Open Source',
           to: 'projects.category',
           params: { category: 'open-source' },
           hash: 'open-source',
         },
+      ],
+    },
+    {
+      label: 'Skills',
+      to: 'skills',
+      items: [
+        { label: 'Backend', hash: 'backend' },
+        { label: 'Frontend', hash: 'frontend' },
+        { label: 'DevOps', hash: 'devops' },
+        { label: 'Tools', hash: 'tools' },
       ],
     },
     {

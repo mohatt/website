@@ -38,7 +38,7 @@ export const resume = {
       time: [2024, 2025],
       loc: 'United States (Remote)',
       desc: [
-        'Modernized a legacy Firebase codebase (web/Cloud Functions) to LTS, improving performance and release stability.',
+        'Modernized a large-scale Firebase codebase (web/Cloud Functions) to LTS, improving performance and release stability.',
         'Migrated the internal dashboard to MUI; built a reusable component library, improving UX and speeding feature delivery.',
         'Structured Firestore data with a schema analyzer and dashboard-driven migration runner, improving data integrity.',
         'Built Stripe operations dashboards with reconciliation and audit trails to reduce discrepancies and support compliance.',

@@ -34,7 +34,7 @@
   h4,
   h5,
   h6 {
-    @apply font-display font-medium;
+    @apply font-display font-medium word-tracking-tighter;
 
     html[data-layout='print'] & {
       @apply font-sans;
@@ -76,6 +76,10 @@
     }
 
     & nav {
+      & a {
+        @apply word-tracking-tighter;
+      }
+
       & a,
       & a::before,
       & a::after {
