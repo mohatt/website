@@ -5,6 +5,16 @@ import React from 'react'
  * Max 120 characters per role bullet.
  */
 export const resume = {
+  name: 'Mohamed Elkholy',
+  role: 'Full-Stack Engineer',
+  employmentType: 'Independent Contractor',
+  workArrangement: 'Remote',
+  intro: <>
+    Full-stack engineer with over <b>8 years</b> delivering web applications for startups
+    and SMBs, focused on performance, reliability, maintainability, and developer
+    experience. Build scalable <b>TypeScript</b>, <b>Node.js</b>, and <b>React</b> solutions
+    on <b>GCP</b> and <b>AWS</b>.
+  </>,
   experience: [
     {
       role: 'Full-Stack Engineer',

@@ -73,8 +73,8 @@ export default class Resume extends Page {
     return (
       <>
         <Section spacing={false} fill={isPrint} sep={false}>
-          <Heading title='Mohamed Elkholy' primary className={isPrint ? 'font-medium' : ''}>
-            Full-Stack Engineer · Independent Contractor {!isPrint && `· ${site.location}`}
+          <Heading title={resume.name} primary className={isPrint ? 'font-medium' : ''}>
+            {resume.role} · {resume.employmentType} {!isPrint && `· ${site.location}`}
           </Heading>
           {isPrint && (
             <Contacts homepage phone>
@@ -105,10 +105,7 @@ export default class Resume extends Page {
         <Section sep={isPrint}>
           {isPrint && <Heading title='Summary' />}
           <div className={!isPrint ? 'max-w-4xl text-xl' : ''}>
-            Full-stack engineer with over <b>8 years</b> delivering web applications for startups
-            and SMBs, focused on performance, reliability, maintainability, and developer
-            experience. Build scalable <b>TypeScript</b>, <b>Node.js</b>, and <b>React</b> solutions
-            on <b>GCP</b> and <b>AWS</b>.
+            {resume.intro}
           </div>
         </Section>
         <Section id='experience' sep={isPrint}>
