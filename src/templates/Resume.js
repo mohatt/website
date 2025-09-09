@@ -51,7 +51,7 @@ export default class Resume extends Page {
 
     function subtitleProps(subtitle) {
       if (isPrint) {
-        return { endChildren: subtitle }
+        return { end: subtitle }
       }
       return { children: subtitle }
     }

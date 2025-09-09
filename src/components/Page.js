@@ -116,7 +116,10 @@ export default class Page extends React.Component {
         .join('')}/>`
     }
     return (
-      <Section spacing={false} className={cx('flex font-display italic mb-4', isText && 'text-lg')}>
+      <Section
+        spacing={false}
+        innerClassName={cx('flex font-display italic mb-4', isText && 'text-lg')}
+      >
         <div className='flex-grow'>{snippet}</div>
         {actions && <div className='text-right'>{actions}</div>}
       </Section>
