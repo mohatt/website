@@ -5,6 +5,10 @@ import { useSiteMetadata } from '../../hooks'
 
 function Footer({ className }) {
   const { deployment } = useSiteMetadata()
+  const {
+    date,
+    config: { sha },
+  } = deployment
   return (
     <footer className={className}>
       <Section className='font-display' fill sep='pre' spacing={false}>
@@ -12,12 +16,13 @@ function Footer({ className }) {
           <div className='flex-grow'>{site.copyright}</div>
           <div>
             <Link
-              to={`https://github.com/mohatt/website/commit/${deployment.config.sha}`}
-              title={`Build time: ${deployment.date}`}
+              href={`https://github.com/mohatt/website/commit/${sha}`}
+              title={`Build time: ${date}`}
               className='link opacity-75'
-              external='deploy_sha'
+              linkId='deploy_sha'
+              target='_blank'
             >
-              {deployment.config.sha}
+              {sha}
             </Link>
           </div>
         </div>

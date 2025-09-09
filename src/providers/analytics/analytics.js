@@ -25,16 +25,16 @@ export function createAnalytics(id, settings = {}) {
   return {
     id,
     config(config) {
-      gtag('config', id, Object.assign({}, config, { update: true }))
+      gtag('config', id, { ...config, update: true })
     },
     event(name, params) {
-      gtag('event', name, Object.assign({}, params, { send_to: id }))
+      gtag('event', name, { ...params, send_to: id })
     },
     user(name, value) {
       if (typeof name === 'string') {
         userProps[name] = value
       } else {
-        userProps = Object.assign({}, userProps, name)
+        userProps = { ...userProps, name }
       }
 
       gtag('config', id, {

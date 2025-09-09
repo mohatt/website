@@ -105,7 +105,7 @@ export default class Project extends Page {
             <NetworkHandle.Map data={project.handles}>
               {(items) => <Metadata title='Links'>{items}</Metadata>}
               {({ title, href, Icon }) => (
-                <Link to={href} external='project_link' className='link mr-4 mb-1'>
+                <Link href={href} linkId='project_link' className='link mr-4 mb-1'>
                   <Icon className='w-5 mr-2' />
                   <span>{title}</span>
                 </Link>

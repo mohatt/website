@@ -1,4 +1,3 @@
-export { Layout } from '../providers/layout'
 export { default as BaseIcon } from './BaseIcon'
 export { default as Button } from './Button'
 export { default as ButtonGroup } from './ButtonGroup'

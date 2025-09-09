@@ -27,8 +27,8 @@ function ProjectCard({ project, skill, category }) {
             {(items) => <div className='absolute -bottom-4 right-4'>{items}</div>}
             {({ title, href, Icon }) => (
               <Button
-                to={href}
-                external='project_card_link'
+                href={href}
+                linkId='project_card_link'
                 title={title}
                 size='mono'
                 className='!border-primary ml-3'

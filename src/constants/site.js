@@ -43,7 +43,7 @@ exports.site = {
         { label: 'Testimonials', hash: 'testimonials' },
       ],
     },
-    { label: 'Contact', to: 'mailto:mohatt@pm.me', external: 'menu_contact' },
+    { label: 'Contact', href: 'mailto:mohatt@pm.me', linkId: 'menu_contact' },
   ],
   phone: '+971501761107',
   location: 'Dubai, UAE (UTC+4)',

@@ -12,7 +12,7 @@ export default function Button({
   className,
   ...props
 }) {
-  const Element = props.to ? Link : 'button'
+  const Element = props.to || props.href ? Link : 'button'
   return (
     <Element
       className={cx(

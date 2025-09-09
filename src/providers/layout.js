@@ -63,29 +63,3 @@ export class LayoutProvider extends React.Component {
 export function useLayout() {
   return useContext(LayoutContext)
 }
-
-export function Layout({ not, id, print, enforced, children }) {
-  const layout = useLayout()
-  let assert = [id, print, enforced].reduce((acc, prop, i) => {
-    if (prop !== undefined && acc !== false) {
-      if (i === 0) acc = layout.id === prop
-      if (i === 1) acc = layout.isPrint === !!prop
-      if (i === 2) acc = layout.isEnforced === !!prop
-    }
-    return acc
-  }, 0)
-
-  if (assert === 0) {
-    return children(layout)
-  }
-
-  const isArray = Array.isArray(children)
-  assert = not ? !assert : assert
-  const element = assert ? (isArray ? children[0] : children) : isArray ? children[1] : null
-
-  if (element instanceof Function) {
-    return element(layout)
-  }
-
-  return element
-}

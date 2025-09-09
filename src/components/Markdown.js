@@ -4,7 +4,7 @@ import { BaseIcon, Button, Heading, Icon, Link, Separator, Typography } from '.'
 
 const shortcodes = {
   a({ href, ...props }) {
-    return <Link to={href} external='mdx_link' {...props} />
+    return <Link href={href} linkId='mdx_link' {...props} />
   },
   BaseIcon,
   Button,

@@ -13,7 +13,7 @@ function PrintLink({ to, params, children }) {
   const path = generatePath(to, params)
   const url = deployment.config.url + path
   return (
-    <Link className='link' to={url} external='resume_print'>
+    <Link href={url} linkId='resume_print' className='link'>
       {children ?? url}
     </Link>
   )
@@ -71,7 +71,7 @@ export default class Resume extends Page {
     }
 
     return (
-      <div>
+      <>
         <Section spacing={false} fill={isPrint} sep={false}>
           <Heading title='Mohamed Elkholy' primary className={isPrint ? 'font-medium' : ''}>
             Full-Stack Engineer · Independent Contractor {!isPrint && `· ${site.location}`}
@@ -93,7 +93,7 @@ export default class Resume extends Page {
               )}
               {({ id, href, Icon }) => (
                 <li key={id}>
-                  <Link className='link' to={href} external='resume_contact'>
+                  <Link href={href} linkId='resume_contact' className='link'>
                     <Icon className='h-5 mr-2' />
                     <span>{href.replace(/^(mailto|tel):(\/\/)?/, '')}</span>
                   </Link>
@@ -134,7 +134,7 @@ export default class Resume extends Page {
                 const bullets = isPrint ? (printDesc ?? desc) : desc
                 const collapsed = isPrint && legacy
                 return (
-                  <div key={at} className={cx(isPrint ? 'page-break-avoid' : 'max-w-5xl')}>
+                  <div key={time} className={cx(isPrint ? 'page-break-avoid' : 'max-w-5xl')}>
                     <div className={isPrint ? 'flex items-center text-typo-dim' : ''}>
                       {renderHeading(
                         <>
@@ -146,7 +146,7 @@ export default class Resume extends Page {
                         <>
                           <div className='flex-grow'>
                             {url ? (
-                              <Link className='link' to={url} external='resume_role'>
+                              <Link href={url} linkId='resume_role' className='link'>
                                 {at}
                               </Link>
                             ) : (
@@ -160,7 +160,7 @@ export default class Resume extends Page {
                       ) : (
                         <div className='font-medium'>
                           {url ? (
-                            <Link className='link' to={url} external='resume_role'>
+                            <Link href={url} linkId='resume_role' className='link'>
                               {at}
                             </Link>
                           ) : (
@@ -173,8 +173,8 @@ export default class Resume extends Page {
                     </div>
                     {bullets?.length > 0 && !collapsed && (
                       <ul className='list-style-diamond ml-1 mt-3 space-y-1'>
-                        {bullets.map((text) => (
-                          <li key={text}>{text}</li>
+                        {bullets.map((text, i) => (
+                          <li key={i}>{text}</li>
                         ))}
                         {testimonial && isPrint && (
                           <li className='list-none -ml-3 pt-2'>
@@ -224,7 +224,7 @@ export default class Resume extends Page {
                 <div className={isPrint ? 'flex items-center' : ''}>
                   {renderHeading(
                     url ? (
-                      <Link className='link' to={url} external='resume_edu'>
+                      <Link href={url} linkId='resume_edu' className='link'>
                         {title}
                       </Link>
                     ) : (
@@ -283,7 +283,7 @@ export default class Resume extends Page {
             </Testimonial.Map>
           </Section>
         )}
-      </div>
+      </>
     )
   }
 }

@@ -86,7 +86,7 @@ function Header({ className }) {
           )}
           {({ title, href, Icon }) => (
             <li className='mb-4'>
-              <Button size='mono' to={href} external='header_contact' title={title}>
+              <Button size='mono' href={href} linkId='header_contact' rel='me' title={title}>
                 <Icon className='w-6' />
               </Button>
             </li>

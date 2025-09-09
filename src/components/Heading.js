@@ -1,6 +1,6 @@
 import React from 'react'
 import { cx } from '../util'
-import { Layout } from '.'
+import { useLayout } from '../providers/layout'
 
 export default function Heading({
   title,
@@ -10,6 +10,8 @@ export default function Heading({
   endChildren,
   className,
 }) {
+  const layout = useLayout()
+
   function renderHeading(props, containerProps) {
     const Component = primary ? 'h1' : 'h2'
     const titleElement = (
@@ -43,20 +45,23 @@ export default function Heading({
     return <div className={classes}>{children}</div>
   }
 
-  return (
-    <Layout print>
+  if (layout.isPrint) {
+    return (
       <header className={cx('mb-4', className)}>
         {renderHeading({
           className: cx('leading-normal text-primary', primary ? 'text-3xl' : 'text-2xl uppercase'),
         })}
         {renderSubtitle(cx('leading-normal text-typo', primary && 'text-lg'))}
       </header>
-      <header className={cx('max-w-4xl mb-12', className)}>
-        {renderHeading({
-          className: 'italic leading-normal word-tracking-tighter text-typo text-3xl',
-        })}
-        {renderSubtitle('leading-normal text-typo-dim mt-4 text-xl')}
-      </header>
-    </Layout>
+    )
+  }
+
+  return (
+    <header className={cx('max-w-4xl mb-12', className)}>
+      {renderHeading({
+        className: 'italic leading-normal word-tracking-tighter text-typo text-3xl',
+      })}
+      {renderSubtitle('leading-normal text-typo-dim mt-4 text-xl')}
+    </header>
   )
 }
