@@ -1,4 +1,3 @@
-import React from 'react'
 import { graphql } from 'gatsby'
 import { Page, Heading, Section, Link } from '../components'
 import { ProjectCard, ProjectCategory } from './partials'
@@ -27,13 +26,13 @@ export default class ProjectsIndex extends Page {
           return (
             <Section key={slug} id={slug}>
               <Heading title={category.title}>{category.desc}</Heading>
-              <ProjectCard.Grid data={nodes} params={{ category: slug }} />
+              <ProjectCard.Grid data={nodes} paginationParams={{ category: slug }} />
               {totalCount > nodes.length && (
                 <div className='mt-12 text-lg'>
                   <span>
                     [{nodes.length} out of {totalCount}]{' '}
                   </span>
-                  <ProjectCategory category={category}>
+                  <ProjectCategory item={category}>
                     {({ props }) => (
                       <Link className='link-primary' {...props}>
                         View all »
@@ -63,7 +62,7 @@ export const query = graphql`
       group(field: { categories: { slug: SELECT } }, limit: $limit) {
         slug: fieldValue
         nodes {
-          ...ProjectCardFragment
+          ...ProjectCard
           categories {
             desc
           }

@@ -1,4 +1,3 @@
-import React from 'react'
 import { graphql } from 'gatsby'
 import { skillTagGroups } from '../constants'
 import { Page, Heading, Icon, Link, Section } from '../components'
@@ -58,7 +57,7 @@ export default class Skills extends Page {
                       <ul className='mt-3 ml-3 space-y-3'>{items}</ul>
                     </div>
                   )}
-                  {({ title, size, props, Icon }) => (
+                  {({ title, size, props, Icon }, _i) => (
                     <li>
                       {size > 0 ? (
                         <Link className='link' {...props}>
@@ -93,7 +92,7 @@ export const query = graphql`
 
     skills: allProjectSkill {
       nodes {
-        ...ProjectSkillFragment
+        ...ProjectSkill
         icon
         tags
       }

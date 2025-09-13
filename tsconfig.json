@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // @todo rename gatsby to node
+      "gatsby": ["node_modules/gatsby"]
+    },
+    "module": "esnext",
+    "target": "esnext",
+    "lib": ["dom", "esnext"],
+    "types": ["node", "gtag.js"],
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "strict": false,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "strictBindCallApply": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src",
+    "gatsby",
+    "gatsby-node.ts",
+    "gatsby-browser.tsx",
+    "gatsby-ssr.tsx",
+    "gatsby-config.ts",
+    "gatsby-types.d.ts"
+  ]
+}

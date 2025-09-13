@@ -1,20 +1,13 @@
-import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { themeScreens } from '../constants'
 import { cx, NetworkHandle } from '../util'
 import { useLightbox } from '../hooks'
-import { Page, Heading, Link, Markdown, Section } from '../components'
-import { ProjectCategory, ProjectSkill, Testimonial } from './partials'
+import { Page, Heading, Link, Mdx, Section } from '../components'
+import { ProjectSkill, Testimonial } from './partials'
 
-const statuses = {
-  CMP: 'Completed',
-  ONG: 'Ongoing',
-  ARC: 'Archived',
-}
-
-function Gallery({ screens }) {
-  const [lightbox, styles] = useLightbox({
+function ProjectGallery({ screens }) {
+  const lightbox = useLightbox({
     showHideAnimationType: 'none',
     dataSource: screens.map(({ org, full, thumb }) => ({
       w: org.width,
@@ -27,7 +20,6 @@ function Gallery({ screens }) {
 
   return (
     <div className='flex overflow-x-auto mb-12'>
-      <style>{styles}</style>
       {screens.map(({ thumb }, i) => {
         const cls = `scr_thumb_${i}`
         const ratio = thumb.width / thumb.height
@@ -97,14 +89,14 @@ export default class Project extends Page {
           <Heading title={this.title} primary>
             {this.description}
           </Heading>
-          {screens.length > 1 && <Gallery screens={screens} />}
+          {screens.length > 1 && <ProjectGallery screens={screens} />}
           <div className='grid md:grid-cols-3 gap-x-4 gap-y-8'>
             <ProjectSkill.Map data={project.skills}>
               {(items) => <Metadata title='Skills'>{items}</Metadata>}
             </ProjectSkill.Map>
             <NetworkHandle.Map data={project.handles}>
               {(items) => <Metadata title='Links'>{items}</Metadata>}
-              {({ title, href, Icon }) => (
+              {({ title, href, Icon }, _i) => (
                 <Link href={href} linkId='project_link' className='link mr-4 mb-1'>
                   <Icon className='w-5 mr-2' />
                   <span>{title}</span>
@@ -123,7 +115,7 @@ export default class Project extends Page {
         </Testimonial.Map>
         <Section>
           <div className='xl:max-w-4xl'>
-            <Markdown>{children}</Markdown>
+            <Mdx>{children}</Mdx>
           </div>
         </Section>
       </>
@@ -140,7 +132,7 @@ export const query = graphql`
       status
       hasImage
       image {
-        ...SocialBannerFragment
+        ...SocialBanner
         childImageSharp {
           org: original {
             width
@@ -161,14 +153,14 @@ export const query = graphql`
         }
       }
       categories {
-        ...ProjectCategoryFragment
+        ...ProjectCategory
       }
       skills {
-        ...ProjectSkillFragment
+        ...ProjectSkill
       }
       handles
       testimonials {
-        ...TestimonialFragment
+        ...Testimonial
       }
     }
   }

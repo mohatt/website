@@ -1,4 +1,3 @@
-import React from 'react'
 import { graphql } from 'gatsby'
 import { Page, Section, Heading } from '../components'
 import { ProjectCard } from './partials'
@@ -24,7 +23,11 @@ export default class ProjectsByCategory extends Page {
         <Heading title={this.title} primary>
           {categoryObj.desc}
         </Heading>
-        <ProjectCard.Grid data={projects} paginated='projects.category' params={{ category }} />
+        <ProjectCard.Grid
+          data={projects}
+          paginationRote='projects.category'
+          paginationParams={{ category }}
+        />
       </Section>
     )
   }
@@ -38,7 +41,7 @@ export const query = graphql`
       filter: { categories: { elemMatch: { slug: { eq: $category } } }, draft: { ne: true } }
       sort: [{ priority: ASC }, { started: DESC }]
     ) {
-      ...ProjectCardGridPaginatedFragment
+      ...ProjectCardGridPaginated
     }
 
     categoryObj: projectCategory(slug: { eq: $category }) {

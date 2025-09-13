@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { usePath } from '../../hooks'
 import Menu from './Menu'
 import Header from './Header'

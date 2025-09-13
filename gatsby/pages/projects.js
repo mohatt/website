@@ -1,6 +1,21 @@
-const { pagination } = require('../../config/site')
+/**
+ * @typedef {import('gatsby-plugin-advanced-pages/node').PageHelperProps} PageHelperProps
+ * @typedef {import('gatsby').graphql} GraphQL
+ */
+
+// Pagination limits for projects index page
+const PAGINATION_LIMIT_PROJECTS_INDEX = 6
+// Pagination limits for projects list pages
+const PAGINATION_LIMIT_PROJECTS_LIST = 12
+
+// Used to cache the data fetched from GraphQL
 let data = null
 
+/**
+ * Fetches the data needed from GraphQL.
+ *
+ * @param {GraphQL} graphql
+ */
 async function getData(graphql) {
   if (data) {
     return data
@@ -39,15 +54,23 @@ async function getData(graphql) {
   return data
 }
 
-// Projects index pages
+/**
+ * Projects index pages.
+ *
+ * @param {PageHelperProps} props
+ */
 async function createIndexPage({ createAdvancedPage }) {
   createAdvancedPage({
     route: 'projects',
-    limit: pagination.projectsIndex,
+    limit: PAGINATION_LIMIT_PROJECTS_INDEX,
   })
 }
 
-// Projects by category list pages
+/**
+ * Projects by category list pages.
+ *
+ * @param {PageHelperProps} props
+ */
 async function createListByCategoryPages({ graphql, createAdvancedPage }) {
   const { categories } = await getData(graphql)
   for (const category of categories) {
@@ -58,13 +81,17 @@ async function createListByCategoryPages({ graphql, createAdvancedPage }) {
       },
       pagination: {
         count: category.totalCount,
-        limit: pagination.projectsList,
+        limit: PAGINATION_LIMIT_PROJECTS_LIST,
       },
     })
   }
 }
 
-// Projects by skill list pages
+/**
+ * Projects by skill list pages.
+ *
+ * @param {PageHelperProps} props
+ */
 async function createListBySkillPages({ graphql, createAdvancedPage }) {
   const { skills } = await getData(graphql)
   for (const skill of skills) {
@@ -75,13 +102,17 @@ async function createListBySkillPages({ graphql, createAdvancedPage }) {
       },
       pagination: {
         count: skill.totalCount,
-        limit: pagination.projectsList,
+        limit: PAGINATION_LIMIT_PROJECTS_LIST,
       },
     })
   }
 }
 
-// Project details pages
+/**
+ * Project details pages.
+ *
+ * @param {PageHelperProps} props
+ */
 async function createDetailsPages({ graphql, createAdvancedPage }) {
   const { edges } = await getData(graphql)
   for (const { node } of edges) {
@@ -98,6 +129,11 @@ async function createDetailsPages({ graphql, createAdvancedPage }) {
   }
 }
 
+/**
+ * Main entry point.
+ *
+ * @param {PageHelperProps} args
+ */
 module.exports = async (args) => {
   switch (args.page.templateName) {
     case 'ProjectsIndex.js':

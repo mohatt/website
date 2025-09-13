@@ -1,13 +1,13 @@
-import React, { createContext, useContext } from 'react'
+import { Component, createContext, useContext } from 'react'
 import { PrintLayout } from '../layouts'
 
 export const LayoutContext = createContext()
 
 function defaultLayoutReducer(state, prop, payload) {
-  return state[prop] !== payload ? Object.assign({}, state, { [prop]: payload }) : state
+  return state[prop] !== payload ? { ...state, [prop]: payload } : state
 }
 
-export class LayoutProvider extends React.Component {
+export class LayoutProvider extends Component {
   layouts = {}
   enforcedLayout
 
@@ -16,7 +16,7 @@ export class LayoutProvider extends React.Component {
       const prev = this.layouts[id].state
       const state = reducer(prev, action, payload)
       if (prev !== state) {
-        this.layouts[id] = Object.assign({}, this.layouts[id], { state })
+        this.layouts[id] = { ...this.layouts[id], state }
         this.setState({})
       }
     }

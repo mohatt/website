@@ -1,21 +1,21 @@
-import React from 'react'
+import { Component } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { site } from '../constants'
 import { cx } from '../util'
-import { useAnalyticsCallback, useSiteMetadata } from '../hooks'
+import { useAnalyticsEffect, useSiteMetadata } from '../hooks'
 import Providers from '../providers'
 import { LayoutContext } from '../providers/layout'
 import { DefaultLayout } from '../layouts'
 import { Section } from '.'
 
 function PageHelmet({ page: { context, title, seoTitle: sTitle, description, noIndex, image } }) {
-  const { deployment, socialBanner } = useSiteMetadata()
+  const { socialBanner } = useSiteMetadata()
   const pageTitle = sTitle || title
   const seoTitle = pageTitle ? `${pageTitle} — ${site.title}` : site.title
   const seoDescription = description || site.description
   const ogImage = image ?? socialBanner
 
-  useAnalyticsCallback(({ config, event }) => {
+  useAnalyticsEffect(({ config, event }) => {
     config({ page_title: title })
     event('page_view')
   }, [])
@@ -26,7 +26,7 @@ function PageHelmet({ page: { context, title, seoTitle: sTitle, description, noI
       : { name: 'description', content: seoDescription },
     { property: 'og:title', content: seoTitle },
     { property: 'og:description', content: seoDescription },
-    { property: 'og:image', content: deployment.config.url + ogImage.src },
+    { property: 'og:image', content: site.deployment.url + ogImage.src },
     { property: 'og:image:width', content: ogImage.width },
     { property: 'og:image:height', content: ogImage.height },
     { property: 'og:image:alt', content: title || site.title },
@@ -39,7 +39,7 @@ function PageHelmet({ page: { context, title, seoTitle: sTitle, description, noI
  * Base component for all page components
  * @abstract
  */
-export default class Page extends React.Component {
+export default class Page extends Component {
   /**
    * Page title
    * @type string

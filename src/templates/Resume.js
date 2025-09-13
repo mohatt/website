@@ -1,17 +1,14 @@
-import React from 'react'
 import { graphql } from 'gatsby'
 import { generatePath } from 'gatsby-plugin-advanced-pages'
 import { site, resume, sortSkillsByTagGroups } from '../constants'
 import { cx } from '../util'
-import { useSiteMetadata } from '../hooks'
 import { Page, Heading, Section, Link, Icon, Masonry } from '../components'
 import { Contacts } from '../layouts/partials'
 import { Testimonial } from './partials'
 
 function PrintLink({ to, params, children }) {
-  const { deployment } = useSiteMetadata()
   const path = generatePath(to, params)
-  const url = deployment.config.url + path
+  const url = site.deployment.url + path
   return (
     <Link href={url} linkId='resume_print' className='link'>
       {children ?? url}
@@ -91,7 +88,7 @@ export default class Resume extends Page {
                   </ul>
                 </div>
               )}
-              {({ id, href, Icon }) => (
+              {({ id, href, Icon }, _i) => (
                 <li key={id}>
                   <Link href={href} linkId='resume_contact' className='link'>
                     <Icon className='h-5 mr-2' />
@@ -104,9 +101,7 @@ export default class Resume extends Page {
         </Section>
         <Section sep={isPrint}>
           {isPrint && <Heading title='Summary' />}
-          <div className={!isPrint ? 'max-w-4xl text-xl' : ''}>
-            {resume.intro}
-          </div>
+          <div className={!isPrint ? 'max-w-4xl text-xl' : ''}>{resume.intro}</div>
         </Section>
         <Section id='experience' sep={isPrint}>
           <Heading title='Experience' />
@@ -293,21 +288,21 @@ export const query = graphql`
 
     firstSkills: allProjectSkill(filter: { tags: { eq: "1st" } }) {
       nodes {
-        ...ProjectSkillFragment
+        ...ProjectSkill
         tags
       }
     }
 
     secondSkills: allProjectSkill(filter: { tags: { eq: "2nd" } }) {
       nodes {
-        ...ProjectSkillFragment
+        ...ProjectSkill
         tags
       }
     }
 
     tests: allTestimonial(sort: [{ priority: DESC }, { received: DESC }], limit: 10) {
       nodes {
-        ...TestimonialFragment
+        ...Testimonial
       }
     }
   }
