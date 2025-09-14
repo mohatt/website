@@ -71,4 +71,4 @@ htmlEl.setAttribute("data-system-ct", systemTheme.color)
   ])
 }
 
-export { wrapPageElement } from './gatsby-browser'
+export { wrapRootElement, wrapPageElement } from './gatsby-browser'
