@@ -140,7 +140,7 @@ jobs:
           pnpm run build
           mkdir deploy
           mv public/firebase.json deploy/
-          cp public deploy/
+          cp -r public deploy/
 
       - id: deploy
         name: Deploy (${{ steps.channel.outputs.deploy_channel }})
