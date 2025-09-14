@@ -10,7 +10,6 @@ node_modules/
 /.cache/
 /.lighthouseci/
 /.firebase/
-/gatsby-types.d.ts
 
 # IDE stuff
 .idea/
