@@ -171,6 +171,25 @@ jobs:
           echo "- URL: ${{ steps.channel.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
           echo "- Maintenance: \`${{ steps.maintenance.outputs.enabled }}\`" >> $GITHUB_STEP_SUMMARY
 
+      - name: Comment preview on PR
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: preview-deploy
+          message: |
+            ### 🚀 Preview Deploy
+            - **Environment:** `${{ steps.target.outputs.env_name }}`
+            - **Project:** `${{ steps.target.outputs.project_id }}`
+            - **Channel:** `${{ steps.channel.outputs.deploy_channel }}`
+            - **URL:** ${{ steps.channel.outputs.deploy_url }}
+            - **Commit:** ${{ github.sha }}
+            - **Maintenance:** `${{ steps.maintenance.outputs.enabled }}`
+
+            ### 📊 Lighthouse Reports
+            ⏳ Please wait while Lighthouse reports are generated…
+
+            _(This comment updates on each PR deploy)_
+
       - name: Run Lighthouse Tests (Local)
         uses: treosh/lighthouse-ci-action@v12
         continue-on-error: true
@@ -206,7 +225,7 @@ jobs:
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
-      - name: Comment preview on PR
+      - name: Final Comment preview on PR
         if: ${{ github.event_name == 'pull_request' }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
