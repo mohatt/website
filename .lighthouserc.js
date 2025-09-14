@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     collect: {
       staticDistDir: 'public',
-      url: ['/', '/projects', '/resume'],
+      url: ['/', '/projects/', '/resume/'],
       numberOfRuns: 3,
       settings: {
         preset: 'desktop',

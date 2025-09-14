@@ -186,8 +186,8 @@ jobs:
         with:
           urls: |
             ${{ steps.channel.outputs.deploy_url }}
-            ${{ steps.channel.outputs.deploy_url }}/projects
-            ${{ steps.channel.outputs.deploy_url }}/resume
+            ${{ steps.channel.outputs.deploy_url }}/projects/
+            ${{ steps.channel.outputs.deploy_url }}/resume/
           configPath: './.lighthouserc-live.js'
           temporaryPublicStorage: true
 
