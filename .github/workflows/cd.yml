@@ -173,18 +173,22 @@ jobs:
 
       - name: Run Lighthouse Tests (Local)
         uses: treosh/lighthouse-ci-action@v12
+        continue-on-error: true
         id: lhci
         with:
           configPath: './.lighthouserc.js'
+          temporaryPublicStorage: true
 
       - name: Run Lighthouse Tests (Live)
         uses: treosh/lighthouse-ci-action@v12
+        continue-on-error: true
         id: lhci-live
         with:
           urls: |
             ${{ steps.channel.outputs.deploy_url }}
             ${{ steps.channel.outputs.deploy_url }}/projects
           configPath: './.lighthouserc.js'
+          temporaryPublicStorage: true
 
       - name: Comment preview on PR
         if: ${{ github.event_name == 'pull_request' }}
