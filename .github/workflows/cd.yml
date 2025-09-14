@@ -190,6 +190,21 @@ jobs:
           configPath: './.lighthouserc.js'
           temporaryPublicStorage: true
 
+      - name: Format Lighthouse links
+        id: lhci-format
+        run: |
+          {
+            echo "formatted<<EOF"
+            echo "#### Local (static build)"
+            echo '${{ steps.lhci.outputs.links }}' \
+              | jq -r 'to_entries | map("**\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
+            echo ""
+            echo "#### Live (deployed URL)"
+            echo '${{ steps.lhci-live.outputs.links }}' \
+              | jq -r 'to_entries | map("**\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
       - name: Comment preview on PR
         if: ${{ github.event_name == 'pull_request' }}
         uses: marocchino/sticky-pull-request-comment@v2
@@ -205,7 +220,6 @@ jobs:
             - **Maintenance:** `${{ steps.maintenance.outputs.enabled }}`
 
             ### 📊 Lighthouse Reports
-            ${{ steps.lhci.outputs.links }}
-            ${{ steps.lhci-live.outputs.links }}
+            ${{ steps.lhci-format.outputs.formatted }}
 
             _(This comment updates on each PR deploy)_
