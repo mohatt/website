@@ -171,6 +171,21 @@ jobs:
           echo "- URL: ${{ steps.channel.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
           echo "- Maintenance: \`${{ steps.maintenance.outputs.enabled }}\`" >> $GITHUB_STEP_SUMMARY
 
+      - name: Run Lighthouse Tests (Local)
+        uses: treosh/lighthouse-ci-action@v12
+        id: lhci
+        with:
+          configPath: './lighthouserc.json'
+
+      - name: Run Lighthouse Tests (Live)
+        uses: treosh/lighthouse-ci-action@v12
+        id: lhci-live
+        with:
+          urls: |
+            ${{ steps.channel.outputs.deploy_url }}
+            ${{ steps.channel.outputs.deploy_url }}/projects
+          configPath: './lighthouserc.json'
+
       - name: Comment preview on PR
         if: ${{ github.event_name == 'pull_request' }}
         uses: marocchino/sticky-pull-request-comment@v2
@@ -184,5 +199,9 @@ jobs:
             - **URL:** ${{ steps.channel.outputs.deploy_url }}
             - **Commit:** ${{ github.sha }}
             - **Maintenance:** `${{ steps.maintenance.outputs.enabled }}`
+
+            ### 📊 Lighthouse Reports
+            ${{ steps.lhci.outputs.links }}
+            ${{ steps.lhci-live.outputs.links }}
 
             _(This comment updates on each PR deploy)_

@@ -18,7 +18,7 @@ module.exports = {
         'apple-touch-icon': 'off',
         'color-contrast': 'off',
         'content-width': 'off',
-        'errors-in-console': 'off',
+        // 'errors-in-console': 'off',
         'heading-order': 'off',
         'maskable-icon': 'off',
         'service-worker': 'off',
