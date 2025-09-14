@@ -175,7 +175,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v12
         id: lhci
         with:
-          configPath: './lighthouserc.json'
+          configPath: './.lighthouserc.js'
 
       - name: Run Lighthouse Tests (Live)
         uses: treosh/lighthouse-ci-action@v12
@@ -184,7 +184,7 @@ jobs:
           urls: |
             ${{ steps.channel.outputs.deploy_url }}
             ${{ steps.channel.outputs.deploy_url }}/projects
-          configPath: './lighthouserc.json'
+          configPath: './.lighthouserc.js'
 
       - name: Comment preview on PR
         if: ${{ github.event_name == 'pull_request' }}
