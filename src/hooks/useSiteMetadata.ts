@@ -1,7 +1,9 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
+export type SiteSocialBanner = Queries.SocialBannerFragment['childImageSharp']['socialBanner']
+
 export interface SiteMetadata {
-  socialBanner: Queries.SocialBannerFragment['childImageSharp']['socialBanner']
+  socialBanner: SiteSocialBanner
 }
 
 export function useSiteMetadata(): SiteMetadata {

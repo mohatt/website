@@ -2,15 +2,15 @@ import type { FC } from 'react'
 import { graphql } from 'gatsby'
 import { createReactMap, ReactMapItemProps } from '../../util'
 import BaseIcon, { BaseIconProps } from '../../components/BaseIcon'
-import Button, { ButtonProps } from '../../components/Button'
+import Button, { LinkButtonProps } from '../../components/Button'
 
 export interface ProjectSkillItem extends Queries.ProjectSkillFragment {
   icon?: string
-  tags?: string[]
+  tags?: readonly string[]
 }
 
 export interface ProjectSkillChildItem extends ProjectSkillItem {
-  props: ButtonProps
+  props: LinkButtonProps
   Icon?: FC<BaseIconProps>
 }
 
@@ -19,7 +19,7 @@ export interface ProjectSkillProps
 
 function ProjectSkill({ item: skill, index, children }: ProjectSkillProps) {
   const { slug, title, size, icon } = skill
-  const props: ButtonProps = !size
+  const props: LinkButtonProps = !size
     ? { children: title }
     : {
         to: 'projects.skill',
@@ -42,7 +42,7 @@ function ProjectSkill({ item: skill, index, children }: ProjectSkillProps) {
 
 interface ProjectSkillMapProps {
   exclude?: string
-  tags?: string[]
+  tags?: readonly string[]
 }
 
 ProjectSkill.Map = createReactMap<ProjectSkillItem, ProjectSkillMapProps, ProjectSkillChildItem>(

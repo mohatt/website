@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { site, resume, skillTagGroups, skillTags } from '../constants'
-import { Page } from '../components'
+import { PageHead, PageLayout } from '../layouts/page'
 import { AuthGuard } from '../firebase'
 
 interface DownloadOptions {
@@ -199,16 +199,11 @@ function Metadata({ title, children }) {
   )
 }
 
-export default class Dashboard extends Page {
-  view() {
-    const { data } = this.props as PageProps<Queries.DashboardQuery>
-    const {
-      page: { title },
-    } = data
-    this.title = title
-    this.noIndex = true
-
-    return (
+export default function Dashboard({ data }: PageProps<Queries.DashboardQuery>) {
+  const title = data.page.title
+  return (
+    <PageLayout title={title}>
+      <PageHead title={data.page.title} noIndex />
       <AuthGuard title={title}>
         <div className='grid md:grid-cols-2 gap-x-4 gap-y-8'>
           <Metadata title='Deployment Info'>
@@ -225,8 +220,8 @@ export default class Dashboard extends Page {
           </Metadata>
         </div>
       </AuthGuard>
-    )
-  }
+    </PageLayout>
+  )
 }
 
 export const query = graphql`

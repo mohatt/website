@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby'
 import { createReactMap, ReactMapItemProps } from '../../util'
-import Button, { ButtonProps } from '../../components/Button'
+import Button, { LinkButtonProps } from '../../components/Button'
 
 type ProjectCategoryItem = Queries.ProjectCategoryFragment
 
 export interface ProjectCategoryChildItem extends ProjectCategoryItem {
-  props: ButtonProps
+  props: LinkButtonProps
 }
 
 export interface ProjectCategoryProps
@@ -15,7 +15,7 @@ export interface ProjectCategoryProps
 
 function ProjectCategory({ item, index, children, color = 'alt' }: ProjectCategoryProps) {
   const { slug, title, size } = item
-  const props: ButtonProps = !size
+  const props: LinkButtonProps = !size
     ? { children: title }
     : {
         to: 'projects.category',

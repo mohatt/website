@@ -1,19 +1,24 @@
 import { useEffect, useState } from 'react'
-import PhotoSwipe, { PhotoSwipeOptions } from 'photoswipe'
+import type { PhotoSwipeOptions } from 'photoswipe'
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/photoswipe.css'
+
+export interface UseLightboxProps extends PhotoSwipeOptions {}
 
 /**
  * Handles photoswipe lightbox initialization.
  */
 export function useLightbox(
-  options?: PhotoSwipeOptions,
+  props?: UseLightboxProps,
   onInit?: (instance: PhotoSwipeLightbox) => void,
 ) {
   const [instance, setInstance] = useState<PhotoSwipeLightbox>()
 
   useEffect(() => {
-    const instance = new PhotoSwipeLightbox({ pswpModule: PhotoSwipe, ...options })
+    const instance = new PhotoSwipeLightbox({
+      pswpModule: async () => await import('photoswipe'),
+      ...props,
+    })
     if (onInit) {
       onInit(instance)
     }

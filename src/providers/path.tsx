@@ -1,6 +1,6 @@
 import { createContext, useContext, useRef, useMemo, ReactNode } from 'react'
 import { withPrefix } from 'gatsby'
-import { WindowLocation } from '@reach/router'
+import { useLocation } from '@reach/router'
 
 export type PathState = readonly [withoutPrefix: string, path: string]
 
@@ -11,14 +11,10 @@ const PathContext = createContext<PathState>(undefined)
 
 export interface PathProviderProps {
   children: ReactNode
-  location: WindowLocation
 }
 
-export function PathProvider(props: PathProviderProps) {
-  const {
-    children,
-    location: { pathname },
-  } = props
+export function PathProvider({ children }: PathProviderProps) {
+  const { pathname } = useLocation()
   const previous = useRef<PathState>(null)
 
   const state = useMemo<PathState>(() => {
@@ -42,7 +38,7 @@ export function PathProvider(props: PathProviderProps) {
 export function usePath() {
   const ctx = useContext(PathContext)
   if (!ctx) {
-    throw new Error('usePath must be used within a <PathProvider>')
+    throw new Error('usePath must be used inside PathProvider')
   }
   return ctx
 }

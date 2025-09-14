@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { cx } from '../util'
-import { useLayout } from '../providers/layout'
+import { useLayout } from '../hooks'
 
 export interface HeadingProps {
   // Heading text/content

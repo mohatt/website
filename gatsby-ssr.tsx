@@ -61,8 +61,8 @@ try {
 let theme = userTheme || systemTheme,
   color = themes.c[theme.color],
   htmlEl = document.documentElement
-htmlEl.setAttribute("class", color[0] + " " + themes.e[theme.edges])
-document.querySelector("meta[name=theme-color]").content = color[1]
+htmlEl.className = color[0] + " " + themes.e[theme.edges]
+document.head.querySelector("meta[name=theme-color]").content = color[1]
 htmlEl.setAttribute("data-system-ct", systemTheme.color)
 `
   setHtmlAttributes({ className: createThemeState().class })

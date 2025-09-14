@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { cx } from '../util'
-import { useLayout } from '../providers/layout'
+import { useLayout } from '../hooks'
 import Separator from './Separator'
 
 export interface SectionProps {
@@ -24,6 +24,7 @@ export interface SectionProps {
   // Extra classes for the INNER content wrapper
   innerClassName?: string
   children?: ReactNode
+  id?: string
 }
 
 /**

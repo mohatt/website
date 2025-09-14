@@ -136,16 +136,16 @@ async function createDetailsPages({ graphql, createAdvancedPage }) {
  */
 module.exports = async (args) => {
   switch (args.page.templateName) {
-    case 'ProjectsIndex.js':
+    case 'ProjectsIndex.tsx':
       await createIndexPage(args)
       break
-    case 'ProjectsByCategory.js':
+    case 'ProjectsByCategory.tsx':
       await createListByCategoryPages(args)
       break
-    case 'ProjectsBySkill.js':
+    case 'ProjectsBySkill.tsx':
       await createListBySkillPages(args)
       break
-    case 'Project.js':
+    case 'Project.tsx':
       await createDetailsPages(args)
       break
     default:

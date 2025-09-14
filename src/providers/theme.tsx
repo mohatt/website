@@ -1,4 +1,4 @@
-import { createContext, useContext, useCallback, useRef } from 'react'
+import { createContext, useContext, useCallback, useRef, ReactNode } from 'react'
 import { $document, themes, site } from '../constants'
 import { useAnalyticsEffect, useLocalStorage } from '../hooks'
 
@@ -46,7 +46,11 @@ function getInitialSystemTheme(): SerializedThemeState {
 
 const ThemeContext = createContext<ThemeCycleFn>(undefined)
 
-export function ThemeProvider({ children }) {
+interface ThemeProviderProps {
+  children: ReactNode
+}
+
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const eventData = useRef<[string, { value: string; prev_value: string }]>()
   const [theme, setTheme] = useLocalStorage(site.themeStorageKey, {
     initialValue: getInitialSystemTheme,
@@ -66,8 +70,8 @@ export function ThemeProvider({ children }) {
   const cycle = useCallback<ThemeCycleFn>(
     (type) => {
       const next = theme.cycle(type)
-      $document.documentElement.setAttribute('class', next.class)
-      $document.querySelector<HTMLMetaElement>('meta[name=theme-color]').content =
+      $document.documentElement.className = next.class
+      $document.head.querySelector<HTMLMetaElement>('meta[name=theme-color]').content =
         next.color.colors.primary
       eventData.current = [
         `change_${type}_theme`,
@@ -85,5 +89,9 @@ export function ThemeProvider({ children }) {
 }
 
 export function useTheme() {
-  return useContext(ThemeContext)
+  const ctx = useContext(ThemeContext)
+  if (!ctx) {
+    throw new Error('useTheme must be used inside ThemeProvider')
+  }
+  return ctx
 }

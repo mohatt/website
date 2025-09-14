@@ -55,6 +55,13 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        // When enabled, type-only class fields are only removed if they are prefixed with the declare modifier.
+        allowDeclareFields: true,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-postcss',
       options: {
         postcssOptions: postcss,

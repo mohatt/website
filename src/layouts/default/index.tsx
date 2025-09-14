@@ -1,25 +1,33 @@
-import { useCallback } from 'react'
-import { usePath } from '../../hooks'
+import { useCallback, ReactNode } from 'react'
+import { useLayoutState, usePath } from '../../hooks'
+import { site } from '../../constants'
 import Menu from './Menu'
 import Header from './Header'
 import Footer from './Footer'
 
-export default function DefaultLayout({
-  layout: {
+interface DefaultLayoutProps {
+  children: ReactNode
+}
+
+const DefaultLayout = function DefaultLayout({ children }: DefaultLayoutProps) {
+  const {
     state: { menu },
     dispatch,
-  },
-  children,
-}) {
+  } = useLayoutState<'default'>()
   const [path] = usePath()
-  const closeMenu = useCallback(() => dispatch('menu', false), [dispatch])
+  const closeMenu = useCallback(
+    () => dispatch({ type: 'SET', payload: { menu: false } }),
+    [dispatch],
+  )
   return (
     <div className='flex'>
       <div
         id='header'
         className='w-9 lg:w-[4.375rem] flex-shrink-0 border-r-2 lg:border-r-4 bg-typo text-primary z-20'
       >
-        <Header className='h-full relative' />
+        <Header className='h-full relative'>
+          {path === '/' && <h1 className='hidden'>{site.title}</h1>}
+        </Header>
       </div>
       <div
         id='menu'
@@ -45,5 +53,4 @@ export default function DefaultLayout({
   )
 }
 
-DefaultLayout.id = 'default'
-DefaultLayout.state = { menu: false }
+export default DefaultLayout

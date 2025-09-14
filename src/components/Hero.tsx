@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Button, ButtonGroup, Section } from '.'
 
 export interface HeroProps {
-  title: string
+  title: ReactNode
   children: ReactNode
   actions?: Array<{
     to: string

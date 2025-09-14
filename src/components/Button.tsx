@@ -12,9 +12,9 @@ interface BaseButtonProps {
   className?: string
 }
 
-type RegularButtonProps = ComponentProps<'button'> & BaseButtonProps
-type LinkButtonProps = LinkProps & BaseButtonProps
-export type ButtonProps = RegularButtonProps | LinkButtonProps
+export type HandlerButtonProps = ComponentProps<'button'> & BaseButtonProps
+export type LinkButtonProps = LinkProps & BaseButtonProps
+export type ButtonProps = HandlerButtonProps | LinkButtonProps
 
 export default function Button(props: ButtonProps) {
   const { color, size, rounded = true, active, disabled, outline, className, ...rest } = props

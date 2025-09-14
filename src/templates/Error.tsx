@@ -1,22 +1,20 @@
-import { graphql } from 'gatsby'
-import { Page, Hero } from '../components'
+import { graphql, PageProps } from 'gatsby'
+import { PageHead, PageLayout } from '../layouts/page'
+import { Hero } from '../components'
 
-export default class Error extends Page {
-  view() {
-    const {
-      page: {
-        title,
-        data: { code = 404, message },
-      },
-    } = this.props.data as Queries.ErrorQuery
-    this.title = title
-    this.noIndex = true
-    this.snippet = {
-      $comp: 'Error',
-      code,
-    }
-    return <Hero title={title}>{message as string}</Hero>
-  }
+export default function Error({ data }: PageProps<Queries.ErrorQuery>) {
+  const {
+    page: {
+      title,
+      data: { code = 404, message },
+    },
+  } = data
+  return (
+    <PageLayout title={title} snippet={{ $comp: 'Error', code }}>
+      <PageHead title={title} noIndex />
+      <Hero title={title}>{message as string}</Hero>
+    </PageLayout>
+  )
 }
 
 export const query = graphql`

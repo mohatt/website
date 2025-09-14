@@ -73,7 +73,9 @@ function ProjectCard({ project, skill, category }: ProjectCardProps) {
 }
 
 export interface ProjectCardMapProps extends Omit<ProjectCardProps, 'project'> {
-  data: Queries.ProjectCardFragment[] | Pick<Queries.ProjectCardGridPaginatedFragment, 'edges'>
+  data:
+    | readonly Queries.ProjectCardFragment[]
+    | Pick<Queries.ProjectCardGridPaginatedFragment, 'edges'>
 }
 
 ProjectCard.Map = function ProjectCardMap({ data, ...props }: ProjectCardMapProps) {
@@ -89,7 +91,7 @@ ProjectCard.Map = function ProjectCardMap({ data, ...props }: ProjectCardMapProp
 }
 
 export interface ProjectCardGridProps {
-  data: Queries.ProjectCardGridPaginatedFragment
+  data: readonly Queries.ProjectCardFragment[] | Queries.ProjectCardGridPaginatedFragment
   paginationRote?: string
   paginationParams?: {
     skill?: string
@@ -109,7 +111,7 @@ ProjectCard.Grid = function ProjectCardGrid({
         category={paginationParams?.category}
         skill={paginationParams?.skill}
       />
-      {paginationRote && (
+      {paginationRote && 'pageInfo' in data && (
         <Pagination route={paginationRote} params={paginationParams} pageInfo={data.pageInfo} />
       )}
     </div>

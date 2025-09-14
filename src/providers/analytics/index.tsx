@@ -1,17 +1,16 @@
 import { createContext, useContext, useEffect, useMemo, useRef, ReactNode } from 'react'
-import type { WindowLocation } from '@reach/router'
+import { useLocation } from '@reach/router'
 import { site, $document } from '../../constants'
 import { Analytics, createAnalytics, installAnalytics } from './analytics'
 
 const AnalyticsContext = createContext<Analytics>(undefined)
 
 interface AnalyticsProviderProps {
-  location: WindowLocation
   children: ReactNode
 }
 
-export function AnalyticsProvider({ children, location }: AnalyticsProviderProps) {
-  const { href, pathname, search, hash } = location
+export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
+  const { href, pathname, search, hash } = useLocation()
   const instance = useRef<Analytics>(null)
   const prevHref = useRef<string>('')
 
@@ -38,10 +37,14 @@ export function AnalyticsProvider({ children, location }: AnalyticsProviderProps
 }
 
 export function useAnalytics() {
-  return useContext(AnalyticsContext)
+  const ctx = useContext(AnalyticsContext)
+  if (!ctx) {
+    throw new Error('useAnalytics must be used inside AnalyticsProvider')
+  }
+  return ctx
 }
 
-export function useAnalyticsEffect(callback: (analytics: Analytics) => void, deps) {
+export function useAnalyticsEffect(callback: (analytics: Analytics) => void, deps: any[]) {
   const analytics = useAnalytics()
 
   /**

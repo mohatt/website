@@ -1,26 +1,25 @@
-import { graphql } from 'gatsby'
-import { Page, Section, Heading } from '../components'
+import { graphql, PageProps } from 'gatsby'
+import { PageHead, PageLayout } from '../layouts/page'
+import { Section, Heading } from '../components'
 import { ProjectCard } from './partials'
 
-export default class ProjectsByCategory extends Page {
-  view() {
-    const {
-      data: { projects, categoryObj },
-      pageContext: { category },
-    } = this.props
-    this.title = `${categoryObj.title} Projects`
-    this.snippet = {
-      $comp: 'Projects',
-      category,
-    }
+export default function ProjectsByCategory(
+  props: PageProps<Queries.ProjectsByCategoryQuery, { category: string }>,
+) {
+  const {
+    data: { projects, categoryObj },
+    pageContext: { category },
+  } = props
+  let title = `${categoryObj.title} Projects`
+  if (projects.pageInfo.currentPage > 1) {
+    title += ` (Page ${projects.pageInfo.currentPage})`
+  }
 
-    if (projects.pageInfo.currentPage > 1) {
-      this.title += ` (Page ${projects.pageInfo.currentPage})`
-    }
-
-    return (
+  return (
+    <PageLayout title={title} snippet={{ $comp: 'Projects', category }}>
+      <PageHead title={title} />
       <Section>
-        <Heading title={this.title} primary>
+        <Heading title={title} primary>
           {categoryObj.desc}
         </Heading>
         <ProjectCard.Grid
@@ -29,8 +28,8 @@ export default class ProjectsByCategory extends Page {
           paginationParams={{ category }}
         />
       </Section>
-    )
-  }
+    </PageLayout>
+  )
 }
 
 export const query = graphql`

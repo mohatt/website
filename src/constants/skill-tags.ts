@@ -73,7 +73,7 @@ function createSkillTagGroups(
 }
 
 interface SortableSkillInput {
-  tags: string[]
+  readonly tags: readonly string[]
 }
 
 function getSkillRank({ tags }: SortableSkillInput) {
@@ -87,7 +87,7 @@ function getSkillRank({ tags }: SortableSkillInput) {
 }
 
 export function sortSkillsByTagGroups<T extends SortableSkillInput>(
-  skills: T[],
+  skills: readonly T[],
   ignoredTags: string[] = [],
 ): T[] {
   const sorted = [...skills].sort((a, b) => getSkillRank(a) - getSkillRank(b))

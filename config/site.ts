@@ -15,14 +15,14 @@ const site = {
       routes: {
         home: '/',
       },
-      template: 'Index.js',
+      template: 'Index.tsx',
     },
     {
       title: 'Skills',
       routes: {
         skills: '/skills',
       },
-      template: 'Skills.js',
+      template: 'Skills.tsx',
     },
     {
       title: 'Projects',
@@ -30,7 +30,7 @@ const site = {
         projects: '/projects',
       },
       helper: 'projects.js',
-      template: 'ProjectsIndex.js',
+      template: 'ProjectsIndex.tsx',
     },
     {
       title: 'Projects By Category',
@@ -38,7 +38,7 @@ const site = {
         'projects.category': '/projects/category/:category',
       },
       helper: 'projects.js',
-      template: 'ProjectsByCategory.js',
+      template: 'ProjectsByCategory.tsx',
     },
     {
       title: 'Projects By Skill',
@@ -46,7 +46,7 @@ const site = {
         'projects.skill': '/projects/skill/:skill',
       },
       helper: 'projects.js',
-      template: 'ProjectsBySkill.js',
+      template: 'ProjectsBySkill.tsx',
     },
     {
       title: 'Project Details',
@@ -54,14 +54,14 @@ const site = {
         'projects.project': '/projects/:project',
       },
       helper: 'projects.js',
-      template: 'Project.js',
+      template: 'Project.tsx',
     },
     {
       title: 'Résumé',
       routes: {
         resume: '/resume',
       },
-      template: 'Resume.js',
+      template: 'Resume.tsx',
     },
     {
       title: '404: Not found',

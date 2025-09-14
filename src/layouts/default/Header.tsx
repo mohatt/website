@@ -1,13 +1,12 @@
-import { memo } from 'react'
-import { useLayout, useTheme } from '../../hooks'
-import { Button, Icon, Link } from '../../components'
-import { DocumentHead, Contacts } from '../partials'
+import { memo, ReactNode } from 'react'
+import { useLayoutState, useTheme } from '../../hooks'
+import { Contacts, Button, Icon, Link } from '../../components'
 
 function MenuButton() {
   const {
     state: { menu },
     dispatch,
-  } = useLayout()
+  } = useLayoutState<'default'>()
   return (
     <Button
       size='mono'
@@ -15,7 +14,7 @@ function MenuButton() {
       active={menu}
       onClick={(e) => {
         e.preventDefault()
-        dispatch('menu', !menu)
+        dispatch({ type: 'SET', payload: { menu: !menu } })
       }}
     >
       <Icon name='menu' className='w-6' />
@@ -56,13 +55,13 @@ export function EdgesThemeButton() {
 }
 
 export interface HeaderProps {
+  children?: ReactNode
   className?: string
 }
 
-function Header({ className }: HeaderProps) {
+function Header({ children, className }: HeaderProps) {
   return (
     <header className={className}>
-      <DocumentHead />
       <div className='min-h-screen sticky top-0 flex flex-col items-center w-16 lg:w-28 xl:w-32 ml-0.5 pt-10 pb-6'>
         <ul className='w-full flex flex-col items-center'>
           <li className='w-full mb-6'>
@@ -81,7 +80,7 @@ function Header({ className }: HeaderProps) {
           </li>
           {/* <li><EdgesThemeButton /></li> */}
         </ul>
-        <div className='flex-grow min-h-32' />
+        <div className='flex-grow min-h-32'>{children}</div>
         <Contacts>
           {(items) => (
             <div>
