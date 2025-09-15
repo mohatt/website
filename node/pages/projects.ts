@@ -1,7 +1,5 @@
-/**
- * @typedef {import('gatsby-plugin-advanced-pages/node').PageHelperProps} PageHelperProps
- * @typedef {import('gatsby').graphql} GraphQL
- */
+import type { CreatePagesArgs } from 'gatsby'
+import type { PageHelperFunction } from 'gatsby-plugin-advanced-pages/node'
 
 // Pagination limits for projects index page
 const PAGINATION_LIMIT_PROJECTS_INDEX = 6
@@ -13,15 +11,13 @@ let data = null
 
 /**
  * Fetches the data needed from GraphQL.
- *
- * @param {GraphQL} graphql
  */
-async function getData(graphql) {
+async function getData(graphql: CreatePagesArgs['graphql']) {
   if (data) {
     return data
   }
 
-  const result = await graphql(`
+  const result = await graphql<{ allProject: typeof data }>(`
     {
       allProject(filter: { draft: { ne: true } }) {
         edges {
@@ -56,10 +52,8 @@ async function getData(graphql) {
 
 /**
  * Projects index pages.
- *
- * @param {PageHelperProps} props
  */
-async function createIndexPage({ createAdvancedPage }) {
+const createIndexPage: PageHelperFunction = async function ({ createAdvancedPage }) {
   createAdvancedPage({
     route: 'projects',
     limit: PAGINATION_LIMIT_PROJECTS_INDEX,
@@ -68,10 +62,8 @@ async function createIndexPage({ createAdvancedPage }) {
 
 /**
  * Projects by category list pages.
- *
- * @param {PageHelperProps} props
  */
-async function createListByCategoryPages({ graphql, createAdvancedPage }) {
+const createByCategoryPages: PageHelperFunction = async function ({ graphql, createAdvancedPage }) {
   const { categories } = await getData(graphql)
   for (const category of categories) {
     createAdvancedPage({
@@ -89,10 +81,8 @@ async function createListByCategoryPages({ graphql, createAdvancedPage }) {
 
 /**
  * Projects by skill list pages.
- *
- * @param {PageHelperProps} props
  */
-async function createListBySkillPages({ graphql, createAdvancedPage }) {
+const createBySkillPages: PageHelperFunction = async function ({ graphql, createAdvancedPage }) {
   const { skills } = await getData(graphql)
   for (const skill of skills) {
     createAdvancedPage({
@@ -110,10 +100,8 @@ async function createListBySkillPages({ graphql, createAdvancedPage }) {
 
 /**
  * Project details pages.
- *
- * @param {PageHelperProps} props
  */
-async function createDetailsPages({ graphql, createAdvancedPage }) {
+const createDetailsPages: PageHelperFunction = async function ({ graphql, createAdvancedPage }) {
   const { edges } = await getData(graphql)
   for (const { node } of edges) {
     createAdvancedPage({
@@ -129,21 +117,16 @@ async function createDetailsPages({ graphql, createAdvancedPage }) {
   }
 }
 
-/**
- * Main entry point.
- *
- * @param {PageHelperProps} args
- */
-module.exports = async (args) => {
+const helperFn: PageHelperFunction = async function ProjectsHelperFn(args) {
   switch (args.page.templateName) {
     case 'ProjectsIndex.tsx':
       await createIndexPage(args)
       break
     case 'ProjectsByCategory.tsx':
-      await createListByCategoryPages(args)
+      await createByCategoryPages(args)
       break
     case 'ProjectsBySkill.tsx':
-      await createListBySkillPages(args)
+      await createBySkillPages(args)
       break
     case 'Project.tsx':
       await createDetailsPages(args)
@@ -152,3 +135,5 @@ module.exports = async (args) => {
     // Unrecognized page template
   }
 }
+
+export default helperFn

@@ -1,5 +1,6 @@
 import path from 'path'
 import deployment from './deployment'
+import projectsHelper from '../node/pages/projects'
 
 const site = {
   metadata: {
@@ -29,7 +30,7 @@ const site = {
       routes: {
         projects: '/projects',
       },
-      helper: 'projects.js',
+      helper: projectsHelper,
       template: 'ProjectsIndex.tsx',
     },
     {
@@ -37,7 +38,7 @@ const site = {
       routes: {
         'projects.category': '/projects/category/:category',
       },
-      helper: 'projects.js',
+      helper: projectsHelper,
       template: 'ProjectsByCategory.tsx',
     },
     {
@@ -45,7 +46,7 @@ const site = {
       routes: {
         'projects.skill': '/projects/skill/:skill',
       },
-      helper: 'projects.js',
+      helper: projectsHelper,
       template: 'ProjectsBySkill.tsx',
     },
     {
@@ -53,7 +54,7 @@ const site = {
       routes: {
         'projects.project': '/projects/:project',
       },
-      helper: 'projects.js',
+      helper: projectsHelper,
       template: 'Project.tsx',
     },
     {
