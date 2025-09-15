@@ -44,7 +44,7 @@ export default function LayoutStateProvider({ children }: LayoutStateProviderPro
   }
 
   // Forces re-render when the current state changes
-  const [, setTick] = useState(0)
+  const [tick, setTick] = useState(0)
 
   const dispatch = useCallback<DispatcherOf<any>>(
     (action) => {
@@ -60,7 +60,8 @@ export default function LayoutStateProvider({ children }: LayoutStateProviderPro
 
   const value = useMemo<LayoutStateContextValue>(
     () => ({ id, state: registry.current[id].state, dispatch }),
-    [id, dispatch],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [id, tick, dispatch],
   )
 
   return (
