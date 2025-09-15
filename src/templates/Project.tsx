@@ -3,7 +3,7 @@ import { graphql, PageProps } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { themeScreens } from '@/constants'
 import { cx, NetworkHandle } from '@/util'
-import { useLightbox } from '@/hooks'
+import { useLightbox, useScrollbars } from '@/hooks'
 import { Heading, Link, Mdx, Section } from '@/components'
 import { PageHead, PageLayout } from '@/layouts/page'
 import { ProjectSkill, Testimonial } from './partials'
@@ -13,6 +13,7 @@ interface ProjectGalleryProps {
 }
 
 function ProjectGallery({ screens }: ProjectGalleryProps) {
+  const [ref] = useScrollbars<HTMLDivElement>({ defer: true })
   const lightbox = useLightbox({
     showHideAnimationType: 'none',
     dataSource: screens.map(({ org, full, thumb }) => ({
@@ -25,29 +26,31 @@ function ProjectGallery({ screens }: ProjectGalleryProps) {
   })
 
   return (
-    <div className='flex overflow-x-auto mb-12'>
-      {screens.map(({ thumb }, i) => {
-        const cls = `scr_thumb_${i}`
-        const ratio = thumb.width / thumb.height
-        return (
-          <div
-            key={i}
-            className={`flex-shrink-0 cursor-zoom mr-1 ${cls}`}
-            onClick={() => lightbox.loadAndOpen(i)}
-          >
-            <style>
-              {`.${cls} { width: ${200 * ratio}px }
+    <div ref={ref} className='mb-12'>
+      <div className='flex'>
+        {screens.map(({ thumb }, i) => {
+          const cls = `scr_thumb_${i}`
+          const ratio = thumb.width / thumb.height
+          return (
+            <div
+              key={i}
+              className={`flex-shrink-0 cursor-zoom mr-1 ${cls}`}
+              onClick={() => lightbox.loadAndOpen(i)}
+            >
+              <style>
+                {`.${cls} { width: ${200 * ratio}px }
               @media(min-width: ${themeScreens.lg}) {
                 .${cls} { width: ${300 * ratio}px }
               }
               @media(min-width: ${themeScreens['2xl']}) {
                 .${cls} { width: ${500 * ratio}px }
               }`.replace(/\s+/g, '')}
-            </style>
-            <GatsbyImage image={thumb} alt={`Screen ${i + 1}`} />
-          </div>
-        )
-      })}
+              </style>
+              <GatsbyImage image={thumb} alt={`Screen ${i + 1}`} className='rounded-md' />
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

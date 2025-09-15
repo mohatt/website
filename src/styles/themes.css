@@ -58,10 +58,10 @@ html[data-layout='print'] {
  */
 .et-sm {
   & .rounded-full {
-    @apply rounded-sm;
+    @apply rounded;
   }
 
   & .rounded-md {
-    @apply rounded-none;
+    @apply rounded;
   }
 }

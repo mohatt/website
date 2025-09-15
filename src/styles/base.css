@@ -62,7 +62,7 @@
       @apply border-2 border-primary;
 
       html[data-layout='default'] & {
-        @apply lg:border-4;
+        @apply lg:border-[3px];
         box-shadow: 0 0.2rem 0 0.09rem theme('colors.typo');
       }
     }

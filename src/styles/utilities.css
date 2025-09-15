@@ -79,4 +79,24 @@
       }
     }
   }
+
+  .border-gradient-2 {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .border-gradient-2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, theme('colors.primary') 100%);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 5;
+  }
 }

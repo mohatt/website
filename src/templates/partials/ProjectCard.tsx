@@ -24,12 +24,12 @@ function ProjectCard({ project, skill, category }: ProjectCardProps) {
           <Link className='block' {...props}>
             <GatsbyImage
               image={getImage(project.image)}
-              className='border-2 border-primary rounded-md shadow-lg'
+              className='rounded-md shadow-lg border-gradient-2'
               alt={project.title}
             />
           </Link>
           <NetworkHandle.Map data={project.handles} limit={2}>
-            {(items) => <div className='absolute -bottom-4 right-4'>{items}</div>}
+            {(items) => <div className='absolute -bottom-4 right-4 z-10'>{items}</div>}
             {({ title, href, Icon }, _i) => (
               <Button
                 href={href}
