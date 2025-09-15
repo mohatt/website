@@ -4,4 +4,5 @@ static
 content
 firebase.json
 font-preload-cache.json
+gatsby-types.d.ts
 pnpm-lock.yaml

@@ -140,7 +140,7 @@ jobs:
           pnpm run build
           mkdir deploy
           mv public/firebase.json deploy/
-          mv public deploy/
+          cp -r public deploy/
 
       - id: deploy
         name: Deploy (${{ steps.channel.outputs.deploy_channel }})
@@ -184,5 +184,50 @@ jobs:
             - **URL:** ${{ steps.channel.outputs.deploy_url }}
             - **Commit:** ${{ github.sha }}
             - **Maintenance:** `${{ steps.maintenance.outputs.enabled }}`
+
+            ### 📊 Lighthouse Reports
+            ⏳ Please wait while Lighthouse reports are generated…
+
+            _(This comment updates on each PR deploy)_
+
+      - name: Run Lighthouse Tests (Live)
+        uses: treosh/lighthouse-ci-action@v12
+        continue-on-error: true
+        id: lhci
+        with:
+          urls: |
+            ${{ steps.channel.outputs.deploy_url }}
+            ${{ steps.channel.outputs.deploy_url }}/projects/
+            ${{ steps.channel.outputs.deploy_url }}/resume/
+            ${{ steps.channel.outputs.deploy_url }}/skills/
+          configPath: './.lighthouserc-live.js'
+          temporaryPublicStorage: true
+
+      - name: Format Lighthouse links
+        id: lhci-format
+        run: |
+          {
+            echo "formatted<<EOF"
+            echo '${{ steps.lhci.outputs.links }}' \
+              | jq -r 'to_entries | map("- **\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Final Comment on PR
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: preview-deploy
+          message: |
+            ### 🚀 Preview Deploy
+            - **Environment:** `${{ steps.target.outputs.env_name }}`
+            - **Project:** `${{ steps.target.outputs.project_id }}`
+            - **Channel:** `${{ steps.channel.outputs.deploy_channel }}`
+            - **URL:** ${{ steps.channel.outputs.deploy_url }}
+            - **Commit:** ${{ github.sha }}
+            - **Maintenance:** `${{ steps.maintenance.outputs.enabled }}`
+
+            ### 📊 Lighthouse Reports (deployed URL)
+            ${{ steps.lhci-format.outputs.formatted }}
 
             _(This comment updates on each PR deploy)_

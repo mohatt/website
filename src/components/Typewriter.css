@@ -10,7 +10,7 @@
       @apply opacity-100;
     }
 
-    to {
+    100% {
       @apply opacity-0;
     }
   }

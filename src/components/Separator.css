@@ -3,7 +3,7 @@
     @apply w-full bg-primary border-0;
 
     &.sep-gradient {
-      background: linear-gradient(90deg, theme('colors.primary') 0%, rgba(0, 0, 0, 0) 85%);
+      background: linear-gradient(90deg, theme('colors.primary') 0%, rgb(0 0 0 / 0%) 85%);
     }
 
     &,

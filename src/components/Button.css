@@ -44,7 +44,7 @@
     }
 
     &.btn-disabled {
-      @apply cursor-auto;
+      @apply cursor-auto opacity-60;
     }
 
     &:hover:not(.btn-disabled),

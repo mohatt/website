@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     collect: {
       staticDistDir: 'public',
-      url: ['/'],
+      url: ['/', '/projects/', '/resume/', '/skills/'],
       numberOfRuns: 3,
       settings: {
         preset: 'desktop',
@@ -18,7 +18,6 @@ module.exports = {
         'apple-touch-icon': 'off',
         'color-contrast': 'off',
         'content-width': 'off',
-        'errors-in-console': 'off',
         'heading-order': 'off',
         'maskable-icon': 'off',
         'service-worker': 'off',
