@@ -78,11 +78,11 @@ For more information, check out [`.github/workflows`](.github/workflows) directo
 [MIT](https://github.com/mohatt/website/blob/development/LICENSE)
 
 [cd-dev-url]: https://github.com/mohatt/website/actions/workflows/cd.yml?query=branch%3Adevelopment
-[cd-dev-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/cd.yml?logo=github&branch=development&label=development
+[cd-dev-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/cd.yml?logo=github&branch=development&label=staging
 [cd-prod-url]: https://github.com/mohatt/website/actions/workflows/cd.yml?query=branch%3Aproduction
 [cd-prod-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/cd.yml?logo=github&branch=production&label=production
-[gatsby-url]: https://github.com/gatsbyjs/gatsby/blob/gatsby%405.14.0/packages/gatsby/CHANGELOG.md
-[gatsby-img]: https://img.shields.io/badge/gatsby-v5.14-blueviolet.svg?logo=gatsby
+[gatsby-url]: https://github.com/gatsbyjs/gatsby/blob/gatsby%405.15.0/packages/gatsby/CHANGELOG.md
+[gatsby-img]: https://img.shields.io/badge/gatsby-v5.15-blueviolet.svg?logo=gatsby
 [website-url]: https://mohatt.web.app
 [website-img]: https://img.shields.io/website?logo=statuspal&url=https%3A%2F%2Fmohatt.web.app
 [s-headers-url]: https://securityheaders.com/?followRedirects=on&q=mohatt.web.app
