@@ -1,10 +1,9 @@
-import type { ReactNode } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { themeScreens } from '@/constants'
-import { cx, NetworkHandle } from '@/util'
+import { NetworkHandle } from '@/util'
 import { useLightbox, useScrollbars } from '@/hooks'
-import { Heading, Link, Mdx, Section } from '@/components'
+import { Heading, Detail, Link, Mdx, Section } from '@/components'
 import { PageHead, PageLayout } from '@/layouts/page'
 import { ProjectSkill, Testimonial } from './partials'
 
@@ -34,7 +33,7 @@ function ProjectGallery({ screens }: ProjectGalleryProps) {
           return (
             <div
               key={i}
-              className={`flex-shrink-0 cursor-zoom mr-1 ${cls}`}
+              className={`flex-shrink-0 cursor-zoom mr-1.5 ${cls}`}
               onClick={() => lightbox.loadAndOpen(i)}
             >
               <style>
@@ -51,21 +50,6 @@ function ProjectGallery({ screens }: ProjectGalleryProps) {
           )
         })}
       </div>
-    </div>
-  )
-}
-
-interface MetadataProps {
-  title: string
-  children: ReactNode
-  className?: string
-}
-
-function Metadata({ title, children, className }: MetadataProps) {
-  return (
-    <div className={cx('text-lg leading-normal', className)}>
-      <h3 className='text-primary'>{title}</h3>
-      <div className='mt-3 font-medium'>{children}</div>
     </div>
   )
 }
@@ -103,10 +87,14 @@ export default function Project(props: PageProps<Queries.ProjectQuery, { project
         {screens.length > 1 && <ProjectGallery screens={screens} />}
         <div className='grid md:grid-cols-3 gap-x-4 gap-y-8'>
           <ProjectSkill.Map data={project.skills}>
-            {(items) => <Metadata title='Skills'>{items}</Metadata>}
+            {(items) => <Detail title='Skills'>{items}</Detail>}
           </ProjectSkill.Map>
           <NetworkHandle.Map data={project.handles}>
-            {(items) => <Metadata title='Links'>{items}</Metadata>}
+            {(items) => (
+              <Detail title='Links' innerClassName='text-lg'>
+                {items}
+              </Detail>
+            )}
             {({ title, href, Icon }, _i) => (
               <Link href={href} linkId='project_link' className='link mr-4 mb-1'>
                 <Icon className='w-5 mr-2' />
@@ -114,7 +102,9 @@ export default function Project(props: PageProps<Queries.ProjectQuery, { project
               </Link>
             )}
           </NetworkHandle.Map>
-          <Metadata title='Started'>{project.started}</Metadata>
+          <Detail title='Started' innerClassName='text-lg'>
+            {project.started}
+          </Detail>
         </div>
       </Section>
       <Testimonial.Map data={project.testimonials} limit={1}>

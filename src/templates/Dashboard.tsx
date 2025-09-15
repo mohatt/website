@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { site, resume, skillTagGroups, skillTags } from '@/constants'
 import { PageHead, PageLayout } from '@/layouts/page'
+import { Detail } from '@/components'
 import { AuthGuard } from '@/firebase'
 
 interface DownloadOptions {
@@ -190,15 +191,6 @@ function GatsbyInfo({ data }: { data: Queries.DashboardQuery }) {
   )
 }
 
-function Metadata({ title, children }) {
-  return (
-    <div className='leading-normal'>
-      <h3 className='text-primary font-body text-xl pb-2'>{title}</h3>
-      <div className='mt-3 font-medium'>{children}</div>
-    </div>
-  )
-}
-
 export default function Dashboard({ data }: PageProps<Queries.DashboardQuery>) {
   const title = data.page.title
   return (
@@ -206,18 +198,18 @@ export default function Dashboard({ data }: PageProps<Queries.DashboardQuery>) {
       <PageHead title={data.page.title} noIndex />
       <AuthGuard title={title}>
         <div className='grid md:grid-cols-2 gap-x-4 gap-y-8'>
-          <Metadata title='Deployment Info'>
+          <Detail title='Deployment Info'>
             <DeploymentInfo />
-          </Metadata>
-          <Metadata title='Content Info'>
+          </Detail>
+          <Detail title='Content Info'>
             <ContentInfo data={data} />
-          </Metadata>
-          <Metadata title='Gatsby Info'>
+          </Detail>
+          <Detail title='Gatsby Info'>
             <GatsbyInfo data={data} />
-          </Metadata>
-          <Metadata title='Export Data'>
+          </Detail>
+          <Detail title='Export Data'>
             <ExportLink data={data} />
-          </Metadata>
+          </Detail>
         </div>
       </AuthGuard>
     </PageLayout>
