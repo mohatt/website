@@ -49,11 +49,6 @@ jobs:
         continue-on-error: true
         id: lhci
         with:
-          urls: |
-            /
-            /projects/
-            /resume/
-            /skills/
           configPath: './.lighthouserc.js'
           temporaryPublicStorage: true
 
@@ -63,7 +58,7 @@ jobs:
           {
             echo "formatted<<EOF"
             echo '${{ steps.lhci.outputs.links }}' \
-              | jq -r 'to_entries | map("**\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
+              | jq -r 'to_entries | map("- **\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
@@ -73,7 +68,8 @@ jobs:
         with:
           header: ci-summary
           message: |
-            ### ✅ All CI checks have passed.
+            ### ✅ All checks have passed.
+            Check CI workflow summary for more details.
 
             ### 📊 Lighthouse Reports (local build)
             ${{ steps.lhci-format.outputs.formatted }}

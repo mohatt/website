@@ -209,7 +209,7 @@ jobs:
           {
             echo "formatted<<EOF"
             echo '${{ steps.lhci.outputs.links }}' \
-              | jq -r 'to_entries | map("**\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
+              | jq -r 'to_entries | map("- **\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
