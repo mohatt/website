@@ -1,41 +1,48 @@
 {
   "name": "@mohatt/website",
+  "version": "3.0.0",
   "private": true,
   "description": "Codebase for my personal website",
-  "version": "3.0.0",
-  "sideEffects": [
-    "src/**/*.css"
-  ],
-  "scripts": {
-    "clean": "gatsby clean",
-    "start": "gatsby develop -H 0.0.0.0",
-    "build": "gatsby build",
-    "build:profile": "gatsby build --profile",
-    "serve": "gatsby serve -H 0.0.0.0",
-    "lint": "pnpm run lint:js && pnpm run lint:css",
-    "lint:js": "eslint .",
-    "lint:css": "stylelint 'src/**/*.css'",
-    "typecheck": "tsc --noEmit -p .",
-    "format": "prettier -w .",
-    "format:check": "prettier -c .",
-    "eslint:config": "eslint --print-config .eslintrc.json",
-    "eslint:check": "eslint-config-prettier .eslintrc.json",
-    "fonts:preload-cache": "gatsby-preload-fonts"
-  },
   "keywords": [
     "website",
     "gatsby",
     "react",
     "tailwindcss"
   ],
-  "author": "Mohamed Elkholy <mohatt@pm.me>",
-  "license": "MIT",
+  "homepage": "https://github.com/mohatt/website",
+  "bugs": "https://github.com/mohatt/website/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/mohatt/website.git"
   },
-  "homepage": "https://github.com/mohatt/website",
-  "bugs": "https://github.com/mohatt/website/issues",
+  "license": "MIT",
+  "author": "Mohamed Elkholy <mohatt@pm.me>",
+  "sideEffects": [
+    "src/**/*.css"
+  ],
+  "scripts": {
+    "build": "gatsby build",
+    "build:profile": "gatsby build --profile",
+    "clean": "gatsby clean",
+    "eslint:check": "eslint-config-prettier .eslintrc.json",
+    "eslint:config": "eslint --print-config .eslintrc.json",
+    "fonts:preload-cache": "gatsby-preload-fonts",
+    "format": "prettier -w .",
+    "format:check": "prettier -c .",
+    "lint": "pnpm run lint:js && pnpm run lint:css",
+    "lint:css": "stylelint 'src/**/*.css'",
+    "lint:js": "eslint .",
+    "serve": "gatsby serve -H 0.0.0.0",
+    "start": "gatsby develop -H 0.0.0.0",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not IE 11",
+    "not op_mini all",
+    "not dead"
+  ],
   "dependencies": {
     "@mdx-js/react": "^2.3.0",
     "autoprefixer": "^10.4.21",
@@ -81,6 +88,7 @@
     "@types/webpack-bundle-analyzer": "^4.7.0",
     "eslint": "^7.32.0",
     "prettier": "^3.6.2",
+    "prettier-plugin-packagejson": "^2.5.19",
     "simple-icons": "^15.15.0",
     "stylelint": "^16.24.0",
     "stylelint-config-standard": "^39.0.0",
@@ -92,13 +100,6 @@
     "node": ">=18",
     "pnpm": ">=9"
   },
-  "browserslist": [
-    "last 2 versions",
-    "> 1%",
-    "not IE 11",
-    "not op_mini all",
-    "not dead"
-  ],
   "renovate": {
     "extends": [
       "config:js-app"
