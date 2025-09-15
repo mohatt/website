@@ -1,6 +1,6 @@
 import { useCallback, ReactNode } from 'react'
-import { useLayoutState, usePath } from '../../hooks'
-import { site } from '../../constants'
+import { useLayoutState, usePath } from '@/hooks'
+import { site } from '@/constants'
 import Menu from './Menu'
 import Header from './Header'
 import Footer from './Footer'

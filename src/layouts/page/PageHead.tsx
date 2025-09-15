@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useLocation } from '@reach/router'
-import { useLayout, SiteSocialBanner, useSiteMetadata } from '../../hooks'
-import { site } from '../../constants'
-import avatarAlt from '../../images/avatar/photo-nobg.webp'
+import { useLayout, SiteSocialBanner, useSiteMetadata } from '@/hooks'
+import { site } from '@/constants'
+import avatarAlt from '@/images/avatar/photo-nobg.webp'
 
 export interface PageHeadProps {
   // SEO title

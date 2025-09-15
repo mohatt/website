@@ -1,6 +1,6 @@
 import { graphql, PageProps } from 'gatsby'
-import { PageHead, PageLayout } from '../layouts/page'
-import { Section, Heading } from '../components'
+import { PageHead, PageLayout } from '@/layouts/page'
+import { Section, Heading } from '@/components'
 import { ProjectCard } from './partials'
 
 export default function ProjectsBySkill(

@@ -1,5 +1,5 @@
-import { icons } from '../constants'
-import { cx } from '../util'
+import { icons } from '@/constants'
+import { cx } from '@/util'
 import BaseIcon from './BaseIcon'
 
 export interface IconProps {

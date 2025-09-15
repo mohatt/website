@@ -1,5 +1,5 @@
 import { ComponentProps } from 'react'
-import { cx } from '../util'
+import { cx } from '@/util'
 import Link, { LinkProps } from './Link'
 
 interface BaseButtonProps {

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useRef, ReactNode } from 'react'
 import { useLocation } from '@reach/router'
-import { site, $document } from '../../constants'
+import { site, $document } from '@/constants'
 import { Analytics, createAnalytics, installAnalytics } from './analytics'
 
 const AnalyticsContext = createContext<Analytics>(undefined)

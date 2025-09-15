@@ -1,6 +1,6 @@
 import { graphql, PageProps } from 'gatsby'
-import { PageHead, PageLayout } from '../layouts/page'
-import { Hero, Typewriter } from '../components'
+import { PageHead, PageLayout } from '@/layouts/page'
+import { Hero, Typewriter } from '@/components'
 
 const content = {
   hi: 'Hi, I’m Mohamed.',

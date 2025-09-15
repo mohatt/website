@@ -2,8 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      // @todo rename gatsby to node
-      "gatsby": ["node_modules/gatsby"]
+      "@/*": ["src/*"]
     },
     "module": "esnext",
     "target": "esnext",
@@ -26,11 +25,12 @@
   },
   "include": [
     "src",
-    "gatsby",
+    "node",
     "gatsby-node.ts",
     "gatsby-browser.tsx",
     "gatsby-ssr.tsx",
     "gatsby-config.ts",
-    "gatsby-types.d.ts"
+    "gatsby-types.d.ts",
+    "adaptor.ts"
   ]
 }

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Button, ButtonGroup, Section } from '.'
+import { Button, ButtonGroup, Section } from './index'
 
 export interface HeroProps {
   title: ReactNode

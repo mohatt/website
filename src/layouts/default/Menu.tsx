@@ -1,9 +1,9 @@
 import { memo, useEffect, useRef, useState, MouseEvent } from 'react'
 import { generatePath, routeExists } from 'gatsby-plugin-advanced-pages'
-import { menu, $window, $document, SiteMenuSubItem } from '../../constants'
-import { cx } from '../../util'
-import { usePath } from '../../hooks'
-import { Link } from '../../components'
+import { menu, $window, $document, SiteMenuSubItem } from '@/constants'
+import { cx } from '@/util'
+import { usePath } from '@/hooks'
+import { Link } from '@/components'
 
 interface SubMenuProps {
   items: SiteMenuSubItem[]

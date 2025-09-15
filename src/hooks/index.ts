@@ -1,9 +1,9 @@
 export { useLocation } from '@reach/router'
 
-export { usePath } from '../providers/path'
-export { useAnalytics, useAnalyticsEffect } from '../providers/analytics'
-export { useTheme } from '../providers/theme'
-export { useLayout, useLayoutState } from '../providers/layout'
+export { usePath } from '@/providers/path'
+export { useAnalytics, useAnalyticsEffect } from '@/providers/analytics'
+export { useTheme } from '@/providers/theme'
+export { useLayout, useLayoutState } from '@/providers/layout'
 
 export { useEnhancedEffect } from './useEnhancedEffect'
 export { useLazyRef } from './useLazyRef'

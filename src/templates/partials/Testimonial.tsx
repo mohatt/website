@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import { createReactMap, ReactMapItemProps, cx } from '../../util'
+import { createReactMap, ReactMapItemProps, cx } from '@/util'
 
 export interface TestimonialItem extends Queries.TestimonialFragment {}
 

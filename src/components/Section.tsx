@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { cx } from '../util'
-import { useLayout } from '../hooks'
+import { cx } from '@/util'
+import { useLayout } from '@/hooks'
 import Separator from './Separator'
 
 export interface SectionProps {

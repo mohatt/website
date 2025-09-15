@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { generatePath, RouteParams } from 'gatsby-plugin-advanced-pages'
-import { site, resume, sortSkillsByTagGroups } from '../constants'
-import { cx } from '../util'
-import { useLayout } from '../hooks'
-import { PageHead, PageLayout } from '../layouts/page'
-import { Contacts, Heading, Section, Link, Icon, Masonry } from '../components'
+import { site, resume, sortSkillsByTagGroups } from '@/constants'
+import { cx } from '@/util'
+import { useLayout } from '@/hooks'
+import { PageHead, PageLayout } from '@/layouts/page'
+import { Contacts, Heading, Section, Link, Icon, Masonry } from '@/components'
 import { Testimonial } from './partials'
 
 interface PrintLinkProps {

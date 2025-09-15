@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react'
-import { site } from '../constants'
-import { NetworkHandle } from '../util'
+import { site } from '@/constants'
+import { NetworkHandle } from '@/util'
 
 export interface ContactsProps extends Omit<ComponentProps<typeof NetworkHandle.Map>, 'data'> {
   homepage?: boolean

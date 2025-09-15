@@ -1,4 +1,4 @@
-import { $window, $document } from '../../constants'
+import { $window, $document } from '@/constants'
 
 declare global {
   interface Window {

@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react'
-import { cx } from '../util'
+import { cx } from '@/util'
 
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {}
 

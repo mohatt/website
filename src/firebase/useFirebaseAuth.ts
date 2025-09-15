@@ -6,7 +6,7 @@ import {
   browserPopupRedirectResolver,
   inMemoryPersistence,
 } from 'firebase/auth'
-import { $window } from '../constants'
+import { $window } from '@/constants'
 import { useFirebase } from './useFirebase'
 
 export const useFirebaseAuth = () => {

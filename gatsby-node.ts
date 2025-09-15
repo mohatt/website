@@ -1,1 +1,1 @@
-export * from './gatsby'
+export * from './node'

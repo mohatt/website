@@ -1,4 +1,4 @@
-import { cx } from '../util'
+import { cx } from '@/util'
 import * as styles from './ProgressRing.module.css'
 
 export interface ProgressRingProps {

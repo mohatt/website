@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { MDXProvider } from '@mdx-js/react'
-import { BaseIcon, Button, Heading, Icon, Link, Separator, Typography } from '.'
+import { BaseIcon, Button, Heading, Icon, Link, Separator, Typography } from './index'
 
 const shortcodes = {
   a({ href, ...props }) {

@@ -1,6 +1,6 @@
 import { graphql, PageProps } from 'gatsby'
-import { PageHead, PageLayout } from '../layouts/page'
-import { Hero } from '../components'
+import { PageHead, PageLayout } from '@/layouts/page'
+import { Hero } from '@/components'
 
 export default function Error({ data }: PageProps<Queries.ErrorQuery>) {
   const {

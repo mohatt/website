@@ -1,6 +1,6 @@
 import { memo, useEffect, useRef, useState } from 'react'
-import { cx } from '../util'
-import { useMounted } from '../hooks'
+import { cx } from '@/util'
+import { useMounted } from '@/hooks'
 
 export interface TypewriterTextProps {
   // Words to type, in order

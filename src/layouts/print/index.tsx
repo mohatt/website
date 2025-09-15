@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { useLayout } from '../../hooks'
-import { Button, Icon } from '../../components'
+import { useLayout } from '@/hooks'
+import { Button, Icon } from '@/components'
 
 interface PrintLayoutProps {
   children: ReactNode

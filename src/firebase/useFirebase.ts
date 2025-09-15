@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { getApps, getApp, initializeApp } from 'firebase/app'
-import { site } from '../constants'
+import { site } from '@/constants'
 
 export const useFirebase = () => {
   return useMemo(() => {

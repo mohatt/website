@@ -1,5 +1,5 @@
 import { FC, ReactNode, createContext, useContext } from 'react'
-import { DefaultLayout, PrintLayout } from '../../layouts'
+import { DefaultLayout, PrintLayout } from '@/layouts'
 
 export interface LayoutState {
   readonly [key: string]: any

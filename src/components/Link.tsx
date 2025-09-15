@@ -1,7 +1,7 @@
 import { ComponentProps, SyntheticEvent } from 'react'
 import { Link as InternalLink, LinkProps as InternalLinkProps } from 'gatsby-plugin-advanced-pages'
-import { $window } from '../constants'
-import { useAnalytics } from '../hooks'
+import { $window } from '@/constants'
+import { useAnalytics } from '@/hooks'
 
 function parseLink(href: string) {
   try {

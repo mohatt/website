@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import BaseMasonry, { MasonryProps as BaseMasonryProps } from 'react-masonry-css'
-import { cx } from '../util'
+import { cx } from '@/util'
 
 export interface MasonryProps {
   children: ReactNode

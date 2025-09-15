@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { generatePath } from 'gatsby-plugin-advanced-pages'
-import { site } from '../../constants'
-import { Section, Link } from '../../components'
+import { site } from '@/constants'
+import { Section, Link } from '@/components'
 
 export interface FooterProps {
   className?: string

@@ -1,11 +1,11 @@
-import { type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { themeScreens } from '../constants'
-import { cx, NetworkHandle } from '../util'
-import { useLightbox } from '../hooks'
-import { Heading, Link, Mdx, Section } from '../components'
-import { PageHead, PageLayout } from '../layouts/page'
+import { themeScreens } from '@/constants'
+import { cx, NetworkHandle } from '@/util'
+import { useLightbox } from '@/hooks'
+import { Heading, Link, Mdx, Section } from '@/components'
+import { PageHead, PageLayout } from '@/layouts/page'
 import { ProjectSkill, Testimonial } from './partials'
 
 interface ProjectGalleryProps {

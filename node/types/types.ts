@@ -1,9 +1,10 @@
 import _ from 'lodash'
+import type { Node } from 'gatsby'
 import type { GraphQLFieldConfigMap } from 'graphql'
 import type { ObjectTypeComposerAsObjectDefinition } from 'graphql-compose'
-import { createParentFieldResolverProxy } from './util'
+import { createResolver, createParentFieldResolverProxy } from './util'
 
-export const create: Array<ObjectTypeComposerAsObjectDefinition<any, any>> = [
+export const create: Array<ObjectTypeComposerAsObjectDefinition<Node, unknown>> = [
   {
     name: 'Project',
     fields: {
@@ -48,10 +49,10 @@ export const create: Array<ObjectTypeComposerAsObjectDefinition<any, any>> = [
       },
       testimonials: {
         type: '[Testimonial]',
-        async resolve(source, args, context) {
+        resolve: createResolver(async (source, args, context) => {
           const { entries } = await context.nodeModel.findAll({ type: 'Testimonial' })
           return [...entries].filter((t) => t.project === source.slug)
-        },
+        }),
       },
       handles: '[String]',
       // This field is not currently being used anywhere
@@ -70,7 +71,7 @@ export const create: Array<ObjectTypeComposerAsObjectDefinition<any, any>> = [
       title: 'String!',
       icon: {
         type: 'String',
-        resolve(source) {
+        resolve: createResolver((source) => {
           if (source.icon.length >= 32) {
             return source.icon
           }
@@ -78,15 +79,15 @@ export const create: Array<ObjectTypeComposerAsObjectDefinition<any, any>> = [
           const icons = require('simple-icons')
           const icon = icons[`si${_.upperFirst(source.icon)}`]
           return icon?.path ?? source.icon
-        },
+        }),
       },
       tags: '[String!]',
       size: {
         type: 'Int!',
-        async resolve(source, args, context) {
+        resolve: createResolver(async (source, args, context) => {
           const { entries } = await context.nodeModel.findAll({ type: 'Project' })
           return [...entries].filter((p) => p.skills.find((s) => s === source.slug)).length
-        },
+        }),
       },
     },
     interfaces: ['Node'],
@@ -98,10 +99,10 @@ export const create: Array<ObjectTypeComposerAsObjectDefinition<any, any>> = [
       desc: 'String!',
       size: {
         type: 'Int!',
-        async resolve(source, args, context) {
+        resolve: createResolver(async (source, args, context) => {
           const { entries } = await context.nodeModel.findAll({ type: 'Project' })
           return [...entries].filter((p) => p.categories.find((s) => s === source.slug)).length
-        },
+        }),
       },
     },
     interfaces: ['Node'],
@@ -140,7 +141,7 @@ export const create: Array<ObjectTypeComposerAsObjectDefinition<any, any>> = [
 ]
 
 export interface TypeExtensions {
-  [type: string]: GraphQLFieldConfigMap<any, any>
+  [type: string]: GraphQLFieldConfigMap<Node, unknown>
 }
 
 export const extend: TypeExtensions = {}

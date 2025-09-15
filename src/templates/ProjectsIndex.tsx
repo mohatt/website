@@ -1,6 +1,6 @@
 import { graphql, PageProps } from 'gatsby'
-import { Heading, Section, Link } from '../components'
-import { PageHead, PageLayout } from '../layouts/page'
+import { Heading, Section, Link } from '@/components'
+import { PageHead, PageLayout } from '@/layouts/page'
 import { ProjectCard, ProjectCategory } from './partials'
 
 export default function ProjectsIndex(props: PageProps<Queries.ProjectsIndexQuery>) {

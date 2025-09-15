@@ -1,8 +1,8 @@
 import type { FC } from 'react'
 import { graphql } from 'gatsby'
-import { createReactMap, ReactMapItemProps } from '../../util'
-import BaseIcon, { BaseIconProps } from '../../components/BaseIcon'
-import Button, { LinkButtonProps } from '../../components/Button'
+import { createReactMap, ReactMapItemProps } from '@/util'
+import BaseIcon, { BaseIconProps } from '@/components/BaseIcon'
+import Button, { LinkButtonProps } from '@/components/Button'
 
 export interface ProjectSkillItem extends Queries.ProjectSkillFragment {
   icon?: string

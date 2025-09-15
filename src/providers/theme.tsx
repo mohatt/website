@@ -1,6 +1,6 @@
 import { createContext, useContext, useCallback, useRef, ReactNode } from 'react'
-import { $document, themes, site } from '../constants'
-import { useAnalyticsEffect, useLocalStorage } from '../hooks'
+import { $document, themes, site } from '@/constants'
+import { useAnalyticsEffect, useLocalStorage } from '@/hooks'
 
 type ThemeConstraint = keyof typeof themes
 type ThemeCycleFn = (type: ThemeConstraint) => void

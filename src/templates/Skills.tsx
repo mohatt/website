@@ -1,7 +1,7 @@
 import { graphql, PageProps } from 'gatsby'
-import { skillTagGroups } from '../constants'
-import { PageHead, PageLayout } from '../layouts/page'
-import { Heading, Icon, Link, Section } from '../components'
+import { skillTagGroups } from '@/constants'
+import { PageHead, PageLayout } from '@/layouts/page'
+import { Heading, Icon, Link, Section } from '@/components'
 import { ProjectSkill } from './partials'
 
 function SoftSkill({ icon, title, children }) {

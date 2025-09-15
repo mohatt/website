@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
 import { useAuthState, useSignInWithGoogle, useSignOut } from 'react-firebase-hooks/auth'
-import { site } from '../constants'
+import { site } from '@/constants'
+import { Button, Heading, Icon, Section } from '@/components'
 import { useFirebaseAuth } from './useFirebaseAuth'
-import { Button, Heading, Icon, Section } from '../components'
 
 export interface AuthGuardProps {
   title: string

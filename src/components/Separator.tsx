@@ -1,4 +1,4 @@
-import { cx } from '../util'
+import { cx } from '@/util'
 
 export interface SeparatorProps {
   size?: number

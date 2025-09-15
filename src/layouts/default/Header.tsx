@@ -1,6 +1,6 @@
 import { memo, ReactNode } from 'react'
-import { useLayoutState, useTheme } from '../../hooks'
-import { Contacts, Button, Icon, Link } from '../../components'
+import { useLayoutState, useTheme } from '@/hooks'
+import { Contacts, Button, Icon, Link } from '@/components'
 
 function MenuButton() {
   const {

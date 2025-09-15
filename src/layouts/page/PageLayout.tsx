@@ -1,7 +1,7 @@
 import { memo, ReactNode } from 'react'
-import { cx } from '../../util'
-import { useAnalyticsEffect, useLayout } from '../../hooks'
-import { Section } from '../../components'
+import { cx } from '@/util'
+import { useAnalyticsEffect, useLayout } from '@/hooks'
+import { Section } from '@/components'
 
 export interface PageLayoutProps {
   // Page title

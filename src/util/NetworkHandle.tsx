@@ -1,6 +1,6 @@
 import type { FC } from 'react'
-import { networkHandles } from '../constants'
-import Icon, { IconProps } from '../components/Icon'
+import { networkHandles } from '@/constants'
+import Icon, { IconProps } from '@/components/Icon'
 import { createReactMap, ReactMapItemProps } from './ReactMap'
 
 export interface NetworkHandleItem {

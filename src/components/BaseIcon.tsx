@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { cx } from '../util'
+import { cx } from '@/util'
 
 export interface BaseIconProps {
   path?: string

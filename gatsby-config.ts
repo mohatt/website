@@ -1,8 +1,9 @@
 import type { GatsbyConfig } from 'gatsby'
+import type { PluginOptions as AdvancedPagesOptions } from 'gatsby-plugin-advanced-pages/node'
 import site from './config/site'
 import postcss from './config/postcss'
 import postbuild from './config/postbuild'
-import { getYamlTypename } from './gatsby/types'
+import { getYamlTypename } from './node/types'
 
 const config: GatsbyConfig = {
   siteMetadata: site.metadata,
@@ -22,7 +23,12 @@ const config: GatsbyConfig = {
     },
     {
       resolve: 'gatsby-plugin-advanced-pages',
-      options: { pages: site.pages },
+      options: {
+        pages: site.pages,
+        directories: {
+          helpers: 'node/pages',
+        },
+      } as AdvancedPagesOptions,
     },
     {
       resolve: 'gatsby-transformer-yaml',
@@ -77,6 +83,7 @@ const config: GatsbyConfig = {
   ],
   graphqlTypegen: {
     typesOutputPath: 'gatsby-types.d.ts',
+    generateOnBuild: true,
   },
   jsxRuntime: 'automatic',
 }

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
-import { site, resume, skillTagGroups, skillTags } from '../constants'
-import { PageHead, PageLayout } from '../layouts/page'
-import { AuthGuard } from '../firebase'
+import { site, resume, skillTagGroups, skillTags } from '@/constants'
+import { PageHead, PageLayout } from '@/layouts/page'
+import { AuthGuard } from '@/firebase'
 
 interface DownloadOptions {
   includeDrafts: boolean

@@ -19,7 +19,7 @@
  * Custom components
  */
 @import 'components.css';
-@import '../components/index.css';
+@import '@/components/index.css';
 
 /**
  * Custom utilities

@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { NetworkHandle } from '../../util'
-import { Button, Link, Pagination } from '../../components'
-import { ProjectCategory, ProjectSkill } from '.'
+import { NetworkHandle } from '@/util'
+import { Button, Link, Pagination } from '@/components'
+import { ProjectCategory, ProjectSkill } from './index'
 
 export interface ProjectCardProps {
   project: Queries.ProjectCardFragment

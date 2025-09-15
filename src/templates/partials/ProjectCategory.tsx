@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
-import { createReactMap, ReactMapItemProps } from '../../util'
-import Button, { LinkButtonProps } from '../../components/Button'
+import { createReactMap, ReactMapItemProps } from '@/util'
+import Button, { LinkButtonProps } from '@/components/Button'
 
 type ProjectCategoryItem = Queries.ProjectCategoryFragment
 
