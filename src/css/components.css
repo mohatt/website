@@ -15,6 +15,6 @@
   .overflow-grad {
     @apply block absolute right-0 bottom-0;
     width: 15%;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, theme('colors.secondary') 70%);
+    background: linear-gradient(90deg, rgb(0 0 0 / 0%) 0%, theme('colors.secondary') 70%);
   }
 }

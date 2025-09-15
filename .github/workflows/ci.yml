@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    # For push: run only if the commit message doesn’t contain [skip ci]
+    # For PR: run always
+    if: ${{ (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]')) || github.event_name == 'pull_request' }}
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: ESLint
+        run: pnpm run lint:js
+
+      - name: Stylelint
+        run: pnpm run lint:css
+
+      - name: Build
+        env:
+          DEPLOY_TARGET: local
+        run: pnpm run build
+
+      - name: Run Lighthouse Tests (Local)
+        uses: treosh/lighthouse-ci-action@v12
+        continue-on-error: true
+        id: lhci
+        with:
+          urls: |
+            /
+            /projects/
+            /resume/
+            /skills/
+          configPath: './.lighthouserc.js'
+          temporaryPublicStorage: true
+
+      - name: Format Lighthouse links
+        id: lhci-format
+        run: |
+          {
+            echo "formatted<<EOF"
+            echo '${{ steps.lhci.outputs.links }}' \
+              | jq -r 'to_entries | map("**\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Comment summary on PR
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: ci-summary
+          message: |
+            ### ✅ All CI checks have passed.
+
+            ### 📊 Lighthouse Reports (local build)
+            ${{ steps.lhci-format.outputs.formatted }}
+
+            _(This comment updates on each PR commit)_

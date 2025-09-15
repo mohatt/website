@@ -25,6 +25,7 @@ function Footer({ className }: FooterProps) {
               className='link'
               linkId='deploy_sha'
               target='_blank'
+              rel='noreferrer'
             >
               #{sha}
             </Link>

@@ -190,23 +190,16 @@ jobs:
 
             _(This comment updates on each PR deploy)_
 
-      - name: Run Lighthouse Tests (Local)
-        uses: treosh/lighthouse-ci-action@v12
-        continue-on-error: true
-        id: lhci
-        with:
-          configPath: './.lighthouserc.js'
-          temporaryPublicStorage: true
-
       - name: Run Lighthouse Tests (Live)
         uses: treosh/lighthouse-ci-action@v12
         continue-on-error: true
-        id: lhci-live
+        id: lhci
         with:
           urls: |
             ${{ steps.channel.outputs.deploy_url }}
             ${{ steps.channel.outputs.deploy_url }}/projects/
             ${{ steps.channel.outputs.deploy_url }}/resume/
+            ${{ steps.channel.outputs.deploy_url }}/skills/
           configPath: './.lighthouserc-live.js'
           temporaryPublicStorage: true
 
@@ -215,17 +208,12 @@ jobs:
         run: |
           {
             echo "formatted<<EOF"
-            echo "#### Local (static build)"
             echo '${{ steps.lhci.outputs.links }}' \
-              | jq -r 'to_entries | map("**\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
-            echo ""
-            echo "#### Live (deployed URL)"
-            echo '${{ steps.lhci-live.outputs.links }}' \
               | jq -r 'to_entries | map("**\(.key)**\n[\(.value)](\(.value))") | join("\n\n")'
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
-      - name: Final Comment preview on PR
+      - name: Final Comment on PR
         if: ${{ github.event_name == 'pull_request' }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
@@ -239,7 +227,7 @@ jobs:
             - **Commit:** ${{ github.sha }}
             - **Maintenance:** `${{ steps.maintenance.outputs.enabled }}`
 
-            ### 📊 Lighthouse Reports
+            ### 📊 Lighthouse Reports (deployed URL)
             ${{ steps.lhci-format.outputs.formatted }}
 
             _(This comment updates on each PR deploy)_

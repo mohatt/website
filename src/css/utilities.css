@@ -1,9 +1,9 @@
 @layer utilities {
   .text-shadow {
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
+    text-shadow: 1px 1px 0 rgb(255 255 255 / 25%);
 
     .dark & {
-      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+      text-shadow: 1px 1px 0 rgb(0 0 0 / 50%);
     }
   }
 
@@ -46,11 +46,10 @@
   }
 
   .page-break {
-    page-break-before: always;
+    break-before: always;
   }
 
   .page-break-avoid {
-    page-break-inside: avoid;
     break-inside: avoid;
   }
 

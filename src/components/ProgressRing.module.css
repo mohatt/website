@@ -8,10 +8,10 @@
 }
 
 .meter {
-  stroke: rgba(0, 0, 0, 0.1);
+  stroke: rgb(0 0 0 / 10%);
 }
 
 .value {
-  stroke: currentColor;
+  stroke: currentcolor;
   stroke-linecap: round;
 }
