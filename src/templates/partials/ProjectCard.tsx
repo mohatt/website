@@ -63,7 +63,7 @@ function ProjectCard({ project, skill, category }: ProjectCardProps) {
             </div>
           )}
         </ProjectSkill.Map>
-        <div className='mt-3 text-base h-12 overflow-hidden relative'>
+        <div className='mt-3 text-base max-h-12 overflow-hidden relative'>
           {project.desc}
           <span className='overflow-grad h-1/2' />
         </div>
@@ -105,7 +105,7 @@ ProjectCard.Grid = function ProjectCardGrid({
   paginationParams,
 }: ProjectCardGridProps) {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 text-lg'>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 text-lg'>
       <ProjectCard.Map
         data={data}
         category={paginationParams?.category}

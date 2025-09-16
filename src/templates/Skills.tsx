@@ -6,12 +6,12 @@ import { ProjectSkill } from './partials'
 
 function SoftSkill({ icon, title, children }) {
   return (
-    <div className='text-lg'>
-      <h3 className='text-primary'>
+    <div className='leading-normal'>
+      <h3 className='text-primary font-body text-xl'>
         <Icon name={icon} className='w-8 h-8 mr-2' />
         <span>{title}</span>
       </h3>
-      <div className='mt-3 ml-3'>{children}</div>
+      <div className='mt-3 ml-3 text-xl'>{children}</div>
     </div>
   )
 }

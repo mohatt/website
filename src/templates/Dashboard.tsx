@@ -154,6 +154,19 @@ function ContentInfo({ data }: { data: Queries.DashboardQuery }) {
     { label: 'Total Skills', value: skills.nodes.length },
     { label: 'Total Categories', value: categories.nodes.length },
     { label: 'Total Testimonials', value: tests.nodes.length },
+    {
+      label: 'Site Map',
+      value: (
+        <a
+          className='link'
+          href={`${site.deployment.url}/sitemap-0.xml`}
+          target='_blank'
+          rel='noreferrer'
+        >
+          /sitemap-0.xml
+        </a>
+      ),
+    },
   ]
   return (
     <ul className='list-style-diamond ml-2 space-y-2'>
@@ -178,6 +191,19 @@ function GatsbyInfo({ data }: { data: Queries.DashboardQuery }) {
     { label: 'Functions', value: functions.totalCount },
     { label: 'Path Prefix', value: config.pathPrefix || 'null' },
     { label: 'Trailing Slash', value: config.trailingSlash },
+    {
+      label: 'Webpack',
+      value: (
+        <a
+          className='link'
+          href={`${site.deployment.url}/webpack.report.html`}
+          target='_blank'
+          rel='noreferrer'
+        >
+          /webpack.report.html
+        </a>
+      ),
+    },
   ]
   return (
     <ul className='list-style-diamond ml-2 space-y-2'>
@@ -195,9 +221,9 @@ export default function Dashboard({ data }: PageProps<Queries.DashboardQuery>) {
   const title = data.page.title
   return (
     <PageLayout title={title}>
-      <PageHead title={data.page.title} noIndex />
+      <PageHead title={title} noIndex />
       <AuthGuard title={title}>
-        <div className='grid md:grid-cols-2 gap-x-4 gap-y-8'>
+        <div className='grid md:grid-cols-2 gap-x-4 gap-y-10'>
           <Detail title='Deployment Info'>
             <DeploymentInfo />
           </Detail>

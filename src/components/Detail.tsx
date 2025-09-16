@@ -12,7 +12,7 @@ export default function Detail({ title, children, className, innerClassName }: D
   if (!children) return null
   return (
     <div className={cx('leading-normal', className)}>
-      <h3 className='text-primary font-body text-xl'>{title}</h3>
+      <h4 className='text-primary font-body text-[1.4rem]'>{title}</h4>
       <div className={cx('mt-3 font-medium', innerClassName)}>{children}</div>
     </div>
   )

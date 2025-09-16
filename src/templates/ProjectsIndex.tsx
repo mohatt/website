@@ -10,7 +10,7 @@ export default function ProjectsIndex(props: PageProps<Queries.ProjectsIndexQuer
   } = props.data
   const groups = [...projects.group].sort((x) => (x.slug === 'portfolio' ? -1 : 0))
   return (
-    <PageLayout title={title} snippet={{ $comp: 'Projects' }}>
+    <PageLayout title={title}>
       <PageHead title={title} />
       <Section spacing={false}>
         <Heading title={title} primary>
@@ -25,9 +25,9 @@ export default function ProjectsIndex(props: PageProps<Queries.ProjectsIndexQuer
             <Heading title={category.title}>{category.desc}</Heading>
             <ProjectCard.Grid data={nodes} paginationParams={{ category: slug }} />
             {totalCount > nodes.length && (
-              <div className='mt-12 text-lg'>
+              <div className='mt-10 text-xl'>
                 <span>
-                  [{nodes.length} out of {totalCount}]{' '}
+                  {nodes.length} of {totalCount} projects —{' '}
                 </span>
                 <ProjectCategory item={category} index={0}>
                   {({ props }) => (

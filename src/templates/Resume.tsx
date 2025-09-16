@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { ReactNode, useMemo } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { generatePath, RouteParams } from 'gatsby-plugin-advanced-pages'
 import { site, resume, sortSkillsByTagGroups } from '@/constants'
@@ -35,35 +35,33 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
   const actions = (
     <>
       <a className='link' href='/resume.pdf' title='Download Resume'>
-        <Icon name='download' className='w-5 mr-1' />
+        <Icon name='download' className='w-5' />
       </a>
-      <a
-        className='link ml-2 hidden lg:inline'
+      <button
+        className='link ml-3 hidden lg:inline'
         onClick={() => setLayout('print')}
         title='Print Preview'
       >
-        <Icon name='print' className='w-5 mr-1' />
-      </a>
+        <Icon name='print' className='w-5' />
+      </button>
     </>
   )
-  const skillsSections = [
-    { title: 'Soft Skills & Practices', skills: resume.softSkills },
-    {
-      title: 'Tech stack',
-      skills: sortSkillsByTagGroups(firstSkills.nodes, ['deploy', 'ci', 'test']),
-    },
-    {
-      title: 'Also used',
-      skills: sortSkillsByTagGroups(secondSkills.nodes, ['deploy', 'ci', 'test']),
-    },
-  ] as const
-
-  function subtitleProps(subtitle) {
-    if (isPrint) {
-      return { end: subtitle }
-    }
-    return { children: subtitle }
-  }
+  const skillsSections = useMemo(
+    () =>
+      [
+        { title: 'Soft Skills & Practices', skills: resume.softSkills },
+        {
+          title: 'Tech stack',
+          skills: sortSkillsByTagGroups(firstSkills.nodes, ['deploy', 'ci', 'test']),
+        },
+        {
+          title: 'Also used',
+          skills: sortSkillsByTagGroups(secondSkills.nodes, ['deploy', 'ci', 'test']),
+        },
+      ] as const,
+    [firstSkills, secondSkills],
+  )
+  const eduSubtitle = 'Formal degree with self-directed CS foundation and ongoing coursework'
 
   function renderHeading(text: ReactNode, inline = false) {
     return (
@@ -203,12 +201,10 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
       <Section id='education' sep={isPrint}>
         <Heading
           title='Education'
-          {...subtitleProps(
-            <div className='text-typo-dim'>
-              Formal degree with self-directed CS foundation and ongoing coursework
-            </div>,
-          )}
-        />
+          end={isPrint && <div className='text-typo-dim'>{eduSubtitle}</div>}
+        >
+          {!isPrint && eduSubtitle}
+        </Heading>
         <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
           {resume.education.map(({ title, subtitle, time, url, desc }) => (
             <div key={title}>

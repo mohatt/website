@@ -1,6 +1,6 @@
 import { icons } from '@/constants'
 import { cx } from '@/util'
-import BaseIcon from './BaseIcon'
+import BaseIcon, { BaseIconProps } from './BaseIcon'
 
 export interface IconProps {
   name: keyof typeof icons
@@ -12,6 +12,6 @@ export default function Icon({ name, className }: IconProps) {
   if (!def) {
     throw new Error(`Invalid icon "${name}"`)
   }
-  const props = typeof def === 'string' ? { path: def } : def
+  const props: BaseIconProps = typeof def === 'string' ? { path: def } : def
   return <BaseIcon {...props} className={cx(props.className, className)} />
 }
