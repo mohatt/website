@@ -10,7 +10,7 @@ export interface ProjectCategoryChildItem extends ProjectCategoryItem {
 
 export interface ProjectCategoryProps
   extends ReactMapItemProps<ProjectCategoryItem, ProjectCategoryChildItem> {
-  color?: string
+  color?: LinkButtonProps['color']
 }
 
 function ProjectCategory({ item, index, children, color = 'alt' }: ProjectCategoryProps) {
@@ -32,7 +32,7 @@ function ProjectCategory({ item, index, children, color = 'alt' }: ProjectCatego
 }
 
 interface ProjectCategoryMapProps {
-  color?: string
+  color?: LinkButtonProps['color']
   exclude?: string
 }
 

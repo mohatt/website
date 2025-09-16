@@ -5,6 +5,8 @@ import { useLayout } from '@/hooks'
 export interface HeadingProps {
   // Heading text/content
   title: string
+  // Adds vertical margin below the header. Default: `true`
+  spacing?: boolean
   // If false, show subtitle inline instead of on its own line. Default: `true`
   multiline?: boolean
   // If true, renders `<h1>`; otherwise `<h2>`
@@ -28,13 +30,14 @@ export interface HeadingProps {
  * - Right-aligned content (buttons/badges) goes in `end`.
  */
 export default function Heading(props: HeadingProps) {
-  const { title, multiline = true, primary, children, end, className, id } = props
+  const { title, spacing = true, multiline = true, primary, children, end, className, id } = props
   const { isPrint } = useLayout()
   const Tag = primary ? 'h1' : 'h2'
   const inline = !multiline
   const subtitle = children
 
-  const containerBase = isPrint ? 'mb-4' : 'max-w-4xl mb-12'
+  const containerBase = !isPrint && 'max-w-4xl'
+  const containerSpacing = spacing && (isPrint ? 'mb-4' : 'mb-12')
   const headingClass = isPrint
     ? cx('leading-normal text-primary', primary ? 'text-3xl' : 'text-2xl uppercase')
     : 'italic leading-normal word-tracking-tighter text-typo text-3xl'
@@ -43,7 +46,7 @@ export default function Heading(props: HeadingProps) {
     : 'leading-normal text-typo-dim mt-4 text-xl'
 
   return (
-    <header className={cx(containerBase, className)}>
+    <header className={cx(containerBase, containerSpacing, className)}>
       <div className='flex items-center'>
         <div className='flex-grow flex items-center'>
           <Tag className={headingClass} id={id}>

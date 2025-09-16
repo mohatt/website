@@ -70,7 +70,7 @@ export default function PageHead(props: PageHeadProps) {
           { property: 'og:image', content: site.deployment.url + ogImage.src },
           { property: 'og:image:width', content: ogImage.width.toString() },
           { property: 'og:image:height', content: ogImage.height.toString() },
-          { property: 'og:image:alt', content: title || site.title },
+          { property: 'og:image:alt', content: `Preview of ${seoTitle}` },
           { property: 'twitter:card', content: 'summary_large_image' },
         ]}
         link={[{ rel: 'prefetch', as: 'image', href: avatarAlt }]}

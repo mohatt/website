@@ -1,4 +1,4 @@
 export { default as cx } from 'clsx'
 
-export { NetworkHandle, createNetworkHandle } from './NetworkHandle'
+export { NetworkHandle, createNetworkHandle, type NetworkHandleId } from './NetworkHandle'
 export { ReactMap, createReactMap, type ReactMapItemProps } from './ReactMap'

@@ -1,4 +1,5 @@
 import type { FirebaseOptions } from 'firebase/app'
+import type { NetworkHandleId } from '@/util'
 
 export const site = {
   title: process.env.GATSBY_SITE_TITLE,
@@ -16,7 +17,7 @@ export const site = {
   },
   phone: '+971501761107',
   location: 'Dubai, UAE (UTC+4)',
-  contacts: ['github:mohatt', 'linkedin:mohatt', 'email:mohatt@pm.me'],
+  contacts: Array<NetworkHandleId>('github:mohatt', 'linkedin:mohatt', 'email:mohatt@pm.me'),
   themeStorageKey: 'mohatt:theme',
   repository: 'https://github.com/mohatt/website',
   copyright: '© 2025 All rights reserved.',

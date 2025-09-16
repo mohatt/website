@@ -110,10 +110,18 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
           </Contacts>
         )}
       </Section>
-      <Section sep={isPrint}>
-        {isPrint && <Heading title='Summary' />}
-        <div className={!isPrint ? 'max-w-4xl text-xl' : ''}>{resume.intro}</div>
-      </Section>
+      {isPrint ? (
+        <Section sep>
+          <Heading title='Summary' />
+          <div>{resume.intro}</div>
+        </Section>
+      ) : (
+        <Section id='summary'>
+          <Heading title='Summary' spacing={false} className='max-w-4xl text-xl'>
+            {resume.intro}
+          </Heading>
+        </Section>
+      )}
       <Section id='experience' sep={isPrint}>
         <Heading title='Experience' />
         <div className={cx(isPrint ? 'space-y-4' : 'space-y-8')}>
@@ -149,7 +157,7 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
                         <div>{time.join(' – ')}</div>
                       </>
                     ) : (
-                      <div className='font-medium'>
+                      <div className='font-medium mt-1'>
                         {url ? (
                           <Link href={url} linkId='resume_role' className='link'>
                             {at}
@@ -224,7 +232,7 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
                     <div className='text-typo-dim'>{time.join(' – ')}</div>
                   </>
                 ) : (
-                  <div className='font-medium'>
+                  <div className='font-medium mt-1'>
                     {subtitle} · {time.join(' – ')}
                   </div>
                 )}

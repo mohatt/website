@@ -3,8 +3,8 @@ import { cx } from '@/util'
 import Link, { LinkProps } from './Link'
 
 interface BaseButtonProps {
-  color?: string
-  size?: string
+  color?: 'default' | 'primary' | 'alt'
+  size?: 'default' | 'small' | 'tiny' | 'mono'
   rounded?: boolean
   active?: boolean
   disabled?: boolean
@@ -23,8 +23,8 @@ export default function Button(props: ButtonProps) {
     <Element
       className={cx(
         'btn',
-        color && `btn-${color}`,
-        size && `btn-${size}`,
+        color && color !== 'default' && `btn-${color}`,
+        size && size !== 'default' && `btn-${size}`,
         {
           'rounded-full': rounded,
           'btn-outline': outline,

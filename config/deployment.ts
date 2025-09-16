@@ -45,7 +45,7 @@ const config = {
 }
 
 function createDeployment() {
-  let target = 'develop'
+  let target = 'develop' as typeof process.env.DEPLOY_TARGET
   const env = process.env.NODE_ENV
   if (env === 'production') {
     target = process.env.CI ? 'staging' : 'local'

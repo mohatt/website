@@ -45,6 +45,7 @@ export const menu: SiteMenuItem[] = [
     label: 'Résumé',
     to: 'resume',
     items: [
+      { label: 'Summary', hash: 'summary' },
       { label: 'Experience', hash: 'experience' },
       { label: 'Skills', hash: 'skills' },
       { label: 'Education', hash: 'education' },

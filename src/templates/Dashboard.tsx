@@ -2,27 +2,27 @@ import { useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { site, resume, skillTagGroups, skillTags } from '@/constants'
 import { PageHead, PageLayout } from '@/layouts/page'
-import { Detail } from '@/components'
+import { Button, Detail } from '@/components'
 import { AuthGuard } from '@/firebase'
 
-interface DownloadOptions {
+interface ExportOptions {
   includeDrafts: boolean
   includeOpenSource: boolean
 }
 
-function ExportLink({ data }: { data: Queries.DashboardQuery }) {
-  const [options, setOptions] = useState<DownloadOptions>({
+function Export({ data }: { data: Queries.DashboardQuery }) {
+  const [options, setOptions] = useState<ExportOptions>({
     includeDrafts: false,
     includeOpenSource: false,
   })
 
-  const toggleOption = (key: keyof DownloadOptions) => {
+  const toggleOption = (key: keyof ExportOptions) => {
     setOptions((prev) => ({ ...prev, [key]: !prev[key] }))
   }
 
   const download = () => {
     const { ga4, firebase, admins, ...deployment } = site.deployment
-    const archive = {
+    const exportData = {
       date: new Date(),
       site: {
         ...site,
@@ -41,9 +41,8 @@ function ExportLink({ data }: { data: Queries.DashboardQuery }) {
       testimonials: data.tests.nodes,
       ...resume,
     }
-    console.log('Download JSON', archive)
-    const jsonStr = JSON.stringify(archive, null, 2) // pretty-print with 2 spaces
-    const blob = new Blob([jsonStr], { type: 'application/json' })
+    console.log('JSON Export', exportData)
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
 
     const a = document.createElement('a')
@@ -74,10 +73,9 @@ function ExportLink({ data }: { data: Queries.DashboardQuery }) {
           <span className='ml-2'>Include Open Source</span>
         </label>
       </div>
-
-      <a className='btn btn-small btn-primary btn-outline' onClick={download}>
+      <Button onClick={download} size='small' color='primary' outline>
         Download JSON
-      </a>
+      </Button>
     </div>
   )
 }
@@ -139,9 +137,8 @@ function DeploymentInfo() {
 }
 
 function ContentInfo({ data }: { data: Queries.DashboardQuery }) {
-  const { projects, skills, categories, tests, advancedPages } = data
+  const { projects, skills, categories, tests, advPages } = data
   const items = [
-    { label: 'Pages', value: advancedPages.totalCount },
     { label: 'Active Projects', value: projects.nodes.filter(({ draft }) => !draft).length },
     { label: 'Draft Projects', value: projects.nodes.filter(({ draft }) => draft).length },
     {
@@ -154,6 +151,10 @@ function ContentInfo({ data }: { data: Queries.DashboardQuery }) {
     { label: 'Total Skills', value: skills.nodes.length },
     { label: 'Total Categories', value: categories.nodes.length },
     { label: 'Total Testimonials', value: tests.nodes.length },
+    {
+      label: 'Page Routes',
+      value: `${advPages.routes.length}${advPages.totalCount !== advPages.routes.length ? ` (${advPages.totalCount} pages)` : ''}`,
+    },
     {
       label: 'Site Map',
       value: (
@@ -234,7 +235,7 @@ export default function Dashboard({ data }: PageProps<Queries.DashboardQuery>) {
             <GatsbyInfo data={data} />
           </Detail>
           <Detail title='Export Data'>
-            <ExportLink data={data} />
+            <Export data={data} />
           </Detail>
         </div>
       </AuthGuard>
@@ -255,8 +256,9 @@ export const query = graphql`
     pages: allSitePage {
       totalCount
     }
-    advancedPages: allPage {
+    advPages: allPage {
       totalCount
+      routes: distinct(field: { routes: { name: SELECT } })
     }
     plugins: allSitePlugin {
       totalCount

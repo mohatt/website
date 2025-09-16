@@ -31,7 +31,7 @@ function Testimonial({ item, index, children, showImage, className }: Testimonia
         ) : (
           <span className='mr-1'>—</span>
         )}
-        <div className='leading-normal'>
+        <div className='leading-relaxed'>
           {name}
           <br />
           <span className='font-normal'>{title}</span>

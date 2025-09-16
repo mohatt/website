@@ -1,12 +1,14 @@
-interface NetworkHandlesMap {
-  [id: string]: {
-    title: string
-    icon: string
-    href: string | ((handle: string) => string)
-  }
+import type { IconProps } from '@/components/Icon'
+
+export interface NetworkHandleDefinition {
+  readonly title: string
+  readonly icon: IconProps['name']
+  readonly href: string | ((handle: string) => string)
 }
 
-export const networkHandles: NetworkHandlesMap = {
+export type NetworkHandleType = keyof typeof networkHandles
+
+export const networkHandles = {
   phone: {
     title: 'Phone',
     icon: 'phone',
@@ -32,10 +34,10 @@ export const networkHandles: NetworkHandlesMap = {
     icon: 'github',
     href: 'https://github.com/%s',
   },
-  twitter: {
-    title: 'Twitter Profile',
-    icon: 'twitter',
-    href: 'https://twitter.com/%s',
+  x: {
+    title: 'X (formerly Twitter) Profile',
+    icon: 'x',
+    href: 'https://x.com/%s',
   },
   linkedin: {
     title: 'Linkedin Profile',
@@ -57,4 +59,4 @@ export const networkHandles: NetworkHandlesMap = {
     icon: 'packagist',
     href: 'https://packagist.org/packages/%s',
   },
-}
+} as const satisfies Record<string, NetworkHandleDefinition>
