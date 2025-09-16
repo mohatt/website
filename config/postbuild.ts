@@ -46,7 +46,7 @@ const options = {
       'default',
       {
         discardComments: {
-          remove: (comment) => {
+          remove: (comment: string) => {
             return comment !== '!'
           },
         },
