@@ -35,7 +35,7 @@
     }
 
     &.btn-tiny {
-      @apply font-body word-tracking-normal text-xs py-0 px-1.5;
+      @apply font-body word-tracking-normal text-sm md:text-xs py-0 px-1.5;
       border-width: 1px;
     }
 

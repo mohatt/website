@@ -52,7 +52,7 @@ function ProjectCard({ project, skill, category }: ProjectCardProps) {
         </div>
       </div>
       <div className='mt-4'>
-        <Link className='link-primary' {...props}>
+        <Link className='link-primary text-xl' {...props}>
           {project.title}
         </Link>
         <ProjectSkill.Map data={project.skills} exclude={skill} limit={8}>

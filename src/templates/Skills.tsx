@@ -26,7 +26,7 @@ export default function Skills({ data }: PageProps<Queries.SkillsQuery>) {
       <PageHead title={title} />
       <Section>
         <Heading title={title} primary>
-          Shipping software takes more than code—here’s how I keep projects moving with fewer
+          Shipping software takes more than code — here’s how I keep projects moving with less
           surprises and predictable delivery.
         </Heading>
         <div className='grid md:grid-cols-2 gap-8'>
@@ -37,11 +37,11 @@ export default function Skills({ data }: PageProps<Queries.SkillsQuery>) {
             See the whole system (data flow, dependencies, failure modes) and design accordingly.
           </SoftSkill>
           <SoftSkill title='Communication' icon='chat'>
-            Explain trade-offs clearly, write concise docs, give and receive constructive code
-            reviews, and surface risks early.
+            Explain trade-offs and risks clearly, write concise docs, and exchange constructive code
+            reviews.
           </SoftSkill>
           <SoftSkill title='Planning & ownership' icon='calendar'>
-            Self-manage, set priorities, and deliver on time with well-structured outcomes.
+            Self-manage, set priorities, and deliver well-structured outcomes on time.
           </SoftSkill>
         </div>
       </Section>
