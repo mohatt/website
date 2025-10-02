@@ -1,29 +1,10 @@
+import type { IUserOptions } from 'gatsby-plugin-postbuild'
 import deployment from './deployment'
 
-const options = {
+const options: IUserOptions = {
   enabled: true,
   reporting: false,
   ignore: ['webpack.report.html', 'google7a76cf0ab3da37d0.html'],
-  purgecss: {
-    // Disable purgecss until it's tested in gatsby-plugin-postbuild
-    enabled: false,
-    allowSymbols: true,
-    writeRejected: true,
-    safelist: {
-      standard: [
-        // pseudo selectors starting with `:`
-        // selectors with important modifier `!`
-        // eg :-moz-focusring ::-webkit-file-upload-button !underline
-        /^[:!]/,
-        // keyframes selectors
-        // eg 50% {}
-        /^[0-9]+%$/,
-        // custom-value selectors
-        // eg w-[50rem]
-        /\[[^[]+]$/,
-      ],
-    },
-  },
   'http-headers': {
     enabled: true,
     provider: 'firebase',
