@@ -44,7 +44,7 @@
     "not dead"
   ],
   "dependencies": {
-    "@mdx-js/react": "^2.3.0",
+    "@mdx-js/react": "^3.0.0",
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
     "firebase": "^12.2.1",
