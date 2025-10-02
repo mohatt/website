@@ -1,6 +1,6 @@
 # Personal website
 
-[![][cd-dev-img]][cd-dev-url] [![][cd-prod-img]][cd-prod-url] [![][website-img]][website-url] [![][gatsby-img]][gatsby-url] [![][s-headers-img]][s-headers-url] [![][observatory-img]][observatory-url]
+[![][cd-dev-img]][cd-dev-url] [![][cd-prod-img]][cd-prod-url] [![][website-img]][website-url] [![][gatsby-img]][gatsby-url] [![][observatory-img]][observatory-url]
 
 Third iteration of my personal site/portfolio built with [Gatsby](https://www.gatsbyjs.org) and [Tailwind CSS](https://tailwindcss.com). Content is authored in [MDX](https://mdxjs.com) (Git-based workflow), compiled through Gatsby’s GraphQL data layer, and deployed as a static, **PWA-ready** site on **Firebase Hosting**.
 
@@ -85,7 +85,5 @@ For more information, check out [`.github/workflows`](.github/workflows) directo
 [gatsby-img]: https://img.shields.io/badge/gatsby-v5.15-blueviolet.svg?logo=gatsby
 [website-url]: https://mohatt.web.app
 [website-img]: https://img.shields.io/website?logo=statuspal&url=https%3A%2F%2Fmohatt.web.app
-[s-headers-url]: https://securityheaders.com/?followRedirects=on&q=mohatt.web.app
-[s-headers-img]: https://img.shields.io/security-headers?label=s-headers&logo=curl&url=http%3A%2F%2Fmohatt.web.app
 [observatory-url]: https://observatory.mozilla.org/analyze/mohatt.web.app
 [observatory-img]: https://img.shields.io/mozilla-observatory/grade/mohatt.web.app?logo=mozilla
