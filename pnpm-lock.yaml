@@ -116,7 +116,7 @@ importers:
     devDependencies:
       '@mohatt/eslint-config-gatsby-standard':
         specifier: ^4.1.2
-        version: 4.1.2(@types/node@18.19.124)(eslint@7.32.0)(gatsby@5.15.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.1.6))(graphql@16.11.0)(prettier@3.6.2)(typescript@5.1.6)
+        version: 4.1.2(@types/node@22.18.8)(eslint@7.32.0)(gatsby@5.15.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.1.6))(graphql@16.11.0)(prettier@3.6.2)(typescript@5.1.6)
       '@types/gtag.js':
         specifier: ^0.0.20
         version: 0.0.20
@@ -124,8 +124,8 @@ importers:
         specifier: ^4.17.20
         version: 4.17.20
       '@types/node':
-        specifier: ^18.19.124
-        version: 18.19.124
+        specifier: ^22.0.0
+        version: 22.18.8
       '@types/react':
         specifier: ^18.3.24
         version: 18.3.24
@@ -2119,8 +2119,8 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
-  '@types/node@18.19.124':
-    resolution: {integrity: sha512-hY4YWZFLs3ku6D2Gqo3RchTd9VRCcrjqp/I0mmohYeUVA5Y8eCXKJEasHxLAJVZRJuQogfd1GiJ9lgogBgKeuQ==}
+  '@types/node@22.18.8':
+    resolution: {integrity: sha512-pAZSHMiagDR7cARo/cch1f3rXy0AEXwsVsVH09FcyeJVAzCnGgmYis7P3JidtTUjyadhTeSo8TgRPswstghDaw==}
 
   '@types/parse-json@4.0.2':
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
@@ -6682,7 +6682,7 @@ packages:
   puppeteer@3.3.0:
     resolution: {integrity: sha512-23zNqRltZ1PPoK28uRefWJ/zKb5Jhnzbbwbpcna2o5+QMn17F0khq5s1bdH3vPlyj+J36pubccR8wiNA/VE0Vw==}
     engines: {node: '>=10.18.1'}
-    deprecated: < 24.10.2 is no longer supported
+    deprecated: < 24.15.0 is no longer supported
 
   qs@6.13.0:
     resolution: {integrity: sha512-+38qI9SOr8tfZ4QmJNplMUxqjbe7LKvvZgWdExBOmd+egZTtjLB67Gu0HRX3u/XOq7UU2Nx6nsjvS16Z9uwfpg==}
@@ -7679,8 +7679,8 @@ packages:
     resolution: {integrity: sha512-eXL4nmJT7oCpkZsHZUOJo8hcX3GbsiDOa0Qu9F646fi8dT3XuSVopVqAcEiVzSKKH7UoDti23wNX3qGFxcW5Qg==}
     engines: {node: '>=0.10.0'}
 
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   unherit@1.1.3:
     resolution: {integrity: sha512-Ft16BJcnapDKp0+J/rqFC3Rrk6Y/Ng4nzsC028k2jdDII/rdZ7Wd3pPT/6+vIIxRagwRc9K0IUX0Ra4fKvw+WQ==}
@@ -9885,7 +9885,7 @@ snapshots:
       tslib: 2.8.1
       value-or-promise: 1.0.12
 
-  '@graphql-tools/url-loader@6.10.1(@types/node@18.19.124)(graphql@16.11.0)':
+  '@graphql-tools/url-loader@6.10.1(@types/node@22.18.8)(graphql@16.11.0)':
     dependencies:
       '@graphql-tools/delegate': 7.1.5(graphql@16.11.0)
       '@graphql-tools/utils': 7.10.0(graphql@16.11.0)
@@ -9901,7 +9901,7 @@ snapshots:
       is-promise: 4.0.0
       isomorphic-ws: 4.0.1(ws@7.4.5)
       lodash: 4.17.21
-      meros: 1.1.4(@types/node@18.19.124)
+      meros: 1.1.4(@types/node@22.18.8)
       subscriptions-transport-ws: 0.9.19(graphql@16.11.0)
       sync-fetch: 0.3.0
       tslib: 2.2.0
@@ -9947,7 +9947,7 @@ snapshots:
   '@grpc/grpc-js@1.9.15':
     dependencies:
       '@grpc/proto-loader': 0.7.15
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
 
   '@grpc/proto-loader@0.7.15':
     dependencies:
@@ -10082,7 +10082,7 @@ snapshots:
       '@lezer/lr': 1.4.2
       json5: 2.2.3
 
-  '@mohatt/eslint-config-gatsby-standard@4.1.2(@types/node@18.19.124)(eslint@7.32.0)(gatsby@5.15.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.1.6))(graphql@16.11.0)(prettier@3.6.2)(typescript@5.1.6)':
+  '@mohatt/eslint-config-gatsby-standard@4.1.2(@types/node@22.18.8)(eslint@7.32.0)(gatsby@5.15.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.1.6))(graphql@16.11.0)(prettier@3.6.2)(typescript@5.1.6)':
     dependencies:
       '@babel/core': 7.28.3
       '@babel/eslint-parser': 7.28.0(@babel/core@7.28.3)(eslint@7.32.0)
@@ -10093,7 +10093,7 @@ snapshots:
       eslint-config-standard: 16.0.3(eslint-plugin-import@2.32.0)(eslint-plugin-node@11.1.0(eslint@7.32.0))(eslint-plugin-promise@5.2.0(eslint@7.32.0))(eslint@7.32.0)
       eslint-config-standard-jsx: 10.0.0(eslint-plugin-react@7.37.5(eslint@7.32.0))(eslint@7.32.0)
       eslint-import-resolver-typescript: 4.4.4(eslint-plugin-import@2.32.0)(eslint@7.32.0)
-      eslint-plugin-graphql: 4.0.0(@types/node@18.19.124)(graphql@16.11.0)(typescript@5.1.6)
+      eslint-plugin-graphql: 4.0.0(@types/node@22.18.8)(graphql@16.11.0)(typescript@5.1.6)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@5.62.0(eslint@7.32.0)(typescript@5.1.6))(eslint-import-resolver-typescript@4.4.4)(eslint@7.32.0)
       eslint-plugin-node: 11.1.0(eslint@7.32.0)
       eslint-plugin-promise: 5.2.0(eslint@7.32.0)
@@ -10575,14 +10575,14 @@ snapshots:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
       '@types/responselike': 1.0.3
 
   '@types/common-tags@1.8.4': {}
 
   '@types/cors@2.8.19':
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
 
   '@types/debug@4.1.12':
     dependencies:
@@ -10621,7 +10621,7 @@ snapshots:
 
   '@types/http-proxy@1.17.16':
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
 
   '@types/json-schema@7.0.15': {}
 
@@ -10629,7 +10629,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
 
   '@types/lodash@4.17.20': {}
 
@@ -10643,9 +10643,9 @@ snapshots:
 
   '@types/node@17.0.45': {}
 
-  '@types/node@18.19.124':
+  '@types/node@22.18.8':
     dependencies:
-      undici-types: 5.26.5
+      undici-types: 6.21.0
 
   '@types/parse-json@4.0.2': {}
 
@@ -10666,11 +10666,11 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
 
   '@types/semver@7.7.0': {}
 
@@ -10678,7 +10678,7 @@ snapshots:
 
   '@types/webpack-bundle-analyzer@4.7.0':
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
       tapable: 2.2.2
       webpack: 5.98.0
     transitivePeerDependencies:
@@ -10689,11 +10689,11 @@ snapshots:
 
   '@types/websocket@1.0.2':
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
     optional: true
 
   '@types/yoga-layout@1.9.2': {}
@@ -12246,7 +12246,7 @@ snapshots:
   engine.io@6.6.4:
     dependencies:
       '@types/cors': 2.8.19
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
       accepts: 1.3.8
       base64id: 2.0.0
       cookie: 0.7.2
@@ -12510,11 +12510,11 @@ snapshots:
       lodash: 4.17.21
       string-natural-compare: 3.0.1
 
-  eslint-plugin-graphql@4.0.0(@types/node@18.19.124)(graphql@16.11.0)(typescript@5.1.6):
+  eslint-plugin-graphql@4.0.0(@types/node@22.18.8)(graphql@16.11.0)(typescript@5.1.6):
     dependencies:
       '@babel/runtime': 7.28.3
       graphql: 16.11.0
-      graphql-config: 3.4.1(@types/node@18.19.124)(graphql@16.11.0)(typescript@5.1.6)
+      graphql-config: 3.4.1(@types/node@22.18.8)(graphql@16.11.0)(typescript@5.1.6)
       lodash.flatten: 4.4.0
       lodash.without: 4.4.0
     transitivePeerDependencies:
@@ -13875,14 +13875,14 @@ snapshots:
       graphql: 16.11.0
       graphql-type-json: 0.3.2(graphql@16.11.0)
 
-  graphql-config@3.4.1(@types/node@18.19.124)(graphql@16.11.0)(typescript@5.1.6):
+  graphql-config@3.4.1(@types/node@22.18.8)(graphql@16.11.0)(typescript@5.1.6):
     dependencies:
       '@endemolshinegroup/cosmiconfig-typescript-loader': 3.0.2(cosmiconfig@7.0.0)(typescript@5.1.6)
       '@graphql-tools/graphql-file-loader': 6.2.7(graphql@16.11.0)
       '@graphql-tools/json-file-loader': 6.2.6(graphql@16.11.0)
       '@graphql-tools/load': 6.2.8(graphql@16.11.0)
       '@graphql-tools/merge': 6.2.14(graphql@16.11.0)
-      '@graphql-tools/url-loader': 6.10.1(@types/node@18.19.124)(graphql@16.11.0)
+      '@graphql-tools/url-loader': 6.10.1(@types/node@22.18.8)(graphql@16.11.0)
       '@graphql-tools/utils': 7.10.0(graphql@16.11.0)
       cosmiconfig: 7.0.0
       cosmiconfig-toml-loader: 1.0.0
@@ -14428,13 +14428,13 @@ snapshots:
 
   jest-worker@26.6.2:
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
       merge-stream: 2.0.0
       supports-color: 7.2.0
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -14842,9 +14842,9 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  meros@1.1.4(@types/node@18.19.124):
+  meros@1.1.4(@types/node@22.18.8):
     optionalDependencies:
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
 
   methods@1.1.2: {}
 
@@ -16239,7 +16239,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 18.19.124
+      '@types/node': 22.18.8
       long: 5.3.2
 
   proxy-addr@2.0.7:
@@ -17532,7 +17532,7 @@ snapshots:
 
   unc-path-regex@0.1.2: {}
 
-  undici-types@5.26.5: {}
+  undici-types@6.21.0: {}
 
   unherit@1.1.3:
     dependencies:
