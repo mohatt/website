@@ -94,6 +94,10 @@
       filter: brightness(85%);
       border-radius: 0.2em;
       white-space: nowrap;
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
 
     & ul {

@@ -39,7 +39,7 @@ priority: 40
 - **Reporting:** optional `postbuild.log.json` and console summary with toggles.
 - **Lifecycle hooks:** `on.postbuild`, `on.shutdown`, and `[extension].configure` for setup/teardown and per-type config.
 
-#### Why it exists
+#### Why
 
 - **Close the “last mile”.** Gatsby stops at generating `/public`; teams hack the rest in CI scripts. Postbuild provides a structured, repeatable stage for that work.
 - **Put critical headers at the edge.** Generate provider configs so browsers/crawlers receive resource hints in the first response, enabling action before the page HTML is parsed.
