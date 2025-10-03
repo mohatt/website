@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { NetworkHandle } from '@/util'
-import { Button, Link, Pagination } from '@/components'
+import { Button, Link, Pagination, SvgCard } from '@/components'
 import { ProjectCategory, ProjectSkill } from './index'
 
 export interface ProjectCardProps {
@@ -22,11 +22,24 @@ function ProjectCard({ project, skill, category }: ProjectCardProps) {
       <div>
         <div className='relative'>
           <Link className='block' {...props}>
-            <GatsbyImage
-              image={getImage(project.image)}
-              className='rounded-md shadow-lg border-gradient-2'
-              alt={project.title}
-            />
+            {project.hasImage ? (
+              <GatsbyImage
+                image={getImage(project.image)}
+                className='rounded-md shadow-lg border-gradient-2'
+                alt={project.title}
+              />
+            ) : (
+              <div className='rounded-md shadow-lg border-gradient-2'>
+                <SvgCard
+                  responsive
+                  seed={project.slug}
+                  title={project.iconText ?? project.title}
+                  icon={project.icon}
+                  iconSize={project.iconSize ?? 64}
+                  gap={96 - (project.iconSize ?? 64)}
+                />
+              </div>
+            )}
           </Link>
           <NetworkHandle.Map data={project.handles} limit={2}>
             {(items) => <div className='absolute -bottom-4 right-4 z-10'>{items}</div>}
@@ -123,11 +136,15 @@ export const ProjectCardFragment = graphql`
     slug
     title
     desc
+    icon
+    iconText
+    iconSize
     image {
       childImageSharp {
         gatsbyImageData(aspectRatio: 1.8, width: 430, placeholder: BLURRED)
       }
     }
+    hasImage
     handles
     categories {
       ...ProjectCategory

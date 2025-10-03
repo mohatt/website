@@ -23,7 +23,7 @@ function MenuButton() {
 }
 
 export function ColorThemeButton() {
-  const cycle = useTheme()
+  const { cycle } = useTheme()
   return (
     <Button
       size='mono'
@@ -39,7 +39,7 @@ export function ColorThemeButton() {
 }
 
 export function EdgesThemeButton() {
-  const cycle = useTheme()
+  const { cycle } = useTheme()
   return (
     <Button
       size='mono'

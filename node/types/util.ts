@@ -1,6 +1,7 @@
 import type { Node } from 'gatsby'
 import type { GraphQLObjectType } from 'gatsby/graphql'
 import type { GatsbyResolver } from 'gatsby/dist/schema/type-definitions'
+import _ from 'lodash'
 
 export const createParentFieldResolver = (
   field: string,
@@ -30,3 +31,14 @@ export const createParentFieldResolverProxy = (
 export const createResolver = <S = Record<string, any>, A = Record<string, any>>(
   fn: GatsbyResolver<Node & S, A>,
 ) => fn
+
+export const createSimpleIconsResolver = () =>
+  createResolver((source) => {
+    if (!source.icon || source.icon.length >= 32) {
+      return source.icon
+    }
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const icons = require('simple-icons')
+    const icon = icons[`si${_.upperFirst(source.icon)}`]
+    return icon?.path ?? source.icon
+  })

@@ -1,11 +1,17 @@
-import { createContext, useContext, useCallback, useRef, ReactNode } from 'react'
+import { createContext, useContext, useRef, ReactNode, useMemo } from 'react'
 import { $document, themes, site } from '@/constants'
 import { useAnalyticsEffect, useLocalStorage } from '@/hooks'
 
 type ThemeConstraint = keyof typeof themes
-type ThemeCycleFn = (type: ThemeConstraint) => void
+
+export interface ThemeContextValue {
+  theme: ThemeState
+  cycle: (type: ThemeConstraint) => void
+}
+
 type SerializedThemeState = Partial<Record<ThemeConstraint, string>>
-interface ThemeState {
+
+export interface ThemeState {
   color: (typeof themes.color)[number]
   edges: (typeof themes.edges)[number]
   state: SerializedThemeState
@@ -44,7 +50,7 @@ function getInitialSystemTheme(): SerializedThemeState {
   return { color: $document.documentElement.getAttribute('data-system-ct') }
 }
 
-const ThemeContext = createContext<ThemeCycleFn>(undefined)
+const ThemeContext = createContext<ThemeContextValue>(undefined)
 
 interface ThemeProviderProps {
   children: ReactNode
@@ -67,25 +73,28 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     [theme],
   )
 
-  const cycle = useCallback<ThemeCycleFn>(
-    (type) => {
-      const next = theme.cycle(type)
-      $document.documentElement.className = next.class
-      $document.head.querySelector<HTMLMetaElement>('meta[name=theme-color]').content =
-        next.color.colors.primary
-      eventData.current = [
-        `change_${type}_theme`,
-        {
-          value: next[type].id,
-          prev_value: theme[type].id,
-        },
-      ]
-      setTheme(next)
-    },
+  const value = useMemo<ThemeContextValue>(
+    () => ({
+      theme,
+      cycle: (type) => {
+        const next = theme.cycle(type)
+        $document.documentElement.className = next.class
+        $document.head.querySelector<HTMLMetaElement>('meta[name=theme-color]').content =
+          next.color.colors.primary
+        eventData.current = [
+          `change_${type}_theme`,
+          {
+            value: next[type].id,
+            prev_value: theme[type].id,
+          },
+        ]
+        setTheme(next)
+      },
+    }),
     [theme, setTheme],
   )
 
-  return <ThemeContext.Provider value={cycle}>{children}</ThemeContext.Provider>
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
 
 export function useTheme() {

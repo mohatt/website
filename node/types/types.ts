@@ -1,8 +1,7 @@
-import _ from 'lodash'
 import type { Node } from 'gatsby'
 import type { GraphQLFieldConfigMap } from 'graphql'
 import type { ObjectTypeComposerAsObjectDefinition } from 'graphql-compose'
-import { createResolver, createParentFieldResolverProxy } from './util'
+import { createResolver, createParentFieldResolverProxy, createSimpleIconsResolver } from './util'
 
 export const create: Array<ObjectTypeComposerAsObjectDefinition<Node, unknown>> = [
   {
@@ -18,6 +17,12 @@ export const create: Array<ObjectTypeComposerAsObjectDefinition<Node, unknown>> 
           dateformat: {},
         },
       },
+      icon: {
+        type: 'String',
+        resolve: createSimpleIconsResolver(),
+      },
+      iconText: 'String',
+      iconSize: 'Int',
       image: {
         type: 'File!',
         extensions: {
@@ -71,15 +76,7 @@ export const create: Array<ObjectTypeComposerAsObjectDefinition<Node, unknown>> 
       title: 'String!',
       icon: {
         type: 'String',
-        resolve: createResolver((source) => {
-          if (source.icon.length >= 32) {
-            return source.icon
-          }
-          // eslint-disable-next-line @typescript-eslint/no-var-requires
-          const icons = require('simple-icons')
-          const icon = icons[`si${_.upperFirst(source.icon)}`]
-          return icon?.path ?? source.icon
-        }),
+        resolve: createSimpleIconsResolver(),
       },
       tags: '[String!]',
       size: {
