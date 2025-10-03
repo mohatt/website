@@ -82,7 +82,7 @@ export default function Project(props: PageProps<Queries.ProjectQuery, { project
       <PageHead title={seoTitle} description={desc} image={seoImage} noIndex={noIndex} />
       <Section>
         <Heading title={title} primary>
-          {desc}
+          {desc}.
         </Heading>
         {screens.length > 1 && <ProjectGallery screens={screens} />}
         <div className='grid md:grid-cols-3 gap-x-4 gap-y-8'>
