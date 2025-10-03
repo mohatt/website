@@ -1,22 +1,9 @@
 import { memo, CSSProperties, ReactNode } from 'react'
-import { ThemeState, useTheme } from '@/providers/theme'
+import { useTheme } from '@/providers/theme'
+import { darken, lighten } from '@/util/color'
 
-export type SvgCardPattern = 'grid' | 'dots' | 'diagonal' | 'isometric' | 'none'
+export type SvgCardPattern = 'grid' | 'dots' | 'diagonal' | 'isometric'
 export type SvgCardGradient = readonly [string, string]
-
-const GRADIENTS: readonly SvgCardGradient[] = [
-  ['#0ea5e9', '#6366f1'],
-  ['#ec4899', '#8b5cf6'],
-  ['#14b8a6', '#0ea5e9'],
-  ['#f97316', '#ef4444'],
-  ['#22d3ee', '#0ea5e9'],
-  ['#f87171', '#fb7185'],
-  ['#8b5cf6', '#6366f1'],
-  ['#facc15', '#f97316'],
-  ['#34d399', '#10b981'],
-  ['#f472b6', '#a855f7'],
-  ['#ffffff', '#44ffee'],
-]
 
 function hashSeed(value: string) {
   let hash = 0
@@ -26,91 +13,25 @@ function hashSeed(value: string) {
   return Math.abs(hash)
 }
 
-function toRgb(color: string) {
-  const match = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(color)
-  if (!match) {
-    return null
-  }
-  const raw = match[1]
-  const normalized =
-    raw.length === 3
-      ? raw
-          .split('')
-          .map((c) => c + c)
-          .join('')
-      : raw
-  const value = parseInt(normalized, 16)
-  return {
-    r: (value >> 16) & 255,
-    g: (value >> 8) & 255,
-    b: value & 255,
-  }
-}
-
-function channelMix(channel: number, target: number, amount: number) {
-  return Math.round(channel + (target - channel) * amount)
-}
-
-function rgbToHex(r: number, g: number, b: number) {
-  return `#${[r, g, b].map((channel) => channel.toString(16).padStart(2, '0')).join('')}`
-}
-
-function lighten(color: string, amount: number) {
-  const rgb = toRgb(color)
-  if (!rgb) {
-    return color
-  }
-  return rgbToHex(
-    channelMix(rgb.r, 255, amount),
-    channelMix(rgb.g, 255, amount),
-    channelMix(rgb.b, 255, amount),
-  )
-}
-
-function darken(color: string, amount: number) {
-  const rgb = toRgb(color)
-  if (!rgb) {
-    return color
-  }
-  return rgbToHex(
-    channelMix(rgb.r, 0, amount),
-    channelMix(rgb.g, 0, amount),
-    channelMix(rgb.b, 0, amount),
-  )
-}
-
-function themeGradient(theme: ThemeState['color']): SvgCardGradient {
+function useSvgCardTheme() {
+  const { theme } = useTheme()
   const {
-    colors: { accent },
+    colors: { accent, secondary, typo },
     dark,
-  } = theme
-  if (dark) {
-    return [lighten(accent, 0.1), accent]
-  }
-  return [darken(accent, 0.25), accent]
-}
-
-function themeDefaults(theme: ThemeState['color']) {
-  const {
-    colors: { typo, secondary },
-    dark,
-  } = theme
+  } = theme.color
   return {
-    background: secondary,
     iconColor: typo,
     iconTextColor: typo,
     titleColor: typo,
     captionColor: dark ? 'rgba(255,255,255,0.65)' : 'rgba(17, 24, 39, 0.65)',
     patternColor: secondary,
+    get gradient() {
+      return dark ? [lighten(accent, 0.1), accent] : [darken(accent, 0.25), accent]
+    },
   }
 }
 
-function renderPatternDefinition(
-  id: string,
-  type: Exclude<SvgCardPattern, 'none'>,
-  color: string,
-  opacity: number,
-) {
+function renderPatternDef(id: string, type: SvgCardPattern, color: string, opacity: number) {
   if (type === 'dots') {
     return (
       <pattern id={id} width='16' height='16' patternUnits='userSpaceOnUse'>
@@ -247,7 +168,7 @@ export interface SvgCardProps {
   seed?: string
   bgColor?: string
   bgGradient?: SvgCardGradient
-  pattern?: SvgCardPattern
+  pattern?: SvgCardPattern | null
   patternColor?: string
   patternOpacity?: number
   icon?: ReactNode | string
@@ -277,9 +198,6 @@ export interface SvgCardProps {
 }
 
 function SvgCard(props: SvgCardProps) {
-  const { theme } = useTheme()
-  const defaults = themeDefaults(theme.color)
-
   const {
     width = 430,
     height: heightProp,
@@ -320,30 +238,26 @@ function SvgCard(props: SvgCardProps) {
   const viewHeight = heightProp ?? Math.round(viewWidth / aspectRatio)
   const resolvedSeed = seed ?? title
 
-  const gradientColors =
-    bgGradient ??
-    (!bgColor ? themeGradient(theme.color) : GRADIENTS[hashSeed(resolvedSeed) % GRADIENTS.length])
-
+  const defaults = useSvgCardTheme()
+  const gradientColors = bgGradient ?? (!bgColor ? defaults.gradient : null)
   const gradientId = gradientColors
     ? `svg-card-gradient-${hashSeed(`${resolvedSeed}-${viewWidth}-${viewHeight}`)}`
-    : undefined
+    : null
 
-  const backgroundFill = gradientId ? `url(#${gradientId})` : (bgColor ?? defaults.background)
+  const backgroundFill = gradientId ? `url(#${gradientId})` : bgColor
   const resolvedIconColor = iconColor ?? defaults.iconColor
   const resolvedIconTextColor = iconTextColor ?? defaults.iconTextColor
   const resolvedTitleColor = titleColor ?? defaults.titleColor
   const resolvedCaptionColor = captionColor ?? defaults.captionColor
   const resolvedPatternColor = patternColor ?? defaults.patternColor
   const patternOpacityValue = Math.min(Math.max(patternOpacity, 0), 1)
-  const patternType = pattern ?? 'grid'
   const patternId =
-    patternType !== 'none' && patternOpacityValue > 0
-      ? `svg-card-pattern-${hashSeed(`${resolvedSeed}-${patternType}`)}`
-      : undefined
-  const patternDefinition =
-    patternId && patternType !== 'none'
-      ? renderPatternDefinition(patternId, patternType, resolvedPatternColor, patternOpacityValue)
+    pattern != null && patternOpacityValue > 0
+      ? `svg-card-pattern-${hashSeed(`${resolvedSeed}-${pattern}`)}`
       : null
+  const patternDef = patternId
+    ? renderPatternDef(patternId, pattern, resolvedPatternColor, patternOpacityValue)
+    : null
 
   const hasCaption = Boolean(caption)
   const captionHeight = hasCaption ? captionSize + captionGap : 0
@@ -357,11 +271,11 @@ function SvgCard(props: SvgCardProps) {
   const shouldScaleIcon = !textIcon
   const iconTransform = shouldScaleIcon
     ? `translate(${-iconSize / 2}, ${-iconSize / 2}) scale(${iconSize / iconViewBox})`
-    : undefined
+    : null
 
   const svgWidthAttr = responsive ? '100%' : viewWidth
   const svgHeightAttr = responsive ? '100%' : viewHeight
-  const svgStyle: CSSProperties | undefined = responsive
+  const svgStyle: CSSProperties = responsive
     ? {
         display: 'block',
         width: '100%',
@@ -370,10 +284,7 @@ function SvgCard(props: SvgCardProps) {
         ...style,
       }
     : { display: 'block', ...style }
-
-  const hasGradient = Boolean(gradientId && gradientColors)
-  const hasPattern = Boolean(patternDefinition)
-  const needsDefs = hasGradient || hasPattern
+  const needsDefs = gradientId != null || patternDef != null
 
   return (
     <svg
@@ -389,13 +300,13 @@ function SvgCard(props: SvgCardProps) {
     >
       {needsDefs && (
         <defs>
-          {hasGradient && gradientColors && (
+          {gradientId && (
             <linearGradient id={gradientId} x1='0%' y1='0%' x2='100%' y2='100%'>
               <stop offset='0%' stopColor={gradientColors[0]} />
               <stop offset='100%' stopColor={gradientColors[1]} />
             </linearGradient>
           )}
-          {hasPattern && patternDefinition}
+          {patternDef}
         </defs>
       )}
       <rect width={viewWidth} height={viewHeight} rx={borderRadius} fill={backgroundFill} />
