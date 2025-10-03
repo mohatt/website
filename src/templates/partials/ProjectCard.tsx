@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { NetworkHandle } from '@/util'
 import { Button, Link, Pagination, SvgCard } from '@/components'
+import * as cardComponents from '@/project-cards'
 import { ProjectCategory, ProjectSkill } from './index'
 
 export interface ProjectCardProps {
@@ -11,35 +12,60 @@ export interface ProjectCardProps {
 }
 
 function ProjectCard({ project, skill, category }: ProjectCardProps) {
+  const { slug, title, icon, image, cardComponent, cardProps } = project
   const props = {
     to: 'projects.project',
-    params: { project: project.slug },
+    params: { project: slug },
     title: 'View project details',
   }
+
+  function createImageCard() {
+    return (
+      <GatsbyImage
+        image={getImage(image)}
+        className='rounded-md shadow-lg border-gradient-2'
+        alt={title}
+      />
+    )
+  }
+
+  function createSvgCard() {
+    let CardComponent = SvgCard
+    if (cardComponent) {
+      // eslint-disable-next-line import/namespace
+      CardComponent = cardComponents[cardComponent]
+      if (!CardComponent) {
+        throw new Error(`Unknown card component: ${String(cardComponent)}`)
+      }
+    }
+    const iconSize = (cardProps?.iconSize as number) ?? 64
+    return (
+      <div className='rounded-md shadow-lg border-gradient-2'>
+        <CardComponent
+          title={title}
+          {...cardProps}
+          responsive
+          seed={slug}
+          icon={icon}
+          iconSize={iconSize}
+          gap={96 - iconSize}
+        />
+      </div>
+    )
+  }
+
+  const cardNode =
+    // If the project has a card component, use it.
+    // Otherwise, if the project has an image, use the image.
+    // Otherwise, use the icon if it's provided, otherwise use the placeholder card.
+    cardComponent || (!project.hasImage && icon) ? createSvgCard() : createImageCard()
 
   return (
     <div className='max-w-[430px]'>
       <div>
         <div className='relative'>
           <Link className='block' {...props}>
-            {project.hasImage ? (
-              <GatsbyImage
-                image={getImage(project.image)}
-                className='rounded-md shadow-lg border-gradient-2'
-                alt={project.title}
-              />
-            ) : (
-              <div className='rounded-md shadow-lg border-gradient-2'>
-                <SvgCard
-                  responsive
-                  seed={project.slug}
-                  title={project.iconText ?? project.title}
-                  icon={project.icon}
-                  iconSize={project.iconSize ?? 64}
-                  gap={96 - (project.iconSize ?? 64)}
-                />
-              </div>
-            )}
+            {cardNode}
           </Link>
           <NetworkHandle.Map data={project.handles} limit={2}>
             {(items) => <div className='absolute -bottom-4 right-4 z-10'>{items}</div>}
@@ -66,7 +92,7 @@ function ProjectCard({ project, skill, category }: ProjectCardProps) {
       </div>
       <div className='mt-4'>
         <Link className='link-primary text-xl' {...props}>
-          {project.title}
+          {title}
         </Link>
         <ProjectSkill.Map data={project.skills} exclude={skill} limit={8}>
           {(items) => (
@@ -137,8 +163,8 @@ export const ProjectCardFragment = graphql`
     title
     desc
     icon
-    iconText
-    iconSize
+    cardComponent
+    cardProps
     image {
       childImageSharp {
         gatsbyImageData(aspectRatio: 1.8, width: 430, placeholder: BLURRED)

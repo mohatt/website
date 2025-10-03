@@ -6,6 +6,8 @@ import { darken, lighten } from '@/util/color'
 export type SvgCardPattern = 'grid' | 'dots' | 'diagonal' | 'isometric'
 export type SvgCardGradient = readonly [string, string]
 
+type SvgCardIconViewBox = number | readonly [number, number]
+
 interface SvgCardTheme {
   iconColor: string
   iconTextColor: string
@@ -209,16 +211,19 @@ export interface SvgCardProps {
   pattern?: SvgCardPattern | null
   patternColor?: string
   patternOpacity?: number
+  /**
+   * Provide raw SVG nodes (paths/groups). Avoid wrapping them in an <svg> so centering works as expected.
+   */
   icon?: ReactNode | string
   iconSize?: number
   iconColor?: string
-  iconViewBox?: number
+  iconViewBox?: SvgCardIconViewBox
   iconText?: string
   iconTextColor?: string
   iconTextWeight?: string | number
   iconTextClassName?: string
   gap?: number
-  title: string
+  title?: string
   titleSize?: number
   titleColor?: string
   titleWeight?: string | number
@@ -238,7 +243,7 @@ export interface SvgCardProps {
 function SvgCard(props: SvgCardProps) {
   const {
     width = 430,
-    height: heightProp,
+    height,
     aspectRatio = 1.8,
     seed,
     bgColor,
@@ -273,7 +278,7 @@ function SvgCard(props: SvgCardProps) {
   } = props
 
   const viewWidth = width
-  const viewHeight = heightProp ?? Math.round(viewWidth / aspectRatio)
+  const viewHeight = height ?? Math.round(viewWidth / aspectRatio)
   const resolvedSeed = seed ?? title
 
   const theme = useSvgCardTheme()
@@ -292,27 +297,53 @@ function SvgCard(props: SvgCardProps) {
   const resolvedIconTextColor = iconTextColor ?? theme.iconTextColor
   const resolvedTitleColor = titleColor ?? theme.titleColor
   const resolvedCaptionColor = captionColor ?? theme.captionColor
-  const patternOpacityValue = Math.min(Math.max(patternOpacity, 0), 1)
+  const resolvedPatternOpacity = Math.min(Math.max(patternOpacity, 0), 1)
   const patternId =
-    pattern != null && patternOpacityValue > 0
+    pattern != null && resolvedPatternOpacity > 0
       ? `svg-card-pattern-${hashSeed(`${resolvedSeed}-${pattern}`)}`
       : null
   const patternDef = patternId
-    ? renderPatternDef(patternId, pattern, theme, patternOpacityValue, patternColor)
+    ? renderPatternDef(patternId, pattern, theme, resolvedPatternOpacity, patternColor)
     : null
 
+  const hasTitle = Boolean(title)
   const hasCaption = Boolean(caption)
-  const captionHeight = hasCaption ? captionSize + captionGap : 0
-  const totalHeight = iconSize + gap + titleSize + captionHeight
+  const totalHeight = (() => {
+    let value = iconSize
+    if (hasTitle) {
+      value += gap + titleSize
+    }
+    if (hasCaption) {
+      value += (hasTitle ? captionGap : gap) + captionSize
+    }
+    return value
+  })()
   const centerY = viewHeight / 2
-  const iconY = centerY - totalHeight / 2 + iconSize / 2
-  const titleY = iconY + iconSize / 2 + gap + titleSize / 2
-  const captionY = hasCaption ? titleY + titleSize / 2 + captionGap + captionSize / 2 : 0
+  let cursor = centerY - totalHeight / 2
+  const iconY = cursor + iconSize / 2
+  cursor += iconSize
+  let titleY = 0
+  if (hasTitle) {
+    cursor += gap
+    titleY = cursor + titleSize / 2
+    cursor += titleSize
+  }
+  let captionY = 0
+  if (hasCaption) {
+    cursor += hasTitle ? captionGap : gap
+    captionY = cursor + captionSize / 2
+    cursor += captionSize
+  }
 
   const textIcon = iconText ?? (!icon ? '--' : '')
   const shouldScaleIcon = !textIcon
+  const iconViewBoxTuple = Array.isArray(iconViewBox) ? iconViewBox : [iconViewBox, iconViewBox]
+  const [iconViewBoxWidth, iconViewBoxHeight] = iconViewBoxTuple as [number, number]
+  const iconScale = shouldScaleIcon && iconViewBoxHeight ? iconSize / iconViewBoxHeight : 1
+  const iconTranslateX = shouldScaleIcon ? (-iconViewBoxWidth * iconScale) / 2 : 0
+  const iconTranslateY = shouldScaleIcon ? (-iconViewBoxHeight * iconScale) / 2 : 0
   const iconTransform = shouldScaleIcon
-    ? `translate(${-iconSize / 2}, ${-iconSize / 2}) scale(${iconSize / iconViewBox})`
+    ? `translate(${iconTranslateX}, ${iconTranslateY}) scale(${iconScale})`
     : null
 
   const svgWidthAttr = responsive ? '100%' : viewWidth
@@ -335,7 +366,7 @@ function SvgCard(props: SvgCardProps) {
       viewBox={`0 0 ${viewWidth} ${viewHeight}`}
       xmlns='http://www.w3.org/2000/svg'
       role='img'
-      aria-label={title}
+      aria-label={title ?? caption ?? iconText}
       preserveAspectRatio='xMidYMid meet'
       className={className}
       style={svgStyle}
@@ -376,18 +407,20 @@ function SvgCard(props: SvgCardProps) {
           )}
         </g>
       </g>
-      <text
-        x='50%'
-        y={titleY}
-        textAnchor='middle'
-        dominantBaseline='middle'
-        fontSize={titleSize}
-        fill={resolvedTitleColor}
-        fontWeight={titleWeight}
-        className={titleClassName}
-      >
-        {title}
-      </text>
+      {hasTitle && (
+        <text
+          x='50%'
+          y={titleY}
+          textAnchor='middle'
+          dominantBaseline='middle'
+          fontSize={titleSize}
+          fill={resolvedTitleColor}
+          fontWeight={titleWeight}
+          className={titleClassName}
+        >
+          {title}
+        </text>
+      )}
       {hasCaption && (
         <text
           x='50%'

@@ -1382,12 +1382,12 @@ type MdxFilterListInput = {
 };
 
 type MdxFrontmatter = {
+  readonly cardComponent: Maybe<Scalars['String']>;
+  readonly cardProps: Maybe<MdxFrontmatterCardProps>;
   readonly categories: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly desc: Maybe<Scalars['String']>;
   readonly handles: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly icon: Maybe<Scalars['String']>;
-  readonly iconSize: Maybe<Scalars['Int']>;
-  readonly iconText: Maybe<Scalars['String']>;
   readonly priority: Maybe<Scalars['Int']>;
   readonly screens: Maybe<ReadonlyArray<Maybe<File>>>;
   readonly skills: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
@@ -1404,13 +1404,33 @@ type MdxFrontmatter_startedArgs = {
   locale: InputMaybe<Scalars['String']>;
 };
 
+type MdxFrontmatterCardProps = {
+  readonly iconSize: Maybe<Scalars['Int']>;
+  readonly title: Maybe<Scalars['String']>;
+};
+
+type MdxFrontmatterCardPropsFieldSelector = {
+  readonly iconSize: InputMaybe<FieldSelectorEnum>;
+  readonly title: InputMaybe<FieldSelectorEnum>;
+};
+
+type MdxFrontmatterCardPropsFilterInput = {
+  readonly iconSize: InputMaybe<IntQueryOperatorInput>;
+  readonly title: InputMaybe<StringQueryOperatorInput>;
+};
+
+type MdxFrontmatterCardPropsSortInput = {
+  readonly iconSize: InputMaybe<SortOrderEnum>;
+  readonly title: InputMaybe<SortOrderEnum>;
+};
+
 type MdxFrontmatterFieldSelector = {
+  readonly cardComponent: InputMaybe<FieldSelectorEnum>;
+  readonly cardProps: InputMaybe<MdxFrontmatterCardPropsFieldSelector>;
   readonly categories: InputMaybe<FieldSelectorEnum>;
   readonly desc: InputMaybe<FieldSelectorEnum>;
   readonly handles: InputMaybe<FieldSelectorEnum>;
   readonly icon: InputMaybe<FieldSelectorEnum>;
-  readonly iconSize: InputMaybe<FieldSelectorEnum>;
-  readonly iconText: InputMaybe<FieldSelectorEnum>;
   readonly priority: InputMaybe<FieldSelectorEnum>;
   readonly screens: InputMaybe<FileFieldSelector>;
   readonly skills: InputMaybe<FieldSelectorEnum>;
@@ -1420,12 +1440,12 @@ type MdxFrontmatterFieldSelector = {
 };
 
 type MdxFrontmatterFilterInput = {
+  readonly cardComponent: InputMaybe<StringQueryOperatorInput>;
+  readonly cardProps: InputMaybe<MdxFrontmatterCardPropsFilterInput>;
   readonly categories: InputMaybe<StringQueryOperatorInput>;
   readonly desc: InputMaybe<StringQueryOperatorInput>;
   readonly handles: InputMaybe<StringQueryOperatorInput>;
   readonly icon: InputMaybe<StringQueryOperatorInput>;
-  readonly iconSize: InputMaybe<IntQueryOperatorInput>;
-  readonly iconText: InputMaybe<StringQueryOperatorInput>;
   readonly priority: InputMaybe<IntQueryOperatorInput>;
   readonly screens: InputMaybe<FileFilterListInput>;
   readonly skills: InputMaybe<StringQueryOperatorInput>;
@@ -1435,12 +1455,12 @@ type MdxFrontmatterFilterInput = {
 };
 
 type MdxFrontmatterSortInput = {
+  readonly cardComponent: InputMaybe<SortOrderEnum>;
+  readonly cardProps: InputMaybe<MdxFrontmatterCardPropsSortInput>;
   readonly categories: InputMaybe<SortOrderEnum>;
   readonly desc: InputMaybe<SortOrderEnum>;
   readonly handles: InputMaybe<SortOrderEnum>;
   readonly icon: InputMaybe<SortOrderEnum>;
-  readonly iconSize: InputMaybe<SortOrderEnum>;
-  readonly iconText: InputMaybe<SortOrderEnum>;
   readonly priority: InputMaybe<SortOrderEnum>;
   readonly screens: InputMaybe<FileSortInput>;
   readonly skills: InputMaybe<SortOrderEnum>;
@@ -1735,6 +1755,8 @@ type PotraceTurnPolicy =
 
 type Project = Node & {
   readonly body: Maybe<Scalars['String']>;
+  readonly cardComponent: Maybe<Scalars['String']>;
+  readonly cardProps: Maybe<Scalars['JSON']>;
   readonly categories: Maybe<ReadonlyArray<Maybe<ProjectCategory>>>;
   readonly children: ReadonlyArray<Node>;
   readonly desc: Scalars['String'];
@@ -1742,8 +1764,6 @@ type Project = Node & {
   readonly handles: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly hasImage: Scalars['Boolean'];
   readonly icon: Maybe<Scalars['String']>;
-  readonly iconSize: Maybe<Scalars['Int']>;
-  readonly iconText: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly image: File;
   readonly internal: Internal;
@@ -1947,6 +1967,8 @@ type ProjectEdge = {
 
 type ProjectFieldSelector = {
   readonly body: InputMaybe<FieldSelectorEnum>;
+  readonly cardComponent: InputMaybe<FieldSelectorEnum>;
+  readonly cardProps: InputMaybe<FieldSelectorEnum>;
   readonly categories: InputMaybe<ProjectCategoryFieldSelector>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly desc: InputMaybe<FieldSelectorEnum>;
@@ -1954,8 +1976,6 @@ type ProjectFieldSelector = {
   readonly handles: InputMaybe<FieldSelectorEnum>;
   readonly hasImage: InputMaybe<FieldSelectorEnum>;
   readonly icon: InputMaybe<FieldSelectorEnum>;
-  readonly iconSize: InputMaybe<FieldSelectorEnum>;
-  readonly iconText: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly image: InputMaybe<FileFieldSelector>;
   readonly internal: InputMaybe<InternalFieldSelector>;
@@ -1972,6 +1992,8 @@ type ProjectFieldSelector = {
 
 type ProjectFilterInput = {
   readonly body: InputMaybe<StringQueryOperatorInput>;
+  readonly cardComponent: InputMaybe<StringQueryOperatorInput>;
+  readonly cardProps: InputMaybe<JSONQueryOperatorInput>;
   readonly categories: InputMaybe<ProjectCategoryFilterListInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly desc: InputMaybe<StringQueryOperatorInput>;
@@ -1979,8 +2001,6 @@ type ProjectFilterInput = {
   readonly handles: InputMaybe<StringQueryOperatorInput>;
   readonly hasImage: InputMaybe<BooleanQueryOperatorInput>;
   readonly icon: InputMaybe<StringQueryOperatorInput>;
-  readonly iconSize: InputMaybe<IntQueryOperatorInput>;
-  readonly iconText: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly image: InputMaybe<FileFilterInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
@@ -2180,6 +2200,8 @@ type ProjectSkillSortInput = {
 
 type ProjectSortInput = {
   readonly body: InputMaybe<SortOrderEnum>;
+  readonly cardComponent: InputMaybe<SortOrderEnum>;
+  readonly cardProps: InputMaybe<SortOrderEnum>;
   readonly categories: InputMaybe<ProjectCategorySortInput>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly desc: InputMaybe<SortOrderEnum>;
@@ -2187,8 +2209,6 @@ type ProjectSortInput = {
   readonly handles: InputMaybe<SortOrderEnum>;
   readonly hasImage: InputMaybe<SortOrderEnum>;
   readonly icon: InputMaybe<SortOrderEnum>;
-  readonly iconSize: InputMaybe<SortOrderEnum>;
-  readonly iconText: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly image: InputMaybe<FileSortInput>;
   readonly internal: InputMaybe<InternalSortInput>;
@@ -2481,6 +2501,8 @@ type Query_pageArgs = {
 
 type Query_projectArgs = {
   body: InputMaybe<StringQueryOperatorInput>;
+  cardComponent: InputMaybe<StringQueryOperatorInput>;
+  cardProps: InputMaybe<JSONQueryOperatorInput>;
   categories: InputMaybe<ProjectCategoryFilterListInput>;
   children: InputMaybe<NodeFilterListInput>;
   desc: InputMaybe<StringQueryOperatorInput>;
@@ -2488,8 +2510,6 @@ type Query_projectArgs = {
   handles: InputMaybe<StringQueryOperatorInput>;
   hasImage: InputMaybe<BooleanQueryOperatorInput>;
   icon: InputMaybe<StringQueryOperatorInput>;
-  iconSize: InputMaybe<IntQueryOperatorInput>;
-  iconText: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   image: InputMaybe<FileFilterInput>;
   internal: InputMaybe<InternalFilterInput>;
@@ -3624,9 +3644,9 @@ type ProjectQueryVariables = Exact<{
 
 type ProjectQuery = { readonly project: { readonly title: string, readonly desc: string, readonly started: string, readonly status: string | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly image: { readonly childImageSharp: { readonly thumb: import('gatsby-plugin-image').IGatsbyImageData, readonly full: import('gatsby-plugin-image').IGatsbyImageData, readonly org: { readonly width: number | null, readonly height: number | null } | null, readonly socialBanner: { readonly src: string | null, readonly width: number | null, readonly height: number | null } | null } | null }, readonly screens: ReadonlyArray<{ readonly childImageSharp: { readonly thumb: import('gatsby-plugin-image').IGatsbyImageData, readonly full: import('gatsby-plugin-image').IGatsbyImageData, readonly org: { readonly width: number | null, readonly height: number | null } | null } | null } | null> | null, readonly categories: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly testimonials: ReadonlyArray<{ readonly name: string, readonly title: string, readonly quote: string, readonly image: { readonly childImageSharp: { readonly resize: { readonly src: string | null } | null } | null } } | null> | null } | null };
 
-type ProjectCardFragment = { readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly iconText: string | null, readonly iconSize: number | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly categories: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null };
+type ProjectCardFragment = { readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly cardComponent: string | null, readonly cardProps: Record<string, unknown> | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly categories: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null };
 
-type ProjectCardGridPaginatedFragment = { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly iconText: string | null, readonly iconSize: number | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly categories: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null } }>, readonly pageInfo: { readonly perPage: number | null, readonly pageCount: number, readonly itemCount: number, readonly currentPage: number, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean } };
+type ProjectCardGridPaginatedFragment = { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly cardComponent: string | null, readonly cardProps: Record<string, unknown> | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly categories: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null } }>, readonly pageInfo: { readonly perPage: number | null, readonly pageCount: number, readonly itemCount: number, readonly currentPage: number, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean } };
 
 type ProjectCategoryFragment = { readonly slug: string | null, readonly title: string, readonly size: number };
 
@@ -3637,7 +3657,7 @@ type ProjectsByCategoryQueryVariables = Exact<{
 }>;
 
 
-type ProjectsByCategoryQuery = { readonly projects: { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly iconText: string | null, readonly iconSize: number | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly categories: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null } }>, readonly pageInfo: { readonly perPage: number | null, readonly pageCount: number, readonly itemCount: number, readonly currentPage: number, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean } }, readonly categoryObj: { readonly title: string, readonly desc: string } | null };
+type ProjectsByCategoryQuery = { readonly projects: { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly cardComponent: string | null, readonly cardProps: Record<string, unknown> | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly categories: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null } }>, readonly pageInfo: { readonly perPage: number | null, readonly pageCount: number, readonly itemCount: number, readonly currentPage: number, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean } }, readonly categoryObj: { readonly title: string, readonly desc: string } | null };
 
 type ProjectsBySkillQueryVariables = Exact<{
   skill: Scalars['String'];
@@ -3646,7 +3666,7 @@ type ProjectsBySkillQueryVariables = Exact<{
 }>;
 
 
-type ProjectsBySkillQuery = { readonly projects: { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly iconText: string | null, readonly iconSize: number | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly categories: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null } }>, readonly pageInfo: { readonly perPage: number | null, readonly pageCount: number, readonly itemCount: number, readonly currentPage: number, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean } }, readonly skillObj: { readonly title: string } | null };
+type ProjectsBySkillQuery = { readonly projects: { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly cardComponent: string | null, readonly cardProps: Record<string, unknown> | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly categories: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null } }>, readonly pageInfo: { readonly perPage: number | null, readonly pageCount: number, readonly itemCount: number, readonly currentPage: number, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean } }, readonly skillObj: { readonly title: string } | null };
 
 type ProjectsIndexQueryVariables = Exact<{
   id: Scalars['String'];
@@ -3654,7 +3674,7 @@ type ProjectsIndexQueryVariables = Exact<{
 }>;
 
 
-type ProjectsIndexQuery = { readonly page: { readonly title: string } | null, readonly projects: { readonly group: ReadonlyArray<{ readonly totalCount: number, readonly slug: string | null, readonly nodes: ReadonlyArray<{ readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly iconText: string | null, readonly iconSize: number | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly categories: ReadonlyArray<{ readonly desc: string, readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null }> }> } };
+type ProjectsIndexQuery = { readonly page: { readonly title: string } | null, readonly projects: { readonly group: ReadonlyArray<{ readonly totalCount: number, readonly slug: string | null, readonly nodes: ReadonlyArray<{ readonly slug: string, readonly title: string, readonly desc: string, readonly icon: string | null, readonly cardComponent: string | null, readonly cardProps: Record<string, unknown> | null, readonly hasImage: boolean, readonly handles: ReadonlyArray<string | null> | null, readonly categories: ReadonlyArray<{ readonly desc: string, readonly slug: string | null, readonly title: string, readonly size: number } | null> | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }, readonly skills: ReadonlyArray<{ readonly slug: string | null, readonly title: string, readonly size: number } | null> | null }> }> } };
 
 type ProjectSkillFragment = { readonly slug: string | null, readonly title: string, readonly size: number };
 

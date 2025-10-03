@@ -21,8 +21,8 @@ export const create: Array<ObjectTypeComposerAsObjectDefinition<Node, unknown>> 
         type: 'String',
         resolve: createSimpleIconsResolver(),
       },
-      iconText: 'String',
-      iconSize: 'Int',
+      cardProps: 'JSON',
+      cardComponent: 'String',
       image: {
         type: 'File!',
         extensions: {

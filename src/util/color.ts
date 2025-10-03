@@ -1,25 +1,34 @@
 export function toRgb(color: string) {
-  const match = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(color)
-  if (!match) {
-    return null
+  const hexMatch = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(color)
+  if (hexMatch) {
+    const raw = hexMatch[1]
+    const normalized =
+      raw.length === 3
+        ? raw
+            .split('')
+            .map((c) => c + c)
+            .join('')
+        : raw
+    const value = parseInt(normalized, 16)
+    return {
+      r: (value >> 16) & 255,
+      g: (value >> 8) & 255,
+      b: value & 255,
+    }
   }
-  const raw = match[1]
-  const normalized =
-    raw.length === 3
-      ? raw
-          .split('')
-          .map((c) => c + c)
-          .join('')
-      : raw
-  const value = parseInt(normalized, 16)
-  return {
-    r: (value >> 16) & 255,
-    g: (value >> 8) & 255,
-    b: value & 255,
+
+  const rgbMatch = /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/i.exec(color)
+  if (rgbMatch) {
+    const [r, g, b] = rgbMatch.slice(1).map((value) => Number(value))
+    if ([r, g, b].every((channel) => Number.isInteger(channel) && channel >= 0 && channel <= 255)) {
+      return { r, g, b }
+    }
   }
+
+  return null
 }
 
-export function channelMix(channel: number, target: number, amount: number) {
+function channelMix(channel: number, target: number, amount: number) {
   return Math.round(channel + (target - channel) * amount)
 }
 
