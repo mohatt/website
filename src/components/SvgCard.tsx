@@ -332,7 +332,6 @@ function SvgCard(props: SvgCardProps) {
   if (hasCaption) {
     cursor += hasTitle ? captionGap : gap
     captionY = cursor + captionSize / 2
-    cursor += captionSize
   }
 
   const textIcon = iconText ?? (!icon ? '--' : '')

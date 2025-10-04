@@ -12,7 +12,7 @@ interface ProjectGalleryProps {
 }
 
 function ProjectGallery({ screens }: ProjectGalleryProps) {
-  const [galleryRef] = useScrollbars<HTMLDivElement>({ defer: true })
+  const [galleryRef] = useScrollbars<HTMLDivElement>({ defer: false })
   const [itemRefs, itemRef] = useElementsRef()
   const lightbox = useLightbox(
     () => ({
