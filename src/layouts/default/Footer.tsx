@@ -16,7 +16,7 @@ function Footer({ className }: FooterProps) {
     <footer className={className}>
       <Section className='font-display' fill sep='pre' spacing={false}>
         <div className='flex'>
-          <div className='flex-grow flex items-center'>
+          <div className='flex-grow'>
             <span>
               Brewed with{' '}
               <Link
@@ -27,9 +27,9 @@ function Footer({ className }: FooterProps) {
               >
                 Gatsby
               </Link>{' '}
-              &
+              &{' '}
             </span>
-            <Icon name='coffee' className='w-6 h-6 ml-2 -mt-1' />
+            <Icon name='coffee' className='w-6 h-6 -mt-0.5 align-top' />
           </div>
           <div className='opacity-75'>
             <Link

@@ -14,6 +14,14 @@ const awesomeHubIcon = (
 export default function AwesomeHub(props: SvgCardProps) {
   const resolvedProps: SvgCardProps = props?.icon
     ? props
-    : { ...props, icon: awesomeHubIcon, iconSize: 36, iconViewBox: [1024, 120], title: null }
-  return <SvgCard {...resolvedProps} bgGradient={['#8b5cf6', '#6366f1']} iconColor='#fff' />
+    : { ...props, icon: awesomeHubIcon, iconSize: 38, iconViewBox: [1024, 120], title: null }
+  return (
+    <SvgCard
+      {...resolvedProps}
+      bgGradient={['#8b5cf6', '#6366f1']}
+      iconColor='#fff'
+      patternColor='#fff'
+      patternOpacity={0.2}
+    />
+  )
 }

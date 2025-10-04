@@ -39,7 +39,7 @@ function createPatternShades(base: string): SvgCardTheme['patternShades'] {
 const svgCardThemes = themes.color.reduce<Record<string, SvgCardTheme>>((accu, theme) => {
   const {
     id,
-    colors: { accent, secondary, typo },
+    colors: { accent, secondary, typo, 'typo-dim': typoDim },
     dark,
   } = theme
 
@@ -48,7 +48,7 @@ const svgCardThemes = themes.color.reduce<Record<string, SvgCardTheme>>((accu, t
     iconTextColor: typo,
     titleColor: typo,
     captionColor: dark ? 'rgba(255,255,255,0.65)' : 'rgba(17, 24, 39, 0.65)',
-    patternShades: createPatternShades(secondary),
+    patternShades: createPatternShades(dark ? typoDim : typo),
     backgroundColor: secondary,
     gradient: dark ? [lighten(accent, 0.1), accent] : [darken(accent, 0.25), accent],
   }
@@ -248,9 +248,9 @@ function SvgCard(props: SvgCardProps) {
     seed,
     bgColor,
     bgGradient,
-    pattern = 'isometric',
+    pattern = 'grid',
     patternColor,
-    patternOpacity = 0.15,
+    patternOpacity = 0.2,
     icon,
     iconSize = 64,
     iconColor,
