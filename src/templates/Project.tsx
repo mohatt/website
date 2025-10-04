@@ -27,10 +27,17 @@ function ProjectGallery({ screens }: ProjectGalleryProps) {
       })),
     }),
     (lightbox) => {
+      lightbox.addFilter('thumbEl', (thumbEl) => {
+        thumbEl.scrollIntoView({ behavior: 'instant', block: 'nearest' })
+        return thumbEl
+      })
+
       lightbox.addFilter('itemData', (itemData) => {
-        // eslint-disable-next-line no-param-reassign
-        itemData.msrc =
-          itemData.element.querySelector<HTMLImageElement>('img[data-main-image]').currentSrc
+        const imageEl = itemData.element.querySelector<HTMLImageElement>('img[data-main-image]')
+        if (imageEl) {
+          // eslint-disable-next-line no-param-reassign
+          itemData.msrc = imageEl.currentSrc
+        }
         return itemData
       })
     },
