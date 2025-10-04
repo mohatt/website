@@ -20,5 +20,5 @@ export const site = {
   contacts: Array<NetworkHandleId>('github:mohatt', 'linkedin:mohatt', 'email:mohatt@pm.me'),
   themeStorageKey: 'mohatt:theme',
   repository: 'https://github.com/mohatt/website',
-  copyright: '© 2025 All rights reserved.',
+  // copyright: '© 2025 All rights reserved.',
 }

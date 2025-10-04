@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { generatePath } from 'gatsby-plugin-advanced-pages'
 import { site } from '@/constants'
-import { Section, Link } from '@/components'
+import { Section, Link, Icon } from '@/components'
 
 export interface FooterProps {
   className?: string
@@ -11,13 +11,26 @@ function Footer({ className }: FooterProps) {
   const {
     deployment: { sha, date },
     repository,
-    copyright,
   } = site
   return (
     <footer className={className}>
       <Section className='font-display' fill sep='pre' spacing={false}>
         <div className='flex'>
-          <div className='flex-grow'>{copyright}</div>
+          <div className='flex-grow flex items-center'>
+            <span>
+              Brewed with{' '}
+              <Link
+                href='https://www.gatsbyjs.com'
+                className='link'
+                target='_blank'
+                rel='noreferrer'
+              >
+                Gatsby
+              </Link>{' '}
+              &
+            </span>
+            <Icon name='coffee' className='w-6 h-6 ml-2 -mt-1' />
+          </div>
           <div className='opacity-75'>
             <Link
               href={`${repository}/commit/${sha}`}
