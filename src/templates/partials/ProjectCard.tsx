@@ -167,7 +167,7 @@ export const ProjectCardFragment = graphql`
     cardProps
     image {
       childImageSharp {
-        gatsbyImageData(aspectRatio: 1.8, width: 430, placeholder: BLURRED)
+        gatsbyImageData(aspectRatio: 1.8, width: 430, placeholder: BLURRED, quality: 100)
       }
     }
     hasImage

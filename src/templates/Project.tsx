@@ -2,7 +2,7 @@ import { graphql, PageProps } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { themeScreens } from '@/constants'
 import { NetworkHandle } from '@/util'
-import { useLightbox, useScrollbars } from '@/hooks'
+import { useElementsRef, useLightbox, useScrollbars } from '@/hooks'
 import { Heading, Detail, Link, Mdx, Section } from '@/components'
 import { PageHead, PageLayout } from '@/layouts/page'
 import { ProjectSkill, Testimonial } from './partials'
@@ -12,20 +12,32 @@ interface ProjectGalleryProps {
 }
 
 function ProjectGallery({ screens }: ProjectGalleryProps) {
-  const [ref] = useScrollbars<HTMLDivElement>({ defer: true })
-  const lightbox = useLightbox({
-    showHideAnimationType: 'none',
-    dataSource: screens.map(({ org, full, thumb }) => ({
-      w: org.width,
-      h: org.height,
-      src: full.images.fallback.src,
-      srcset: full.images.fallback.srcSet,
-      msrc: thumb.placeholder.fallback,
-    })),
-  })
+  const [galleryRef] = useScrollbars<HTMLDivElement>({ defer: true })
+  const [itemRefs, itemRef] = useElementsRef()
+  const lightbox = useLightbox(
+    () => ({
+      dataSource: screens.map(({ org, full, thumb }, i) => ({
+        w: org.width,
+        h: org.height,
+        src: full.images.fallback.src,
+        srcset: full.images.fallback.srcSet,
+        msrc: thumb.placeholder.fallback,
+        element: itemRefs.current[i],
+        alt: `Screen ${i + 1}`,
+      })),
+    }),
+    (lightbox) => {
+      lightbox.addFilter('itemData', (itemData) => {
+        // eslint-disable-next-line no-param-reassign
+        itemData.msrc =
+          itemData.element.querySelector<HTMLImageElement>('img[data-main-image]').currentSrc
+        return itemData
+      })
+    },
+  )
 
   return (
-    <div ref={ref} className='mb-12'>
+    <div ref={galleryRef} className='mb-12'>
       <div className='flex'>
         {screens.map(({ thumb }, i) => {
           const cls = `scr_thumb_${i}`
@@ -33,6 +45,7 @@ function ProjectGallery({ screens }: ProjectGalleryProps) {
           return (
             <div
               key={i}
+              ref={itemRef()}
               className={`flex-shrink-0 cursor-zoom mr-1.5 ${cls}`}
               onClick={() => lightbox.loadAndOpen(i)}
             >
@@ -138,8 +151,8 @@ export const query = graphql`
             width
             height
           }
-          thumb: gatsbyImageData(height: 500, placeholder: BLURRED)
-          full: gatsbyImageData(layout: FULL_WIDTH, formats: [AUTO])
+          thumb: gatsbyImageData(height: 500, placeholder: BLURRED, quality: 100)
+          full: gatsbyImageData(layout: FULL_WIDTH, formats: [AUTO], quality: 100)
         }
       }
       screens {
@@ -148,8 +161,8 @@ export const query = graphql`
             width
             height
           }
-          thumb: gatsbyImageData(height: 500, placeholder: BLURRED)
-          full: gatsbyImageData(layout: FULL_WIDTH, formats: [AUTO])
+          thumb: gatsbyImageData(height: 500, placeholder: BLURRED, quality: 100)
+          full: gatsbyImageData(layout: FULL_WIDTH, formats: [AUTO], quality: 100)
         }
       }
       categories {

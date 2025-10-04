@@ -7,6 +7,7 @@ export { useLayout, useLayoutState } from '@/providers/layout'
 
 export { useEnhancedEffect } from './useEnhancedEffect'
 export { useLazyRef } from './useLazyRef'
+export { useElementsRef } from './useElementsRef'
 export { useEventCallback } from './useEventCallback'
 export { useMounted } from './useMounted'
 export { useLocalStorage } from './useLocalStorage'
