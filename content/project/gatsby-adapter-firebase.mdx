@@ -1,0 +1,48 @@
+---
+title: Gatsby Adapter for Firebase
+desc: Gatsby adapter that translates redirects, headers, SSR, and functions into Firebase Hosting and Functions
+icon: gatsby
+cardProps:
+  title: Gatsby Firebase
+started: 2025-10-12
+status: ONG
+categories:
+  - open-source
+skills:
+  - typescript
+  - node
+  - gatsby
+  - firebase
+  - gcp
+  - vitest
+  - ghactions
+  - semanticrelease
+handles:
+  - githubRepo:mohatt/gatsby-adapter-firebase
+  - npm:gatsby-adapter-firebase
+  - homepage:gatsbyfire.web.app
+priority: 35
+---
+#### Project Overview
+
+`gatsby-adapter-firebase` lets Gatsby sites deploy to Firebase Hosting without hand-editing config files. It keeps redirects, headers, caching, SSR, DSG, and Gatsby Functions lined up with Firebase Hosting and Cloud Functions.
+
+#### Why
+
+Gatsby’s adapter hook gives a single place to wire platform features together, but Firebase needed a mapping layer. The adapter unifies Gatsby’s build output with Firebase’s config so the deployment flow stays short and repeatable.
+
+#### What It Handles
+
+- Updates the targeted `hosting` block in `firebase.json`, merging redirects, rewrites, and headers while leaving other projects alone.
+- Builds Gatsby Functions—SSR, DSG, and file-based handlers—into a Firebase Functions codebase with per-function overrides.
+- Ships a cached SSR path for deferred pages by storing responses in Firebase Storage and tagging hits and misses with headers.
+- Applies Gatsby’s default caching guidance so static assets and Lambda-style responses get the right `cache-control` headers.
+- Generates a live demo site at `gatsbyfire.web.app` to test the adapter end to end.
+
+#### Development Notes
+
+- TypeScript + Node 20, bundled through `pkgroll`, and exported as both ESM and CJS.
+- Tests cover the generated config and function wrappers with Vitest and Supertest against `memfs`.
+- CI runs on GitHub Actions with coverage sent to Codecov and automated releases via Semantic Release.
+
+Check out [the project repository](https://github.com/mohatt/gatsby-adapter-firebase) on Github for more info.
