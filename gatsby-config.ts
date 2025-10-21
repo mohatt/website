@@ -3,6 +3,7 @@ import type { PluginOptions as AdvancedPagesOptions } from 'gatsby-plugin-advanc
 import site from './config/site'
 import postcss from './config/postcss'
 import postbuild from './config/postbuild'
+import deployment from './config/deployment'
 import { getYamlTypename } from './node/types'
 
 const config: GatsbyConfig = {
@@ -76,6 +77,18 @@ const config: GatsbyConfig = {
     'gatsby-plugin-react-helmet-async',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-preload-fonts',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        resolveEnv: () => deployment.target,
+        policy: [{ userAgent: '*', disallow: '/' }],
+        env: {
+          production: {
+            policy: [{ userAgent: '*', allow: '/' }],
+          },
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-postbuild',
       options: postbuild,
