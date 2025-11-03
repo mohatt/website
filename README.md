@@ -6,12 +6,12 @@ Third iteration of my personal site/portfolio built with [Gatsby](https://www.ga
 
 ### Highlights
 
-- **Static-first architecture** — pre-rendered at **build time** with client-side routing for instant transitions.
-- **MDX content system** — posts/pages live in Git as Markdown files; **React components** can be used directly in content.
-- **Image pipeline** — responsive images via Sharp (**WebP**) created at build time, lazy-loading, and LQIP placeholders.
+- **Static-first architecture** — pre-rendered at **build time** with client-side routing.
+- **MDX content system** — posts/pages live in Git as Markdown files.
+- **Image pipeline** — optimized responsive images via Sharp created during build time.
 - **Performance guardrails** — code-splitting, inlined critical CSS, and route prefetching.
 - **CI/CD** — **GitHub Actions** builds on push; production deploys to Firebase’s global edge.
-- **Design & DX** — Tailwind utility classes, sensible defaults, and a small, composable component set.
+- **Design & DX** — Tailwind utility classes, and a small, composable component set.
 
 #### Outcomes
 

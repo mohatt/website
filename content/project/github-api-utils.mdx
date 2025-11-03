@@ -29,11 +29,11 @@ The raw API + generic SDKs leave you handling **rate limits**, **pagination**, a
 
 #### Key Features
 
-- **Auth & token rotation** — Pool multiple personal access tokens; auto-switch and backoff on rate-limit responses.
+- **Auth & token rotation** — Pool multiple tokens; auto-switch and backoff on rate-limit responses.
 - **Pagination helpers** — Iterate search/list endpoints without manual page math.
 - **Logging** — PSR-3 compatible; plug in Monolog or your logger of choice.
-- **Static analysis** — Helpers that collect/normalize repo signals (stars, forks, issues/PRs, contributors, commit recency) used in downstream scoring (PAMT).
-- **Client-agnostic** — Works with **KnpLabs `github-api`** and **PSR-18** HTTP clients (e.g., Guzzle, Symfony HTTP client).
+- **Static analysis** — Helpers that collect/normalize repo signals (stars, forks, issues/PRs, contributors, commit recency) used in downstream scoring.
+- **Client-agnostic** — Works with [KnpLabs/github-api](https://github.com/KnpLabs/php-github-api) and supports **PSR-18** HTTP clients like Guzzle and Symfony HTTP client.
 
 #### Design Notes
 

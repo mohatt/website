@@ -20,17 +20,17 @@ priority: 20
 ---
 #### Project Overview
 
-`vitest-memfs` adds a set of `memfs`-aware matchers to Vitest, enabling file-heavy integration tests to run in memory while using Vitest’s regular `expect` API.
+`vitest-memfs` adds a set of memfs-aware matchers to Vitest, enabling file-heavy integration tests to run in memory while using Vitest’s regular `expect` API.
 
 #### Why
 
-I often build tooling (bundlers, project scaffolds, CLIs) that pipes files through `memfs` to avoid touching the real disk.
+I often build tooling (bundlers, project scaffolds, CLIs) that pipes files through [memfs](https://npmjs.com/package/memfs) to avoid touching the real disk.
 Assertions turned into hand-written `vol.existsSync` checks and fragile object diffs.
 The package extracts the helpers I rewrote across projects into a reusable set of matchers with tight TypeScript support, glob awareness, and snapshot integration.
 
 #### Key Matchers
 
-- `toHaveVolumeEntries` — assert that exact paths or glob patterns exist in a volume, optionally verifying the entry type (`file`, `dir`, `symlink`) or an expected count.
+- `toHaveVolumeEntries` — assert that exact paths or glob patterns exist in a volume, optionally verifying the file entry type or an expected count.
 - `toMatchVolume` — compare an in-memory volume against another volume or JSON tree with support for `prefix`, `ignore`, and directory list matching modes (exact, ignore-extra, ignore-missing).
 - `toMatchVolumeSnapshot` — persist a snapshot of a volume to disk (under `__snapshots__/`) and diff future runs; supports async comparison, glob ignores, and throttled concurrency for large trees.
 

@@ -27,17 +27,16 @@ priority: 40
 ---
 #### Project Overview
 
-**Gatsby plugin** that adds an event-based pipeline that runs **after** `gatsby build` to transform and optimize the files in `/public`. It ships ready-made tasks (PurgeCSS, HTTP headers, Minify) and lets you define custom tasks that hook into file-type events (e.g., HTML AST) or generic file events.
+**Gatsby plugin** that adds a file processing pipeline that runs after `gatsby build` to transform and optimize the files in `/public`. It ships ready-to-use tasks (PurgeCSS, HTTP headers, Minify) and supports adding custom tasks that hook into file-type events (e.g., HTML AST) or generic file events.
 
 #### Key Features
 
-- **Provider headers generation:** emits hosting configs (e.g., Firebase `firebase.json`, Netlify `_headers`, Vercel) for resource hints (`prefetch`, `preload`, `preconnect`), caching, security and other critical headers.
+- **Provider headers generation:** emits hosting configs (e.g., Firebase, Netlify, Vercel) for resource hints, caching, security and other critical headers.
 - **Built-in tasks:** PurgeCSS, HTTP headers (provider presets), Minify (terser/cssnano).
 - **Custom tasks via events:** register handlers for generic `contents` or HTML events like `parse`, `tree`, `node`, `serialize`, `write`.
-- **Processing controls:** choose parallel or sequential strategies and set concurrency globally or per extension.
-- **Ignore & per-task filters:** exclude files globally or per task (e.g., skip specific HTML paths for PurgeCSS).
+- **Processing controls:** choose parallel or sequential strategies and set concurrency globally or per task.
+- **Ignore & per-task filters:** exclude files globally or per task.
 - **Reporting:** optional `postbuild.log.json` and console summary with toggles.
-- **Lifecycle hooks:** `on.postbuild`, `on.shutdown`, and `[extension].configure` for setup/teardown and per-type config.
 
 #### Why
 

@@ -30,7 +30,7 @@ export const networkHandles = {
     href: 'https://github.com/%s',
   },
   githubRepo: {
-    title: 'Github Repository',
+    title: 'Github',
     icon: 'github',
     href: 'https://github.com/%s',
   },
@@ -45,7 +45,7 @@ export const networkHandles = {
     href: 'https://linkedin.com/in/%s',
   },
   npm: {
-    title: 'NPM Package',
+    title: 'NPM',
     icon: 'npm',
     href: 'https://npmjs.com/package/%s',
   },
@@ -55,7 +55,7 @@ export const networkHandles = {
     href: 'https://stackoverflow.com/users/%s',
   },
   packagist: {
-    title: 'Composer Package',
+    title: 'Composer',
     icon: 'packagist',
     href: 'https://packagist.org/packages/%s',
   },
