@@ -476,6 +476,12 @@
   tags:
     - tool
     - dev
+- slug: openai
+  title: Codex
+  icon: openai
+  tags:
+    - tool
+    - prod
 - slug: notion
   title: Notion
   icon: notion
