@@ -34,41 +34,41 @@ handles:
 ---
 #### Project Overview
 
-JOKR is an on-demand grocery app that enables quick home deliveries from personalized lists. I led work across backend services and internal dashboards, enabling **safe, fast iteration** as traffic and catalog complexity grew.
+JOKR is an on-demand grocery app that enables quick home deliveries from personalized lists. I led work across backend services and internal dashboards, enabling safe, fast iteration as traffic and catalog complexity grew.
 
 #### Challenges
 
-- Ship new features quickly across multiple GraphQL services **without breaking clients**
+- Ship new features quickly across multiple GraphQL services without breaking clients.
 - Give Ops team **reliable tooling** for managing catalog, content, and promotions.
-- Improve **performance, reliability, and developer velocity** under growth
+- Improve **performance, reliability, and developer velocity** under growth,
 
 #### What I built
 
 <div className='[&>ol>li]:text-primary [&>ol]:space-y-4 [&>ol_ul]:pt-2 [&_li]:text-typo-dim'>
 
   1. Federated GraphQL microservices
-     - Designed schemas/contracts optimized for **Apollo Federation**.
-     - Delivered resolvers and data layers with **strict typing** and validation.
-     - Standardized schema contracts and **versioned releases**, **reducing regressions**.
+     - Designed schemas/contracts optimized for Apollo Federation.
+     - Delivered resolvers and data layers with strict typing and validation.
+     - Standardized schema contracts and versioned releases, reducing regressions.
   2. Internal dashboards (React + Material UI)
      - Built dashboards for Operations to manage entities exposed by the services.
-     - Built **reusable** packages/component libraries to standardize quality and **shorten delivery cycles**.
-     - Added **feature flags** and **audit logs** to keep changes traceable.
+     - Built reusable packages/component libraries to standardize quality and **shorten delivery cycles**.
+     - Added **feature flags** and audit logs to keep changes traceable.
   3. CI/CD and release hygiene
-     - **PR preview environments** for services and dashboards.
+     - PR preview environments for services and dashboards.
      - Automated **unit/E2E tests** (Jest, Cypress) as required PR checks.
-     - **Docker/Kubernetes/Helm** deploys to staging/production via **GitHub Actions** and **Terraform**.
+     - Docker/Kubernetes/Helm deploys to staging/production via GitHub Actions and Terraform.
      - Slimmer images and parallelized steps to **shorten deploy time**.
   4. Observability and reliability
-     - **Structured logging**, metrics, and traces in **Datadog** with actionable alerts.
-     - **Incident runbooks** that **lowered MTTR** and improved on-call confidence.
-     - Hardened input validation and data access and **Auth0/JWT** scope enforcement.
+     - Structured logging, metrics, and traces in Datadog with actionable alerts.
+     - Incident runbooks that **lowered MTTR** and improved on-call confidence.
+     - Hardened input validation and data access and Auth0/JWT scope enforcement.
   5. Performance & scale
-     - Sustained **thousands of req/min at low p95 latency** with **DataLoader batching**, caching, and efficient pagination.
+     - Sustained **thousands of req/min at low p95 latency** with DataLoader batching, caching, and efficient pagination.
      - **Load testing** to validate capacity and catch regressions before release.
-     - Optimized media delivery with **Cloudflare** to cut payload size and improve render time.
+     - Optimized media delivery with Cloudflare to cut payload size and **improve rendering time**.
   6. AI-powered product recommendations
-     - Integrated a recommendations service using signals (order history, category affinity, interests).
+     - Integrated a **recommendations service** using signals (order history, category affinity, interests).
      - Surfaced in app and controllable from dashboards.
      - Added guardrails (fallbacks, caps, telemetry) to keep recs safe and measurable.
 
@@ -76,19 +76,19 @@ JOKR is an on-demand grocery app that enables quick home deliveries from persona
 
 #### Impact
 
-- Sustained **thousands of requests/min** at **low p95 latency** (validated by load tests)
-- **Fewer regressions** via contract discipline and versioned releases
-- **Higher delivery velocity** with previews, checks, and standardized tooling
-- **Faster incident response** (Datadog + runbooks → lower MTTR)
-- **CTR/AOV lift** from personalized recommendations, **contributing to revenue growth**
+- Sustained **thousands of requests/min** at **low p95 latency** (validated by load tests).
+- **Fewer regressions** via contract discipline and versioned releases.
+- **Higher delivery velocity** with previews, checks, and standardized tooling.
+- **Faster incident response** (Datadog + runbooks → lower MTTR).
+- **CTR/AOV lift** from personalized recommendations, **contributing to revenue growth**.
 
 ####  Collaboration
 
   - Partnered with Product to scope features and clarify trade-offs.
   - Worked with Design on usable, consistent internal tooling.
-  - Co-led **CI/CD** with DevOps: standardized GitHub Actions/Terraform workflows and Kubernetes/Helm deploys; aligned on observability, alerts, and runbooks.
-  - Collaborated with Operations to map **real workflows**, add feature flags.
-  - Performed peer reviews and mentored engineers on federation patterns, testing, security, and observability **best practices**.
+  - Co-led CI/CD with DevOps: standardized GitHub Actions/Terraform workflows and Kubernetes/Helm deploys; aligned on observability, alerts, and runbooks.
+  - Collaborated with Operations to map real workflows, add feature flags.
+  - Performed peer reviews and mentored engineers on federation patterns, testing, security, and observability best practices.
 
 #### What I’d do next
 

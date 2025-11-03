@@ -32,27 +32,27 @@ Mishe offers transparent, direct-pay healthcare with concierge support, connecti
 
 #### Challenges
 
-- Stabilize and modernize a **large-scale Firebase (web/Cloud Functions)** codebase to **Node.js LTS**.
-- Give Ops/Finance **reliable dashboards** for catalog, pricing, and Stripe operations with reconciliation and auditability.
+- Stabilize and modernize a **large-scale** Firebase codebase (web/Cloud Functions) to Node.js LTS.
+- Give Ops/Finance **reliable dashboards** for catalog, pricing, and Stripe operations.
 - Improve **data integrity**, **release cadence**, and **observability** as usage grew.
 
 #### What I built
 
-1) **Platform modernization** — Upgraded Firebase runtimes to **Node.js LTS**, tightened TypeScript, and refactored hot paths to improve performance and release stability.
+1) **Platform modernization** — Upgraded Firebase runtimes to Node.js LTS, tightened TypeScript, and refactored hot paths to improve performance and release stability.
 
-2) **Internal dashboards (React + MUI)** — Built an admin dashboard and a **reusable component library**; standardized patterns and UX to speed delivery.
+2) **Internal dashboards (React + MUI)** — Built an admin dashboard and a reusable component library; standardized patterns and UX to speed delivery.
 
-3) **Firestore data governance** — Implemented a **schema/usage analyzer** and a **dashboard-driven migration runner**; integrated checks into CI to improve **data integrity**.
+3) **Firestore data governance** — Implemented a schema/usage analyzer and a dashboard-driven migration runner; integrated checks into CI to improve data integrity.
 
-4) **Stripe finance ops** — Delivered **operations dashboards** (charges, refunds, transfers, payouts) with **reconciliation workflows** and **audit trails** to reduce discrepancies and support compliance.
+4) **Stripe finance ops** — Delivered operations dashboards (charges, refunds, transfers, payouts) with reconciliation workflows and audit trails to reduce discrepancies and support compliance.
 
-5) **CI/CD & developer experience** — Set up CI/CD pipelines with **GitHub Actions** and **Cloud Pub/Sub** for **PR checks**, **preview deploys**, and **in-dashboard deployment logs**.
+5) **CI/CD & developer experience** — Set up CI/CD pipelines with GitHub Actions and Cloud Pub/Sub for PR checks, preview deploys, and in-dashboard deployment logs.
 
-6) **Quality, reliability & performance** — Added **automated unit/E2E tests** on PRs (Vitest/Playwright), **structured logging/observability**, **caching**, and **targeted load tests** to catch regressions early and keep latency low.
+6) **Quality, reliability & performance** — Added automated unit/E2E tests on PRs (Vitest/Playwright), structured logging/observability, caching, and targeted load tests to catch regressions early and keep latency low.
 
 #### Impact
 
-- **More reliable releases** after LTS upgrade and CI checks; **fewer regressions** with contract tests.
+- **More reliable releases** after LTS upgrade and CI checks; fewer regressions with contract tests.
 - **Faster feature delivery** via standardized components, previews, and clearer release workflows.
 - **Higher data integrity** from schema analysis and controlled migrations.
 - **Reduced payment discrepancies** and better auditability with Stripe reconciliation and trails.
