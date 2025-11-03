@@ -101,8 +101,7 @@
   },
   "packageManager": "pnpm@10.20.0",
   "engines": {
-    "node": ">=20",
-    "pnpm": ">=10"
+    "node": ">=20"
   },
   "renovate": {
     "enabled": true,
