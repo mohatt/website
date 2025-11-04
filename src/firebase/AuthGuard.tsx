@@ -23,10 +23,10 @@ export function AuthGuard({ title, children }: AuthGuardProps) {
       e.preventDefault()
     }
 
-    let accessDenied = null
-    if (!site.deployment.admins.includes(authState.email)) {
-      accessDenied = `Access denied for ${authState.email}.`
-    }
+    const { displayName, email, photoURL } = authState
+    const accessError = site.deployment.admins.includes(email)
+      ? null
+      : `Access denied for ${email}.`
 
     return (
       <>
@@ -38,11 +38,11 @@ export function AuthGuard({ title, children }: AuthGuardProps) {
                 <img
                   height='auto'
                   className='w-12 mr-2 border-2 border-primary rounded-[999px] shadow-lg'
-                  src={authState.photoURL}
-                  alt={`Portrait of ${authState.displayName}`}
+                  src={photoURL}
+                  alt={`Portrait of ${displayName}`}
                 />
                 <div className='flex-grow'>
-                  <div>{authState.displayName}</div>
+                  <div>{displayName}</div>
                   <a className='link text-primary' onClick={handleSignOut}>
                     Logout
                   </a>
@@ -50,7 +50,7 @@ export function AuthGuard({ title, children }: AuthGuardProps) {
               </div>
             }
           >
-            {accessDenied}
+            {accessError}
           </Heading>
           {signOutError && (
             <div className='mb-6'>
@@ -58,7 +58,7 @@ export function AuthGuard({ title, children }: AuthGuardProps) {
               {signOutError.message}
             </div>
           )}
-          {!accessDenied && children}
+          {!accessError && children}
         </Section>
       </>
     )
