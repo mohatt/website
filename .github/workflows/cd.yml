@@ -76,7 +76,11 @@ jobs:
         run: |
           if [[ "$EVENT_NAME" == "push" ]]; then
             CHANNEL="live"
-            BASE_URL="https://${PROJECT_ID}.web.app"
+            if [[ "$PROJECT_ID" == "mohatt" ]]; then
+              BASE_URL="https://mohatt.dev"
+            else
+              BASE_URL="https://${PROJECT_ID}.web.app"
+            fi
           else
             BRANCH="${HEAD_REF:-$REF_NAME}"
             SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9-]+/-/g' | sed -E 's/^-+|-+$//g' | cut -c1-12)          
