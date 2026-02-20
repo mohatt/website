@@ -26,6 +26,7 @@ export default function PageHead(props: PageHeadProps) {
   const seoTitle = title ? `${title} — ${site.title}` : site.title
   const seoDescription = description || site.description
   const ogImage = image ?? socialBanner
+  const ogUrl = site.deployment.url + pathname
 
   /**
    * Gatsby Head doesn't re-render when layout context changes, so we have to use Helmet for now.
@@ -66,14 +67,17 @@ export default function PageHead(props: PageHeadProps) {
           { property: 'og:title', content: seoTitle },
           { property: 'og:description', content: seoDescription },
           { property: 'og:type', content: 'website' },
-          { property: 'og:url', content: site.deployment.url + pathname },
+          { property: 'og:url', content: ogUrl },
           { property: 'og:image', content: site.deployment.url + ogImage.src },
           { property: 'og:image:width', content: ogImage.width.toString() },
           { property: 'og:image:height', content: ogImage.height.toString() },
           { property: 'og:image:alt', content: `Preview of ${seoTitle}` },
           { property: 'twitter:card', content: 'summary_large_image' },
         ]}
-        link={[{ rel: 'prefetch', as: 'image', href: avatarAlt }]}
+        link={[
+          { rel: 'canonical', href: ogUrl },
+          { rel: 'prefetch', as: 'image', href: avatarAlt },
+        ]}
       />
       {children}
     </>

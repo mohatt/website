@@ -61,7 +61,7 @@ The website is currently hosted at [Firebase Hosting](https://firebase.google.co
   - **Domain**: [mohatt-staging.web.app](https://mohatt-staging.web.app)
   - **Branch**: [development](https://github.com/mohatt/website/tree/development)
 - Production
-  - **Domain**: [mohatt.web.app][website-url]
+  - **Domain**: [mohatt.dev][website-url]
   - **Branch**: [production](https://github.com/mohatt/website/tree/production)
 
 ### Workflow
@@ -83,7 +83,7 @@ For more information, check out [`.github/workflows`](.github/workflows) directo
 [cd-prod-img]: https://img.shields.io/github/actions/workflow/status/mohatt/website/cd.yml?logo=github&branch=production&label=production
 [gatsby-url]: https://github.com/gatsbyjs/gatsby/blob/gatsby%405.15.0/packages/gatsby/CHANGELOG.md
 [gatsby-img]: https://img.shields.io/badge/gatsby-v5.15-blueviolet.svg?logo=gatsby
-[website-url]: https://mohatt.web.app
-[website-img]: https://img.shields.io/website?logo=statuspal&url=https%3A%2F%2Fmohatt.web.app
-[observatory-url]: https://observatory.mozilla.org/analyze/mohatt.web.app
-[observatory-img]: https://img.shields.io/mozilla-observatory/grade/mohatt.web.app?logo=mozilla
+[website-url]: https://mohatt.dev
+[website-img]: https://img.shields.io/website?logo=statuspal&url=https%3A%2F%2Fmohatt.dev
+[observatory-url]: https://observatory.mozilla.org/analyze/mohatt.dev
+[observatory-img]: https://img.shields.io/mozilla-observatory/grade/mohatt.dev?logo=mozilla

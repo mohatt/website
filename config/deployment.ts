@@ -31,7 +31,7 @@ const config = {
     },
   },
   production: {
-    url: `https://mohatt.web.app`,
+    url: `https://mohatt.dev`,
     ga4: 'G-EC5KQR5PF7',
     firebase: {
       apiKey: 'AIzaSyCCUU0dXV_m5CIP2WgO8iOlBhQKVK0gkk4',
