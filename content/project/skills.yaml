@@ -72,6 +72,13 @@
     - 1st
     - back
     - frame
+- slug: better-auth
+  title: Better Auth
+  icon: betterauth
+  tags:
+    - 1st
+    - back
+    - frame
 - slug: symfony
   title: Symfony
   icon: symfony
@@ -218,34 +225,12 @@
     - back
     - api
     - platform
-- slug: firebase
-  title: Firebase
-  icon: firebase
-  tags:
-    - 1st
-    - devops
-    - back
-    - front
-    - api
-    - platform
 - slug: auth0
   title: Auth0
   icon: auth0
   tags:
     - 1st
     - front
-    - api
-- slug: paymentapi
-  title: Payment Gateways
-  icon: paypal
-  tags:
-    - back
-    - api
-- slug: rest
-  title: REST
-  icon: json
-  tags:
-    - back
     - api
 - slug: vitest
   title: Vitest
@@ -355,12 +340,6 @@
   tags:
     - devops
     - repo
-- slug: dependabot
-  title: Dependabot
-  icon: dependabot
-  tags:
-    - devops
-    - repo
 - slug: githooks
   title: Git Hooks
   icon: git
@@ -368,12 +347,30 @@
     - devops
     - repo
 - slug: vercel
-  title: Vercel
+  title: Vercel Platform
   icon: vercel
   tags:
     - 2nd
     - devops
+    - back
+    - api
     - platform
+- slug: firebase
+  title: Firebase
+  icon: firebase
+  tags:
+    - 1st
+    - devops
+    - back
+    - front
+    - api
+    - platform
+- slug: paymentapi
+  title: Payment Gateways
+  icon: paypal
+  tags:
+    - back
+    - api
 - slug: ghactions
   title: GitHub Actions
   icon: github
