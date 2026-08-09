@@ -199,9 +199,9 @@ export const resume = {
   workArrangement: 'Remote',
   intro: (
     <>
-      Full-stack engineer with over <b>8 years</b> delivering web applications for startups and
-      SMBs, focused on performance, reliability, maintainability, and developer experience. Build
-      scalable <b>TypeScript</b>, <b>Node.js</b>, and <b>React</b> solutions on <b>GCP</b> and{' '}
+      Full-stack engineer with <b>8+ years</b> building <b>TypeScript</b>, <b>Node.js</b>, and{' '}
+      <b>React</b> applications — <b>100%</b> Job Success Score and <b>7,600+</b> hours delivered on
+      Upwork, plus full-time roles. Developing scalable, cloud-native applications on <b>GCP</b> and{' '}
       <b>AWS</b>.
     </>
   ),

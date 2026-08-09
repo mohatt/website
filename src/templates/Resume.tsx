@@ -10,15 +10,15 @@ import { Testimonial } from './partials'
 
 interface PrintLinkProps {
   to: string
+  linkId: string
   params?: RouteParams
   children?: ReactNode
 }
 
-function PrintLink({ to, params, children }: PrintLinkProps) {
-  const path = generatePath(to, params)
-  const url = site.deployment.url + path
+function PrintLink({ to, linkId, params, children }: PrintLinkProps) {
+  const url = site.deployment.url + generatePath(to, params)
   return (
-    <Link href={url} linkId='resume_print' className='link'>
+    <Link href={url} linkId={linkId} className='link'>
       {children ?? url}
     </Link>
   )
@@ -245,27 +245,60 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
       {isPrint && (
         <>
           <Section sep>
-            <Heading title='Featured project' />
-            <div>
-              {renderHeading(
-                <PrintLink to='projects.project' params={{ project: 'jokr' }}>
-                  JOKR — Smart grocery shopping app powered by AI
-                </PrintLink>,
-                true,
-              )}
-              <ul className='list-style-diamond ml-1 mt-2 space-y-1'>
-                <li>
-                  <span className='font-bold'>Stack:</span> TypeScript/Node.js (NestJS), GraphQL
-                  (Apollo Federation), React/MUI, GCP, Docker/Kubernetes, Jest/Cypress.
-                </li>
-                <li>Delivered federated GraphQL microservices powering the iOS/Android app.</li>
-                <li>Built internal operations dashboards and CI/CD pipelines.</li>
-                <li>Integrated AI-driven product recommendations with guardrails.</li>
-                <li>
-                  <span className='font-medium'>Case study:</span>{' '}
-                  <PrintLink to='projects.project' params={{ project: 'jokr' }} />
-                </li>
-              </ul>
+            <Heading title='Featured projects' />
+            <div className='space-y-4'>
+              <div>
+                {renderHeading(
+                  <PrintLink
+                    to='projects.project'
+                    params={{ project: 'jokr' }}
+                    linkId='resume_project'
+                  >
+                    JOKR — AI-powered grocery shopping app
+                  </PrintLink>,
+                  true,
+                )}
+                <ul className='list-style-diamond ml-1 mt-2 space-y-1'>
+                  <li>
+                    <span className='font-bold'>Stack:</span> TypeScript/Node.js (NestJS), GraphQL
+                    (Apollo Federation), React/MUI, GCP, Docker/Kubernetes, Jest/Cypress.
+                  </li>
+                  <li>Delivered federated GraphQL microservices powering the iOS/Android app.</li>
+                  <li>Built internal operations dashboards and CI/CD pipelines.</li>
+                  <li>Integrated AI-driven product recommendations with guardrails.</li>
+                  <li>
+                    <span className='font-bold'>Case study:</span>{' '}
+                    <PrintLink
+                      to='projects.project'
+                      params={{ project: 'jokr' }}
+                      linkId='resume_project'
+                    />
+                  </li>
+                </ul>
+              </div>
+              <div>
+                {renderHeading(
+                  <Link href='https://chat.mohatt.dev' linkId='resume_project' className='link'>
+                    Chatbot — Open source AI chatbot
+                  </Link>,
+                  true,
+                )}
+                <ul className='list-style-diamond ml-1 mt-2 space-y-1'>
+                  <li>
+                    <span className='font-bold'>Stack:</span> Next.js, Vercel AI SDK, PostgreSQL,
+                    Upstash Vector, Vercel AI Gateway.
+                  </li>
+                  <li>Streaming chat UI with Markdown rendering and rich AI elements.</li>
+                  <li>File uploads + RAG with vector indexing and file search/read tools.</li>
+                  <li>Multi-model support via Vercel AI Gateway.</li>
+                  <li>
+                    <span className='font-bold'>Live demo:</span>{' '}
+                    <Link href='https://chat.mohatt.dev' linkId='resume_project' className='link'>
+                      https://chat.mohatt.dev
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </Section>
         </>
