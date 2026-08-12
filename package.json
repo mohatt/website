@@ -99,7 +99,7 @@
     "typescript": "<=5.1.6",
     "webpack-bundle-analyzer": "^4.10.2"
   },
-  "packageManager": "pnpm@10.30.0",
+  "packageManager": "pnpm@10.34.5",
   "engines": {
     "node": ">=20"
   },
